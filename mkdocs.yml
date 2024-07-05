@@ -2,12 +2,7 @@ site_name: N0te . JaZzyzJ
 theme: 
   name: material
   language: en
-  features:
-    - navigation.tabs
-    - navigation.expand
-    - toc.follow
-    - search.suggest
-    - content.code.copy
+  
   palette:
     - scheme: slate
       primary: black
