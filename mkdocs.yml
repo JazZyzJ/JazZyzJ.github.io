@@ -1,1 +1,23 @@
-site_name: My Docs
+site_name: N0te . JaZzyzJ
+theme: 
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - toc.follow
+    - search.suggest
+    - content.code.copy
+  palette:
+    - scheme: slate
+      primary: black
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
+    - scheme: default
+      toggle:
+        icon: material/lightbulb-off
+        name: Switch to dark mode
+  font:
+    text: "PT Serif"
+    code: "JetBrains Mono"
