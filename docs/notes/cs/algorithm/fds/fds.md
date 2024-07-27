@@ -82,9 +82,8 @@ further studying
 
 ​	需要在最大数据时找到最快数据和最慢数据
 
-## Lec 01
+## Lec 01 Algorithm Analysis
 
-### Algorithm analysis
 
 Time & space complexity : machine and compiler **independent**
 
@@ -150,9 +149,8 @@ use loop O(logn)
 
 
 
-## Lec 04 
+## Lec 04 ADT
 
-### Abstract Data Type ADT
 
 Data type = object + operation 
 
@@ -193,17 +191,16 @@ typedef *poly_ptr a;
 
 #### Multilists
 
-![fds-1](/docs/assets/pics/fds/fds-1.png)
+![fds-1](/../../../../assets/pics/fds/fds-1.png)
 
 
 
 
 
-## Lec 05
+## Lec 05 Linear List
 
-### Linear List
 
-#### Stack ADT
+### Stack ADT
 
 帮助系统临时存放或者调整顺序所用的工具
 
@@ -350,7 +347,7 @@ infix to postfix
    1. 用条件判断
    2. 设置两套括号，栈内一套，栈外一套
 
-#### Queue ADT
+### Queue ADT
 
 保持顺序使用
 
@@ -440,11 +437,11 @@ length of the unique path from the root
 
 1. first child next sibling
 
-![fds-2](/docs/assets/pics/fds/fds-2.png)
+![fds-2](../../../../assets/pics/fds/fds-2.png)
 
 1. binary tree
 
-![fds-3](/docs/assets/pics/fds/fds-3.png)
+![fds-3](../../../../assets/pics/fds/fds-3.png)
 
 eg 
 
@@ -634,7 +631,7 @@ basecase：T = NULL
 
 
 
-## Lec08 Priority **Queue**(Heaps)
+## Lec 08 Priority **Queue**(Heaps)
 
 
 
@@ -654,7 +651,7 @@ delete the element with the highest / lowest priority
 
 用数组进行存储：
 
-![fds-4](/docs/assets/pics/fds/fds-4.png)
+![fds-4](/../../../../assets/pics/fds/fds-4.png)
 
 不会有空间浪费（无偏斜树）
 
@@ -672,7 +669,7 @@ index = 0 的位置作为哨兵，设置成离开数值范围的值
 
 从下往上走：➗2 取整
 
-![fds-5](/docs/assets/pics/fds/fds-5.png)
+![fds-5](/../../../../assets/pics/fds/fds-5.png)
 
 
 
@@ -788,9 +785,8 @@ index = 0 的位置作为哨兵，设置成离开数值范围的值
 
    
 
-## Lec09 Disjoint set
+## Lec 09 Disjoint set
 
-### Def
 
 等价关系 equivalent relation 
 
@@ -800,7 +796,7 @@ symmetric reflexive transitive
 
 - eg：对等价类进行分类
 
-![fds-6](/docs/assets/pics/fds/fds-6.png)
+![fds-6](/../../../../assets/pics/fds/fds-6.png)
 
 ```c
 void find(){//并查集算法
@@ -828,7 +824,7 @@ S[element] = element's parent
 
 S[root] = 0 and 
 
-![fds-8](/docs/assets/pics/fds/fds-8.png)
+![fds-8](/../../../../assets/pics/fds/fds-8.png)
 
 **Find**
 
@@ -882,7 +878,7 @@ G(V, E) 顶点 边
 
 - 有向图 directed
 
-<v1, v2>
+< v1, v2 >
 
 complete graph : a graph has max edges 
 
@@ -934,7 +930,7 @@ n个顶点，要开一个长度为n的一维数组，对应位置是每个顶点
 
 A->B：找A链表，将B的头节点插入到A的链表中
 
-![fds-9](/docs/assets/pics/fds/fds-9.png)
+![fds-9](/../../../../assets/pics/fds/fds-9.png)
 
 - Multilist
 
@@ -942,7 +938,7 @@ A->B：找A链表，将B的头节点插入到A的链表中
 
 1. 拓扑排序
 
-<img src="/docs/assets/pics/fds/fds-10.png" alt="fds-10"  />
+<img src="/../../../../assets/pics/fds/fds-10.png" alt="fds-10"  />
 
 **AOV Network** activity on verticle
 
@@ -970,7 +966,7 @@ void Toposort(Graph G){
 
 改进：采用一个结构存储入度为0的节点
 
-![fds-11](/docs/assets/pics/fds/fds-11.png)
+![fds-11](/../../../../assets/pics/fds/fds-11.png)
 
 
 
@@ -1163,7 +1159,7 @@ Q1:计算双联通分量
 2. 计算Low值：Low的理解：我能联络到的最高层（最小的num）
 3. 查看满足关节的条件
 
-![fds-12](/docs/assets/pics/fds/fds-12.png)
+![fds-12](/../../../../assets/pics/fds/fds-12.png)
 
 
 
@@ -1299,7 +1295,7 @@ loading density: n/sb   sb是哈希表的面积（可以存放的数量）
 
 
 
-### 设计哈希函数
+### Design Hash 
 
 数字：
 
@@ -1326,11 +1322,11 @@ int index_hash(char *x, int tablesize){
 
 
 
-### 冲突解决
+### Collision
 
 1. 链表解决：n个元素，哈希表至少长度为2n
 
-![fds-13](/docs/assets/pics/fds/fds-13.png)
+![fds-13](/../../../../assets/pics/fds/fds-13.png)
 
 O(1) insertion
 

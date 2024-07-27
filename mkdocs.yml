@@ -27,16 +27,22 @@ theme:
     text: "PT Serif"
     code: "JetBrains Mono"
 
-
+# nav:
+#   - Home: index.md
+#   - notes: 
+#     - Computer Science: 
+#       - notes/cs/index.md
+#       - Algorithms: 
+#         - FDS: notes/cs/algorithm/fds.md   -->Error:fds.md should be fds/fds.md
+    
 nav:
   - Home: index.md
-  - notes: 
-    - Computer Science: 
-      - notes/cs/index.md
-      - Algorithms: 
-        - FDS: /notes/cs/algorithm/fds.md
-    
-       
+  - notes:
+      - Computer Science:
+        - notes/cs/index.md
+        - Algorithms:
+          - FDS: notes/cs/algorithm/fds/fds.md
+   
 
 
     
