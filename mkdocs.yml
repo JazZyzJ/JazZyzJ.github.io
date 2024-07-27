@@ -33,6 +33,8 @@ nav:
   - notes: 
     - Computer Science: 
       - notes/cs/index.md
+      - Algorithms: 
+        - FDS: /notes/cs/algorithm/fds.md
     
        
 
