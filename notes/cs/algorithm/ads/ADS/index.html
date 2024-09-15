@@ -599,6 +599,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#amortized-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amortized Analysis
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -802,6 +811,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#amortized-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amortized Analysis
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -824,14 +842,12 @@
  <strong>Target</strong>：Speed up</p>
 <p>基本思想：
 <strong>height balance</strong>：每个节点的左右子树的高度差（平衡因子BF）不超过1</p>
-<p>$ BF=| h_l - h_r | \leq 1$</p>
+<div class="arithmatex">\[ BF=| h_l - h_r | \leq 1\]</div>
 <p>PS:树的高度计算：由根节点到叶节点的最长路径
 -&gt; 进行高度平衡</p>
 <h3 id="operation">Operation<a class="headerlink" href="#operation" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Rotation
-在不改变树的相对顺序的情况下，通过旋转操作来调整树的结构，使得树的高度平衡</li>
-</ul>
+<p>Rotation
+在不改变树的相对顺序的情况下，通过旋转操作来调整树的结构，使得树的高度平衡</p>
 <p><img alt="ads-1" src="/../../../../assets/pics/ads/ads-1.png" /></p>
 <p>想象将需要被提高的节点提高，将需要被降低的节点降低，然后将这两个节点的子树连接到新的节点上</p>
 <p>Time Complexity: <span class="arithmatex">\(O(1)\)</span></p>
@@ -853,12 +869,11 @@
 <p><span class="arithmatex">\(n_h\)</span>：高度为h的最小节点数
 为了保持树有h的高度，至少一个子树的高度为h-1，另一个子树的高度与他相差为1，= n-2
 因此：</p>
-<p align="center">
-$ n_h = n_{h-1} + n_{h-2} + 1$ 
-</p>
-
+<div class="arithmatex">\[
+n_h = n_{h-1} + n_{h-2} + 1
+\]</div>
 <p>可以得到：<br></p>
-<p><span class="arithmatex">\(n_h=F_{h+3}-1 for h \geq -1\)</span></p>
+<div class="arithmatex">\[ n_h=F_{h+3}-1 for h \geq -1 \]</div>
 </p>
 <h2 id="splay-tree">Splay Tree<a class="headerlink" href="#splay-tree" title="Permanent link">&para;</a></h2>
 <h3 id="intro_1">Intro<a class="headerlink" href="#intro_1" title="Permanent link">&para;</a></h3>
@@ -873,6 +888,56 @@ Double Rotation</li>
 Single Rotation</li>
 </ul>
 <p><img alt="ads-4" src="/../../../../assets/pics/ads/ads-4.png" /></p>
+<h2 id="amortized-analysis">Amortized Analysis<a class="headerlink" href="#amortized-analysis" title="Permanent link">&para;</a></h2>
+<p>均摊法分析是对一系列操作的平均性能进行分析，而不是对单个操作的性能进行分析
+bound介于worst和average之间
+且均摊界与概率无关
+通常有三种方法：Aggregate Accounting Potential</p>
+<ul>
+<li>Aggregate Method
+对一系列的操作进行最坏时间情况分析得到<span class="arithmatex">\(T(n)\)</span>，此时：
+$$
+T(n) \leq \sum_{i=1}^{n} t_i=O(n)
+$$
+这时<span class="arithmatex">\(T(n)\)</span>逼近于<span class="arithmatex">\(O(n)\)</span>，即均摊时间复杂度为<span class="arithmatex">\(O(1)\)</span>
+但是这个方法的难点在于需要确定这个<span class="arithmatex">\(T(n)\)</span>，也就是总的时间开销</li>
+</ul>
+<p>在讲解其余的两个方法之前，yy哥说了一个很有趣的故事：
+yy在学校门口开了一个小卖部买汽水，每次卖出一瓶成本为1的汽水，学生至少要交一块钱，但是也可以多交钱存到下次使用，汽水的成本就是<code>actual cost</code>，而学生交的钱就是<code>amortized cost</code>，多出来的钱我们称作<code>credit</code></p>
+<ul>
+<li>Accounting Method
+在这个方法中，我们自己设置均摊价值，但需要保证均摊价值不会小于实际价值，即：</li>
+</ul>
+<p>$$
+\sum \text{amortized cost} \geq \sum \text{actual cost}
+$$
+(也就是不会赊账)</p>
+<p>这时候就会得到一个实际价值的上界</p>
+<p>这个方法的过程就是：
+- 首先分析实际价值
+- 然后设置均摊价值
+- 分析credit的值，确保其大于等于0</p>
+<p>eg:
+<img alt="ads-5" src="/../../../../assets/pics/ads/ads-5.png" /></p>
+<ul>
+<li>Potential Method
+直观的、一次性定义所有操作的均摊代价，对于某些大量操作需要定义均摊价值的情况，这种方法更加适用</li>
+</ul>
+<div class="arithmatex">\[
+\hat{c}_i-c_i=\text { Credit }_i=\Phi\left(D_i\right)-\Phi\left(D_{i-1}\right)
+\]</div>
+<p>解释：</p>
+<p><span class="arithmatex">\(Credit_i\)</span>：第i次操作的credit，这时我们引入一个状态得分函数<span class="arithmatex">\(\Phi(D)\)</span>，这个函数的值是一个状态的代价，<span class="arithmatex">\(D_i\)</span>是第i次操作后的状态</p>
+<p>但是对于每一次操作，<span class="arithmatex">\(Credit_i\)</span>的数值不仅由当前的状态决定，还受到之前状态的影响，因此我们用<span class="arithmatex">\(\Phi(D_i)-\Phi(D_{i-1})\)</span>来表示</p>
+<p>此时，我们可以得到：</p>
+<div class="arithmatex">\[
+\sum_{i=1}^{n} \hat c_i=\sum_{i=1}^{n} c_i+\Phi(D_n)-\Phi(D_0)
+\]</div>
+<p>恰好在这个求和的过程中，只留下了<span class="arithmatex">\(\Phi(D_0)\)</span>和<span class="arithmatex">\(\Phi(D_n)\)</span>，这两个值是常数，从而我们得到了<span class="arithmatex">\(\sum_{i=1}^{n} \hat c_i\)</span>的值</p>
+<p>实际操作中，我们：
+- 选择一个合适的状态得分函数<span class="arithmatex">\(\Phi(D)\)</span>
+- 检查credit的值合法性
+- 计算<span class="arithmatex">\(\sum_{i=1}^{n} \hat c_i\)</span></p>
 
 
 
