@@ -42,7 +42,11 @@ nav:
         - notes/cs/index.md
         - Algorithms:
           - FDS: notes/cs/algorithm/fds/fds.md
-   
+          - ADS: notes/cs/algorithm/ads/ADS.md
+      - Tools:
+        - GNU Make: notes/Tool_Pool/GNU_Make.md
+
+
 
 
     
