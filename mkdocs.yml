@@ -1,5 +1,8 @@
 site_name: Space . JaZzyzJ
 site_url: https://jazzyzj.github.io/
+repo_name: JaZzyzJ.Space
+repo_url: https://github.com/JazZyzJ/JazZyzJ.github.io
+
 theme: 
   name: material
   language: en
@@ -14,12 +17,14 @@ theme:
     - navigation.top
   
   palette:
+    # - custom_dir: docs/css/stylesheets/extra.css
     - scheme: slate
       primary: black
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
     - scheme: 
+      primary: white
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -90,3 +95,7 @@ markdown_extensions:
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+
+extra_css:
+  - docs/css/custom.css
