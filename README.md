@@ -10,3 +10,5 @@ welcome to hang around my personal space, here you can see my:
 I started to build this site for：
 - Pushing myself to summary
 - Sharing thoughts with you
+
+Welcome to give me feedbacks and suggestions!

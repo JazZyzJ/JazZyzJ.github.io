@@ -67,6 +67,9 @@ clean :
         insert.o search.o files.o utils.o
 ```
 
+在实际使用过程中，我们通常会使用`make -f <makefile_name>`来指定makefile文件，如果不指定，make会默认使用当前目录下的`Makefile`文件。
+
+在这个例子中，我们```make```一下就会生成```edit```文件，然后使用```make clean```就会删除```edit```文件。
 
 
 
