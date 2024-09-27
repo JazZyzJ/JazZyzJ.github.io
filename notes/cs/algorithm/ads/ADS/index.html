@@ -667,6 +667,105 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#b-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+ Tree
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="B+ Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intro_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operation_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leftist-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leftist Tree
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leftist Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intro_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operation_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skewed-heap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skewed Heap
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skewed Heap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intro_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operation_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -912,6 +1011,105 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#b-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+ Tree
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="B+ Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intro_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operation_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leftist-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leftist Tree
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leftist Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intro_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operation_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skewed-heap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skewed Heap
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skewed Heap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intro_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operation_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1145,28 +1343,35 @@ $$
 
 <p>先将爸爸染黑，爷爷染红，此时左子树的黑高比右子树的黑高多1，因此要进行右旋转平衡黑高</p>
 <ul>
-<li>Delete </li>
+<li><strong>Delete</strong></li>
 </ul>
-<p>总体的思路是将删除节点增黑，然后通过转移这个黑色到父亲节点，在进行黑高的平衡</p>
+<p>总体的思路是将删除节点增黑，然后通过转移这个黑色到父亲节点，在进行黑高的平衡，当然最简单的情况就是删除节点是红色，这时直接删除即可，其次删除节点删除节点只有一个孩子（只能是红孩子）代替他爹后变黑即可</p>
+<p>然后我们讨论删除节点是黑叶子的情况，这里需要引入一个双黑的概念，即删除叶节点是黑色，那么在删除它之后将它的黑色增加到2，再通过旋转和染色操作平衡黑高，最后将其变为单黑NIL</p>
 <p><strong>Case 1</strong></p>
 <div align="center">
 <img src="/../../../../assets/pics/ads/ads-11.png" alt="ads-11" height="200px" width="300px">
 </div>
 
-<p>删除节点是黑色，父亲也是黑色但是兄弟是红色，此时将兄弟染黑，父亲染红，但是这样会使黑高右移，因此需要进行左旋转</p>
+<p>删除节点是黑色，父亲也是黑色但是兄弟是红色，此时将兄弟染黑，父亲染红，但是这样会使黑高右移，因此需要进行左旋转，旋转之后进入到Case 2</p>
 <p><strong>Case 2</strong></p>
 <div align="center">
 <img src="/../../../../assets/pics/ads/ads-12.png" alt="ads-12" height="200px" width="300px">
 </div>
 
 <p>此时兄弟节点的颜色是黑色且侄子是双黑，这时候甩锅给父亲，将父亲染黑，此时右路黑色多了一个，然后在分类讨论，父节点本来是红色就结束了，染黑即可；父节点本来是黑色，就继续递归</p>
+<p>此时需要注意的是一种情况就是所删除的节点一直递归到根节点时，一路上都没有红色节点，就会进入到<strong>Case 4</strong>，这时候需要进行旋转操作</p>
+<p>我画出了这个操作的过程：</p>
+<div align="center">
+<img src="/../../../../assets/pics/ads/ads-15.jpg">
+</div>
+
 <p>这时候问题出现了，如果侄子有红色，那么在Case 2中我们将兄弟染红的操作就是错误的，因为这样会导致两个连续红色，这就进入了Case 3</p>
 <p><strong>Case 3</strong></p>
 <div align="center">
 <img src="/../../../../assets/pics/ads/ads-13.png" alt="ads-13" height="200px" width="300px">
 </div>
 
-<p>远侄子是黑色，近侄子是红色，此时将红色侄子与黑色父亲互换，会导致左侄子这条路的黑高多1，因此需要进行右旋转，然后这时远侄子就是红色了，进入Case 4</p>
+<p>远侄子是黑色，近侄子是红色，此时将红色侄子与其黑色父亲互换，会导致左侄子这条路的黑高多1，因此需要进行右旋转，然后这时远侄子就是红色了，进入Case 4</p>
 <p><strong>Case 4</strong></p>
 <div align="center">
 <img src="/../../../../assets/pics/ads/ads-14.png" alt="ads-14" height="200px" width="300px">
@@ -1199,16 +1404,100 @@ $$
 <tbody>
 <tr>
 <td>Insertion</td>
-<td>$ \leq 2$</td>
-<td>$ \leq 2$</td>
+<td><span class="arithmatex">\(\leq 2\)</span></td>
+<td><span class="arithmatex">\(\leq 2\)</span></td>
 </tr>
 <tr>
 <td>Deletion</td>
-<td>$ O(log n)$</td>
-<td>$ \leq 3$</td>
+<td><span class="arithmatex">\(O(log n)\)</span></td>
+<td><span class="arithmatex">\(\leq 3\)</span></td>
 </tr>
 </tbody>
 </table>
+<h2 id="b-tree">B+ Tree<a class="headerlink" href="#b-tree" title="Permanent link">&para;</a></h2>
+<h3 id="intro_3">Intro<a class="headerlink" href="#intro_3" title="Permanent link">&para;</a></h3>
+<p>B树是一种平衡的树状数据结构，主要用于在磁盘上存储数据，减少磁盘的I/O次数</p>
+<p>B-Tree with order B:</p>
+<ul>
+<li>结构性质</li>
+</ul>
+<ol>
+<li>根节点要么是叶子节点，要么有2到B个孩子</li>
+<li>每个非叶子节点有</li>
+<li>所有叶子节点在同一层</li>
+</ol>
+<ul>
+<li>数值性质</li>
+</ul>
+<ol>
+<li>数值全部存放在叶子结点</li>
+<li>非叶子结点中存储routing element，用于确定子树中数值的分布,并且有介于<span class="arithmatex">\(\lceil B/2 \rceil\)</span>到<span class="arithmatex">\(B\)</span>个孩子,称为他的fanout</li>
+<li>非叶子节点的元素个数+1=孩子个数</li>
+<li>叶子节点存的元素个数在<span class="arithmatex">\(\lceil B/2 \rceil\)</span>到<span class="arithmatex">\(B\)</span>之间根节点可以存储1到B个元素</li>
+<li>一个存储了<span class="arithmatex">\(K\)</span>个元素<span class="arithmatex">\(e_1,e_2,e_3,e_4,e_K\)</span>的internal node 有<span class="arithmatex">\(v_1,v_2,v_3,v_4,v_K\)</span>这些叶子结点：</li>
+</ol>
+<div class="arithmatex">\[
+e_i=minimun\ element\ in\ leaves\ under\ v_{i+1}
+\]</div>
+<div class="arithmatex">\[
+for\ keys\ in\ leaves\ i\ in\ v_i: Tv_1 \leq ... \leq Tv_K
+\]</div>
+<p>补充的性质：N表示元素个数</p>
+<ol>
+<li>leaves <span class="arithmatex">\(\leq N/ \lceil B/2 \rceil\)</span></li>
+<li>nodes <span class="arithmatex">\(\leq 2N/ \lceil B/2 \rceil\)</span></li>
+<li>elements <span class="arithmatex">\(\leq 2N\)</span> 这里用nodes数乘B得到的似乎是4N，但需要注意的是路径上的节点存储的数值全部是元素的副本，总数不会超过2N</li>
+<li></li>
+</ol>
+<div class="arithmatex">\[
+{ Height }=\log _{\lceil B/2 \rceil} \frac{N}{\lceil R / 2\rceil} \leqslant \log _{\lceil B / 2\rceil} N=\frac{\log _2 N}{\log _2 B-1} \leqslant O(\log_B N)
+\]</div>
+<p>这意味着B树的高度是非常低的（相较于二叉树的<span class="arithmatex">\(O(\log_2 N)\)</span>），因此可以减少磁盘的I/O次数</p>
+<p><img alt="ads-16" src="/../../../../assets/pics/ads/ads-16.png" /></p>
+<h3 id="operation_3">Operation<a class="headerlink" href="#operation_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>FindKey</li>
+</ul>
+<p>对routing element进行二分查找，找到对应的叶子节点，然后对叶子节点进行二分查找</p>
+<p>这样得到的CPU时间复杂度为<span class="arithmatex">\(O(\log_N)\)</span>，也就是说，增加B树的阶数不会改变查找时间</p>
+<p>磁盘的I/O次数为<span class="arithmatex">\(O(\log_B N)\)</span></p>
+<ul>
+<li>InsertKey</li>
+</ul>
+<p>对于没有满的节点，直接插入即可，如果满了，则需要进行分裂操作，将节点分裂为两个节点，并将中间的元素更新到父节点，如果父节点也满了，则需要进行递归操作，直到根节点</p>
+<p>有一个小的优化措施是在自己满员兄弟未满的时候，将元素移动到兄弟节点，这样可以减少分裂的次数，实现时需要定位到兄弟节点，因此添加一个指针指向兄弟节点，但是这个操作只会停留在共享一个父节点的节点之间，而避免遍历所有节点</p>
+<p>CPU时间复杂度为<span class="arithmatex">\(O(B\log_B N)\)</span>，磁盘的I/O次数为<span class="arithmatex">\(O(\log_B N)\)</span></p>
+<ul>
+<li>DeleteKey</li>
+</ul>
+<p>删除操作与插入类似，当所在的叶子节点在删除当前元素后元素个数小于<span class="arithmatex">\(\lceil B/2 \rceil\)</span>，则需要进行合并操作，左右节点有<span class="arithmatex">\(\geq \lceil B/2 \rceil+1\)</span>，时，可以直接借一个元素过来，否则需要将当前节点与左兄弟或右兄弟合并</p>
+<p>时间复杂度与插入相同</p>
+<h2 id="leftist-tree">Leftist Tree<a class="headerlink" href="#leftist-tree" title="Permanent link">&para;</a></h2>
+<h3 id="intro_4">Intro<a class="headerlink" href="#intro_4" title="Permanent link">&para;</a></h3>
+<p>满足堆的传统性质，即父节点的值小于等于子节点的值</p>
+<p>同时满足左式堆的性质：</p>
+<p>对任意一个节点到达空节点的距离称为节点的<strong>null path length</strong>，记作<span class="arithmatex">\(npl(x)\)</span>，显然，对于一个有左孩子和右孩子的节点，<span class="arithmatex">\(npl(x)=1+\min(npl(lc),npl(rc))\)</span>，对于叶子节点，<span class="arithmatex">\(npl(x)=0\)</span></p>
+<p>在左式堆中，<span class="arithmatex">\(npl(lc(x)) \geq npl(rc(x))\)</span>，即左孩子的null path length总是大于等于右孩子的null path length，因此，左式堆也被称为<strong>左偏树</strong></p>
+<p>对于一个有n节点的二叉树，若满足左式堆的性质，则有<span class="arithmatex">\(npl(root) \leq \log_2(n+1)\)</span>，即对于一个长度为r的right path，至少有<span class="arithmatex">\(2^r-1\)</span>个节点</p>
+<h3 id="operation_4">Operation<a class="headerlink" href="#operation_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Merge(H1, H2)</li>
+</ul>
+<p><img alt="ads-17" src="/../../../../assets/pics/ads/ads-17.jpg" /></p>
+<ul>
+<li>DeleteMin(pointer to u)</li>
+</ul>
+<p><img alt="ads-18" src="/../../../../assets/pics/ads/ads-18.jpg" /></p>
+<h2 id="skewed-heap">Skewed Heap<a class="headerlink" href="#skewed-heap" title="Permanent link">&para;</a></h2>
+<h3 id="intro_5">Intro<a class="headerlink" href="#intro_5" title="Permanent link">&para;</a></h3>
+<p>很简单，不需要额外空间维护null path length，只需要在每次合并的时候进行一次旋转即可</p>
+<p>可以看作是self-adjusting leftist heap</p>
+<h3 id="operation_5">Operation<a class="headerlink" href="#operation_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Merge(H1, H2)</li>
+</ul>
+<p>在操作时不进行npl的比较，直接左右互换，其余操作与左式堆相同</p>
+<p>不支持删除和decrease key操作</p>
 
 
 
