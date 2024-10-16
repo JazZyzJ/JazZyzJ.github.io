@@ -48,6 +48,10 @@ nav:
         - Algorithms:
           - FDS: notes/cs/algorithm/fds/fds.md
           - ADS: notes/cs/algorithm/ads/ADS.md
+        - System:
+          - CO: notes/cs/Sys/CO.md
+        - PL: 
+          - Verilog: notes/lingo/verilog.md
       - Tools:
         - GNU Make: notes/Tool_Pool/GNU_Make.md
 
