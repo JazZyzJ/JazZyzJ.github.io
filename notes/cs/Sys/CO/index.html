@@ -677,6 +677,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Floating Point">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#floating-point-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Floating Point Arithmetic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -935,6 +950,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Floating Point">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#floating-point-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Floating Point Arithmetic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1038,6 +1068,67 @@
 </ul>
 <p>Reminder 需要与被除数同号</p>
 <h3 id="floating-point">Floating Point<a class="headerlink" href="#floating-point" title="Permanent link">&para;</a></h3>
+<p>32位处理器的数表示范围：</p>
+<p><span class="arithmatex">\(-2^{31} 到 2^{31}-1\)</span></p>
+<p>浮点数的表示：</p>
+<ul>
+<li>Sign</li>
+<li>Significand 增加精确度</li>
+<li>Exponent 增加范围</li>
+</ul>
+<p>二进制数的标准表示方法：</p>
+<p><span class="arithmatex">\(1.xxx * 2^{yyy}\)</span></p>
+<p>对单精度浮点数，y有8位，x有23位</p>
+<p>对双精度浮点数，y有11位，x有52位</p>
+<p><img alt="co-7" src="/../../../../assets/pics/co/co-7.png" /></p>
+<p>第一位的1是一定的，因此不需要计入存储，Exponent是带有Bias的</p>
+<p>单精度浮点数Bias为127，双精度浮点数Bias为1023</p>
+<p>因此最后总的表示方法是：</p>
+<div class="arithmatex">\[
+(-1)^{\text{Sign}} * (1 + \text{Significand(Fraction)}) * 2^{\text{Exponent - Bias}}
+\]</div>
+<details class="example">
+<summary>0.75 和 -0.4375</summary>
+<p><img alt="co-8" src="/../../../../assets/pics/co/co-8.png" /></p>
+<p><img alt="co-9" src="/../../../../assets/pics/co/co-9.png" /></p>
+</details>
+<ul>
+<li>Single Precision Range</li>
+</ul>
+<p>指数中 00000000 和 11111111 是特殊值</p>
+<p>当Exponent为11111111，Fraction为00000000时，表示无穷大</p>
+<p>当Exponent为11111111，Fraction不为00000000时，表示NaN(Not a Number)</p>
+<p>因此单精度浮点数的范围是：</p>
+<p>Smallest Number: <span class="arithmatex">\(1.0 * 2^{1-127} \approx 1.2 * 10^{-38}\)</span></p>
+<p>Largest Number: <span class="arithmatex">\(1.111... * 2^{254-127} \approx 2 * 2^{127} \approx 3.4 * 10^{38}\)</span></p>
+<p>每一位都是1的时候（1.111...），表示无限接近于2</p>
+<h4 id="floating-point-arithmetic">Floating Point Arithmetic<a class="headerlink" href="#floating-point-arithmetic" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Addition and Subtraction</li>
+</ul>
+<ol>
+<li>Alignment</li>
+</ol>
+<p>将两个数进行对齐，通常是将较小的数往大的靠近，因为如果将大的向小的对齐，损失的位数是更高的位数，损失的精度更多</p>
+<ol start="2">
+<li>
+<p>Addition</p>
+</li>
+<li>
+<p>Normalization</p>
+</li>
+<li>
+<p>Rounding</p>
+</li>
+</ol>
+<details class="example">
+<summary>0.5 + -0.4375</summary>
+<p><img alt="co-10" src="/../../../../assets/pics/co/co-10.png" /></p>
+</details>
+<ul>
+<li>Multiplication</li>
+</ul>
+<p>相对简单，只需要将指数相加，尾数相乘即可。</p>
 
 
 
