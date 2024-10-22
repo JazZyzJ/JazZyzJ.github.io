@@ -1,0 +1,3301 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jazzyzj.github.io/notes/lingo/cs61a/">
+      
+      
+        <link rel="prev" href="../verilog/">
+      
+      
+        <link rel="next" href="../../Tool_Pool/GNU_Make/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.5">
+    
+    
+      
+        <title>Python(CS61a) - Space . JaZzyzJ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"PT Serif";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../docs/css/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ucb-cs61-a" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Space . JaZzyzJ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python(CS61a)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/JazZyzJ/JazZyzJ.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    JaZzyzJ.Space
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../cs/" class="md-tabs__link">
+          
+  
+    
+  
+  notes
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2Z"/></svg>
+
+    </a>
+    Space . JaZzyzJ
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/JazZyzJ/JazZyzJ.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    JaZzyzJ.Space
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cs/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Algorithms
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Algorithms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algorithm/fds/fds/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FDS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algorithm/ads/ADS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    System
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/Sys/CO/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    PL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            PL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verilog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Verilog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Python(CS61a)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Python(CS61a)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-2-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 2 Function
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-3-control-and-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 3 Control and Iteration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 3 Control and Iteration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#print-and-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      print and none
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="print and none">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pure-func" class="md-nav__link">
+    <span class="md-ellipsis">
+      pure func
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-pure-func" class="md-nav__link">
+    <span class="md-ellipsis">
+      non-pure func
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features-in-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      features in python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#condition-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Condition Statements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Condition Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boolean-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      boolean context :
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iteration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Iteration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    <span class="md-ellipsis">
+      while:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      logical operator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-4-higher-order-func" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 4 Higher-Order Func
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 4 Higher-Order Func">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generalizing-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generalizing Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Composition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#func-currying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Func Currying
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#func-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Func abstraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arbitrary-number-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arbitrary number arguments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-5-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 5 Environments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 5 Environments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lambda-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lambda function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-decorator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Decorator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-6-recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 6 Recursion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 6 Recursion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mutual-recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutual Recursion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-7-tree-recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 7 Tree Recursion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-8-sequence-and-data-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 8 Sequence and Data Abstraction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 8 Sequence and Data Abstraction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    <span class="md-ellipsis">
+      List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Statement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    <span class="md-ellipsis">
+      Range
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-comprehensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Comprehensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    <span class="md-ellipsis">
+      String
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data abstraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstraction-barriers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstraction Barriers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dictionaries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-iterables-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling iterables functions:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-9-functional-decomposition-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 9 Functional Decomposition &amp; Debugging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 9 Functional Decomposition & Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handling-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Errors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      exceptions:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Try Statement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-10-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 10 Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 10 Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      slicing:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequence-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sequence Aggregation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tree-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tree Abstraction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-11-mutable-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 11 Mutable Sequences
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 11 Mutable Sequences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuples-and-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuples and Sequences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-14-mutable-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 14 Mutable Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 14 Mutable Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-particulars" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Particulars:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-14-iterators-generators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 14 Iterators &amp; Generators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 14 Iterators & Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iterate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterate:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-15-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 15 Objects
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 15 Objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object-construction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object construction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attributes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-16-inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 16 Inheritance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-17-linked-lists-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 17 Linked lists &amp; Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 17 Linked lists & Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tree-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tree Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circle-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circle Linked List
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-18-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 18 Interfaces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 18 Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      String representation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-19-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 19 Scheme
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 19 Scheme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#special-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Forms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lambda Expressions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheme-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scheme Lists
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbolic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symbolic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programming-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programming Language
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-20-interpreters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 20 Interpreters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-21-more-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 21 More Scheme
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 21 More Scheme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scope:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scope:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tail-recursive" class="md-nav__link">
+    <span class="md-ellipsis">
+      tail recursive
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-22-macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 22 Macros
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-23-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 23 Streams
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-24-declarative-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 24 Declarative Programming
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 24 Declarative Programming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tool_Pool/GNU_Make/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GNU Make
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-2-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 2 Function
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-3-control-and-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 3 Control and Iteration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 3 Control and Iteration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#print-and-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      print and none
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="print and none">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pure-func" class="md-nav__link">
+    <span class="md-ellipsis">
+      pure func
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-pure-func" class="md-nav__link">
+    <span class="md-ellipsis">
+      non-pure func
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features-in-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      features in python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#condition-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Condition Statements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Condition Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boolean-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      boolean context :
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iteration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Iteration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    <span class="md-ellipsis">
+      while:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      logical operator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-4-higher-order-func" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 4 Higher-Order Func
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 4 Higher-Order Func">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generalizing-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generalizing Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Composition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#func-currying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Func Currying
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#func-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Func abstraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arbitrary-number-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arbitrary number arguments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-5-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 5 Environments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 5 Environments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lambda-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lambda function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-decorator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Decorator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-6-recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 6 Recursion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 6 Recursion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mutual-recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutual Recursion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-7-tree-recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 7 Tree Recursion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-8-sequence-and-data-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 8 Sequence and Data Abstraction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 8 Sequence and Data Abstraction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    <span class="md-ellipsis">
+      List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Statement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    <span class="md-ellipsis">
+      Range
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-comprehensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Comprehensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    <span class="md-ellipsis">
+      String
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data abstraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstraction-barriers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstraction Barriers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dictionaries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-iterables-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling iterables functions:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-9-functional-decomposition-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 9 Functional Decomposition &amp; Debugging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 9 Functional Decomposition & Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handling-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Errors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      exceptions:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Try Statement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-10-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 10 Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 10 Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      slicing:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequence-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sequence Aggregation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tree-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tree Abstraction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-11-mutable-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 11 Mutable Sequences
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 11 Mutable Sequences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuples-and-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuples and Sequences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-14-mutable-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 14 Mutable Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 14 Mutable Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-particulars" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Particulars:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-14-iterators-generators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 14 Iterators &amp; Generators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 14 Iterators & Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iterate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterate:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-15-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 15 Objects
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 15 Objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object-construction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object construction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attributes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-16-inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 16 Inheritance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-17-linked-lists-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 17 Linked lists &amp; Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 17 Linked lists & Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tree-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tree Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circle-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circle Linked List
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-18-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 18 Interfaces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 18 Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      String representation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-19-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 19 Scheme
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 19 Scheme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#special-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Forms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lambda Expressions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheme-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scheme Lists
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbolic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symbolic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programming-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programming Language
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-20-interpreters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 20 Interpreters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-21-more-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 21 More Scheme
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 21 More Scheme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scope:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scope:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tail-recursive" class="md-nav__link">
+    <span class="md-ellipsis">
+      tail recursive
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-22-macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 22 Macros
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-23-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 23 Streams
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-24-declarative-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 24 Declarative Programming
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 24 Declarative Programming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="ucb-cs61-a">UCB CS61 A<a class="headerlink" href="#ucb-cs61-a" title="Permanent link">&para;</a></h1>
+<h2 id="lecture-1">Lecture 1<a class="headerlink" href="#lecture-1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>what is computer science?</li>
+</ul>
+<p>what problem to solve using computation</p>
+<p>how to </p>
+<p>what techniques to effectively solve </p>
+<p><strong>managing complexity</strong></p>
+<ul>
+<li>mastering abstraction</li>
+<li>programming paradigms</li>
+</ul>
+<hr />
+<ul>
+<li>Types of expressions</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">#function call notation</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="o">&gt;&gt;&gt;</span><span class="mi">2015</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="mi">2015</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="o">&gt;&gt;&gt;</span><span class="mi">2000</span><span class="o">+</span><span class="mi">15</span> <span class="c1">#expression</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="mi">2015</span> <span class="c1">#value</span>
+</span></code></pre></div>
+<ul>
+<li>primitive expressions</li>
+</ul>
+<p>number numeral name string</p>
+<ul>
+<li>call expression</li>
+</ul>
+<p><code>operator</code> <code>(operands)</code></p>
+<p><code>fun</code>              <code>argument</code></p>
+<p>nested expression --&gt;tree</p>
+<p>​     </p>
+<h2 id="lecture-2-function">Lecture 2 Function<a class="headerlink" href="#lecture-2-function" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Assignment statement</li>
+</ul>
+<p><strong>bind</strong> <strong>names</strong> <strong>to</strong> <strong>values</strong></p>
+<p><code>name</code> = <code>value</code></p>
+<p>use function :<code>from xxx import xx</code></p>
+<p>build your own :<code>def name(arguments):</code></p>
+<p>​                   <code>return xx</code></p>
+<ul>
+<li>Environment Diagrams</li>
+</ul>
+<p>visualize the interpreter`s process</p>
+<ul>
+<li>Design Functions</li>
+</ul>
+<p><strong>bind names to expressions</strong></p>
+<p><code>def &lt;name&gt;(&lt;fomal parameter&gt;):</code>     <strong>signature</strong> 
+    <code>return &lt; return expression &gt;</code>    <strong>body</strong></p>
+<p><strong>Python uses a frame to define the body of a func</strong>∂</p>
+<p><strong>which require the same indent for one suite of statement</strong></p>
+<p>guide:</p>
+<p>give it an exact job</p>
+<p>don't repeat yourself </p>
+<p>define generally</p>
+<h2 id="lecture-3-control-and-iteration">Lecture 3 Control and Iteration<a class="headerlink" href="#lecture-3-control-and-iteration" title="Permanent link">&para;</a></h2>
+<h3 id="print-and-none">print and none<a class="headerlink" href="#print-and-none" title="Permanent link">&para;</a></h3>
+<p>none represents nothing in python</p>
+<p><strong>func the doesnt explicitly return a value return none</strong></p>
+<p>like --&gt; print</p>
+<h4 id="pure-func">pure func<a class="headerlink" href="#pure-func" title="Permanent link">&para;</a></h4>
+<p>just return value</p>
+<h4 id="non-pure-func">non-pure func<a class="headerlink" href="#non-pure-func" title="Permanent link">&para;</a></h4>
+<p>have side effects</p>
+<h3 id="features-in-python">features in python<a class="headerlink" href="#features-in-python" title="Permanent link">&para;</a></h3>
+<p>// floordiv  <code>2013 // 10 = 201</code></p>
+<p>multiple assignments  <code>a=b=c=1</code></p>
+<p>multiple return </p>
+<p><code>a,b = func(x,y)</code></p>
+<h3 id="condition-statements">Condition Statements<a class="headerlink" href="#condition-statements" title="Permanent link">&para;</a></h3>
+<p><strong>if </strong>:</p>
+<p>one if </p>
+<p>oneormore elif</p>
+<p>zeroorone else</p>
+<h4 id="boolean-context">boolean context :<a class="headerlink" href="#boolean-context" title="Permanent link">&para;</a></h4>
+<p>False: False, 0, ' ', None</p>
+<h3 id="iteration">Iteration<a class="headerlink" href="#iteration" title="Permanent link">&para;</a></h3>
+<h4 id="while">while:<a class="headerlink" href="#while" title="Permanent link">&para;</a></h4>
+<p>search func:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  <span class="k">while</span> <span class="ow">not</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">return</span> <span class="n">x</span>
+</span></code></pre></div>
+<p>inverse func:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  <span class="k">return</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span><span class="n">search</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="control">Control<a class="headerlink" href="#control" title="Permanent link">&para;</a></h3>
+<p>funcs always evaluate all the components </p>
+<p>but controls just excuse part of it </p>
+<p>that's why there isn't if function</p>
+<h3 id="logical-operator">logical operator<a class="headerlink" href="#logical-operator" title="Permanent link">&para;</a></h3>
+<p>and == &amp;&amp;</p>
+<p>or == ||</p>
+<h2 id="lecture-4-higher-order-func">Lecture 4 Higher-Order Func<a class="headerlink" href="#lecture-4-higher-order-func" title="Permanent link">&para;</a></h2>
+<p>assert statement: </p>
+<p><code>assert [!con], 'statement'</code></p>
+<h3 id="generalizing-process">Generalizing Process<a class="headerlink" href="#generalizing-process" title="Permanent link">&para;</a></h3>
+<p>find the common piont of a sequence of funcs</p>
+<p>make different parts a func to be the argument as the higher func</p>
+<p>eg: summation</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span> <span class="nf">summation</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">term</span><span class="p">):</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  <span class="nb">sum</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  <span class="k">while</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nb">sum</span> <span class="o">+=</span> <span class="n">term</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  <span class="k">return</span> <span class="nb">sum</span>
+</span></code></pre></div>
+<p>uses term to define the elements of the summation </p>
+<p>--&gt;<strong>higher order func</strong> : </p>
+<p>take a func to be an element of other func</p>
+<p>return a func </p>
+<p>make adder:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span> <span class="nf">make_adder</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="sd">&quot;&quot;&quot;return a function that takes one argument k and returns k + n&quot;&quot;&quot;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  <span class="k">def</span> <span class="nf">adder</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">return</span> <span class="n">k</span> <span class="o">+</span> <span class="n">n</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  <span class="k">return</span> <span class="n">adder</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="o">&gt;&gt;&gt;</span><span class="n">add_three</span> <span class="o">==</span> <span class="n">make_adder</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="o">&gt;&gt;&gt;</span><span class="n">add_three</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="mi">7</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="o">&lt;=&gt;</span> <span class="n">make_adder</span><span class="p">(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="function-composition">Function Composition<a class="headerlink" href="#function-composition" title="Permanent link">&para;</a></h3>
+<p>compose func:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span> <span class="nf">compose1</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">g</span><span class="p">):</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  <span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span></code></pre></div>
+<h3 id="func-currying">Func Currying<a class="headerlink" href="#func-currying" title="Permanent link">&para;</a></h3>
+<p>transit a multi-arguments func to a single-argument higher order func</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">curry</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> 
+</span></code></pre></div>
+<h3 id="func-abstraction">Func abstraction<a class="headerlink" href="#func-abstraction" title="Permanent link">&para;</a></h3>
+<h3 id="arbitrary-number-arguments">Arbitrary number arguments<a class="headerlink" href="#arbitrary-number-arguments" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span> <span class="nf">printed</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  <span class="k">def</span> <span class="nf">print_and_return</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Result:&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="k">return</span> <span class="n">result</span> 
+</span></code></pre></div>
+<h2 id="lecture-5-environments">Lecture 5 Environments<a class="headerlink" href="#lecture-5-environments" title="Permanent link">&para;</a></h2>
+<p>a sequence of frame </p>
+<p>global frame </p>
+<p>local frame  </p>
+<ul>
+<li>
+<p>every expression is evaluated in the context of an environment </p>
+</li>
+<li>
+<p><strong>A name is always bound to the earliest frame`value of the current environment</strong></p>
+</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">square</span><span class="p">):</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  <span class="k">return</span> <span class="n">mul</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">square</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">#when calling square(4), in f1 frame square doesnt go back to Global frame to find the value, but bound to 4 which is the earliest frame of the current environment </span>
+</span></code></pre></div>
+<p><img alt="cs61a-1" src="/../../../../assets/pics/cs61a/cs61a-1.png" /></p>
+<h3 id="lambda-function">Lambda function<a class="headerlink" href="#lambda-function" title="Permanent link">&para;</a></h3>
+<p>is a expression return a function</p>
+<p>unnamed before</p>
+<p>cannot contain a statement </p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">lambda</span> <span class="p">[</span><span class="n">keyword</span><span class="p">]:[</span><span class="k">return</span> <span class="n">expression</span> <span class="n">using</span> <span class="n">keyword</span><span class="p">]</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1">#eg:</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">square</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="o">&gt;&gt;&gt;</span><span class="n">square</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="mi">9</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="mi">9</span>
+</span></code></pre></div>
+<p>lambda is a name (square isn't created)</p>
+<p>but def creat a func called square</p>
+<h3 id="function-decorator">Function Decorator<a class="headerlink" href="#function-decorator" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nd">@trace</span> <span class="c1">#@xx+func == xx(func)</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">def</span> <span class="nf">triple</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  <span class="k">return</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  <span class="k">def</span> <span class="nf">traced</span><span class="p">:</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="err">……</span><span class="n">a</span> <span class="n">sequence</span> <span class="n">of</span> <span class="n">operation</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="n">retunrn</span> <span class="n">fn</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>  <span class="k">return</span> <span class="n">traced</span>
+</span></code></pre></div>
+<h2 id="lecture-6-recursion">Lecture 6 Recursion<a class="headerlink" href="#lecture-6-recursion" title="Permanent link">&para;</a></h2>
+<h3 id="mutual-recursion">Mutual Recursion<a class="headerlink" href="#mutual-recursion" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span> <span class="nf">split</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  <span class="k">return</span> <span class="n">n</span><span class="o">//</span><span class="mi">10</span><span class="p">,</span> <span class="n">n</span><span class="o">%</span><span class="mi">10</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the digit sum of n computed by the Luhn algorithm.</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="sd">    First: From the rightmost digit, which is the check digit, moving left, double the value</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="sd">of every second digit; if product of this doubling operation is greater than 9 (e.g., 7 *</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="sd">2 = 14), then sum the digits of the products (e.g., 10: 1 + 0 = 1, 14: 1 + 4 = 5) </span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="sd">    &gt;&gt;&gt; luhn_sum(2)</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="sd">    2</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="sd">    &gt;&gt;&gt; luhn_sum(12)</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="sd">    4</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="sd">    &gt;&gt;&gt; luhn_sum(42)</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="sd">    10</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="sd">    &gt;&gt;&gt; luhn_sum(138743)</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="sd">    30</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="sd">    &gt;&gt;&gt; luhn_sum(5105105105105100) # example Mastercard</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="sd">    20</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="sd">    &gt;&gt;&gt; luhn_sum(4012888888881881) # example Visa</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="sd">    90</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="sd">    &gt;&gt;&gt; luhn_sum(79927398713) # from Wikipedia</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="sd">    70</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>  <span class="k">def</span> <span class="nf">luhn_sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>        <span class="k">return</span> <span class="n">n</span>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>        <span class="n">all_but_last</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">split</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>        <span class="k">return</span> <span class="n">luhn_sum_double</span><span class="p">(</span><span class="n">all_but_last</span><span class="p">)</span> <span class="o">+</span> <span class="n">last</span>
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="k">def</span> <span class="nf">luhn_sum_double</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the Luhn sum of n, doubling the last digit.&quot;&quot;&quot;</span>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a>    <span class="n">all_but_last</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">split</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>    <span class="n">luhn_digit</span> <span class="o">=</span> <span class="n">sum_digits</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">last</span><span class="p">)</span>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a>    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+</span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a>        <span class="k">return</span> <span class="n">luhn_digit</span>
+</span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a>        <span class="k">return</span> <span class="n">luhn_sum</span><span class="p">(</span><span class="n">all_but_last</span><span class="p">)</span> <span class="o">+</span> <span class="n">luhn_digit</span>
+</span></code></pre></div>
+<h2 id="lecture-7-tree-recursion">Lecture 7 Tree Recursion<a class="headerlink" href="#lecture-7-tree-recursion" title="Permanent link">&para;</a></h2>
+<p>makes more than one call of func</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">def</span> <span class="nf">compose1</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;&quot;Return a function h, such that h(x) = f(g(x)).&quot;&quot;&quot;</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="k">return</span> <span class="n">h</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="k">def</span> <span class="nf">repeated</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the function that computes the nth application of func (recursively!).</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="sd">    &gt;&gt;&gt; add_three = repeated(lambda x: x + 1, 3)</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="sd">    &gt;&gt;&gt; add_three(5)</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="sd">    8</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="sd">       &quot;&quot;&quot;</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>        <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>        <span class="k">return</span> <span class="n">compose1</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">repeated</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span></code></pre></div>
+<h2 id="lecture-8-sequence-and-data-abstraction">Lecture 8 Sequence and Data Abstraction<a class="headerlink" href="#lecture-8-sequence-and-data-abstraction" title="Permanent link">&para;</a></h2>
+<h3 id="list">List<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
+<p>initialize :</p>
+<p><code>digits = [1, 2, 3, 4]</code></p>
+<p><code>digits[3] == getitem(digits, 3)</code></p>
+<p>concentrate and repeat :</p>
+<p><code>[5, 6] + 2*digits = [5, 6, 1, 2, 3, 4, 1, 2, 3, 4]</code></p>
+<p>List unpacking:</p>
+<p>list operations :</p>
+<p><img alt="cs61a-2" src="/../../../../assets/pics/cs61a/cs61a-2.png" /></p>
+<p><img alt="cs61a-3" src="/../../../../assets/pics/cs61a/cs61a-3.png" /></p>
+<h3 id="for-statement">For Statement<a class="headerlink" href="#for-statement" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">for</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span><span class="p">:</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>  <span class="o">&lt;</span><span class="n">suite</span><span class="o">&gt;</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a> <span class="c1">#name can bu multiple if expression is mutiple</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1">#eg:</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]:</span>
+</span></code></pre></div>
+<h3 id="range">Range<a class="headerlink" href="#range" title="Permanent link">&para;</a></h3>
+<p>insert rangement on the left side of index</p>
+<p><code>range(-2, 2) -&gt; -2, -1, 0, 1</code></p>
+<p>including start value exclude end value</p>
+<p><strong>list func:</strong></p>
+<p>return back a list contain the element in a sequence</p>
+<h3 id="list-comprehensions">List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">def</span> <span class="nf">divisor</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</span></code></pre></div>
+<h3 id="string">String<a class="headerlink" href="#string" title="Permanent link">&para;</a></h3>
+<p>quote:</p>
+<p>' / " : the same </p>
+<p>""" : for multiple lines</p>
+<p><strong>an element of a string is itself a string, but only one element</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">so</span><span class="p">:</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39;here&#39;</span> <span class="ow">in</span> <span class="s2">&quot;where`s it&quot;</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="kc">True</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">but</span><span class="p">:</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="o">&gt;&gt;&gt;</span><span class="mi">234</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="kc">False</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="o">&gt;&gt;&gt;</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="kc">False</span>
+</span></code></pre></div>
+<h3 id="data-abstraction">Data abstraction<a class="headerlink" href="#data-abstraction" title="Permanent link">&para;</a></h3>
+<ul>
+<li>compound objects combine objects together</li>
+<li>a methodology by which funcs enforce an abstraction barrier between representation and use</li>
+</ul>
+<h3 id="abstraction-barriers">Abstraction Barriers<a class="headerlink" href="#abstraction-barriers" title="Permanent link">&para;</a></h3>
+<p><img alt="cs61a-4" src="/../../../../assets/pics/cs61a/cs61a-4.png" /></p>
+<h3 id="dictionaries">Dictionaries<a class="headerlink" href="#dictionaries" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">dic</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">dic</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span>
+</span></code></pre></div>
+<ul>
+<li>keys can't be dictionaries or list</li>
+<li>dictionaies aren`t ordered</li>
+<li>two keys can't be equal</li>
+</ul>
+<h3 id="handling-iterables-functions">Handling iterables functions:<a class="headerlink" href="#handling-iterables-functions" title="Permanent link">&para;</a></h3>
+<p>zip(*iterables) 将可迭代对象按照索引位置一一配对，并生成一个新的迭代器</p>
+<p>enumerate(iterable, start=0)：返回一个枚举对象，包含可迭代对象中的元素以及对应的索引值。可以通过指定 start 参数来指定起始索引值。</p>
+<p>filter(function, iterable)：返回一个由满足指定条件的可迭代对象元素组成的迭代器。function 参数是一个用于筛选元素的函数。</p>
+<p>map(function, *iterables)：对一个或多个可迭代对象中的元素应用指定的函数，并返回一个包含结果的迭代器。</p>
+<p>reduce(function, iterable[, initializer])：对可迭代对象中的元素依次应用指定的二元函数来进行累积计算。需要导入 functools 模块才能使用。</p>
+<p>sorted(iterable, key=None, reverse=False)：返回一个排序后的可迭代对象的新列表。可以通过 key 参数指定一个函数来生成排序的关键字。</p>
+<p>any(iterable)：如果可迭代对象中的任何一个元素为真，则返回 True；否则返回 False。</p>
+<p>all(iterable)：如果可迭代对象中的所有元素都为真，则返回 True；否则返回 False。</p>
+<h2 id="lecture-9-functional-decomposition-debugging">Lecture 9 Functional Decomposition &amp; Debugging<a class="headerlink" href="#lecture-9-functional-decomposition-debugging" title="Permanent link">&para;</a></h2>
+<h3 id="handling-errors">Handling Errors<a class="headerlink" href="#handling-errors" title="Permanent link">&para;</a></h3>
+<h4 id="exceptions">exceptions:<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h4>
+<p>assertion statement</p>
+<p>raise statement: </p>
+<p><code>raise &lt;statement&gt;</code></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">#eg:</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;bad argument&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<ol>
+<li>TypeError:  a func was passed in the wrong num/type of argument</li>
+<li>NameError: a name wasn't found</li>
+<li>KeyError: dic doesn't have the key</li>
+<li>RuntimeError: </li>
+</ol>
+<h3 id="try-statement">Try Statement<a class="headerlink" href="#try-statement" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span> <span class="nf">invert</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>  <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">x</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Never printed if x is 0&#39;</span><span class="p">)</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>  <span class="k">return</span> <span class="n">y</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="k">def</span> <span class="nf">invert_safe</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>  <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="k">return</span> <span class="n">invert</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>  <span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;handled&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="k">return</span> <span class="mi">0</span>  <span class="c1">#return str(e)</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="sd">&gt;&gt;&gt;invert_safe(0)</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="sd">handled division by 0</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="sd">&gt;&gt;&gt;invert_safe(1/0)</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="sd">Error:....</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="sd">#Error hapends before excuting func</span>
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="sd">&quot;&quot;&quot;</span>
+</span></code></pre></div>
+<p><strong>Reduce a sequence to a value</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">sq</span><span class="p">,</span> <span class="n">initial</span><span class="p">):</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="sd">&quot;&quot;&quot;Combine elements of sq starting with initial using f(a two arguments func)#归约&quot;&quot;&quot;</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sq</span><span class="p">:</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="n">initial</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">initial</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>  <span class="k">return</span> <span class="n">initial</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>    <span class="c1">#recursive version</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>  <span class="k">if</span> <span class="ow">not</span> <span class="n">sq</span><span class="p">:</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>    <span class="k">return</span> <span class="n">initial</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>  <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>    <span class="n">sq</span><span class="p">,</span> <span class="n">initial</span> <span class="o">=</span> <span class="n">sq</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">f</span><span class="p">(</span><span class="n">initail</span><span class="p">,</span> <span class="n">sq</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="k">def</span> <span class="nf">divide_all</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">ds</span><span class="p">):</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>  <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>    <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="n">truediv</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>  <span class="k">except</span><span class="p">:</span><span class="ne">ZeroDivisionError</span><span class="p">:</span>
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="lecture-10-trees">Lecture 10 Trees<a class="headerlink" href="#lecture-10-trees" title="Permanent link">&para;</a></h2>
+<h3 id="slicing">slicing:<a class="headerlink" href="#slicing" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">odds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="p">[</span><span class="n">odds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="o">==</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">odds</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="o">==</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</span></code></pre></div>
+<p>slicing creats a new list</p>
+<h3 id="sequence-aggregation">Sequence Aggregation<a class="headerlink" href="#sequence-aggregation" title="Permanent link">&para;</a></h3>
+<p>sum  max</p>
+<p>input can be values or interables such as list</p>
+<p><code>max(range(10), key = lambda x: f(x))</code></p>
+<p>key: return an x within 0,9 which gets the biggest f(x)</p>
+<p>all:</p>
+<p>return True if bool(x) is True </p>
+<h3 id="tree-abstraction">Tree Abstraction<a class="headerlink" href="#tree-abstraction" title="Permanent link">&para;</a></h3>
+<p><strong>Two discription</strong></p>
+<p><strong>Recursive--&gt;wooden tree</strong></p>
+<p><strong>Relative--&gt;family tree</strong></p>
+<p><img alt="cs61a-5" src="/../../../../assets/pics/cs61a/cs61a-5.png" /></p>
+<p>**A tree has a root label and a list of branches **</p>
+<p><strong>each branch is a tree</strong> </p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1">#implement the tree</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="sd">&gt;&gt;&gt;tree(3, [tree(1), tree(2, [tree(1), tree(1)])])</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="sd">[3, [1], [2, [1], [1]]]</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="sd">----&gt;</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="sd">         3</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="sd">       1   2</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="sd">          1  1</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="k">def</span> <span class="nf">tree</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">branches</span><span class="o">=</span><span class="p">[]):</span>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>  <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">branches</span><span class="p">:</span>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>    <span class="k">assert</span> <span class="n">is_tree</span><span class="p">(</span><span class="n">branch</span><span class="p">)</span>
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>  <span class="k">return</span> <span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">branches</span><span class="p">)</span>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>
+</span><span id="__span-21-15"><a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+</span><span id="__span-21-16"><a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>  <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-21-17"><a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>
+</span><span id="__span-21-18"><a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a><span class="k">def</span> <span class="nf">branches</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+</span><span id="__span-21-19"><a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>  <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</span><span id="__span-21-20"><a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>
+</span><span id="__span-21-21"><a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a><span class="k">def</span> <span class="nf">is_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+</span><span id="__span-21-22"><a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>  <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">list</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-21-23"><a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a>    <span class="k">return</span> <span class="kc">False</span>
+</span><span id="__span-21-24"><a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>  <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">branches</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+</span><span id="__span-21-25"><a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_tree</span><span class="p">(</span><span class="n">branch</span><span class="p">):</span>
+</span><span id="__span-21-26"><a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a>      <span class="k">return</span> <span class="kc">False</span> <span class="c1">#resursively check</span>
+</span><span id="__span-21-27"><a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a>  <span class="k">return</span> <span class="kc">True</span>
+</span><span id="__span-21-28"><a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a>
+</span><span id="__span-21-29"><a id="__codelineno-21-29" name="__codelineno-21-29" href="#__codelineno-21-29"></a><span class="k">def</span> <span class="nf">is_leaf</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+</span><span id="__span-21-30"><a id="__codelineno-21-30" name="__codelineno-21-30" href="#__codelineno-21-30"></a>  <span class="k">return</span> <span class="ow">not</span> <span class="n">branches</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span><span class="c1">#check if tree has a branch</span>
+</span><span id="__span-21-31"><a id="__codelineno-21-31" name="__codelineno-21-31" href="#__codelineno-21-31"></a>
+</span><span id="__span-21-32"><a id="__codelineno-21-32" name="__codelineno-21-32" href="#__codelineno-21-32"></a><span class="k">def</span> <span class="nf">count_leaves</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+</span><span id="__span-21-33"><a id="__codelineno-21-33" name="__codelineno-21-33" href="#__codelineno-21-33"></a>  <span class="k">if</span> <span class="n">is_leaf</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+</span><span id="__span-21-34"><a id="__codelineno-21-34" name="__codelineno-21-34" href="#__codelineno-21-34"></a>    <span class="k">return</span> <span class="mi">1</span>
+</span><span id="__span-21-35"><a id="__codelineno-21-35" name="__codelineno-21-35" href="#__codelineno-21-35"></a>  <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-21-36"><a id="__codelineno-21-36" name="__codelineno-21-36" href="#__codelineno-21-36"></a>    <span class="n">branches_count</span> <span class="o">=</span> <span class="p">[</span><span class="n">count_leaves</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">branches</span><span class="p">(</span><span class="n">t</span><span class="p">)]</span>
+</span><span id="__span-21-37"><a id="__codelineno-21-37" name="__codelineno-21-37" href="#__codelineno-21-37"></a>  <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">branches_count</span><span class="p">)</span>
+</span><span id="__span-21-38"><a id="__codelineno-21-38" name="__codelineno-21-38" href="#__codelineno-21-38"></a>
+</span><span id="__span-21-39"><a id="__codelineno-21-39" name="__codelineno-21-39" href="#__codelineno-21-39"></a><span class="k">def</span> <span class="nf">leaves</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+</span><span id="__span-21-40"><a id="__codelineno-21-40" name="__codelineno-21-40" href="#__codelineno-21-40"></a><span class="w">  </span><span class="sd">&quot;&quot;&quot;Return all the leaves of the tree&quot;&quot;&quot;</span>
+</span><span id="__span-21-41"><a id="__codelineno-21-41" name="__codelineno-21-41" href="#__codelineno-21-41"></a>  <span class="k">if</span> <span class="n">is_leaf</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+</span><span id="__span-21-42"><a id="__codelineno-21-42" name="__codelineno-21-42" href="#__codelineno-21-42"></a>    <span class="k">return</span> <span class="p">[</span><span class="n">label</span><span class="p">(</span><span class="n">tree</span><span class="p">)]</span>
+</span><span id="__span-21-43"><a id="__codelineno-21-43" name="__codelineno-21-43" href="#__codelineno-21-43"></a>  <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-21-44"><a id="__codelineno-21-44" name="__codelineno-21-44" href="#__codelineno-21-44"></a>    <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">leaves</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">branches</span><span class="p">(</span><span class="n">tree</span><span class="p">)],</span> <span class="p">[])</span>
+</span><span id="__span-21-45"><a id="__codelineno-21-45" name="__codelineno-21-45" href="#__codelineno-21-45"></a><span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-21-46"><a id="__codelineno-21-46" name="__codelineno-21-46" href="#__codelineno-21-46"></a><span class="sd">  &gt;&gt;&gt;sum([[1], [2, 3]], []) #use sum(, []) to combine list</span>
+</span><span id="__span-21-47"><a id="__codelineno-21-47" name="__codelineno-21-47" href="#__codelineno-21-47"></a><span class="sd">  [1, 2, 3]</span>
+</span><span id="__span-21-48"><a id="__codelineno-21-48" name="__codelineno-21-48" href="#__codelineno-21-48"></a><span class="sd">  &quot;&quot;&quot;</span>
+</span><span id="__span-21-49"><a id="__codelineno-21-49" name="__codelineno-21-49" href="#__codelineno-21-49"></a><span class="k">def</span> <span class="nf">increment_leaves</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+</span><span id="__span-21-50"><a id="__codelineno-21-50" name="__codelineno-21-50" href="#__codelineno-21-50"></a>  <span class="k">if</span> <span class="n">is_leaf</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+</span><span id="__span-21-51"><a id="__codelineno-21-51" name="__codelineno-21-51" href="#__codelineno-21-51"></a>    <span class="k">return</span> <span class="n">tree</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-21-52"><a id="__codelineno-21-52" name="__codelineno-21-52" href="#__codelineno-21-52"></a>  <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-21-53"><a id="__codelineno-21-53" name="__codelineno-21-53" href="#__codelineno-21-53"></a>    <span class="n">branches</span> <span class="o">=</span> <span class="p">[</span><span class="n">increment_leaves</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">branches</span><span class="p">(</span><span class="n">t</span><span class="p">)]</span>
+</span><span id="__span-21-54"><a id="__codelineno-21-54" name="__codelineno-21-54" href="#__codelineno-21-54"></a>    <span class="k">return</span> <span class="n">tree</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">branches</span><span class="p">)</span>
+</span><span id="__span-21-55"><a id="__codelineno-21-55" name="__codelineno-21-55" href="#__codelineno-21-55"></a><span class="k">def</span> <span class="nf">increment</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+</span><span id="__span-21-56"><a id="__codelineno-21-56" name="__codelineno-21-56" href="#__codelineno-21-56"></a>  <span class="k">return</span> <span class="n">tree</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">increment</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">branches</span><span class="p">(</span><span class="n">t</span><span class="p">)])</span>
+</span></code></pre></div>
+<h2 id="lecture-11-mutable-sequences">Lecture 11 Mutable Sequences<a class="headerlink" href="#lecture-11-mutable-sequences" title="Permanent link">&para;</a></h2>
+<h3 id="objects">Objects<a class="headerlink" href="#objects" title="Permanent link">&para;</a></h3>
+<p>• Objects represent information </p>
+<p>• They consist of data and behavior, bundled together to create abstractions </p>
+<p>• Objects can represent things, but also properties, interactions, &amp; processes</p>
+<p>• A type of object is called a class; classes are first-class values in Python</p>
+<ul>
+<li>Object-oriented programming: </li>
+<li>A metaphor for organizing large programs</li>
+<li>Special syntax that can improve the composition of programs</li>
+</ul>
+<p>In Python, every value is an object </p>
+<p>All objects have attributes(属性)</p>
+<p>A lot of data manipulation happens through object methods</p>
+<p>Functions do one thing; objects do many related things</p>
+<h3 id="tuples-and-sequences">Tuples and Sequences<a class="headerlink" href="#tuples-and-sequences" title="Permanent link">&para;</a></h3>
+<p><code>tuple --&gt;(1, 2, 3, 4)</code></p>
+<p><code>sequence --&gt;[1, 2, 3, 4]</code></p>
+<p>sequence is mutable</p>
+<p>tuple is immutable</p>
+<p><img alt="cs61a-6" src="/../../../../assets/pics/cs61a/cs61a-6.png" /></p>
+<h3 id="mutation">Mutation<a class="headerlink" href="#mutation" title="Permanent link">&para;</a></h3>
+<p><strong>Equality and Identity</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="o">&lt;</span><span class="n">exp0</span><span class="o">&gt;</span> <span class="ow">is</span> <span class="o">&lt;</span><span class="n">exp1</span><span class="o">&gt;</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">evaluates</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">they</span> <span class="n">evaluate</span> <span class="n">to</span> <span class="n">the</span> <span class="n">same</span> <span class="nb">object</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="o">&lt;</span><span class="n">exp0</span><span class="o">&gt;</span> <span class="o">==</span> <span class="o">&lt;</span><span class="n">exp1</span><span class="o">&gt;</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">evaluates</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">they</span> <span class="n">evaluate</span> <span class="n">to</span> <span class="n">equal</span> <span class="n">values</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="c1">#eg:</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="o">&gt;&gt;&gt;</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="kc">True</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="o">&gt;&gt;&gt;</span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="o">&gt;&gt;&gt;</span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="o">&gt;&gt;&gt;</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="kc">True</span>
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="o">&gt;&gt;&gt;</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="kc">False</span>
+</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="o">&gt;&gt;&gt;</span><span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="o">&gt;&gt;&gt;</span><span class="n">a</span>
+</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-22-17"><a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="o">&gt;&gt;&gt;</span><span class="n">b</span>
+</span><span id="__span-22-18"><a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="p">[</span><span class="mi">10</span><span class="p">]</span>   <span class="c1">#change doesnt happen between diff objects</span>
+</span><span id="__span-22-19"><a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="o">&gt;&gt;&gt;</span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+</span><span id="__span-22-20"><a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a><span class="o">&gt;&gt;&gt;</span><span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-22-21"><a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a><span class="o">&gt;&gt;&gt;</span><span class="n">b</span>
+</span><span id="__span-22-22"><a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>   <span class="c1">#change happens because a is b, they are things with diff names</span>
+</span></code></pre></div>
+<h2 id="lecture-14-mutable-functions">Lecture 14 Mutable Functions<a class="headerlink" href="#lecture-14-mutable-functions" title="Permanent link">&para;</a></h2>
+<p>Assignment in the current frame cannot affect values in the parent frame</p>
+<p>to solve this --&gt;nonlocal assignment</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">def</span> <span class="nf">make_withdraw</span><span class="p">(</span><span class="n">balance</span><span class="p">):</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>  <span class="k">def</span> <span class="nf">withdraw</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="k">nonlocal</span> <span class="n">balence</span> <span class="c1"># this statement means change will affect balance in &quot;def make_withdraw&quot; </span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    <span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;</span> <span class="n">balance</span><span class="p">:</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>      <span class="k">return</span> <span class="s1">&#39;Insuffient funds&#39;</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">-</span> <span class="n">amount</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="k">return</span> <span class="n">balance</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>  <span class="k">return</span> <span class="n">withdraw</span>
+</span></code></pre></div>
+<p>when re-binding a nonlocal value </p>
+<p>it will return to find the frame which the name was first binded</p>
+<p>--&gt; Future assignments to that name change its pre-existing binding in the first non-local frame of the current environment in which that name is bound.</p>
+<ul>
+<li>a nonlocal name has to appear in previous frame but not in current frame</li>
+</ul>
+<p>another way: creat a list (list is also mutable)</p>
+<h3 id="python-particulars">Python Particulars:<a class="headerlink" href="#python-particulars" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Python pre-computes which frame contains each name before excuting the body of a func</li>
+<li>Within the body of a func, all instances of a name must refer to the same name</li>
+</ul>
+<p><strong>Func mutation will cause referential transparency lost</strong></p>
+<h2 id="lecture-14-iterators-generators">Lecture 14 Iterators &amp; Generators<a class="headerlink" href="#lecture-14-iterators-generators" title="Permanent link">&para;</a></h2>
+<h3 id="iterate">Iterate:<a class="headerlink" href="#iterate" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">iter</span><span class="p">(</span><span class="n">iterable</span> <span class="n">s</span><span class="p">)</span><span class="c1">#turn s into a iterator</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nb">next</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span><span class="c1">#go to the next element of s</span>
+</span></code></pre></div>
+<p>over dictionaries :</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">k</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">v</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">i</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="o">&gt;&gt;&gt;</span><span class="nb">next</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="n">one</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="o">&gt;&gt;&gt;</span><span class="nb">next</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="mi">1</span>
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="o">&gt;&gt;&gt;</span><span class="nb">next</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></code></pre></div>
+<p>change size of a dictionary while iterating it will cause runtime error --&gt;need to build a new iterator</p>
+<h3 id="generator">Generator<a class="headerlink" href="#generator" title="Permanent link">&para;</a></h3>
+<p>adv: compute lazily(compute when needed)</p>
+<p>func uses yield to replace return</p>
+<p>yield from &lt; iterable &gt; can yield directly an iterable</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>  <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="k">yield</span> <span class="n">x</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">countdown</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>      <span class="k">yield</span> <span class="n">k</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>    <span class="o">&lt;=&gt;</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>    <span class="k">yield from</span> <span class="n">countdown</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="c1">#avoid using for iterator</span>
+</span></code></pre></div>
+<h2 id="lecture-15-objects">Lecture 15 Objects<a class="headerlink" href="#lecture-15-objects" title="Permanent link">&para;</a></h2>
+<h3 id="object-construction">Object construction<a class="headerlink" href="#object-construction" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">class</span> <span class="nc">Account</span><span class="p">:</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">account_holder</span><span class="p">):</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">holder</span> <span class="o">=</span> <span class="n">account_holder</span>
+</span></code></pre></div>
+<p>__ init __ is a constructor </p>
+<p>self is the first argument</p>
+<h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
+<p>is an attribute and a function</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="o">...</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">+</span> <span class="n">amount</span> 
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance</span>
+</span></code></pre></div>
+<p><code>Object + Function = Bound Method</code></p>
+<p>Bound method , which couple together a func and the obj on which that method will be invoked </p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="o">&gt;&gt;&gt;</span><span class="nb">type</span><span class="p">(</span><span class="n">Account</span><span class="o">.</span><span class="n">deposit</span><span class="p">)</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">function</span><span class="s1">&#39;&gt;</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="o">&gt;&gt;&gt;</span><span class="nb">type</span><span class="p">(</span><span class="n">tom_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">)</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">method</span><span class="s1">&#39;&gt;</span>
+</span></code></pre></div>
+<h3 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h3>
+<p>use . notation to access or</p>
+<p>funcs : getattr(&lt; class &gt;, &lt; attri &gt;)</p>
+<p>if we add this to a class:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">class</span> <span class="nc">Account</span><span class="p">:</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>  <span class="n">interest</span> <span class="o">=</span> <span class="mf">0.02</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">:</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    <span class="o">...</span>
+</span></code></pre></div>
+<p><strong>we say interest is a class attribute, rather a instance one</strong></p>
+<p><strong>and when finding attributes, instance is prior to calss</strong> </p>
+<p><img alt="cs61a-7" src="/../../../../assets/pics/cs61a/cs61a-7.png" /></p>
+<h2 id="lecture-16-inheritance">Lecture 16 Inheritance<a class="headerlink" href="#lecture-16-inheritance" title="Permanent link">&para;</a></h2>
+<p>relating classes together </p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">class</span> <span class="err">&lt;</span><span class="nc">subclass</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">base</span> <span class="n">class</span><span class="o">&gt;</span><span class="p">):</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>  <span class="o">&lt;</span><span class="n">suite</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>when creating a subclass just put the different part in the suite</p>
+<p><strong>Inheritance represents a is-a relationship</strong></p>
+<p>eg. checkaccount is an account</p>
+<h2 id="lecture-17-linked-lists-trees">Lecture 17 Linked lists &amp; Trees<a class="headerlink" href="#lecture-17-linked-lists-trees" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">class</span> <span class="nc">Link</span><span class="p">:</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>  <span class="n">empty</span> <span class="o">=</span> <span class="p">()</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">empty</span><span class="p">):</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    <span class="k">assert</span> <span class="n">rest</span> <span class="ow">is</span> <span class="n">Link</span><span class="o">.</span><span class="n">empty</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rest</span><span class="p">,</span> <span class="n">Link</span><span class="p">)</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">first</span> <span class="o">=</span> <span class="n">first</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">rest</span> <span class="o">=</span> <span class="n">rest</span>
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>  <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">first</span>
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rest</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-32-12"><a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>  <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-32-13"><a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rest</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+</span><span id="__span-32-14"><a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>    <span class="nd">@property</span> 
+</span><span id="__span-32-15"><a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>  <span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-32-16"><a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rest</span><span class="o">.</span><span class="n">first</span>
+</span><span id="__span-32-17"><a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>  <span class="nd">@second</span><span class="o">.</span><span class="n">setter</span>
+</span><span id="__span-32-18"><a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>  <span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span><span id="__span-32-19"><a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">rest</span><span class="o">.</span><span class="n">first</span> <span class="o">=</span> <span class="n">value</span>
+</span></code></pre></div>
+<p><code>isinstance(a, class b)</code> is a builtin func to check if a is an instance of b or inherent from b</p>
+<h3 id="tree-class">Tree Class<a class="headerlink" href="#tree-class" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">class</span> <span class="nc">Tree</span><span class="p">:</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">branches</span><span class="o">=</span><span class="p">[]):</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">branches</span><span class="p">:</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>      <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">branch</span><span class="p">,</span> <span class="n">Tree</span><span class="p">)</span>
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">branches</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">branches</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="memorization">Memorization<a class="headerlink" href="#memorization" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">def</span> <span class="nf">memo</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>  <span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>  <span class="k">def</span> <span class="nf">memorized</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>    <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>      <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>    <span class="k">return</span> <span class="n">chache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>  <span class="k">return</span> <span class="n">memorized</span>
+</span></code></pre></div>
+<h3 id="circle-linked-list">Circle Linked List<a class="headerlink" href="#circle-linked-list" title="Permanent link">&para;</a></h3>
+<p>在链表中存在循环意味着链表中的某些节点通过指针形成了一个环路。换句话说，链表中的某个节点的指针指向了链表中已经访问过的节点，从而形成了一个闭合的环。</p>
+<p>具体来说，对于一个单向链表，如果链表中存在一个节点，它的指针指向了链表中的另一个节点，并最终导致回到了之前已经访问过的节点，那么就存在循环。</p>
+<p>例如，考虑以下链表：</p>
+<p>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;2-&gt;circle</p>
+<p><strong>solution:</strong></p>
+<p>double pointer:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1">#use a faster pointer and a slower one, faster moves two steps onetime and slower moves one step onetime, if circle exsits, two pointer will meet eventually.</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="k">def</span> <span class="nf">has_circle</span><span class="p">(</span><span class="n">link</span><span class="p">):</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>  <span class="n">p_slow</span><span class="p">,</span> <span class="n">p_fast</span> <span class="o">=</span> <span class="n">link</span><span class="p">,</span> <span class="n">link</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>    <span class="k">while</span> <span class="n">p_fast</span> <span class="o">!=</span> <span class="n">Link</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>        <span class="n">p_slow</span> <span class="o">=</span> <span class="n">p_slow</span><span class="o">.</span><span class="n">rest</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>        <span class="k">if</span> <span class="n">p_fast</span><span class="o">.</span><span class="n">rest</span> <span class="o">!=</span> <span class="n">Link</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>            <span class="n">p_fast</span> <span class="o">=</span> <span class="n">p_fast</span><span class="o">.</span><span class="n">rest</span><span class="o">.</span><span class="n">rest</span>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>            <span class="k">if</span> <span class="n">p_fast</span> <span class="o">==</span> <span class="n">p_slow</span><span class="p">:</span>
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>                <span class="k">return</span> <span class="kc">True</span>
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>            <span class="k">break</span>
+</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>    <span class="k">return</span> <span class="kc">False</span>
+</span></code></pre></div>
+<h2 id="lecture-18-interfaces">Lecture 18 Interfaces<a class="headerlink" href="#lecture-18-interfaces" title="Permanent link">&para;</a></h2>
+<h3 id="string-representation">String representation<a class="headerlink" href="#string-representation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>str</code> to humans</li>
+<li><code>repr</code> to Python interpreter</li>
+</ul>
+<h2 id="lecture-19-scheme">Lecture 19 Scheme<a class="headerlink" href="#lecture-19-scheme" title="Permanent link">&para;</a></h2>
+<p><strong>Scheme consists of expressions</strong></p>
+<p>primitive expressions and combinations</p>
+<h3 id="special-forms">Special Forms<a class="headerlink" href="#special-forms" title="Permanent link">&para;</a></h3>
+<ul>
+<li>If : (if &lt; judge &gt; &lt; result &gt; &lt; alter &gt;)</li>
+<li>and or :(and/or e1 e2 ...)</li>
+<li>binding :</li>
+<li>(define &lt; symbol &gt; &lt; expression &gt;)</li>
+<li>new procedures :(define (&lt; symbol &gt; &lt; formal parameters &gt;) &lt; body &gt;)</li>
+</ul>
+<h3 id="lambda-expressions">Lambda Expressions<a class="headerlink" href="#lambda-expressions" title="Permanent link">&para;</a></h3>
+<p><code>(lambda(formal parameter) body)</code></p>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="nf">plus4</span><span class="w"> </span><span class="nv">x</span><span class="p">)(</span><span class="nb">+</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="nv">==</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">plus4</span><span class="p">(</span><span class="k">lambda</span><span class="p">(</span><span class="nf">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="mi">4</span><span class="p">)))</span>
+</span></code></pre></div>
+<h3 id="scheme-lists">Scheme Lists<a class="headerlink" href="#scheme-lists" title="Permanent link">&para;</a></h3>
+<p>is same as Python`s linked list</p>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="o">#</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="nb">=</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="nv">-&gt;</span><span class="w"> </span><span class="nv">creates</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nb">list</span><span class="w"> </span><span class="nv">x:2-&gt;1</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="o">#</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="nv">-&gt;</span><span class="w"> </span><span class="nv">return</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nb">first</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">x:</span><span class="w"> </span><span class="mi">2</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="o">#</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="nv">-&gt;</span><span class="w"> </span><span class="nv">return</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">rest</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">x:</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="o">#</span><span class="w"> </span><span class="nv">nil</span><span class="w"> </span><span class="nv">:</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">empty</span><span class="w"> </span><span class="nb">list</span>
+</span></code></pre></div>
+<h3 id="symbolic">Symbolic<a class="headerlink" href="#symbolic" title="Permanent link">&para;</a></h3>
+<p>single  <code>`</code>  used on the left side of the element is to express itself </p>
+<h3 id="programming-language">Programming Language<a class="headerlink" href="#programming-language" title="Permanent link">&para;</a></h3>
+<p>a programming language has :</p>
+<ul>
+<li>Syntax:语法</li>
+<li>Semantics:语义</li>
+</ul>
+<p>To create a new one, need:</p>
+<ul>
+<li>Specification: a document describes S&amp;S</li>
+<li>Canonical Implementation : an interpreter or compiler</li>
+</ul>
+<h2 id="lecture-20-interpreters">Lecture 20 Interpreters<a class="headerlink" href="#lecture-20-interpreters" title="Permanent link">&para;</a></h2>
+<h2 id="lecture-21-more-scheme">Lecture  21 More Scheme<a class="headerlink" href="#lecture-21-more-scheme" title="Permanent link">&para;</a></h2>
+<h3 id="scope">Scope:<a class="headerlink" href="#scope" title="Permanent link">&para;</a></h3>
+<p><strong>lexical:</strong> the parent frame is where the funcs defined(Python Scheme )</p>
+<p><strong>dynamic</strong>: the parent frame is where the funcs called</p>
+<h4 id="tail-recursive">tail recursive<a class="headerlink" href="#tail-recursive" title="Permanent link">&para;</a></h4>
+<h2 id="lecture-22-macros">Lecture 22 Macros<a class="headerlink" href="#lecture-22-macros" title="Permanent link">&para;</a></h2>
+<p>new kinds of special form </p>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nv">eg:</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="p">(</span><span class="k">define-macro</span><span class="w"> </span><span class="p">(</span><span class="nf">twice</span><span class="w"> </span><span class="nv">expr</span><span class="p">)</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">    </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="ss">&#39;begin</span><span class="w"> </span><span class="nv">expr</span><span class="w"> </span><span class="nv">expr</span><span class="p">))</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="o">#</span><span class="k">begin</span><span class="w"> </span><span class="nv">means</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">things</span>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="nb">&gt;</span><span class="p">(</span><span class="nf">twice</span><span class="w"> </span><span class="p">(</span><span class="nf">print</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="mi">2</span><span class="w"> </span>
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="mi">2</span>
+</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="nv">duplicate</span><span class="w"> </span><span class="nv">before</span><span class="w"> </span><span class="nv">evaluating/</span>
+</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a><span class="nv">otherwise:</span>
+</span><span id="__span-38-10"><a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="nf">twice</span><span class="w"> </span><span class="nv">expr</span><span class="p">)(</span><span class="nb">list</span><span class="w"> </span><span class="ss">&#39;begin</span><span class="w"> </span><span class="nv">expr</span><span class="w"> </span><span class="nv">expr</span><span class="p">))</span>
+</span><span id="__span-38-11"><a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a><span class="nb">&gt;</span><span class="p">(</span><span class="nf">twice</span><span class="w"> </span><span class="p">(</span><span class="nf">print</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
+</span><span id="__span-38-12"><a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a><span class="nv">None</span>
+</span><span id="__span-38-13"><a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a><span class="nv">None</span>
+</span></code></pre></div>
+<p>define for statement:</p>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="p">(</span><span class="k">define-macro</span><span class="p">(</span><span class="nf">for</span><span class="w"> </span><span class="nv">sym</span><span class="w"> </span><span class="nv">vals</span><span class="w"> </span><span class="nv">expr</span><span class="p">)</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">    </span><span class="nb">list</span><span class="w"> </span><span class="ss">&#39;map</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="ss">&#39;lambda</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="nv">sym</span><span class="p">)</span><span class="w"> </span><span class="nv">expr</span><span class="p">)</span><span class="w"> </span><span class="nv">vals</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="lecture-23-streams">Lecture 23 Streams<a class="headerlink" href="#lecture-23-streams" title="Permanent link">&para;</a></h2>
+<p>streams are lazy lists in scheme</p>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="c1">;building a stream range:</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="nf">range-stream</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">b</span><span class="p">)</span>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="w">  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;=</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">b</span><span class="p">)</span>
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="w">      </span><span class="nv">nil</span>
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="w">      </span><span class="p">(</span><span class="nf">cons-stream</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="p">(</span><span class="nf">range-stream</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nv">b</span><span class="p">))))</span>
+</span></code></pre></div>
+<h2 id="lecture-24-declarative-programming">Lecture 24 Declarative Programming<a class="headerlink" href="#lecture-24-declarative-programming" title="Permanent link">&para;</a></h2>
+<h3 id="sql">SQL<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -901,6 +901,8 @@
       
         
       
+        
+      
     
     
     
@@ -943,6 +945,27 @@
   
   <span class="md-ellipsis">
     Verilog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lingo/cs61a/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python(CS61a)
   </span>
   
 
@@ -1686,21 +1709,32 @@ for\ keys\ in\ leaves\ i\ in\ v_i: Tv_1 \leq ... \leq Tv_K
 <h3 id="intro_4">Intro<a class="headerlink" href="#intro_4" title="Permanent link">&para;</a></h3>
 <p>满足堆的传统性质，即父节点的值小于等于子节点的值</p>
 <p>同时满足左式堆的性质：</p>
-<p>对任意一个节点到达空节点的距离称为节点的<strong>null path length</strong>，记作<span class="arithmatex">\(npl(x)\)</span>，显然，对于一个有左孩子和右孩子的节点，<span class="arithmatex">\(npl(x)=1+\min(npl(lc),npl(rc))\)</span>，对于叶子节点，<span class="arithmatex">\(npl(x)=0\)</span></p>
+<p>对任意一个节点到一个没有两个孩子的节点的距离称为节点的<strong>null path length</strong>，记作<span class="arithmatex">\(npl(x)\)</span>，显然，对于一个有左孩子和右孩子的节点，<span class="arithmatex">\(npl(x)=1+\min(npl(lc),npl(rc))\)</span>，对于叶子节点，<span class="arithmatex">\(npl(x)=0\)</span>，在这里我们定义<span class="arithmatex">\(npl(null)=-1\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">一个没有两个孩子的节点</p>
+<p>这里注意这个定义，如果一个节点只有一个孩子，那么无论他的这个孩子有多长，他的null path length都是0，因为我们定义了空节点的null path length为-1，而计算时：</p>
+<div class="arithmatex">\[
+npl(x)=1+\min(npl(lc),npl(rc))=1+(-1)=0
+\]</div>
+</div>
 <p>在左式堆中，<span class="arithmatex">\(npl(lc(x)) \geq npl(rc(x))\)</span>，即左孩子的null path length总是大于等于右孩子的null path length，因此，左式堆也被称为<strong>左偏树</strong></p>
 <p>对于一个有n节点的二叉树，若满足左式堆的性质，则有<span class="arithmatex">\(npl(root) \leq \log_2(n+1)\)</span>，即对于一个长度为r的right path，至少有<span class="arithmatex">\(2^r-1\)</span>个节点</p>
 <h3 id="operation_4">Operation<a class="headerlink" href="#operation_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Merge(H1, H2)</li>
 </ul>
-<p><img alt="ads-17" src="/../../../../assets/pics/ads/ads-17.jpg" /></p>
+<p><img alt="ads-17" src="/../../../../assets/pics/ads/ads-17.png" /></p>
+<details class="example">
+<summary>Merge Example</summary>
+<p><img alt="ads-23" src="/../../../../assets/pics/ads/ads-23.png" /></p>
+</details>
 <ul>
 <li>DeleteMin(pointer to u)</li>
 </ul>
 <p><img alt="ads-18" src="/../../../../assets/pics/ads/ads-18.jpg" /></p>
 <h2 id="skewed-heap">Skewed Heap<a class="headerlink" href="#skewed-heap" title="Permanent link">&para;</a></h2>
 <h3 id="intro_5">Intro<a class="headerlink" href="#intro_5" title="Permanent link">&para;</a></h3>
-<p>很简单，不需要额外空间维护null path length，只需要在每次合并的时候进行一次旋转即可</p>
+<p>很简单，不需要额外空间维护null path length，只需要在每次合并(递归返回)的时候对根节点的两个孩子进行一次旋转即可</p>
 <p>可以看作是self-adjusting leftist heap</p>
 <h3 id="operation_5">Operation<a class="headerlink" href="#operation_5" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1708,8 +1742,13 @@ for\ keys\ in\ leaves\ i\ in\ v_i: Tv_1 \leq ... \leq Tv_K
 </ul>
 <p>在操作时不进行npl的比较，直接左右互换，其余操作与左式堆相同</p>
 <p>不支持删除和decrease key操作</p>
+<details class="example">
+<summary>Skewed Heap Merge Example</summary>
+<p><img alt="ads-24" src="/../../../../assets/pics/ads/ads-24.png" /></p>
+</details>
 <h2 id="inverted-file-index">Inverted File Index<a class="headerlink" href="#inverted-file-index" title="Permanent link">&para;</a></h2>
 <p>实现搜索引擎的方法：</p>
+<p>没怎么听。。。</p>
 <h2 id="binomial-queue">Binomial Queue<a class="headerlink" href="#binomial-queue" title="Permanent link">&para;</a></h2>
 <p><strong>Heap-Ordered Tree</strong>: 满足堆性质的完全二叉树，包括Min-Heap Max-Heap</p>
 <p><strong>Priority Queue</strong>:不按照队列先进先出的顺序，而是按照某种优先级进出</p>
@@ -1738,11 +1777,13 @@ BQ 中每个高度的树至多有一棵，也就是说，每一个BQ都可以被
 <p><img alt="ads-20" src="/../../../../assets/pics/ads/ads-20.png" /></p>
 <p>可以看到二项队列中每一个二项树的实现是通过左孩子右兄弟的表示方法实现的</p>
 <p>连续的插入操作：均摊时间复杂度是<span class="arithmatex">\(O(n)\)</span></p>
-<p>Proof:</p>
+<details class="proof">
+<summary>Proof</summary>
 <p><img alt="ads-21" src="/../../../../assets/pics/ads/ads-21.png" /></p>
 <p><img alt="ads-22" src="/../../../../assets/pics/ads/ads-22.png" /></p>
 <p>2-c的推导：</p>
 <p>因为每c次操作，可以被分解为1次的step和c-1次的合并，而合并增加的树的个数是-1，所以得到2-c</p>
+</details>
 
 
 
