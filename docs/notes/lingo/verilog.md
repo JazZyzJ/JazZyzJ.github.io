@@ -56,6 +56,8 @@ end
 ```=``` 会在同一个时钟周期内立即赋值，而 ```<=``` 会在下一个时钟周期内赋值。
 
 
+
+
 ```Slice``` 模块
 
 主要用于将一个信号分解为多个位，或者取信号的某一部分。
@@ -126,5 +128,81 @@ wire [3:0] Const;
 assign Const = 4'b1010;
 ```
 
+- FSM 
 
+有限状态机是一种数学模型，用来描述一个系统在不同状态之间的转换及其行为。它由以下几个部分组成：
+
+- 状态集：所有可能的状态。
+- 输入集：状态机根据输入决定下一步的状态。
+- 状态转移规则：当前状态和输入的组合决定状态的变化。
+- 初始状态：状态机启动时的状态。
+- 输出：状态机可以产生输出，输出通常和当前状态或输入有关。
+
+
+
+```verilog
+module fsm_example (
+    input wire clk,          // 时钟信号
+    input wire reset,        // 异步复位信号
+    input wire in,           // 输入信号
+    output reg [1:0] state,  // 当前状态输出
+    output reg out           // 状态机输出信号
+);
+
+// 状态编码
+localparam S0 = 2'b00;  // 状态 0
+localparam S1 = 2'b01;  // 状态 1
+localparam S2 = 2'b10;  // 状态 2
+
+reg [1:0] next_state;   // 下一个状态
+
+// 状态转移逻辑 (组合逻辑)
+always @(*) begin
+    case (state)
+        S0: begin
+            if (in)
+                next_state = S1;
+            else
+                next_state = S0;
+        end
+        
+        S1: begin
+            if (in)
+                next_state = S2;
+            else
+                next_state = S0;
+        end
+
+        S2: begin
+            if (in)
+                next_state = S2;
+            else
+                next_state = S1;
+        end
+
+        default: next_state = S0;  // 任何未知状态回到 S0
+    endcase
+end
+
+// 状态寄存器 (时序逻辑)
+always @(posedge clk or posedge reset) begin
+    if (reset)
+        state <= S0;  // 复位时进入初始状态 S0
+    else
+        state <= next_state;  // 否则切换到下一个状态
+end
+
+// 输出逻辑 (Moore 型，只依赖于当前状态)
+always @(state) begin
+    case (state)
+        S0: out = 0;
+        S1: out = 1;
+        S2: out = 0;
+        default: out = 0;
+    endcase
+end
+
+endmodule
+
+```
 

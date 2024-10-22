@@ -52,6 +52,7 @@ nav:
           - CO: notes/cs/Sys/CO.md
         - PL: 
           - Verilog: notes/lingo/verilog.md
+          - Python(CS61a): notes/lingo/cs61a.md
       - Tools:
         - GNU Make: notes/Tool_Pool/GNU_Make.md
 

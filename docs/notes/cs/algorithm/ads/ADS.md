@@ -463,7 +463,15 @@ CPU时间复杂度为$O(B\log_B N)$，磁盘的I/O次数为$O(\log_B N)$
 
 同时满足左式堆的性质：
 
-对任意一个节点到达空节点的距离称为节点的**null path length**，记作$npl(x)$，显然，对于一个有左孩子和右孩子的节点，$npl(x)=1+\min(npl(lc),npl(rc))$，对于叶子节点，$npl(x)=0$
+对任意一个节点到一个没有两个孩子的节点的距离称为节点的**null path length**，记作$npl(x)$，显然，对于一个有左孩子和右孩子的节点，$npl(x)=1+\min(npl(lc),npl(rc))$，对于叶子节点，$npl(x)=0$，在这里我们定义$npl(null)=-1$
+
+!!! note "一个没有两个孩子的节点"
+    这里注意这个定义，如果一个节点只有一个孩子，那么无论他的这个孩子有多长，他的null path length都是0，因为我们定义了空节点的null path length为-1，而计算时：
+
+    $$
+    npl(x)=1+\min(npl(lc),npl(rc))=1+(-1)=0
+    $$
+
 
 在左式堆中，$npl(lc(x)) \geq npl(rc(x))$，即左孩子的null path length总是大于等于右孩子的null path length，因此，左式堆也被称为**左偏树**
 
@@ -474,7 +482,10 @@ CPU时间复杂度为$O(B\log_B N)$，磁盘的I/O次数为$O(\log_B N)$
 
 - Merge(H1, H2)
 
-![ads-17](/../../../../assets/pics/ads/ads-17.jpg)
+![ads-17](/../../../../assets/pics/ads/ads-17.png)
+
+??? example "Merge Example"
+    ![ads-23](/../../../../assets/pics/ads/ads-23.png)
 
 - DeleteMin(pointer to u)
 
@@ -484,9 +495,10 @@ CPU时间复杂度为$O(B\log_B N)$，磁盘的I/O次数为$O(\log_B N)$
 
 ### Intro
 
-很简单，不需要额外空间维护null path length，只需要在每次合并的时候进行一次旋转即可
+很简单，不需要额外空间维护null path length，只需要在每次合并(递归返回)的时候对根节点的两个孩子进行一次旋转即可
 
 可以看作是self-adjusting leftist heap
+
 
 ### Operation
 
@@ -496,13 +508,15 @@ CPU时间复杂度为$O(B\log_B N)$，磁盘的I/O次数为$O(\log_B N)$
 
 不支持删除和decrease key操作
 
+??? example "Skewed Heap Merge Example"
+    ![ads-24](/../../../../assets/pics/ads/ads-24.png)
 
 
 ## Inverted File Index
 
 实现搜索引擎的方法：
 
-
+没怎么听。。。
 
 
 
@@ -552,14 +566,14 @@ BQ 中每个高度的树至多有一棵，也就是说，每一个BQ都可以被
 
 连续的插入操作：均摊时间复杂度是$O(n)$
 
-Proof:
+??? proof "Proof"
 
-![ads-21](/../../../../assets/pics/ads/ads-21.png)
+    ![ads-21](/../../../../assets/pics/ads/ads-21.png)
 
-![ads-22](/../../../../assets/pics/ads/ads-22.png)
+    ![ads-22](/../../../../assets/pics/ads/ads-22.png)
 
-2-c的推导：
+    2-c的推导：
 
-因为每c次操作，可以被分解为1次的step和c-1次的合并，而合并增加的树的个数是-1，所以得到2-c
+    因为每c次操作，可以被分解为1次的step和c-1次的合并，而合并增加的树的个数是-1，所以得到2-c
 
 

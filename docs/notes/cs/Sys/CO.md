@@ -119,5 +119,91 @@
 - Signed Division
 
 Reminder 需要与被除数同号
+
+
 ### Floating Point
+
+32位处理器的数表示范围：
+
+$-2^{31} 到 2^{31}-1$
+
+浮点数的表示：
+
+- Sign
+- Significand 增加精确度
+- Exponent 增加范围
+
+二进制数的标准表示方法：
+
+$1.xxx * 2^{yyy}$
+
+对单精度浮点数，y有8位，x有23位
+
+对双精度浮点数，y有11位，x有52位
+
+![co-7](/../../../../assets/pics/co/co-7.png)
+
+第一位的1是一定的，因此不需要计入存储，Exponent是带有Bias的
+
+单精度浮点数Bias为127，双精度浮点数Bias为1023
+
+因此最后总的表示方法是：
+
+$$
+(-1)^{\text{Sign}} * (1 + \text{Significand(Fraction)}) * 2^{\text{Exponent - Bias}}
+$$
+
+??? example "0.75 和 -0.4375"
+
+    ![co-8](/../../../../assets/pics/co/co-8.png)
+
+    ![co-9](/../../../../assets/pics/co/co-9.png)
+
+
+- Single Precision Range
+
+指数中 00000000 和 11111111 是特殊值
+
+当Exponent为11111111，Fraction为00000000时，表示无穷大
+
+当Exponent为11111111，Fraction不为00000000时，表示NaN(Not a Number)
+
+因此单精度浮点数的范围是：
+
+Smallest Number: $1.0 * 2^{1-127} \approx 1.2 * 10^{-38}$
+
+Largest Number: $1.111... * 2^{254-127} \approx 2 * 2^{127} \approx 3.4 * 10^{38}$
+
+每一位都是1的时候（1.111...），表示无限接近于2
+
+
+#### Floating Point Arithmetic
+
+- Addition and Subtraction
+
+1. Alignment
+
+将两个数进行对齐，通常是将较小的数往大的靠近，因为如果将大的向小的对齐，损失的位数是更高的位数，损失的精度更多
+
+2. Addition
+
+3. Normalization
+
+4. Rounding
+
+??? example "0.5 + -0.4375"
+
+    ![co-10](/../../../../assets/pics/co/co-10.png)
+
+
+
+- Multiplication
+
+相对简单，只需要将指数相加，尾数相乘即可。
+
+除法也是类似的
+
+
+
+## Instruction
 
