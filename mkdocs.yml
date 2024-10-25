@@ -6,7 +6,7 @@ repo_url: https://github.com/JazZyzJ/JazZyzJ.github.io
 theme: 
   name: material
   language: en
-  icon: 
+  icon:
     logo: material/notebook-outline
   features:
     - content.code.annotate
@@ -45,7 +45,7 @@ nav:
   - notes:
       - Computer Science:
         - notes/cs/index.md
-        - Algorithms:
+        - DS & Algorithms:
           - FDS: notes/cs/algorithm/fds/fds.md
           - ADS: notes/cs/algorithm/ads/ADS.md
         - System:
@@ -53,6 +53,7 @@ nav:
         - PL: 
           - Verilog: notes/lingo/verilog.md
           - Python(CS61a): notes/lingo/cs61a.md
+      # - Artifical Intelligence:
       - Tools:
         - GNU Make: notes/Tool_Pool/GNU_Make.md
 

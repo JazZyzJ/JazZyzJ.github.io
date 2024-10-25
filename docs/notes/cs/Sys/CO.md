@@ -207,3 +207,102 @@ Largest Number: $1.111... * 2^{254-127} \approx 2 * 2^{127} \approx 3.4 * 10^{38
 
 ## Instruction
 
+Outline:
+
+- 计算机硬件的操作 Operation
+- 计算机硬件的操作数 Operand
+- 有符号数和无符号数 Signed and Unsigned Numbers
+- 指令的表示 Instruction Representation
+- 逻辑操作 Logical Operations
+- 决策指令 Making Decisions
+- 计算机对过程的支持 Procedure Support
+- 指令的寻址 Instruction Addressing
+
+指令->Statement
+指令集->Syntax
+
+### Operation
+
+在RISC-V中，每一条指令只支持一个操作
+
+### Operands
+
+在算术运算中，操作数只能是寄存器，也就是我们做运算时，一定要先把数据存放到寄存器中，再对两个寄存器进行运算。
+
+RISC-V中的寄存器是 ```32 x 64-bit``` 的Register File(实验中实现的是32 x 32-bit)
+
+64bit是double word，32bit是word
+
+32个寄存器：
+
+![co-11](/../../../../assets/pics/co/co-11.png)
+
+#### Memory Operand
+
+Main Memory用来存储复杂的数据，在进行算术运算时，需要```load```将数据从Memory中加载到寄存器中，得到的结果也需要```store```回Memory中。
+
+Memory is byte addressed: 每个地址都是一个8-bit的byte，访问时是按照byte访问的。
+
+- Endian
+
+大小端：就是指数据在内存中存储的顺序。
+
+??? note "Big or Little Endian"
+
+    ![co-12](/../../../../assets/pics/co/co-12.png)
+
+- Word Alignment 
+
+RISC-V中，不要求进行地址对齐，但是对齐的情况是更好的
+
+一个word是四个字节，因此对齐的起始地址一定是4的倍数，也就是0，4，8……，这些地址的二进制码都是末端两个bit为0的，而如果按照halfword访问，地址的末端一个bit为0即可。
+
+??? example "Memory Alignment"
+
+    ![co-13](/../../../../assets/pics/co/co-13.png)
+
+
+下面是一个例子讲解怎样进行一次运算：讲解的例子都是按照double word（8 bytes 64-bit）进行操作的。
+
+```c
+    A[12] = h + A[8]
+    //h in x21, base address of A in x22
+```
+
+
+```
+    ld x9, 64(x22) 
+    add x9, x21, x9
+    sd x9, 96(x22)
+```
+
+```ld```指令的64是偏移量（offset），x22是基地址，x9是目标寄存器
+
+因为我们的基址是x22，第八个double word的地址就是8 * 8 = 64，所以偏移量是64
+
+同理在```sd```指令中，96是偏移量
+
+
+#### Immediate Operand
+
+如果说一个常数存在于一个地址中，那么在对一个寄存器增加一个常数时，就需要使用```ld```指令，将常数从Memory中加载到寄存器中，再进行加法运算。
+
+为了减少指令个数（不使用ld指令），RISC-V中引入了立即数（Immediate），立即数是直接编码在指令中的，因此不需要再从Memory中加载。
+
+```
+    ld x9, AddressConstant4(x3) // x9 = constant 4
+    add x22, x22, x9
+
+    ||
+
+    addi x22, x22, x9
+```
+
+### Representation of Instructions
+
+所有的指令在机器中都是用二进制表示的，被称作Machine Code机器码
+
+我们将x0-x31寄存器映射到0-31这些数字，因此寄存器的名字就变成了0-31
+
+RISC-V中，指令的长度是固定的，32-bit
+
