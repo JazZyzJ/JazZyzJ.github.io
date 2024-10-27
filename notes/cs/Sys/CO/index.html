@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/Sys/CO/">
       
       
-        <link rel="prev" href="../../algorithm/backtracking/">
+        <link rel="prev" href="../../algorithm/DandC/">
       
       
         <link rel="next" href="../../../lingo/verilog/">
@@ -43,12 +43,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"PT Serif";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300i,400,400i,700,700i%7CJetBrains+Mono,+Consolas:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"PT Serif";--md-code-font:"JetBrains Mono, Consolas"}</style>
       
     
     
-      <link rel="stylesheet" href="../../../../docs/css/custom.css">
+      <link rel="stylesheet" href="../../../../docs/css/stylesheets/extra.css">
     
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -351,6 +351,8 @@
       
     
     
+      
+    
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
@@ -403,6 +405,8 @@
       
     
     
+      
+    
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
@@ -453,102 +457,38 @@
       
         
       
+        
+      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
         
-          
-          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
-            
+  
+  
+    <a href="../../algorithm/fds/fds/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     DS & Algorithms
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_2">
-            <span class="md-nav__icon md-icon"></span>
-            DS & Algorithms
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../algorithm/fds/fds/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    FDS
-  </span>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../algorithm/ads/ADS/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ADS
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../algorithm/backtracking/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Backtracking
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -573,6 +513,8 @@
       
       
     
+    
+      
     
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
@@ -797,6 +739,171 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#i-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      I-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      S-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-typesb" class="md-nav__link">
+    <span class="md-ellipsis">
+      B-Type(SB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#u-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      U-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      J-Type
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions-for-making-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions for Making Decisions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instructions for Making Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slt" class="md-nav__link">
+    <span class="md-ellipsis">
+      SLT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jump" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jump
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Block
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procedure Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procedure Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caller
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Callee
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arguments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaf-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leaf Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nested Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Layout
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -804,6 +911,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comunicate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-bit-immediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      32-bit Immediate
+    </span>
+  </a>
   
 </li>
       
@@ -843,75 +968,30 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
         
-          
-          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
-            
+  
+  
+    <a href="../../../lingo/verilog/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     PL
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_1_4">
-            <span class="md-nav__icon md-icon"></span>
-            PL
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../lingo/verilog/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Verilog
-  </span>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../lingo/cs61a/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Python(CS61a)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -943,54 +1023,30 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
         
-          
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
-            
+  
+  
+    <a href="../../../Tool_Pool/GNU_Make/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     Tools
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
-            <span class="md-nav__icon md-icon"></span>
-            Tools
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Tool_Pool/GNU_Make/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    GNU Make
-  </span>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1176,6 +1232,171 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#i-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      I-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      S-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-typesb" class="md-nav__link">
+    <span class="md-ellipsis">
+      B-Type(SB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#u-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      U-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      J-Type
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions-for-making-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions for Making Decisions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instructions for Making Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slt" class="md-nav__link">
+    <span class="md-ellipsis">
+      SLT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jump" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jump
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Block
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procedure Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procedure Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caller
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Callee
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arguments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaf-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leaf Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nested Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Layout
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1183,6 +1404,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comunicate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-bit-immediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      32-bit Immediate
+    </span>
+  </a>
   
 </li>
       
@@ -1412,7 +1651,13 @@
 <p>我们将x0-x31寄存器映射到0-31这些数字，因此寄存器的名字就变成了0-31</p>
 <p>RISC-V中，指令的长度是固定的，32-bit</p>
 <p>大部分情况下我们用16进制表示指令，因为16进制表示的指令更短，更方便。</p>
+<p>有四种基础的指令格式(R/I/S/U),再根据立即数解码的不同分出两种(B/J),共六种</p>
 <h4 id="r-type">R-Type<a class="headerlink" href="#r-type" title="Permanent link">&para;</a></h4>
+<p>使用寄存器进行数字逻辑运算的指令</p>
+<div class="arithmatex">\[
+rd = rs1 \text{ op } rs2
+\]</div>
+<p>对于移位运算，rs2是shift amount</p>
 <div align="center">
 <img src="/../../../../assets/pics/co/co-14.png" alt="co-14" height="200px" width="600px">
 </div>
@@ -1425,6 +1670,338 @@
 <li>funct3、7: 功能码，作为opcode的补充</li>
 </ul>
 <p>比如说加法和减法，他们的opcode都是0110011，但是他们的funct3不同，加法是000，减法是001</p>
+<h4 id="i-type">I-Type<a class="headerlink" href="#i-type" title="Permanent link">&para;</a></h4>
+<p>使用寄存器和立即数进行数字逻辑运算的指令，以及load指令</p>
+<div class="arithmatex">\[
+rd = rs1 \text{ op } imm
+\]</div>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-15.png" alt="co-15" height="200px" width="600px">
+</div>
+
+<ul>
+<li>rs1: 源寄存器</li>
+<li>rd: 目标寄存器</li>
+<li>imm: 立即数 由rs2和funct7合并的12位立即数 2's Complement, sign extended</li>
+<li>funct3: 功能码</li>
+</ul>
+<p>立即数是<code>{{20{inst[31]}}, inst[31:20]}</code>，也就是对<code>imm[11:0]</code>进行符号扩展到32位</p>
+<p>移位操作也属于是I-Type的一种，但是移位操作将I-Type的imm分为了两部分，高6位的部分是funct6,低6位的部分是immed</p>
+<p>对<code>sll srl</code>指令是移位并补0</p>
+<p>对<code>slli srli</code>指令是移位i位,也就是乘或除以2的i次方(unsigned)</p>
+<p>在算数逻辑移位(<code>sra</code>)中,符号位保持不变,因此移位后需要补全符号位</p>
+<h4 id="s-type">S-Type<a class="headerlink" href="#s-type" title="Permanent link">&para;</a></h4>
+<p>store类指令</p>
+<div class="arithmatex">\[
+rs1 = [rs2 + imm]
+\]</div>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-16.png" alt="co-16" height="200px" width="600px">
+</div>
+
+<ul>
+<li>rs1: 放base address</li>
+<li>rs2: 放source operand</li>
+<li>funct3: 对存储的数据类型(byte, halfword, word)进行区分</li>
+</ul>
+<p>立即数是<code>{{20{inst[31]}}, inst[31:25], inst[11:7]}</code></p>
+<details class="example">
+<summary>常见指令编码</summary>
+<p><img alt="co-17" src="/../../../../assets/pics/co/co-17.png" /></p>
+</details>
+<h4 id="b-typesb">B-Type(SB)<a class="headerlink" href="#b-typesb" title="Permanent link">&para;</a></h4>
+<p>由S-Type指令分化而来，区别是立即数的读取方式不同</p>
+<p>左边高位imm是<code>imm[12, 10:5]</code>，右边低位imm是<code>imm[4:1, 11]</code></p>
+<p>立即数是<code>{{19{inst[31]}}, inst[31], inst[7], inst[30:25], inst[11:8], 1'b0}</code></p>
+<h4 id="u-type">U-Type<a class="headerlink" href="#u-type" title="Permanent link">&para;</a></h4>
+<p>只有lui指令和auipc指令，用于存放高位立即数</p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-32.png" alt="co-32" height="200px" width="600px">
+</div>
+
+<p>立即数是<code>{inst[31:12], 12'b0}</code></p>
+<p>就是填充高20位，低12位为0</p>
+<h4 id="j-type">J-Type<a class="headerlink" href="#j-type" title="Permanent link">&para;</a></h4>
+<p>仅有jal指令，用于存放跳转地址</p>
+<p>由U-Type指令分化而来，区别是立即数的读取方式不同</p>
+<p>将U-Type的立即数部分改为了：</p>
+<p><code>{{11{inst[31]}}, inst[31], inst[19:12], inst[20], inst[30:21], 1'b0}</code></p>
+<h3 id="instructions-for-making-decisions">Instructions for Making Decisions<a class="headerlink" href="#instructions-for-making-decisions" title="Permanent link">&para;</a></h3>
+<h4 id="branch">Branch<a class="headerlink" href="#branch" title="Permanent link">&para;</a></h4>
+<ul>
+<li>beq reg1, reg2, Label</li>
+</ul>
+<p>如果<code>reg1 == reg2</code>，则跳转到Label处执行</p>
+<ul>
+<li>bne reg1, reg2, Label</li>
+</ul>
+<p>如果<code>reg1 != reg2</code>，则跳转到Label处执行</p>
+<ul>
+<li>blt reg1, reg2, Label</li>
+</ul>
+<p>如果<code>reg1 &lt; reg2</code>，则跳转到Label处执行</p>
+<ul>
+<li>bge reg1, reg2, Label</li>
+</ul>
+<p>如果<code>reg1 &gt;= reg2</code>，则跳转到Label处执行</p>
+<details class="example">
+<summary>if-else</summary>
+<p><img alt="co-18" src="/../../../../assets/pics/co/co-18.png" /></p>
+</details>
+<details class="example">
+<summary>while loop</summary>
+<p><img alt="co-19" src="/../../../../assets/pics/co/co-19.png" /></p>
+</details>
+<h4 id="slt">SLT<a class="headerlink" href="#slt" title="Permanent link">&para;</a></h4>
+<p>set on less than </p>
+<ul>
+<li>slt rd, rs1, rs2</li>
+</ul>
+<p>通常用来比较两个数的大小，得到的结果存放在一个临时寄存器中作为标记，如果<code>rs1 &lt; rs2</code>，则将临时寄存器置1，否则置0，这个临时寄存器和0相比是否相等可以作为<code>beq</code>指令的判断条件</p>
+<h4 id="jump">Jump<a class="headerlink" href="#jump" title="Permanent link">&para;</a></h4>
+<ul>
+<li>jalr rd, imm(rs1)</li>
+</ul>
+<p>当前pc地址的下一个地址(pc+4)存放在rd中(为了能回来)，然后跳转到rs1+imm处</p>
+<details class="example">
+<summary>switch</summary>
+<p><img alt="co-20" src="/../../../../assets/pics/co/co-20.png" /></p>
+<p>x6内存储的是对应的几个case中的程序的入口地址——跳转表</p>
+<p>跳转语句先对跳转边界进行检查，检查无误后把k左移三位放到临时寄存器，然后与跳转地址的基址相加</p>
+<p>这里load指令的作用：</p>
+<p>先前我们用x7作为一个临时寄存器用于存储跳转表中需要跳转的地址，进行load后，x7仍然是一个临时寄存器，但是这时x7装载的就是这个地址中的信息，也就是jalr需要跳转到的程序的位置（仍然是个地址）</p>
+</details>
+<h4 id="basic-block">Basic Block<a class="headerlink" href="#basic-block" title="Permanent link">&para;</a></h4>
+<p>基本块：最小的程序代码块，一个块内的指令是顺序执行的，块与块之间通过跳转指令连接，但是不会有指令跳转到基本块的内部</p>
+<h3 id="procedure-support">Procedure Support<a class="headerlink" href="#procedure-support" title="Permanent link">&para;</a></h3>
+<p>对函数的支持:</p>
+<ul>
+<li>Place parameters</li>
+<li>Transfer control(jump)</li>
+<li>Acquire storage resources</li>
+<li>Perform tasks</li>
+<li>Place results </li>
+<li>Return control</li>
+</ul>
+<h4 id="caller">Caller<a class="headerlink" href="#caller" title="Permanent link">&para;</a></h4>
+<p>use <code>jal</code>指令 jump and link</p>
+<p>jal x1 ProcedureAddress</p>
+<ul>
+<li>x1: 存放pc+4，也就是调用函数后需要返回的地址</li>
+</ul>
+<h4 id="callee">Callee<a class="headerlink" href="#callee" title="Permanent link">&para;</a></h4>
+<p>use <code>jalr</code>指令 jump and link register</p>
+<p>jalr x0, 0(x1)</p>
+<ul>
+<li>x0: 固定为0</li>
+<li>x1: 跳回到返回的下一个指令的地址</li>
+</ul>
+<h4 id="arguments">Arguments<a class="headerlink" href="#arguments" title="Permanent link">&para;</a></h4>
+<p>通过寄存器传递参数</p>
+<p>用的是x10-x17这8个寄存器，在这里这几个寄存器被称为a0-a7寄存器</p>
+<p>x1寄存器是保留返回地址的寄存器，在这里被称为ra寄存器</p>
+<h4 id="leaf-function">Leaf Function<a class="headerlink" href="#leaf-function" title="Permanent link">&para;</a></h4>
+<p>是为了在函数调用时，能够保存返回地址和一些临时变量</p>
+<p>栈的地址分配是从高地址到低地址的</p>
+<p>栈顶的指针是sp寄存器，指向压入栈中的最后一个数据</p>
+<ul>
+<li>Push：</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>addi sp, sp, -8
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sd xxx, 0(sp)
+</span></code></pre></div>
+<ul>
+<li>Pop</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ld xxx, 0(sp)
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>addi sp, sp, 8
+</span></code></pre></div>
+<p><img alt="co-22" src="/../../../../assets/pics/co/co-22.png" /></p>
+<details class="example">
+<summary>leaf function</summary>
+<p><img alt="co-21" src="/../../../../assets/pics/co/co-21.png" /></p>
+<p>这里我们可以发现在进行运算的时候，我们用到了x5，x6，x20这三个非参数寄存器作为g+h，i+j的临时寄存器，但是在函数调用的时候，我们并没有保存这三个寄存器中的值，因此如果在这个函数中，这三个寄存器中的值发生了改变，那么就会影响到其他函数中的值，因此我们需要在函数调用的时候，将这三个寄存器中的值压入栈中，然后在函数返回的时候，再将这三个寄存器中的值弹出，这样就可以保证这三个寄存器中的值不会影响到其他函数。</p>
+<p>这里我们可以看出，栈在这里起到了一个临时变量存储的作用，因此我们称调用者和被调用者之间的这段栈为调用栈。</p>
+</details>
+<p>但是这样做有一个问题就是浪费了大量指令在栈的压入和弹出上，效率不高，我们约定：</p>
+<p>对寄存器进行划分：</p>
+<ul>
+<li>t0-t6: 临时寄存器，用于存放临时变量(内部临时用 不保存)</li>
+<li>s0-s11: 保存寄存器，用于存放需要保存的变量(外部用 会保存)</li>
+</ul>
+<p>在上面的例子中，我们可以尽量使用t0-t6这些不用入栈的寄存器，如果需要保存的变量太多，那么再使用s0-s11这些需要入栈的寄存器。</p>
+<p>下面是寄存器的常用用途：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">寄存器</th>
+<th style="text-align: center;">名称</th>
+<th style="text-align: center;">用途描述</th>
+<th style="text-align: center;">saver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">x0</td>
+<td style="text-align: center;">zero</td>
+<td style="text-align: center;">硬件0</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">x1</td>
+<td style="text-align: center;">ra</td>
+<td style="text-align: center;">返回地址</td>
+<td style="text-align: center;">caller</td>
+</tr>
+<tr>
+<td style="text-align: center;">x2</td>
+<td style="text-align: center;">sp</td>
+<td style="text-align: center;">栈指针</td>
+<td style="text-align: center;">callee</td>
+</tr>
+<tr>
+<td style="text-align: center;">x3</td>
+<td style="text-align: center;">gp</td>
+<td style="text-align: center;">全局指针</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">x4</td>
+<td style="text-align: center;">tp</td>
+<td style="text-align: center;">线程指针</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">x5</td>
+<td style="text-align: center;">t0</td>
+<td style="text-align: center;">临时变量/备用链接寄存器</td>
+<td style="text-align: center;">caller</td>
+</tr>
+<tr>
+<td style="text-align: center;">x6-7</td>
+<td style="text-align: center;">t1-2</td>
+<td style="text-align: center;">临时变量</td>
+<td style="text-align: center;">caller</td>
+</tr>
+<tr>
+<td style="text-align: center;">x8</td>
+<td style="text-align: center;">s0/fp</td>
+<td style="text-align: center;">保存寄存器/帧指针</td>
+<td style="text-align: center;">callee</td>
+</tr>
+<tr>
+<td style="text-align: center;">x9</td>
+<td style="text-align: center;">s1</td>
+<td style="text-align: center;">保存寄存器</td>
+<td style="text-align: center;">callee</td>
+</tr>
+<tr>
+<td style="text-align: center;">x10-11</td>
+<td style="text-align: center;">a0-1</td>
+<td style="text-align: center;">函数参数/返回值</td>
+<td style="text-align: center;">caller</td>
+</tr>
+<tr>
+<td style="text-align: center;">x12-17</td>
+<td style="text-align: center;">a2-7</td>
+<td style="text-align: center;">函数参数</td>
+<td style="text-align: center;">caller</td>
+</tr>
+<tr>
+<td style="text-align: center;">x18-27</td>
+<td style="text-align: center;">s2-11</td>
+<td style="text-align: center;">保存寄存器</td>
+<td style="text-align: center;">callee</td>
+</tr>
+<tr>
+<td style="text-align: center;">x28-31</td>
+<td style="text-align: center;">t3-6</td>
+<td style="text-align: center;">临时变量</td>
+<td style="text-align: center;">caller</td>
+</tr>
+</tbody>
+</table>
+<h4 id="nested-function">Nested Function<a class="headerlink" href="#nested-function" title="Permanent link">&para;</a></h4>
+<p>leaf func中的栈是单次的，刚开始push，结束pop</p>
+<details class="example">
+<summary>n!</summary>
+<p><img alt="co-23" src="/../../../../assets/pics/co/co-23.png" /></p>
+<p>对整体的过程进行分析：</p>
+<ol>
+<li>递归调用
+    在进行递归时，由于n一直&gt;0，因此会一直递归下去，直到n==0为止，也就是在fact部分bge前和L1部分jal语句之间来回跳转到n==0</li>
+<li>
+<p>恢复并计算
+    到n==0后，先进行一次对base case的处理，也就是fact(0) = 1，然后进行恢复，恢复的过程是L1部分jal语句的返回，一直在L1部分jal语句和jalr语句之间来回跳转，直到返回到栈顶</p>
+</li>
+<li>
+<p>计算最终结果
+    最终jalr语句返回后，x10中存储的就是最终的结果</p>
+</li>
+</ol>
+<p>以n=3为例：</p>
+<p><div align="center">
+<img src="/../../../../assets/pics/co/co-24.png" alt="co-24" height="50px" width="300px">
+</div></p>
+<p><div align="center">
+<img src="/../../../../assets/pics/co/co-25.png" alt="co-25" height="100px" width="300px">
+</div></p>
+<p><div align="center">
+<img src="/../../../../assets/pics/co/co-26.png" alt="co-26" height="100px" width="300px">
+</div></p>
+<p><div align="center">
+<img src="/../../../../assets/pics/co/co-27.png" alt="co-27" height="100px" width="300px">
+</div></p>
+<p><div align="center">
+<img src="/../../../../assets/pics/co/co-28.png" alt="co-28" height="100px" width="300px">
+</div></p>
+</details>
+<p><img alt="co-29" src="/../../../../assets/pics/co/co-29.png" /></p>
+<p>FP是帧指针frame pointer，用来指向当前函数的栈帧的栈底，只有当跳转函数时，才会改变FP的值</p>
+<h4 id="memory-layout">Memory Layout<a class="headerlink" href="#memory-layout" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Text: program code 就是放指令</li>
+<li>Static data: global variables</li>
+<li>Dynamic data: heap 动态数据-malloc用的</li>
+<li>Stack: automatic variables 自动变量</li>
+</ul>
+<p><img alt="co-30" src="/../../../../assets/pics/co/co-30.png" /></p>
+<h2 id="comunicate">Comunicate<a class="headerlink" href="#comunicate" title="Permanent link">&para;</a></h2>
+<p>不同编码有不同的数据长度，因此也需要不同的load和store指令</p>
+<ul>
+<li>lb: load byte </li>
+<li>lh: load halfword</li>
+<li>lw: load word</li>
+<li>
+<p>ld: load doubleword</p>
+</li>
+<li>
+<p>lbu: load byte unsigned</p>
+</li>
+<li>lhu: load halfword unsigned</li>
+</ul>
+<p>因为寄存器是64位的，因此读取出来的数据需要进行符号扩展（<code>lb</code>）或零扩展（<code>lbu</code>）</p>
+<p>比如在读取A[i]时，如果A是int型，那么就需要读取4个字节，如果A是short型，那么就需要读取2个字节</p>
+<ul>
+<li>sb: store byte</li>
+<li>sh: store halfword</li>
+<li>sw: store word</li>
+<li>sd: store doubleword</li>
+</ul>
+<p>store指令就不需要进行符号扩展或零扩展了，我们只是把对应部分放到对应位置上</p>
+<p>上述四个指令就是存在寄存器的rightmost 8/16/32/64 bits</p>
+<details class="example">
+<summary>string copy</summary>
+<p><img alt="co-31" src="/../../../../assets/pics/co/co-31.png" /></p>
+<p>但是i应该存在临时寄存器而不是s3，这样就不需要栈来存了</p>
+</details>
+<h2 id="32-bit-immediate">32-bit Immediate<a class="headerlink" href="#32-bit-immediate" title="Permanent link">&para;</a></h2>
+<p>对于jal指令，如果立即数是32位的就超过了他的跳转范围，那么就需要使用<code>lui</code>这个指令先将所需要跳转的指令的地址的高20位放到寄存器中，然后用<code>jalr</code>指令将这个寄存器和偏移量相加，就可以得到最终的跳转地址</p>
+<details class="example">
+<summary>32-bit immediate</summary>
+<p><img alt="co-33" src="/../../../../assets/pics/co/co-33.png" /></p>
+<p>这里是加上977而不是976，因为在lui时扩展了符号位</p>
+</details>
 
 
 
@@ -1477,7 +2054,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top", "navigation.prune"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
