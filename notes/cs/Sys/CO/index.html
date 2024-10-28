@@ -67,7 +67,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -123,7 +123,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -133,7 +133,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -924,9 +924,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#32-bit-immediate" class="md-nav__link">
+  <a href="#addressing" class="md-nav__link">
     <span class="md-ellipsis">
-      32-bit Immediate
+      Addressing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Addressing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wide-immediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wide Immediate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branch-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch Addressing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disassembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disassembly
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synchronization-and-prgram-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronization and Prgram Translation
     </span>
   </a>
   
@@ -1417,9 +1459,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#32-bit-immediate" class="md-nav__link">
+  <a href="#addressing" class="md-nav__link">
     <span class="md-ellipsis">
-      32-bit Immediate
+      Addressing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Addressing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wide-immediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wide Immediate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branch-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch Addressing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disassembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disassembly
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synchronization-and-prgram-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronization and Prgram Translation
     </span>
   </a>
   
@@ -1629,9 +1713,9 @@
 <div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="c1">//h in x21, base address of A in x22</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    ld x9, 64(x22) 
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    add x9, x21, x9
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    sd x9, 96(x22)
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="nf">ld</span><span class="w"> </span><span class="no">x9</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">(</span><span class="no">x22</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="no">add</span><span class="w"> </span><span class="no">x9</span><span class="p">,</span><span class="w"> </span><span class="no">x21</span><span class="p">,</span><span class="w"> </span><span class="no">x9</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nf">sd</span><span class="w"> </span><span class="no">x9</span><span class="p">,</span><span class="w"> </span><span class="mi">96</span><span class="p">(</span><span class="no">x22</span><span class="p">)</span>
 </span></code></pre></div>
 <p><code>ld</code>指令的64是偏移量（offset），x22是基地址，x9是目标寄存器</p>
 <p>因为我们的基址是x22，第八个double word的地址就是8 * 8 = 64，所以偏移量是64</p>
@@ -1639,12 +1723,12 @@
 <h4 id="immediate-operand">Immediate Operand<a class="headerlink" href="#immediate-operand" title="Permanent link">&para;</a></h4>
 <p>如果说一个常数存在于一个地址中，那么在对一个寄存器增加一个常数时，就需要使用<code>ld</code>指令，将常数从Memory中加载到寄存器中，再进行加法运算。</p>
 <p>为了减少指令个数（不使用ld指令），RISC-V中引入了立即数（Immediate），立即数是直接编码在指令中的，因此不需要再从Memory中加载。</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>    ld x9, AddressConstant4(x3) // x9 = constant 4
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    add x22, x22, x9
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="nf">ld</span><span class="w"> </span><span class="no">x9</span><span class="p">,</span><span class="w"> </span><span class="no">AddressConstant4</span><span class="p">(</span><span class="no">x3</span><span class="p">)</span><span class="w"> </span><span class="c1">// x9 = constant 4</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nf">add</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="no">x9</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    ||
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="err">||</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    addi x22, x22, x9
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="no">x9</span>
 </span></code></pre></div>
 <h3 id="representation-of-instructions">Representation of Instructions<a class="headerlink" href="#representation-of-instructions" title="Permanent link">&para;</a></h3>
 <p>所有的指令在机器中都是用二进制表示的，被称作Machine Code机器码，任何的指令在进行操作时，都是对Machine Code进行操作，这一部分将会讲解如何对指令进行编码使其成为Machine Code。</p>
@@ -1728,21 +1812,17 @@ rs1 = [rs2 + imm]
 <p><code>{{11{inst[31]}}, inst[31], inst[19:12], inst[20], inst[30:21], 1'b0}</code></p>
 <h3 id="instructions-for-making-decisions">Instructions for Making Decisions<a class="headerlink" href="#instructions-for-making-decisions" title="Permanent link">&para;</a></h3>
 <h4 id="branch">Branch<a class="headerlink" href="#branch" title="Permanent link">&para;</a></h4>
-<ul>
-<li>beq reg1, reg2, Label</li>
-</ul>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">beq</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span>
+</span></code></pre></div>
 <p>如果<code>reg1 == reg2</code>，则跳转到Label处执行</p>
-<ul>
-<li>bne reg1, reg2, Label</li>
-</ul>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">bne</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span>
+</span></code></pre></div>
 <p>如果<code>reg1 != reg2</code>，则跳转到Label处执行</p>
-<ul>
-<li>blt reg1, reg2, Label</li>
-</ul>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">blt</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span>
+</span></code></pre></div>
 <p>如果<code>reg1 &lt; reg2</code>，则跳转到Label处执行</p>
-<ul>
-<li>bge reg1, reg2, Label</li>
-</ul>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">bge</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span>
+</span></code></pre></div>
 <p>如果<code>reg1 &gt;= reg2</code>，则跳转到Label处执行</p>
 <details class="example">
 <summary>if-else</summary>
@@ -1754,14 +1834,12 @@ rs1 = [rs2 + imm]
 </details>
 <h4 id="slt">SLT<a class="headerlink" href="#slt" title="Permanent link">&para;</a></h4>
 <p>set on less than </p>
-<ul>
-<li>slt rd, rs1, rs2</li>
-</ul>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">slt</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span>
+</span></code></pre></div>
 <p>通常用来比较两个数的大小，得到的结果存放在一个临时寄存器中作为标记，如果<code>rs1 &lt; rs2</code>，则将临时寄存器置1，否则置0，这个临时寄存器和0相比是否相等可以作为<code>beq</code>指令的判断条件</p>
 <h4 id="jump">Jump<a class="headerlink" href="#jump" title="Permanent link">&para;</a></h4>
-<ul>
-<li>jalr rd, imm(rs1)</li>
-</ul>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">jalr</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span>
+</span></code></pre></div>
 <p>当前pc地址的下一个地址(pc+4)存放在rd中(为了能回来)，然后跳转到rs1+imm处</p>
 <details class="example">
 <summary>switch</summary>
@@ -1785,13 +1863,15 @@ rs1 = [rs2 + imm]
 </ul>
 <h4 id="caller">Caller<a class="headerlink" href="#caller" title="Permanent link">&para;</a></h4>
 <p>use <code>jal</code>指令 jump and link</p>
-<p>jal x1 ProcedureAddress</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">jal</span><span class="w"> </span><span class="no">x1</span><span class="w"> </span><span class="no">ProcedureAddress</span>
+</span></code></pre></div>
 <ul>
 <li>x1: 存放pc+4，也就是调用函数后需要返回的地址</li>
 </ul>
 <h4 id="callee">Callee<a class="headerlink" href="#callee" title="Permanent link">&para;</a></h4>
 <p>use <code>jalr</code>指令 jump and link register</p>
-<p>jalr x0, 0(x1)</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">jalr</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x1</span><span class="p">)</span>
+</span></code></pre></div>
 <ul>
 <li>x0: 固定为0</li>
 <li>x1: 跳回到返回的下一个指令的地址</li>
@@ -1807,14 +1887,14 @@ rs1 = [rs2 + imm]
 <ul>
 <li>Push：</li>
 </ul>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>addi sp, sp, -8
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sd xxx, 0(sp)
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">-8</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nf">sd</span><span class="w"> </span><span class="no">xxx</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
 </span></code></pre></div>
 <ul>
 <li>Pop</li>
 </ul>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ld xxx, 0(sp)
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>addi sp, sp, 8
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">ld</span><span class="w"> </span><span class="no">xxx</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span>
 </span></code></pre></div>
 <p><img alt="co-22" src="/../../../../assets/pics/co/co-22.png" /></p>
 <details class="example">
@@ -1965,7 +2045,10 @@ rs1 = [rs2 + imm]
 <li>Dynamic data: heap 动态数据-malloc用的</li>
 <li>Stack: automatic variables 自动变量</li>
 </ul>
-<p><img alt="co-30" src="/../../../../assets/pics/co/co-30.png" /></p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-30.png" alt="co-30" height="100px" width="px">
+</div>
+
 <h2 id="comunicate">Comunicate<a class="headerlink" href="#comunicate" title="Permanent link">&para;</a></h2>
 <p>不同编码有不同的数据长度，因此也需要不同的load和store指令</p>
 <ul>
@@ -1995,13 +2078,61 @@ rs1 = [rs2 + imm]
 <p><img alt="co-31" src="/../../../../assets/pics/co/co-31.png" /></p>
 <p>但是i应该存在临时寄存器而不是s3，这样就不需要栈来存了</p>
 </details>
-<h2 id="32-bit-immediate">32-bit Immediate<a class="headerlink" href="#32-bit-immediate" title="Permanent link">&para;</a></h2>
+<h2 id="addressing">Addressing<a class="headerlink" href="#addressing" title="Permanent link">&para;</a></h2>
+<h3 id="wide-immediate">Wide Immediate<a class="headerlink" href="#wide-immediate" title="Permanent link">&para;</a></h3>
 <p>对于jal指令，如果立即数是32位的就超过了他的跳转范围，那么就需要使用<code>lui</code>这个指令先将所需要跳转的指令的地址的高20位放到寄存器中，然后用<code>jalr</code>指令将这个寄存器和偏移量相加，就可以得到最终的跳转地址</p>
 <details class="example">
 <summary>32-bit immediate</summary>
 <p><img alt="co-33" src="/../../../../assets/pics/co/co-33.png" /></p>
-<p>这里是加上977而不是976，因为在lui时扩展了符号位</p>
+<p>这里是加上977而不是976，因为在lui时扩展了符号位，其实我也不是很懂为什么加上1，但是既然说了就记住吧（最近事情太多 妈的 摆了。。。）</p>
+<p>po一张书上对于这个问题的解释吧 我觉得大体意思就是看第11位是0还是1，如果是0，那么就加976，如果是1，那么就加977</p>
+<p><img alt="co-34" src="/../../../../assets/pics/co/co-34.png" /></p>
 </details>
+<h3 id="branch-addressing">Branch Addressing<a class="headerlink" href="#branch-addressing" title="Permanent link">&para;</a></h3>
+<p>是相对地址跳转</p>
+<ul>
+<li>PC-relative addressing：</li>
+</ul>
+<div class="arithmatex">\[
+\begin{align}
+Target &amp;= PC + Branch\_offset \\
+           &amp;= PC + 2\times imm
+\end{align}
+\]</div>
+<p>在B-Type指令中，立即数是<code>{{19{inst[31]}}, inst[31], inst[19:12], inst[20], inst[30:25], inst[11:8], 1'b0}</code>，可以看到最低位是0，因此Branch_offset一定是偶数</p>
+<div class="admonition note">
+<p class="admonition-title">Instruction to Code</p>
+<p><img alt="co-35" src="/../../../../assets/pics/co/co-35.png" /></p>
+<p>在这个例子中我们需要进行2000的跳转，我们可以看到在进行编码时，instruction中的立即数被编码到了寄存器的高11位，第0位是0，因此在instruction中，我们只需要编码1000的立即数，就可以完成2000的跳转</p>
+</div>
+<details class="example">
+<summary>Encode while loop</summary>
+<p><img alt="co-36" src="/../../../../assets/pics/co/co-36.png" /></p>
+<p><img alt="co-37" src="/../../../../assets/pics/co/co-37.png" /></p>
+<ul>
+<li>bne: 进行跳转是由自身到Exit的地址，offset = 80024-80012 = 12，但是编码时，我们只需要在rd也就是offset中编码0110 = 6</li>
+</ul>
+<p>beq也是同理，但是需要注意的是，beq的offset是负的，</p>
+</details>
+<div class="admonition abstract">
+<p class="admonition-title">RISC-V Addressing Summary</p>
+<p><img alt="co-38" src="/../../../../assets/pics/co/co-38.png" /></p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="err">1.</span><span class="w"> </span><span class="nf">addi</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="no">add</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="err">3.</span><span class="w"> </span><span class="nf">ld</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">(</span><span class="no">x6</span><span class="p">)</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="err">4.</span><span class="w"> </span><span class="nf">beq</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L1</span>
+</span></code></pre></div>
+</div>
+<hr />
+<h2 id="disassembly">Disassembly<a class="headerlink" href="#disassembly" title="Permanent link">&para;</a></h2>
+<p>反汇编：将Machine Code转换为Assembly Code</p>
+<details class="note">
+<summary>Table</summary>
+<p><img alt="co-39" src="/../../../../assets/pics/co/co-39.png" /></p>
+</details>
+<h2 id="synchronization-and-prgram-translation">Synchronization and Prgram Translation<a class="headerlink" href="#synchronization-and-prgram-translation" title="Permanent link">&para;</a></h2>
+<p>这里made说是了解一下的，补雪啦</p>
+<p>放一下noughtq的笔记链接<a href="https://note.noughtq.top/hardware/co/2#synchoronization">🔗</a>吧 写的超级好 </p>
 
 
 
@@ -2054,7 +2185,7 @@ rs1 = [rs2 + imm]
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top", "navigation.prune"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top", "navigation.prune"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>

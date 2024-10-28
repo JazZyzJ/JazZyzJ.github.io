@@ -67,7 +67,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -123,7 +123,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -133,7 +133,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -650,6 +650,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Minimax Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alpha-beta-pruning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alpha-Beta Pruning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -941,6 +956,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Minimax Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alpha-beta-pruning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alpha-Beta Pruning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1058,7 +1088,63 @@
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Found</span><span class="p">;</span>
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="p">}</span>
 </span></code></pre></div>
+<hr />
 <h3 id="minimax-strategy">Minimax Strategy<a class="headerlink" href="#minimax-strategy" title="Permanent link">&para;</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>以井字棋为例</p>
+</div>
+<p>Minimax Strategy 中很重要的一个思想在于<strong>博弈</strong>，即在当前状态下，我作为当前玩家，我应该怎么走，才能使得我赢，而进行操作的判断条件之一就是对当前状态的评估，我们称这个评估函数为<strong>evaluation function</strong></p>
+<p>比如这样一种评估函数：</p>
+<div class="arithmatex">\[
+f(P) = W_{computer} - W_{human} 
+\]</div>
+<div class="arithmatex">\[
+\text{where } W \text{ is the number of potential wins at position } P
+\]</div>
+<p>在井字棋游戏中，我们可以这样实例化：</p>
+<ul>
+<li>将<span class="arithmatex">\(W_{computer}\)</span>定义为假如现在人类不进行任何操作，计算机可能的获胜方式</li>
+</ul>
+<p>这样我们在每一步操作之后，都可以得到一个当前状态的评估值，这个评估值就可以作为我们博弈树的节点</p>
+<div class="admonition note">
+<p class="admonition-title">Key of Minimax Strategy</p>
+<ul>
+<li>在博弈树中，我们总是假设对方是理性的，即对方总是会做出最优的选择</li>
+</ul>
+<p>这就是 Minimax 的来源：</p>
+<p><strong>在自己选择的时候我们做<span class="arithmatex">\(f(P)\)</span>的最大化，在对方选择的时候我们做<span class="arithmatex">\(f(P)\)</span>的最小化</strong></p>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="bk-3" src="/../../../../assets/pics/backtrack/bk-3.png" /></p>
+</details>
+</div>
+<hr />
+<h4 id="alpha-beta-pruning">Alpha-Beta Pruning<a class="headerlink" href="#alpha-beta-pruning" title="Permanent link">&para;</a></h4>
+<p><strong><span class="arithmatex">\(\alpha - \beta\)</span> Pruning</strong> 是 Minimax 的优化版本，他通过剪枝的方式将博弈树的搜索规模限制在<span class="arithmatex">\(O(\sqrt{N})\)</span>个节点</p>
+<ul>
+<li><span class="arithmatex">\(\alpha\)</span>剪枝：在如下的状态下我们不需要在进行<code>?</code>树的求算了</li>
+</ul>
+<div align="center">
+  <img src="/../../../../assets/pics/backtrack/bk-4.png" alt="bk-4" height="200px" width="200px">
+</div>
+
+<ul>
+<li>在<code>? &gt;= 40(sibling)</code>时，<code>min</code>节点不会采用这个大于四十的值</li>
+<li>在<code>? &lt; 40(sibling)</code>时，<code>min</code>节点虽然会更新，但是<code>max</code>节点不会采用</li>
+</ul>
+<hr />
+<ul>
+<li><span class="arithmatex">\(\beta\)</span>剪枝：在如下的状态下我们不需要在进行<code>?</code>树的求算了</li>
+</ul>
+<div align="center">
+<img src="/../../../../assets/pics/backtrack/bk-5.png" alt="bk-5" height="200px" width="200px">
+</div>
+
+<ul>
+<li>在<code>? &lt;= 68(sibling)</code>时，<code>max</code>节点不会采用这个小于等于68的值</li>
+<li>在<code>? &gt; 68(sibling)</code>时，<code>max</code>节点虽然会更新，但是<code>min</code>节点不会采用</li>
+</ul>
 
 
 
@@ -1111,7 +1197,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top", "navigation.prune"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top", "navigation.prune"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
