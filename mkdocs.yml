@@ -10,27 +10,32 @@ theme:
     logo: material/notebook-outline
   features:
     - content.code.annotate
+    - content.code.line_numbers
+    - content.code.copy
     - navigation.tracking
     - navigation.tabs
     - navigation.path
     - navigation.indexes
     - navigation.top
+    # - navigation.footer
+    # - navigation.sections
+    - navigation.prune
   
   palette:
     # - custom_dir: docs/css/stylesheets/extra.css
-    - scheme: slate
-      primary: black
+    - scheme: 
+      primary: white
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-    - scheme: 
-      primary: white
+    - scheme: slate
+      primary: black
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
   font:
     text: "PT Serif"
-    code: "JetBrains Mono"
+    code: "JetBrains Mono, Consolas"
 
 # nav:
 #   - Home: index.md
@@ -48,6 +53,8 @@ nav:
         - DS & Algorithms:
           - FDS: notes/cs/algorithm/fds/fds.md
           - ADS: notes/cs/algorithm/ads/ADS.md
+          - Backtracking: notes/cs/algorithm/backtracking.md
+          - Divide & Conquer: notes/cs/algorithm/DandC.md
         - System:
           - CO: notes/cs/Sys/CO.md
         - PL: 
@@ -104,4 +111,4 @@ extra_javascript:
 
 
 extra_css:
-  - docs/css/custom.css
+  - docs/css/stylesheets/extra.css

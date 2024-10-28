@@ -263,7 +263,7 @@ square(4)
 #when calling square(4), in f1 frame square doesnt go back to Global frame to find the value, but bound to 4 which is the earliest frame of the current environment 
 ```
 
-![cs61a-1](/../../../../assets/pics/cs61a/cs61a-1.png)
+![cs61a-1](/../../../../assets/pics/CS61a/cs61a-1.png)
 
 ### Lambda function
 
@@ -390,9 +390,9 @@ List unpacking:
 
 list operations :
 
-![cs61a-2](/../../../../assets/pics/cs61a/cs61a-2.png)
+![cs61a-2](/../../../../assets/pics/CS61a/cs61a-2.png)
 
-![cs61a-3](/../../../../assets/pics/cs61a/cs61a-3.png)
+![cs61a-3](/../../../../assets/pics/CS61a/cs61a-3.png)
 
 ### For Statement
 
@@ -455,7 +455,7 @@ False
 
 ### Abstraction Barriers
 
-![cs61a-4](/../../../../assets/pics/cs61a/cs61a-4.png)
+![cs61a-4](/../../../../assets/pics/CS61a/cs61a-4.png)
 
 
 
@@ -597,7 +597,7 @@ return True if bool(x) is True
 
 **Relative-->family tree**
 
-![cs61a-5](/../../../../assets/pics/cs61a/cs61a-5.png)
+![cs61a-5](/../../../../assets/pics/CS61a/cs61a-5.png)
 
 **A tree has a root label and a list of branches **
 
@@ -698,7 +698,7 @@ sequence is mutable
 
 tuple is immutable
 
-![cs61a-6](/../../../../assets/pics/cs61a/cs61a-6.png)
+![cs61a-6](/../../../../assets/pics/CS61a/cs61a-6.png)
 
 
 
@@ -869,7 +869,7 @@ class Account:
 
 **and when finding attributes, instance is prior to calss** 
 
-![cs61a-7](/../../../../assets/pics/cs61a/cs61a-7.png)
+![cs61a-7](/../../../../assets/pics/CS61a/cs61a-7.png)
 
 ## Lecture 16 Inheritance
 
