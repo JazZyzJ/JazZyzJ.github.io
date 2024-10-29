@@ -1,0 +1,2043 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/Sys/CO/instruction/">
+      
+      
+        <link rel="prev" href="../arithmetic/">
+      
+      
+        <link rel="next" href="../processor/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>Instruction - Space . JaZzyzJ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300i,400,400i,700,700i%7CJetBrains+Mono,+Consolas:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"PT Serif";--md-code-font:"JetBrains Mono, Consolas"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../docs/css/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#instruction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Space . JaZzyzJ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Instruction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/JazZyzJ/JazZyzJ.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    JaZzyzJ.Space
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+    
+  
+  notes
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+
+    </a>
+    Space . JaZzyzJ
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/JazZyzJ/JazZyzJ.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    JaZzyzJ.Space
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../algorithm/fds/fds/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    DS & Algorithms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    System
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3_1" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CO
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_3_1" id="__nav_2_1_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            CO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arithmetic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arithmetic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Instruction
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Instruction
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-operand" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Operand
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#immediate-operand" class="md-nav__link">
+    <span class="md-ellipsis">
+      Immediate Operand
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#representation-of-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Representation of Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      R-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      I-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      S-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-typesb" class="md-nav__link">
+    <span class="md-ellipsis">
+      B-Type(SB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#u-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      U-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      J-Type
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instructions-for-making-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions for Making Decisions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instructions for Making Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slt" class="md-nav__link">
+    <span class="md-ellipsis">
+      SLT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jump" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jump
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Block
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedure-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procedure Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procedure Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caller
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Callee
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arguments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaf-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leaf Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nested Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Layout
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comunicate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addressing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Addressing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wide-immediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wide Immediate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branch-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch Addressing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disassembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disassembly
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synchronization-and-prgram-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronization and Prgram Translation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-in-risc-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      C in RISC-V
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="C in RISC-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sort
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Processor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../lingo/verilog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    PL
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../Tool_Pool/GNU_Make/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-operand" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Operand
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#immediate-operand" class="md-nav__link">
+    <span class="md-ellipsis">
+      Immediate Operand
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#representation-of-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Representation of Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      R-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      I-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      S-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-typesb" class="md-nav__link">
+    <span class="md-ellipsis">
+      B-Type(SB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#u-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      U-Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      J-Type
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instructions-for-making-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions for Making Decisions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instructions for Making Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slt" class="md-nav__link">
+    <span class="md-ellipsis">
+      SLT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jump" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jump
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Block
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedure-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procedure Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procedure Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caller
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Callee
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arguments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaf-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leaf Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nested Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Layout
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comunicate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addressing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Addressing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wide-immediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wide Immediate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branch-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch Addressing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disassembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disassembly
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synchronization-and-prgram-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronization and Prgram Translation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-in-risc-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      C in RISC-V
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="C in RISC-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sort
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="instruction">Instruction<a class="headerlink" href="#instruction" title="Permanent link">&para;</a></h1>
+<p>Outline:</p>
+<ul>
+<li>计算机硬件的操作 Operation</li>
+<li>计算机硬件的操作数 Operand</li>
+<li>有符号数和无符号数 Signed and Unsigned Numbers</li>
+<li>指令的表示 Instruction Representation</li>
+<li>逻辑操作 Logical Operations</li>
+<li>决策指令 Making Decisions</li>
+<li>计算机对过程的支持 Procedure Support</li>
+<li>指令的寻址 Instruction Addressing</li>
+</ul>
+<p>指令-&gt;Statement
+指令集-&gt;Syntax</p>
+<h2 id="operation">Operation<a class="headerlink" href="#operation" title="Permanent link">&para;</a></h2>
+<p>在RISC-V中，每一条指令只支持一个操作</p>
+<h2 id="operands">Operands<a class="headerlink" href="#operands" title="Permanent link">&para;</a></h2>
+<p>在算术运算中，操作数只能是寄存器，也就是我们做运算时，一定要先把数据存放到寄存器中，再对两个寄存器进行运算。</p>
+<p>RISC-V中的寄存器是 <code>32 x 64-bit</code> 的Register File(实验中实现的是32 x 32-bit)</p>
+<p>64bit是double word，32bit是word</p>
+<p>32个寄存器：</p>
+<p><img alt="co-11" src="../../../../../assets/pics/co/co-11.png" /></p>
+<h3 id="memory-operand">Memory Operand<a class="headerlink" href="#memory-operand" title="Permanent link">&para;</a></h3>
+<p>Main Memory用来存储复杂的数据，在进行算术运算时，需要<code>load</code>将数据从Memory中加载到寄存器中，得到的结果也需要<code>store</code>回Memory中。</p>
+<p>Memory is byte addressed: 每个地址都是一个8-bit的byte，访问时是按照byte访问的。</p>
+<ul>
+<li>Endian</li>
+</ul>
+<p>大小端：就是指数据在内存中存储的顺序。</p>
+<details class="note">
+<summary>Big or Little Endian</summary>
+<p><img alt="co-12" src="../../../../../assets/pics/co/co-12.png" /></p>
+</details>
+<ul>
+<li>Word Alignment </li>
+</ul>
+<p>RISC-V中，不要求进行地址对齐，但是对齐的情况是更好的</p>
+<p>一个word是四个字节，因此对齐的起始地址一定是4的倍数，也就是0，4，8……，这些地址的二进制码都是末端两个bit为0的，而如果按照halfword访问，地址的末端一个bit为0即可。</p>
+<details class="example">
+<summary>Memory Alignment</summary>
+<p><img alt="co-13" src="../../../../../assets/pics/co/co-13.png" /></p>
+</details>
+<p>下面是一个例子讲解怎样进行一次运算：讲解的例子都是按照double word（8 bytes 64-bit）进行操作的。</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="c1">//h in x21, base address of A in x22</span>
+</span></code></pre></div>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="nf">ld</span><span class="w"> </span><span class="no">x9</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">(</span><span class="no">x22</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="no">add</span><span class="w"> </span><span class="no">x9</span><span class="p">,</span><span class="w"> </span><span class="no">x21</span><span class="p">,</span><span class="w"> </span><span class="no">x9</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nf">sd</span><span class="w"> </span><span class="no">x9</span><span class="p">,</span><span class="w"> </span><span class="mi">96</span><span class="p">(</span><span class="no">x22</span><span class="p">)</span>
+</span></code></pre></div>
+<p><code>ld</code>指令的64是偏移量（offset），x22是基地址，x9是目标寄存器</p>
+<p>因为我们的基址是x22，第八个double word的地址就是8 * 8 = 64，所以偏移量是64</p>
+<p>同理在<code>sd</code>指令中，96是偏移量</p>
+<h3 id="immediate-operand">Immediate Operand<a class="headerlink" href="#immediate-operand" title="Permanent link">&para;</a></h3>
+<p>如果说一个常数存在于一个地址中，那么在对一个寄存器增加一个常数时，就需要使用<code>ld</code>指令，将常数从Memory中加载到寄存器中，再进行加法运算。</p>
+<p>为了减少指令个数（不使用ld指令），RISC-V中引入了立即数（Immediate），立即数是直接编码在指令中的，因此不需要再从Memory中加载。</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="nf">ld</span><span class="w"> </span><span class="no">x9</span><span class="p">,</span><span class="w"> </span><span class="no">AddressConstant4</span><span class="p">(</span><span class="no">x3</span><span class="p">)</span><span class="w"> </span><span class="c1">// x9 = constant 4</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nf">add</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="no">x9</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="err">||</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="no">x9</span>
+</span></code></pre></div>
+<h2 id="representation-of-instructions">Representation of Instructions<a class="headerlink" href="#representation-of-instructions" title="Permanent link">&para;</a></h2>
+<p>所有的指令在机器中都是用二进制表示的，被称作Machine Code机器码，任何的指令在进行操作时，都是对Machine Code进行操作，这一部分将会讲解如何对指令进行编码使其成为Machine Code。</p>
+<p>我们将x0-x31寄存器映射到0-31这些数字，因此寄存器的名字就变成了0-31</p>
+<p>RISC-V中，指令的长度是固定的，32-bit</p>
+<p>大部分情况下我们用16进制表示指令，因为16进制表示的指令更短，更方便。</p>
+<p>有四种基础的指令格式(R/I/S/U),再根据立即数解码的不同分出两种(B/J),共六种</p>
+<h3 id="r-type">R-Type<a class="headerlink" href="#r-type" title="Permanent link">&para;</a></h3>
+<p>使用寄存器进行数字逻辑运算的指令</p>
+<div class="arithmatex">\[
+rd = rs1 \text{ op } rs2
+\]</div>
+<p>对于移位运算，rs2是shift amount</p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-14.png" alt="co-14" height="200px" width="600px">
+</div>
+
+<ul>
+<li>opcode: 操作码，有128种操作，作为指令的大类区分</li>
+<li>rd: 目标寄存器</li>
+<li>rs1: 第一个源寄存器</li>
+<li>rs2: 第二个源寄存器</li>
+<li>funct3、7: 功能码，作为opcode的补充</li>
+</ul>
+<p>比如说加法和减法，他们的opcode都是0110011，但是他们的funct3不同，加法是000，减法是001</p>
+<h3 id="i-type">I-Type<a class="headerlink" href="#i-type" title="Permanent link">&para;</a></h3>
+<p>使用寄存器和立即数进行数字逻辑运算的指令，以及load指令</p>
+<div class="arithmatex">\[
+rd = rs1 \text{ op } imm
+\]</div>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-15.png" alt="co-15" height="200px" width="600px">
+</div>
+
+<ul>
+<li>rs1: 源寄存器</li>
+<li>rd: 目标寄存器</li>
+<li>imm: 立即数 由rs2和funct7合并的12位立即数 2's Complement, sign extended</li>
+<li>funct3: 功能码</li>
+</ul>
+<p>立即数是<code>{{20{inst[31]}}, inst[31:20]}</code>，也就是对<code>imm[11:0]</code>进行符号扩展到32位</p>
+<p>移位操作也属于是I-Type的一种，但是移位操作将I-Type的imm分为了两部分，高6位的部分是funct6,低6位的部分是immed</p>
+<p>对<code>sll srl</code>指令是移位并补0</p>
+<p>对<code>slli srli</code>指令是移位i位,也就是乘或除以2的i次方(unsigned)</p>
+<p>在算数逻辑移位(<code>sra</code>)中,符号位保持不变,因此移位后需要补全符号位</p>
+<h3 id="s-type">S-Type<a class="headerlink" href="#s-type" title="Permanent link">&para;</a></h3>
+<p>store类指令</p>
+<div class="arithmatex">\[
+rs1 = [rs2 + imm]
+\]</div>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-16.png" alt="co-16" height="200px" width="600px">
+</div>
+
+<ul>
+<li>rs1: 放base address</li>
+<li>rs2: 放source operand</li>
+<li>funct3: 对存储的数据类型(byte, halfword, word)进行区分</li>
+</ul>
+<p>立即数是<code>{{20{inst[31]}}, inst[31:25], inst[11:7]}</code></p>
+<details class="example">
+<summary>常见指令编码</summary>
+<p><img alt="co-17" src="../../../../../assets/pics/co/co-17.png" /></p>
+</details>
+<h3 id="b-typesb">B-Type(SB)<a class="headerlink" href="#b-typesb" title="Permanent link">&para;</a></h3>
+<p>由S-Type指令分化而来，区别是立即数的读取方式不同</p>
+<p>左边高位imm是<code>imm[12, 10:5]</code>，右边低位imm是<code>imm[4:1, 11]</code></p>
+<p>立即数是<code>{{19{inst[31]}}, inst[31], inst[7], inst[30:25], inst[11:8], 1'b0}</code></p>
+<h3 id="u-type">U-Type<a class="headerlink" href="#u-type" title="Permanent link">&para;</a></h3>
+<p>只有lui指令和auipc指令，用于存放高位立即数</p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-32.png" alt="co-32" height="200px" width="600px">
+</div>
+
+<p>立即数是<code>{inst[31:12], 12'b0}</code></p>
+<p>就是填充高20位，低12位为0</p>
+<h3 id="j-type">J-Type<a class="headerlink" href="#j-type" title="Permanent link">&para;</a></h3>
+<p>仅有jal指令，用于存放跳转地址</p>
+<p>由U-Type指令分化而来，区别是立即数的读取方式不同</p>
+<p>将U-Type的立即数部分改为了：</p>
+<p><code>{{11{inst[31]}}, inst[31], inst[19:12], inst[20], inst[30:21], 1'b0}</code></p>
+<h2 id="instructions-for-making-decisions">Instructions for Making Decisions<a class="headerlink" href="#instructions-for-making-decisions" title="Permanent link">&para;</a></h2>
+<h3 id="branch">Branch<a class="headerlink" href="#branch" title="Permanent link">&para;</a></h3>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">beq</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span>
+</span></code></pre></div>
+<p>如果<code>reg1 == reg2</code>，则跳转到Label处执行</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">bne</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span>
+</span></code></pre></div>
+<p>如果<code>reg1 != reg2</code>，则跳转到Label处执行</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">blt</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span>
+</span></code></pre></div>
+<p>如果<code>reg1 &lt; reg2</code>，则跳转到Label处执行</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">bge</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span>
+</span></code></pre></div>
+<p>如果<code>reg1 &gt;= reg2</code>，则跳转到Label处执行</p>
+<details class="example">
+<summary>if-else</summary>
+<p><img alt="co-18" src="../../../../../assets/pics/co/co-18.png" /></p>
+</details>
+<details class="example">
+<summary>while loop</summary>
+<p><img alt="co-19" src="../../../../../assets/pics/co/co-19.png" /></p>
+</details>
+<h3 id="slt">SLT<a class="headerlink" href="#slt" title="Permanent link">&para;</a></h3>
+<p>set on less than </p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">slt</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span>
+</span></code></pre></div>
+<p>通常用来比较两个数的大小，得到的结果存放在一个临时寄存器中作为标记，如果<code>rs1 &lt; rs2</code>，则将临时寄存器置1，否则置0，这个临时寄存器和0相比是否相等可以作为<code>beq</code>指令的判断条件</p>
+<h3 id="jump">Jump<a class="headerlink" href="#jump" title="Permanent link">&para;</a></h3>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">jalr</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span>
+</span></code></pre></div>
+<p>当前pc地址的下一个地址(pc+4)存放在rd中(为了能回来)，然后跳转到rs1+imm处</p>
+<details class="example">
+<summary>switch</summary>
+<p><img alt="co-20" src="../../../../../assets/pics/co/co-20.png" /></p>
+<p>x6内存储的是对应的几个case中的程序的入口地址——跳转表</p>
+<p>跳转语句先对跳转边界进行检查，检查无误后把k左移三位放到临时寄存器，然后与跳转地址的基址相加</p>
+<p>这里load指令的作用：</p>
+<p>先前我们用x7作为一个临时寄存器用于存储跳转表中需要跳转的地址，进行load后，x7仍然是一个临时寄存器，但是这时x7装载的就是这个地址中的信息，也就是jalr需要跳转到的程序的位置（仍然是个地址）</p>
+</details>
+<h3 id="basic-block">Basic Block<a class="headerlink" href="#basic-block" title="Permanent link">&para;</a></h3>
+<p>基本块：最小的程序代码块，一个块内的指令是顺序执行的，块与块之间通过跳转指令连接，但是不会有指令跳转到基本块的内部</p>
+<h2 id="procedure-support">Procedure Support<a class="headerlink" href="#procedure-support" title="Permanent link">&para;</a></h2>
+<p>对函数的支持:</p>
+<ul>
+<li>Place parameters</li>
+<li>Transfer control(jump)</li>
+<li>Acquire storage resources</li>
+<li>Perform tasks</li>
+<li>Place results </li>
+<li>Return control</li>
+</ul>
+<h3 id="caller">Caller<a class="headerlink" href="#caller" title="Permanent link">&para;</a></h3>
+<p>use <code>jal</code>指令 jump and link</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">jal</span><span class="w"> </span><span class="no">x1</span><span class="w"> </span><span class="no">ProcedureAddress</span>
+</span></code></pre></div>
+<ul>
+<li>x1: 存放pc+4，也就是调用函数后需要返回的地址</li>
+</ul>
+<h3 id="callee">Callee<a class="headerlink" href="#callee" title="Permanent link">&para;</a></h3>
+<p>use <code>jalr</code>指令 jump and link register</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">jalr</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x1</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li>x0: 固定为0</li>
+<li>x1: 跳回到返回的下一个指令的地址</li>
+</ul>
+<h3 id="arguments">Arguments<a class="headerlink" href="#arguments" title="Permanent link">&para;</a></h3>
+<p>通过寄存器传递参数</p>
+<p>用的是x10-x17这8个寄存器，在这里这几个寄存器被称为a0-a7寄存器</p>
+<p>x1寄存器是保留返回地址的寄存器，在这里被称为ra寄存器</p>
+<h3 id="leaf-function">Leaf Function<a class="headerlink" href="#leaf-function" title="Permanent link">&para;</a></h3>
+<p>是为了在函数调用时，能够保存返回地址和一些临时变量</p>
+<p>栈的地址分配是从高地址到低地址的</p>
+<p>栈顶的指针是sp寄存器，指向压入栈中的最后一个数据</p>
+<ul>
+<li>Push：</li>
+</ul>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">-8</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nf">sd</span><span class="w"> </span><span class="no">xxx</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li>Pop</li>
+</ul>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">ld</span><span class="w"> </span><span class="no">xxx</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span>
+</span></code></pre></div>
+<p><img alt="co-22" src="../../../../../assets/pics/co/co-22.png" /></p>
+<details class="example">
+<summary>leaf function</summary>
+<p><img alt="co-21" src="../../../../../assets/pics/co/co-21.png" /></p>
+<p>这里我们可以发现在进行运算的时候，我们用到了x5，x6，x20这三个非参数寄存器作为g+h，i+j的临时寄存器，但是在函数调用的时候，我们并没有保存这三个寄存器中的值，因此如果在这个函数中，这三个寄存器中的值发生了改变，那么就会影响到其他函数中的值，因此我们需要在函数调用的时候，将这三个寄存器中的值压入栈中，然后在函数返回的时候，再将这三个寄存器中的值弹出，这样就可以保证这三个寄存器中的值不会影响到其他函数。</p>
+<p>这里我们可以看出，栈在这里起到了一个临时变量存储的作用，因此我们称调用者和被调用者之间的这段栈为调用栈。</p>
+</details>
+<p>但是这样做有一个问题就是浪费了大量指令在栈的压入和弹出上，效率不高，我们约定：</p>
+<p>对寄存器进行划分：</p>
+<ul>
+<li>t0-t6: 临时寄存器，用于存放临时变量(内部临时用 不保存)</li>
+<li>s0-s11: 保存寄存器，用于存放需要保存的变量(外部用 会保存)</li>
+</ul>
+<p>在上面的例子中，我们可以尽量使用t0-t6这些不用入栈的寄存器，如果需要保存的变量太多，那么再使用s0-s11这些需要入栈的寄存器。</p>
+<p>下面是寄存器的常用用途：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">寄存器</th>
+<th style="text-align: center;">名称</th>
+<th style="text-align: center;">用途描述</th>
+<th style="text-align: center;">saver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">x0</td>
+<td style="text-align: center;">zero</td>
+<td style="text-align: center;">硬件0</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">x1</td>
+<td style="text-align: center;">ra</td>
+<td style="text-align: center;">返回地址</td>
+<td style="text-align: center;">caller</td>
+</tr>
+<tr>
+<td style="text-align: center;">x2</td>
+<td style="text-align: center;">sp</td>
+<td style="text-align: center;">栈指针</td>
+<td style="text-align: center;">callee</td>
+</tr>
+<tr>
+<td style="text-align: center;">x3</td>
+<td style="text-align: center;">gp</td>
+<td style="text-align: center;">全局指针</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">x4</td>
+<td style="text-align: center;">tp</td>
+<td style="text-align: center;">线程指针</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">x5</td>
+<td style="text-align: center;">t0</td>
+<td style="text-align: center;">临时变量/备用链接寄存器</td>
+<td style="text-align: center;">caller</td>
+</tr>
+<tr>
+<td style="text-align: center;">x6-7</td>
+<td style="text-align: center;">t1-2</td>
+<td style="text-align: center;">临时变量</td>
+<td style="text-align: center;">caller</td>
+</tr>
+<tr>
+<td style="text-align: center;">x8</td>
+<td style="text-align: center;">s0/fp</td>
+<td style="text-align: center;">保存寄存器/帧指针</td>
+<td style="text-align: center;">callee</td>
+</tr>
+<tr>
+<td style="text-align: center;">x9</td>
+<td style="text-align: center;">s1</td>
+<td style="text-align: center;">保存寄存器</td>
+<td style="text-align: center;">callee</td>
+</tr>
+<tr>
+<td style="text-align: center;">x10-11</td>
+<td style="text-align: center;">a0-1</td>
+<td style="text-align: center;">函数参数/返回值</td>
+<td style="text-align: center;">caller</td>
+</tr>
+<tr>
+<td style="text-align: center;">x12-17</td>
+<td style="text-align: center;">a2-7</td>
+<td style="text-align: center;">函数参数</td>
+<td style="text-align: center;">caller</td>
+</tr>
+<tr>
+<td style="text-align: center;">x18-27</td>
+<td style="text-align: center;">s2-11</td>
+<td style="text-align: center;">保存寄存器</td>
+<td style="text-align: center;">callee</td>
+</tr>
+<tr>
+<td style="text-align: center;">x28-31</td>
+<td style="text-align: center;">t3-6</td>
+<td style="text-align: center;">临时变量</td>
+<td style="text-align: center;">caller</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nested-function">Nested Function<a class="headerlink" href="#nested-function" title="Permanent link">&para;</a></h3>
+<p>leaf func中的栈是单次的，刚开始push，结束pop</p>
+<details class="example">
+<summary>n!</summary>
+<p><img alt="co-23" src="../../../../../assets/pics/co/co-23.png" /></p>
+<p>对整体的过程进行分析：</p>
+<ol>
+<li>递归调用
+    在进行递归时，由于n一直&gt;0，因此会一直递归下去，直到n==0为止，也就是在fact部分bge前和L1部分jal语句之间来回跳转到n==0</li>
+<li>
+<p>恢复并计算
+    到n==0后，先进行一次对base case的处理，也就是fact(0) = 1，然后进行恢复，恢复的过程是L1部分jal语句的返回，一直在L1部分jal语句和jalr语句之间来回跳转，直到返回到栈顶</p>
+</li>
+<li>
+<p>计算最终结果
+    最终jalr语句返回后，x10中存储的就是最终的结果</p>
+</li>
+</ol>
+<p>以n=3为例：</p>
+<p><div align="center">
+<img src="../../../../assets/pics/co/co-24.png" alt="co-24" height="50px" width="300px">
+</div></p>
+<p><div align="center">
+<img src="../../../../assets/pics/co/co-25.png" alt="co-25" height="100px" width="300px">
+</div></p>
+<p><div align="center">
+<img src="../../../../assets/pics/co/co-26.png" alt="co-26" height="100px" width="300px">
+</div></p>
+<p><div align="center">
+<img src="../../../../assets/pics/co/co-27.png" alt="co-27" height="100px" width="300px">
+</div></p>
+<p><div align="center">
+<img src="../../../../assets/pics/co/co-28.png" alt="co-28" height="100px" width="300px">
+</div></p>
+</details>
+<p><img alt="co-29" src="../../../../../assets/pics/co/co-29.png" /></p>
+<p>FP是帧指针frame pointer，用来指向当前函数的栈帧的栈底，只有当跳转函数时，才会改变FP的值</p>
+<h3 id="memory-layout">Memory Layout<a class="headerlink" href="#memory-layout" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Text: program code 就是放指令</li>
+<li>Static data: global variables</li>
+<li>Dynamic data: heap 动态数据-malloc用的</li>
+<li>Stack: automatic variables 自动变量</li>
+</ul>
+<div align="center">
+<img src="../../../../assets/pics/co/co-30.png" alt="co-30" height="100px" width="px">
+</div>
+
+<h2 id="comunicate">Comunicate<a class="headerlink" href="#comunicate" title="Permanent link">&para;</a></h2>
+<p>不同编码有不同的数据长度，因此也需要不同的load和store指令</p>
+<ul>
+<li>lb: load byte </li>
+<li>lh: load halfword</li>
+<li>lw: load word</li>
+<li>
+<p>ld: load doubleword</p>
+</li>
+<li>
+<p>lbu: load byte unsigned</p>
+</li>
+<li>lhu: load halfword unsigned</li>
+</ul>
+<p>因为寄存器是64位的，因此读取出来的数据需要进行符号扩展（<code>lb</code>）或零扩展（<code>lbu</code>）</p>
+<p>比如在读取A[i]时，如果A是int型，那么就需要读取4个字节，如果A是short型，那么就需要读取2个字节</p>
+<ul>
+<li>sb: store byte</li>
+<li>sh: store halfword</li>
+<li>sw: store word</li>
+<li>sd: store doubleword</li>
+</ul>
+<p>store指令就不需要进行符号扩展或零扩展了，我们只是把对应部分放到对应位置上</p>
+<p>上述四个指令就是存在寄存器的rightmost 8/16/32/64 bits</p>
+<details class="example">
+<summary>string copy</summary>
+<p><img alt="co-31" src="../../../../../assets/pics/co/co-31.png" /></p>
+<p>但是i应该存在临时寄存器而不是s3，这样就不需要栈来存了</p>
+</details>
+<h2 id="addressing">Addressing<a class="headerlink" href="#addressing" title="Permanent link">&para;</a></h2>
+<h3 id="wide-immediate">Wide Immediate<a class="headerlink" href="#wide-immediate" title="Permanent link">&para;</a></h3>
+<p>对于jal指令，如果立即数是32位的就超过了他的跳转范围，那么就需要使用<code>lui</code>这个指令先将所需要跳转的指令的地址的高20位放到寄存器中，然后用<code>jalr</code>指令将这个寄存器和偏移量相加，就可以得到最终的跳转地址</p>
+<details class="example">
+<summary>32-bit immediate</summary>
+<p><img alt="co-33" src="../../../../../assets/pics/co/co-33.png" /></p>
+<p>这里是加上977而不是976，因为在lui时扩展了符号位，其实我也不是很懂为什么加上1，但是既然说了就记住吧（最近事情太多 妈的 摆了。。。）</p>
+<p>po一张书上对于这个问题的解释吧 我觉得大体意思就是看第11位是0还是1，如果是0，那么就加976，如果是1，那么就加977</p>
+<p><img alt="co-34" src="../../../../../assets/pics/co/co-34.png" /></p>
+</details>
+<h3 id="branch-addressing">Branch Addressing<a class="headerlink" href="#branch-addressing" title="Permanent link">&para;</a></h3>
+<p>是相对地址跳转</p>
+<ul>
+<li>PC-relative addressing：</li>
+</ul>
+<div class="arithmatex">\[
+\begin{align}
+Target &amp;= PC + Branch\_offset \\
+           &amp;= PC + 2\times imm
+\end{align}
+\]</div>
+<p>在B-Type指令中，立即数是<code>{{19{inst[31]}}, inst[31], inst[19:12], inst[20], inst[30:25], inst[11:8], 1'b0}</code>，可以看到最低位是0，因此Branch_offset一定是偶数</p>
+<div class="admonition note">
+<p class="admonition-title">Instruction to Code</p>
+<p><img alt="co-35" src="../../../../../assets/pics/co/co-35.png" /></p>
+<p>在这个例子中我们需要进行2000的跳转，我们可以看到在进行编码时，instruction中的立即数被编码到了寄存器的高11位，第0位是0，因此在instruction中，我们只需要编码1000的立即数，就可以完成2000的跳转</p>
+</div>
+<details class="example">
+<summary>Encode while loop</summary>
+<p><img alt="co-36" src="../../../../../assets/pics/co/co-36.png" /></p>
+<p><img alt="co-37" src="../../../../../assets/pics/co/co-37.png" /></p>
+<ul>
+<li>bne: 进行跳转是由自身到Exit的地址，offset = 80024-80012 = 12，但是编码时，我们只需要在rd也就是offset中编码0110 = 6</li>
+</ul>
+<p>beq也是同理，但是需要注意的是，beq的offset是负的，</p>
+</details>
+<div class="admonition abstract">
+<p class="admonition-title">RISC-V Addressing Summary</p>
+<p><img alt="co-38" src="../../../../../assets/pics/co/co-38.png" /></p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="err">1.</span><span class="w"> </span><span class="nf">addi</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="no">add</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="err">3.</span><span class="w"> </span><span class="nf">ld</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">(</span><span class="no">x6</span><span class="p">)</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="err">4.</span><span class="w"> </span><span class="nf">beq</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L1</span>
+</span></code></pre></div>
+</div>
+<hr />
+<h2 id="disassembly">Disassembly<a class="headerlink" href="#disassembly" title="Permanent link">&para;</a></h2>
+<p>反汇编：将Machine Code转换为Assembly Code</p>
+<details class="note">
+<summary>Table</summary>
+<p><img alt="co-39" src="../../../../../assets/pics/co/co-39.png" /></p>
+</details>
+<h2 id="synchronization-and-prgram-translation">Synchronization and Prgram Translation<a class="headerlink" href="#synchronization-and-prgram-translation" title="Permanent link">&para;</a></h2>
+<p>这里made说是了解一下的，补雪啦</p>
+<p>放一下noughtq的笔记链接<a href="https://note.noughtq.top/hardware/co/2#synchoronization">🔗</a>吧 写的超级好 </p>
+<h2 id="c-in-risc-v">C in RISC-V<a class="headerlink" href="#c-in-risc-v" title="Permanent link">&para;</a></h2>
+<h3 id="sort">Sort<a class="headerlink" href="#sort" title="Permanent link">&para;</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top", "navigation.prune"], "search": "../../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
