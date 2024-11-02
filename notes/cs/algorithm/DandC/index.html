@@ -14,7 +14,7 @@
         <link rel="prev" href="../backtracking/">
       
       
-        <link rel="next" href="../../Sys/CO/">
+        <link rel="next" href="../dp/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -262,6 +262,35 @@
   
 
       
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Tool_Pool/GNU_Make/" class="md-tabs__link">
+          
+  
+    
+  
+  Tool Box
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -337,8 +366,6 @@
   
     
     
-      
-        
       
         
       
@@ -452,6 +479,8 @@
   
     
     
+      
+        
       
         
       
@@ -628,6 +657,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#nearest-neighbor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nearest Neighbor
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -655,6 +693,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dynamic Programming
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -777,8 +836,15 @@
 
               
             
-              
-                
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
   
   
   
@@ -804,11 +870,14 @@
         
   
   
-    <a href="../../../Tool_Pool/GNU_Make/" class="md-nav__link">
+    
+  
+  
+    <a href="../../../../Tool_Pool/GNU_Make/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Tools
+    Tool Box
   </span>
   
 
@@ -818,14 +887,8 @@
     </a>
   
 
-      
-    </li>
   
 
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -871,6 +934,15 @@
   <a href="#maximum-subarray" class="md-nav__link">
     <span class="md-ellipsis">
       Maximum Subarray
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nearest-neighbor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nearest Neighbor
     </span>
   </a>
   
@@ -923,31 +995,146 @@
 <p><strong>Divide</strong> the problem into a number of subproblems</p>
 <p><strong>Conquer</strong> the subproblems by solving them recursively</p>
 <p><strong>Combine</strong> the solutions to the subproblems into the solution for the original problem</p>
-<p>$$
-T(n) = aT(n/b) + f(n)</p>
-<p>N 是原问题的规定大小, f(n) 是划分和合并子问题的解的时间
-$$</p>
+<div class="arithmatex">\[
+T(n) = aT(n/b) + f(n)
+\]</div>
+<div class="arithmatex">\[
+N 是原问题的规定大小, f(n) 是划分和合并子问题的解消耗的时间
+\]</div>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <h3 id="maximum-subarray">Maximum Subarray<a class="headerlink" href="#maximum-subarray" title="Permanent link">&para;</a></h3>
 <p>常见套路是均匀的一分为二</p>
 <p>在这里，我们将数组一分为二，分别求出左半部分的最大子数组和右半部分的最大子数组，然后考虑跨越中点的最大子数组</p>
 <p>横跨子序列的求算方法：</p>
 <p>从中间向两边扫描，分别求出由中间向左的最大子数组和由中间向右的最大子数组，然后合并</p>
+<h3 id="nearest-neighbor">Nearest Neighbor<a class="headerlink" href="#nearest-neighbor" title="Permanent link">&para;</a></h3>
+<div class="admonition question">
+<p class="admonition-title">平面上给定的N个点中找到距离最近的两个点</p>
+</div>
+<div class="admonition solution">
+<p class="admonition-title">Solution</p>
+<p>在先前的例子中，我们也采用了将问题均匀一分为二的方法，在这里，我们同样采用这种方法。</p>
+<ul>
+<li>首先根据这些点的x坐标，将这些点一分为二，分别求出左半部分和右半部分最近的两个点</li>
+<li>然后考虑跨越中点的最近两个点：</li>
+<li>如果考虑分割线左右两边所有的点，那么时间复杂度是<span class="arithmatex">\(O(N^2)\)</span>，显然太大了</li>
+<li>我们第一步考虑的是选取一个束状带型区域，这个区域距离分割线的距离是<span class="arithmatex">\(\delta\)</span>，则此时如果能保证这个区域中只有<span class="arithmatex">\(O(\sqrt{N})\)</span>个点，那么我们就可以在<span class="arithmatex">\(O(N)\)</span>的时间内找到跨越中点的最近两个点，但万一不呢？</li>
+<li>所以我们需要进一步的改进，再确定的垂直带状区域中，我们再选取一个竖直高度为<span class="arithmatex">\(\delta\)</span>的的区域，这样构成了一个长为<span class="arithmatex">\(2\delta\)</span>，宽为<span class="arithmatex">\(\delta\)</span>的矩形
+<div align="center">
+<img src="/../../../../assets/pics/dandc/dc-1.png" alt="dc-1" height="100px" width="300px">
+</div></li>
+<li>在这个情况下，每个点只需要考虑与其他七个点（也就是边框的角上）之间的距离即可</li>
+<li>即使在所有点都在这个区域的情况下，因为每个点的判断次数是常数的，所以时间复杂度最差仍然是<span class="arithmatex">\(O(N)\)</span></li>
+</ul>
+</div>
 <h2 id="analysis">Analysis<a class="headerlink" href="#analysis" title="Permanent link">&para;</a></h2>
-<p>一个盘子有N个点，找到距离最近的两个点</p>
+<p>分治法的时间复杂度计算依托于我们先前定义的算式</p>
+<div class="arithmatex">\[
+T(n) = aT(n/b) + f(n)
+\]</div>
+<p>对于这种递归式，我们可以直接进行递归展开然后计算：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="arithmatex">\[
+\begin{aligned}
+T(n) &amp;= 2T(n/2) + N\\
+&amp;= 2(2T(n/4) + N/2) + N\\
+&amp;= 4T(n/4) + 2N\\
+&amp;= 4(2T(n/8) + N/4) + 2N\\
+&amp;= 8T(n/8) + 3N\\
+&amp;= ...\\
+&amp;= 2^k T(n/2^k) + kN\\
+&amp;= O(NlogN)
+\end{aligned}
+\]</div>
+</div>
 <h2 id="three-methods-for-solving-recurrence">Three Methods for Solving Recurrence<a class="headerlink" href="#three-methods-for-solving-recurrence" title="Permanent link">&para;</a></h2>
-<p>假定<span class="arithmatex">\(n/b\)</span> 是整数</p>
+<ul>
+<li>假定<span class="arithmatex">\(\frac{n}{b}\)</span> 是整数</li>
+<li>对于较小的n，我们假定<span class="arithmatex">\(T(n) = \Theta(1)\)</span></li>
+</ul>
 <ol>
 <li>Substitution Method</li>
 </ol>
 <p>猜测一个结果，然后用数学归纳法证明</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>在进行这样的一个猜测时：</p>
+<p>已知<span class="arithmatex">\(T(N) = 2T(\lfloor{N/2}\rfloor) + N\)</span>，如果我们猜测<span class="arithmatex">\(T(N) = O(N)\)</span>，那么我们会有如下的证明：</p>
+<ul>
+<li>假设对于<span class="arithmatex">\(m \leq N\)</span>，结论成立</li>
+<li>那么存在一个常数<span class="arithmatex">\(c\)</span>，取<span class="arithmatex">\(m = \lfloor{N/2}\rfloor\)</span>，则有<span class="arithmatex">\(T(\lfloor{N/2}\rfloor) \leq c \lfloor{N/2}\rfloor\)</span></li>
+<li>将这个式子代入<span class="arithmatex">\(T(N) = 2T(\lfloor{N/2}\rfloor) + N\)</span>，则有<span class="arithmatex">\(T(N) \leq 2c \lfloor{N/2}\rfloor + N = cN + N = O(N)\)</span></li>
+</ul>
+<p>看起来似乎没有问题，但是在最后一个等式中，我们得到了<span class="arithmatex">\(cN+N=(c+1)N\)</span>，这显然是<span class="arithmatex">\(O(N)\)</span>的，但是在形式上它是错误的，因为我们预先假设正确的结论是<span class="arithmatex">\(T(m) \leq c m\)</span>，所以要根据这个格式来证明出<span class="arithmatex">\(T(N) \leq cN\)</span>，而不是<span class="arithmatex">\(T(N) \leq (c+1)N\)</span>，必须保证<strong>精确的格式</strong>，常数项也必须一致</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Tips</p>
+<p>在时间复杂度递推中出现了类似<span class="arithmatex">\(T(\sqrt{N})\)</span>的形式，可以采用换元来处理，这里的方法来源于noughtq同学的笔记：</p>
+<ul>
+<li>令<span class="arithmatex">\(m = \log2 N，那么\)</span>T(\sqrt{N}) = T(2^{m/2})，<span class="arithmatex">\(T(N) = T(2^m)\)</span></li>
+<li>再令<span class="arithmatex">\(S(m) = T(2^m)\)</span>，则有<span class="arithmatex">\(S(m/2) = T(2^{m/2}) = T(\sqrt{N})\)</span></li>
+</ul>
+</div>
+<hr />
 <ol start="2">
 <li>Recursion-tree Method</li>
 </ol>
 <p>画出一些例子，用树表示递归的展开</p>
+<p>在树中，每个非叶子节点表示的是向上递归时所需要消耗的时间，也就是公式中的<span class="arithmatex">\(f(n)\)</span>，而叶子节点表示的是递归的结束，也就是<span class="arithmatex">\(T(1)\)</span></p>
+<ul>
+<li>我们在运算时假设了这棵树的开销就是每个节点的开销之和:</li>
+<li>第一部分是叶子结点的<span class="arithmatex">\(T(1)\)</span>开销之和</li>
+<li>第二部分是所有非叶子节点的递归合并开销之和</li>
+</ul>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="recursion-tree" src="/../../../../assets/pics/dandc/dc-2.png" /></p>
+</details>
+<ul>
+<li>递归树的作用不是为了能够得到最准确的证明，而是为了能得到一个好的猜测，之后再用Substitution Method来严格证明</li>
+</ul>
+<p>进行猜测的时候一般会进行一个放大的猜测，可能与真实的相同，也可能比真实值大，但一定不能比真实值小（那样就不用证了，肯定错了），所以对于无法画出树的全貌的例子一般放大一点猜测是没有问题的</p>
+<hr />
 <ol start="3">
 <li>Master Method</li>
 </ol>
+<p>先给出公式：</p>
+<div class="admonition note">
+<p class="admonition-title">Master Method</p>
+<ol>
+<li>If <span class="arithmatex">\(f(n) = O(N^{\log_b a - \epsilon})\)</span> for some constant <span class="arithmatex">\(\epsilon &gt; 0\)</span>, then <span class="arithmatex">\(T(n) = \Theta(N^{\log_b a})\)</span></li>
+<li>If <span class="arithmatex">\(f(n) = \Theta(N^{\log_b a})\)</span>, then <span class="arithmatex">\(T(n) = \Theta(N^{\log_b a} \log N)\)</span></li>
+<li>If <span class="arithmatex">\(f(n) = \Omega(N^{\log_b a + \epsilon})\)</span> for some constant <span class="arithmatex">\(\epsilon &gt; 0\)</span>, and if <span class="arithmatex">\(af(n/b) \leq cf(n)\)</span> for some constant <span class="arithmatex">\(c &lt; 1\)</span> and all sufficiently large <span class="arithmatex">\(n\)</span>, then <span class="arithmatex">\(T(n) = \Theta(f(n))\)</span></li>
+</ol>
+</div>
+<p>yy哥的形象解释，我觉得很有帮助（至少对于记忆来说）：</p>
+<ul>
+<li>
+<p>在分析算法性能时一定要找到占主导的部分--我们从树的角度出发:</p>
+<ul>
+<li>如果我们的树长得非常霸气，巨高，叶子巨多无比，这时候时间开销被叶子dominate了，用Master 1，时间开销就是<span class="arithmatex">\(\Theta (N^{\log_b a})\)</span>——也就是<strong>叶子的个数</strong></li>
+<li>如果我们的树身材非常匀称，一片欣欣向荣，用Master 2，时间开销就是<span class="arithmatex">\(\Theta (N^{\log_b a} \log N)\)</span>——也就是<strong>每一层的开销乘以树的高度</strong></li>
+<li>如果我们的树根特别大，也就是说合并问题所需的时间非常多，甚至比第一层划分节点所需要的时间还要多（就是正则式的意义）用Master 3，时间开销就是<span class="arithmatex">\(\Theta (f(N))\)</span>——也就是<strong>树根的值</strong></li>
+</ul>
+</li>
+</ul>
+<p>我们发现这个公式并没有cover到所有情况的，就比如Master 3中，如果根很大，但是划分问题也很慢，就没办法用主方法了，所以主方法适用的情况就是三个很极端的情况</p>
+<div class="admonition success">
+<p class="admonition-title">加强版的Master Method</p>
+</div>
+<p>当<span class="arithmatex">\(a \geq 1, b &gt; 1, p \geq 0\)</span>时，方程</p>
+<div class="arithmatex">\[
+T(n) = aT(n/b) + \Theta(N^k \log^p N)
+\]</div>
+<p>的解为：</p>
+<div class="arithmatex">\[
+T(n) = \begin{cases}
+\Theta(N^k) &amp; \text{if } k &lt; \log_b a\\
+\Theta(N^k \log N) &amp; \text{if } k = \log_b a\\
+\Theta(N^k \log^p N) &amp; \text{if } k &gt; \log_b a
+\end{cases}
+\]</div>
 
 
 
