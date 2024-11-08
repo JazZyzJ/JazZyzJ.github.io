@@ -245,7 +245,7 @@
   
     
   
-  notes
+  N0tes
 
         </a>
       </li>
@@ -272,16 +272,27 @@
   
     
     
+      
+  
+  
+    
+  
+  
+    
+    
       <li class="md-tabs__item md-tabs__item--active">
         <a href="./" class="md-tabs__link">
           
   
     
   
-  Tool Box
+  To0l Box
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -388,7 +399,7 @@
       
   
   <span class="md-ellipsis">
-    notes
+    N0tes
   </span>
   
 
@@ -440,7 +451,7 @@
             
   
   <span class="md-ellipsis">
-    Tool Box
+    To0l Box
   </span>
   
 
@@ -450,7 +461,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Tool Box
+            To0l Box
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -497,6 +508,52 @@
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             Workflow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Coding
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Coding
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -570,9 +627,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -638,6 +712,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -686,8 +769,8 @@
 - command: 生成target的命令(命令行)，任意Shell命令.(必须以一个Tab键开始)</p>
 <p>target这一个或多个的目标文件依赖于prerequisites中的文件，其生成规则定义在command中, 也就是说
 <strong>prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行。</strong></p>
-<ul>
-<li>一个实例：
+<div class="admonition example">
+<p class="admonition-title">一个实例</p>
 <div class="language-makefile highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">edit </span><span class="o">:</span><span class="w"> </span><span class="n">main</span>.<span class="n">o</span> <span class="n">kbd</span>.<span class="n">o</span> <span class="n">command</span>.<span class="n">o</span> <span class="n">display</span>.<span class="n">o</span> \
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        <span class="n">insert</span>.<span class="n">o</span> <span class="n">search</span>.<span class="n">o</span> <span class="n">files</span>.<span class="n">o</span> <span class="n">utils</span>.<span class="n">o</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>cc<span class="w"> </span>-o<span class="w"> </span>edit<span class="w"> </span>main.o<span class="w"> </span>kbd.o<span class="w"> </span>command.o<span class="w"> </span>display.o<span class="w"> </span><span class="se">\</span>
@@ -712,14 +795,12 @@
 </span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="nf">clean </span><span class="o">:</span>
 </span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span>rm<span class="w"> </span>edit<span class="w"> </span>main.o<span class="w"> </span>kbd.o<span class="w"> </span>command.o<span class="w"> </span>display.o<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span>insert.o<span class="w"> </span>search.o<span class="w"> </span>files.o<span class="w"> </span>utils.o
-</span></code></pre></div></li>
-</ul>
+</span></code></pre></div>
 <p>在实际使用过程中，我们通常会使用<code>make -f &lt;makefile_name&gt;</code>来指定makefile文件，如果不指定，make会默认使用当前目录下的<code>Makefile</code>文件。</p>
 <p>在这个例子中，我们<code>make</code>一下就会生成<code>edit</code>文件，然后使用<code>make clean</code>就会删除<code>edit</code>文件。</p>
-<h1 id="_2">参考<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
-<ol>
-<li></li>
-</ol>
+</div>
+<h2 id="_2">参考<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>GNU Make: <a href="https://seisman.github.io/how-to-write-makefile/overview.html">https://seisman.github.io/how-to-write-makefile/overview.html</a></p>
 
 
 

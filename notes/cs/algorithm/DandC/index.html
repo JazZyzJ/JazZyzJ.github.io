@@ -251,7 +251,7 @@
   
     
   
-  notes
+  N0tes
 
         </a>
       </li>
@@ -274,16 +274,25 @@
   
     
     
+      
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
         <a href="../../../../Tool_Pool/GNU_Make/" class="md-tabs__link">
           
   
     
   
-  Tool Box
+  To0l Box
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -391,7 +400,7 @@
             
   
   <span class="md-ellipsis">
-    notes
+    N0tes
   </span>
   
 
@@ -401,7 +410,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            notes
+            N0tes
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -873,11 +882,14 @@
     
   
   
+    
+  
+  
     <a href="../../../../Tool_Pool/GNU_Make/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Tool Box
+    To0l Box
   </span>
   
 
@@ -885,6 +897,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
   
@@ -1068,12 +1082,13 @@ T(n) &amp;= 2T(n/2) + N\\
 </ul>
 <p>看起来似乎没有问题，但是在最后一个等式中，我们得到了<span class="arithmatex">\(cN+N=(c+1)N\)</span>，这显然是<span class="arithmatex">\(O(N)\)</span>的，但是在形式上它是错误的，因为我们预先假设正确的结论是<span class="arithmatex">\(T(m) \leq c m\)</span>，所以要根据这个格式来证明出<span class="arithmatex">\(T(N) \leq cN\)</span>，而不是<span class="arithmatex">\(T(N) \leq (c+1)N\)</span>，必须保证<strong>精确的格式</strong>，常数项也必须一致</p>
 </div>
-<div class="admonition note">
+<div class="admonition tip">
 <p class="admonition-title">Tips</p>
 <p>在时间复杂度递推中出现了类似<span class="arithmatex">\(T(\sqrt{N})\)</span>的形式，可以采用换元来处理，这里的方法来源于noughtq同学的笔记：</p>
 <ul>
-<li>令<span class="arithmatex">\(m = \log2 N，那么\)</span>T(\sqrt{N}) = T(2^{m/2})，<span class="arithmatex">\(T(N) = T(2^m)\)</span></li>
+<li>令<span class="arithmatex">\(m = \log2 N\)</span>，那么<span class="arithmatex">\(T(\sqrt{N}) = T(2^{m/2})\)</span>，<span class="arithmatex">\(T(N) = T(2^m)\)</span></li>
 <li>再令<span class="arithmatex">\(S(m) = T(2^m)\)</span>，则有<span class="arithmatex">\(S(m/2) = T(2^{m/2}) = T(\sqrt{N})\)</span></li>
+<li>这时候我们就可以将<span class="arithmatex">\(T(N)\)</span>的递推式转换为<span class="arithmatex">\(S(m)\)</span>的递推式：<span class="arithmatex">\(S(m) = 2S(m/2) +  　m\)</span></li>
 </ul>
 </div>
 <hr />
