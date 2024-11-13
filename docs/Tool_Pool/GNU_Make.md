@@ -39,71 +39,40 @@ target这一个或多个的目标文件依赖于prerequisites中的文件，其�
 **prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行。**
 
 
-- 一个实例：
-```makefile 
-edit : main.o kbd.o command.o display.o \
-        insert.o search.o files.o utils.o
-    cc -o edit main.o kbd.o command.o display.o \
-        insert.o search.o files.o utils.o
+!!! example "一个实例"
+    ```makefile 
+    edit : main.o kbd.o command.o display.o \
+            insert.o search.o files.o utils.o
+        cc -o edit main.o kbd.o command.o display.o \
+            insert.o search.o files.o utils.o
 
-main.o : main.c defs.h
-    cc -c main.c
-kbd.o : kbd.c defs.h command.h
-    cc -c kbd.c
-command.o : command.c defs.h command.h
-    cc -c command.c
-display.o : display.c defs.h buffer.h
-    cc -c display.c
-insert.o : insert.c defs.h buffer.h
-    cc -c insert.c
-search.o : search.c defs.h buffer.h
-    cc -c search.c
-files.o : files.c defs.h buffer.h command.h
-    cc -c files.c
-utils.o : utils.c defs.h
-    cc -c utils.c
-clean :
-    rm edit main.o kbd.o command.o display.o \
-        insert.o search.o files.o utils.o
-```
+    main.o : main.c defs.h
+        cc -c main.c
+    kbd.o : kbd.c defs.h command.h
+        cc -c kbd.c
+    command.o : command.c defs.h command.h
+        cc -c command.c
+    display.o : display.c defs.h buffer.h
+        cc -c display.c
+    insert.o : insert.c defs.h buffer.h
+        cc -c insert.c
+    search.o : search.c defs.h buffer.h
+        cc -c search.c
+    files.o : files.c defs.h buffer.h command.h
+        cc -c files.c
+    utils.o : utils.c defs.h
+        cc -c utils.c
+    clean :
+        rm edit main.o kbd.o command.o display.o \
+            insert.o search.o files.o utils.o
+    ```
 
-在实际使用过程中，我们通常会使用`make -f <makefile_name>`来指定makefile文件，如果不指定，make会默认使用当前目录下的`Makefile`文件。
+    在实际使用过程中，我们通常会使用`make -f <makefile_name>`来指定makefile文件，如果不指定，make会默认使用当前目录下的`Makefile`文件。
 
-在这个例子中，我们```make```一下就会生成```edit```文件，然后使用```make clean```就会删除```edit```文件。
-
-
+    在这个例子中，我们```make```一下就会生成```edit```文件，然后使用```make clean```就会删除```edit```文件。
 
 
 
+## 参考
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 参考
-1. [GNU Make]: https://seisman.github.io/how-to-write-makefile/overview.html
+  GNU Make: https://seisman.github.io/how-to-write-makefile/overview.html

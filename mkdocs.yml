@@ -19,7 +19,7 @@ theme:
     - navigation.top
     # - navigation.footer
     # - navigation.sections
-    - navigation.prune
+    # - navigation.prune
   
   palette:
     # - custom_dir: docs/css/stylesheets/extra.css
@@ -37,38 +37,8 @@ theme:
     text: "PT Serif"
     code: "JetBrains Mono, Consolas"
 
-# nav:
-#   - Home: index.md
-#   - notes: 
-#     - Computer Science: 
-#       - notes/cs/index.md
-#       - Algorithms: 
-#         - FDS: notes/cs/algorithm/fds.md   -->Error:fds.md should be fds/fds.md
-    
-nav:
-  - Home: index.md
-  - notes:
-      - Computer Science:
-        - notes/cs/index.md
-        - DS & Algorithms:
-          - FDS: notes/cs/algorithm/fds/fds.md
-          - ADS: notes/cs/algorithm/ads/ADS.md
-          - Backtracking: notes/cs/algorithm/backtracking.md
-          - Divide & Conquer: notes/cs/algorithm/DandC.md
-        - System:
-          - CO: notes/cs/Sys/CO.md
-        - PL: 
-          - Verilog: notes/lingo/verilog.md
-          - Python(CS61a): notes/lingo/cs61a.md
-      # - Artifical Intelligence:
-      - Tools:
-        - GNU Make: notes/Tool_Pool/GNU_Make.md
-
-
-
 
     
-
 markdown_extensions:
   - toc:
       permalink: true
@@ -112,3 +82,35 @@ extra_javascript:
 
 extra_css:
   - docs/css/stylesheets/extra.css
+
+
+
+
+nav:
+  - Home: index.md
+  - N0tes:
+      - Computer Science:
+        - notes/cs/index.md
+        - DS & Algorithms:
+          - FDS: notes/cs/algorithm/fds/fds.md
+          - ADS: notes/cs/algorithm/ads/ADS.md
+          - Backtracking: notes/cs/algorithm/backtracking.md
+          - Divide & Conquer: notes/cs/algorithm/DandC.md
+          - Dynamic Programming: notes/cs/algorithm/dp.md
+          - Greedy Algorithms: notes/cs/algorithm/gdy.md
+        - System:
+          - CO: 
+            - notes/cs/Sys/CO/index.md
+            - notes/cs/Sys/CO/arithmetic.md
+            - notes/cs/Sys/CO/instruction.md
+            - notes/cs/Sys/CO/processor.md
+        - PL: 
+          - Verilog: notes/lingo/verilog.md
+          - Python(CS61a): notes/lingo/cs61a.md
+      # - Artifical Intelligence:
+  - To0l Box:
+    - Workflow:
+      - Coding:
+        - GNU Make: Tool_Pool/GNU_Make.md
+    # - Widgets:
+      
