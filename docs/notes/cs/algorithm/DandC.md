@@ -160,8 +160,8 @@ $$
 
 $$
 T(n) = \begin{cases}
-\Theta(N^k) & \text{if } k < \log_b a\\
-\Theta(N^k \log N) & \text{if } k = \log_b a\\
+\Theta(N^{\log_b a}) & \text{if } k < \log_b a\\
+\Theta(N^k \log^{p+1} N) & \text{if } k = \log_b a\\
 \Theta(N^k \log^p N) & \text{if } k > \log_b a
 \end{cases}
 $$

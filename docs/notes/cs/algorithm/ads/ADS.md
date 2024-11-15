@@ -310,6 +310,11 @@ $$
 
 ### Operation
 
+!!! warning "前提"
+    <span style="font-size: 1.1em;">
+    在这里我们假设在插入前树是满足红黑树性质的，因此进行对比的是插入红色节点前后的性质情况，==补药计算例子中的绝对黑高==
+    </span>
+
 - Insertion
 两个性质需要保持：
 
@@ -321,7 +326,7 @@ $$
 需注意性质2可能因为插入的是空树被破坏，这时需要将根节点涂黑
 
 
-接下来的分类讨论其实就是根据叔叔的颜色进行旋转
+接下来的分类讨论其实就是根据叔叔的颜色进行旋转，
 
 **Case 1**
 
@@ -363,7 +368,7 @@ $$
 **Case 1**
 
 <div align="center">
-<img src="/../../../../assets/pics/ads/ads-11.png" alt="ads-11" height="200px" width="300px">
+<img src="/../../../../assets/pics/ads/ads-11.png" alt="ads-11" height="300px" width="400px">
 </div>
 
 删除节点是黑色，父亲也是黑色但是兄弟是红色，此时将兄弟染黑，父亲染红，但是这样会使黑高右移，因此需要进行左旋转，旋转之后进入到Case 2
@@ -373,7 +378,7 @@ $$
 **Case 2**
 
 <div align="center">
-<img src="/../../../../assets/pics/ads/ads-12.png" alt="ads-12" height="200px" width="300px">
+<img src="/../../../../assets/pics/ads/ads-12.png" alt="ads-12" height="300px" width="400px">
 </div>
 
 此时兄弟节点的颜色是黑色且侄子是双黑，这时候甩锅给父亲，将父亲染黑，此时右路黑色多了一个，然后在分类讨论，父节点本来是红色就结束了，染黑即可；父节点本来是黑色，就继续递归
@@ -391,7 +396,7 @@ $$
 **Case 3**
 
 <div align="center">
-<img src="/../../../../assets/pics/ads/ads-13.png" alt="ads-13" height="200px" width="300px">
+<img src="/../../../../assets/pics/ads/ads-13.png" alt="ads-13" height="400px" width="400px">
 </div>
 
 远侄子是黑色，近侄子是红色，此时将红色侄子与其黑色父亲互换，会导致左侄子这条路的黑高多1，因此需要进行右旋转，然后这时远侄子就是红色了，进入Case 4
@@ -399,7 +404,7 @@ $$
 **Case 4**
 
 <div align="center">
-<img src="/../../../../assets/pics/ads/ads-14.png" alt="ads-14" height="200px" width="300px">
+<img src="/../../../../assets/pics/ads/ads-14.png" alt="ads-14" height="400px" width="400px">
 </div>
 
 这个情况是：X是待删除节点，他的身上有两个黑色标记，他的兄弟是黑的，远侄子一定是红的，父亲和近侄子可红可黑，这时候的操作步骤：
@@ -440,15 +445,15 @@ B-Tree with order B:
 - 结构性质
 
 1. 根节点要么是叶子节点，要么有2到B个孩子
-2. 每个非叶子节点有
+2. 每个非叶子节点有$\lceil \frac{B}{2} \rceil$到$B$个孩子
 3. 所有叶子节点在同一层
    
 - 数值性质
 
 1. 数值全部存放在叶子结点
-2. 非叶子结点中存储routing element，用于确定子树中数值的分布,并且有介于$\lceil B/2 \rceil$到$B$个孩子,称为他的fanout
-3. 非叶子节点的元素个数+1=孩子个数
-4. 叶子节点存的元素个数在$\lceil B/2 \rceil$到$B$之间根节点可以存储1到B个元素
+2. 非叶子结点中存储routing element，用于确定子树中数值的分布，$\lceil B/2 \rceil$到$B$个孩子,称为他的fanout
+3. 非叶子节点中的元素个数+1=孩子个数
+4. 叶子节点存的元素个数在$\lceil B/2 \rceil$到$B$之间，==根节点作为叶子时可以存储1到B个元素==
 5. 一个存储了$K$个元素$e_1,e_2,e_3,e_4,e_K$的internal node 有$v_1,v_2,v_3,v_4,v_K$这些叶子结点：
 
 $$
@@ -481,7 +486,7 @@ $$
 
 对routing element进行二分查找，找到对应的叶子节点，然后对叶子节点进行二分查找
 
-这样得到的CPU时间复杂度为$O(\log_N)$，也就是说，增加B树的阶数不会改变查找时间
+这样得到的CPU时间复杂度为$O(logN)$，也就是说，增加B树的阶数不会改变查找时间
 
 磁盘的I/O次数为$O(\log_B N)$
 
@@ -504,13 +509,13 @@ CPU时间复杂度为$O(B\log_B N)$，磁盘的I/O次数为$O(\log_B N)$
 
 ### Intro
 
-满足堆的传统性质，即父节点的值小于等于子节点的值
+满足最小堆的传统性质，即父节点的值小于等于子节点的值
 
 同时满足左式堆的性质：
 
-对任意一个节点到一个没有两个孩子的节点的距离称为节点的**null path length**，记作$npl(x)$，显然，对于一个有左孩子和右孩子的节点，$npl(x)=1+\min(npl(lc),npl(rc))$，对于叶子节点，$npl(x)=0$，在这里我们定义$npl(null)=-1$
+任意一个节点x到一个 ==没有两个孩子的节点== 的距离称为节点的**null path length**，记作$npl(x)$，显然，对于一个有左孩子和右孩子的节点，$npl(x)=1+\min(npl(lc),npl(rc))$，对于叶子节点，$npl(x)=0$，在这里我们定义$npl(null)=-1$
 
-!!! note "一个没有两个孩子的节点"
+!!! warning "一个没有两个孩子的节点"
     这里注意这个定义，如果一个节点只有一个孩子，那么无论他的这个孩子有多长，他的null path length都是0，因为我们定义了空节点的null path length为-1，而计算时：
 
     $$
