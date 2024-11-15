@@ -908,7 +908,7 @@
         
   
   <span class="md-ellipsis">
-    Processor
+    Single-Cycle Processor
   </span>
   
 
@@ -1450,8 +1450,8 @@ T(n) = aT(n/b) + \Theta(N^k \log^p N)
 <p>的解为：</p>
 <div class="arithmatex">\[
 T(n) = \begin{cases}
-\Theta(N^k) &amp; \text{if } k &lt; \log_b a\\
-\Theta(N^k \log N) &amp; \text{if } k = \log_b a\\
+\Theta(N^{\log_b a}) &amp; \text{if } k &lt; \log_b a\\
+\Theta(N^k \log^{p+1} N) &amp; \text{if } k = \log_b a\\
 \Theta(N^k \log^p N) &amp; \text{if } k &gt; \log_b a
 \end{cases}
 \]</div>

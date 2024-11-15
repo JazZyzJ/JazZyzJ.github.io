@@ -22,7 +22,7 @@
     
     
       
-        <title>Processor - Space . JaZzyzJ</title>
+        <title>Single-Cycle Processor - Space . JaZzyzJ</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#processor" class="md-skip">
+        <a href="#single-cycle-processor" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Processor
+              Single-Cycle Processor
             
           </span>
         </div>
@@ -828,7 +828,7 @@
           
   
   <span class="md-ellipsis">
-    Processor
+    Single-Cycle Processor
   </span>
   
 
@@ -839,7 +839,7 @@
         
   
   <span class="md-ellipsis">
-    Processor
+    Single-Cycle Processor
   </span>
   
 
@@ -1412,7 +1412,7 @@
   
 
 
-<h1 id="processor">Processor<a class="headerlink" href="#processor" title="Permanent link">&para;</a></h1>
+<h1 id="single-cycle-processor">Single-Cycle Processor<a class="headerlink" href="#single-cycle-processor" title="Permanent link">&para;</a></h1>
 <h2 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h2>
 <p>指令执行的步骤概述：</p>
 <ul>
@@ -1543,6 +1543,31 @@
 <li>Branch: sub</li>
 <li>Load/Store: add</li>
 </ul>
+<h1 id="pipelining-process">Pipelining Process<a class="headerlink" href="#pipelining-process" title="Permanent link">&para;</a></h1>
+<p>流水线Pipeline的本质是提高吞吐量，通过将指令的执行过程分解为多个阶段，每个阶段在不同的时钟周期内执行，从而在每个时钟周期内完成多条指令的执行。</p>
+<p>在RISC-V中，流水线Pipeline的实现方式是：</p>
+<div class="admonition note">
+<p class="admonition-title">pipeline</p>
+<ul>
+<li>IF: Instruction Fetch 从指令内存中取出指令</li>
+<li>ID: Instruction Decode 解码指令</li>
+<li>EX: Execute 执行指令</li>
+<li>MEM: Memory Access 访问内存</li>
+<li>WB: Write Back 写回寄存器</li>
+</ul>
+<p><img alt="co-54" src="/../../../../assets/pics/co/co-54.png" /></p>
+<p>图形左半边阴影是写入，右半边阴影是读取，全阴影是都有（这里假设在一个时钟周期内，元件的前半个周期可以进行写操作，后半个周期可以进行读操作）</p>
+</div>
+<p>但是不是所有指令都需要执行所有阶段的指令的，比如load和store指令就不需要执行EX和MEM阶段。</p>
+<p>性能方面：理想条件下</p>
+<div class="arithmatex">\[
+\text{Time between instructions}_{pipelined} = \frac{\text{Time between instructions}_{non-pipelined}}  {\text{Number of stages}}
+\]</div>
+<h2 id="hazards">Hazards<a class="headerlink" href="#hazards" title="Permanent link">&para;</a></h2>
+<h3 id="structure-hazards">Structure Hazards<a class="headerlink" href="#structure-hazards" title="Permanent link">&para;</a></h3>
+<p>流水线问题导致存储器或者ALU访问冲突（内部资源使用冲突）</p>
+<h3 id="data-hazards">Data Hazards<a class="headerlink" href="#data-hazards" title="Permanent link">&para;</a></h3>
+<p>需要等待上一条指令完成数据写入或者读取完成才能进行后续操作</p>
 
 
 

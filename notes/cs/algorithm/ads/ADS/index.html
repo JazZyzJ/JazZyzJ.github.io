@@ -1106,7 +1106,7 @@
         
   
   <span class="md-ellipsis">
-    Processor
+    Single-Cycle Processor
   </span>
   
 
@@ -1707,8 +1707,8 @@
 <h1 id="ads">ADS<a class="headerlink" href="#ads" title="Permanent link">&para;</a></h1>
 <h2 id="avl-tree">AVL Tree<a class="headerlink" href="#avl-tree" title="Permanent link">&para;</a></h2>
 <h3 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h3>
-<p>在数据集中快速查找、插入、删除、排序等操作时具有较好的效果
- <strong>Target</strong>：Speed up</p>
+<p>在数据集中快速查找、插入、删除、排序等操作时具有较好的效果</p>
+<p><strong>Target</strong>：Speed up</p>
 <p>基本思想：</p>
 <p><strong>height balance</strong>：每个节点的左右子树的高度差（平衡因子BF）不超过1</p>
 <div class="arithmatex">\[ BF=| h_l - h_r | \leq 1\]</div>
@@ -1745,11 +1745,13 @@ n_h = n_{h-1} + n_{h-2} + 1
 \]</div>
 <p>可以得到：<br></p>
 <div class="arithmatex">\[ n_h=F_{h+3}-1  
-,h \geq -1\]</div>
+,h \geq -1  \]</div>
+<div class="arithmatex">\[
+\text{F is Fibonacci Number}\]</div>
 </p>
 <h2 id="splay-tree">Splay Tree<a class="headerlink" href="#splay-tree" title="Permanent link">&para;</a></h2>
 <h3 id="intro_1">Intro<a class="headerlink" href="#intro_1" title="Permanent link">&para;</a></h3>
-<p><strong>Target</strong>由空树进行M个连续操作最多需要<span class="arithmatex">\(O(M \log N)\)</span>的时间</p>
+<p><strong>Target</strong>: 由空树进行M个连续操作最多需要<span class="arithmatex">\(O(M \log N)\)</span>的时间</p>
 <p>即：<strong>Amortized Time Complexity 均摊时间复杂度 = <span class="arithmatex">\(O(log N)\)</span></strong></p>
 <h3 id="operation_1">Operation<a class="headerlink" href="#operation_1" title="Permanent link">&para;</a></h3>
 <p>将最近访问的节点提升到根节点，这一操作通过旋转来实现</p>
@@ -1775,24 +1777,25 @@ bound介于worst和average之间
 且均摊界与概率无关
 通常有三种方法：Aggregate Accounting Potential</p>
 <ul>
-<li>Aggregate Method
-对一系列的操作进行最坏时间情况分析得到<span class="arithmatex">\(T(n)\)</span>，此时：
+<li><strong>Aggregate Method</strong></li>
+</ul>
+<p>对一系列的操作进行最坏时间情况分析得到<span class="arithmatex">\(T(n)\)</span>，此时：
 $$
 T(n) \leq \sum_{i=1}^{n} t_i=O(n)
 $$
 这时<span class="arithmatex">\(T(n)\)</span>逼近于<span class="arithmatex">\(O(n)\)</span>，即均摊时间复杂度为<span class="arithmatex">\(O(1)\)</span>
-但是这个方法的难点在于需要确定这个<span class="arithmatex">\(T(n)\)</span>，也就是总的时间开销</li>
-</ul>
+但是这个方法的难点在于需要确定这个<span class="arithmatex">\(\sum_{i=1}^{n} t_i\)</span>，也就是总的时间开销</p>
 <p>在讲解其余的两个方法之前，yy哥说了一个很有趣的故事：
 yy在学校门口开了一个小卖部买汽水，每次卖出一瓶成本为1的汽水，学生至少要交一块钱，但是也可以多交钱存到下次使用，汽水的成本就是<code>actual cost</code>，而学生交的钱就是<code>amortized cost</code>，多出来的钱我们称作<code>credit</code></p>
+<hr />
 <ul>
-<li>Accounting Method
-在这个方法中，我们自己设置均摊价值，但需要保证均摊价值不会小于实际价值，即：</li>
+<li><strong>Accounting Method</strong></li>
 </ul>
-<p>$$
+<p>在这个方法中，我们自己设置均摊价值，但需要保证均摊价值不会小于实际价值，即：</p>
+<div class="arithmatex">\[
 \sum \text{amortized cost} \geq \sum \text{actual cost}
-$$
-(也就是不会赊账)</p>
+\]</div>
+<p>(也就是不会赊账)</p>
 <p>这时候就会得到一个实际价值的上界</p>
 <p>这个方法的过程就是：</p>
 <ul>
@@ -1800,56 +1803,88 @@ $$
 <li>然后设置均摊价值</li>
 <li>分析credit的值，确保其大于等于0</li>
 </ul>
-<p>eg:
-<img alt="ads-5" src="/../../../../assets/pics/ads/ads-5.png" /></p>
+<div class="admonition example">
+<p class="admonition-title">MultiPop</p>
+<p><img alt="ads-5" src="/../../../../assets/pics/ads/ads-5.png" /></p>
+</div>
+<hr />
 <ul>
-<li>Potential Method
+<li><strong>Potential Method</strong>:
 直观的、一次性定义所有操作的均摊代价，对于某些大量操作需要定义均摊价值的情况，这种方法更加适用</li>
 </ul>
 <div class="arithmatex">\[
 \hat{c}_i-c_i=\text { Credit }_i=\Phi\left(D_i\right)-\Phi\left(D_{i-1}\right)
 \]</div>
 <p>解释：</p>
-<p><span class="arithmatex">\(Credit_i\)</span>：第i次操作的credit，这时我们引入一个状态得分函数<span class="arithmatex">\(\Phi(D)\)</span>，这个函数的值是一个状态的代价，<span class="arithmatex">\(D_i\)</span>是第i次操作后的状态</p>
-<p>但是对于每一次操作，<span class="arithmatex">\(Credit_i\)</span>的数值不仅由当前的状态决定，还受到之前状态的影响，因此我们用<span class="arithmatex">\(\Phi(D_i)-\Phi(D_{i-1})\)</span>来表示</p>
+<p><span class="arithmatex">\(Credit_i\)</span>：第<span class="arithmatex">\(i\)</span>次操作的credit，这时我们引入一个状态得分函数<span class="arithmatex">\(\Phi(D)\)</span>，这个函数的值是一个状态的代价<span class="arithmatex">\(D_i\)</span>是第<span class="arithmatex">\(i\)</span>次操作后的状态</p>
+<p>但是对于每一次操作，<span class="arithmatex">\(Credit_i\)</span>的数值不仅由当前的状态决定，还受到之前状态的影响，因此我们用<span class="arithmatex">\(\Phi(D_i-\Phi(D_{i-1})\)</span>来表示</p>
 <p>此时，我们可以得到：</p>
 <div class="arithmatex">\[
 \sum_{i=1}^{n} \hat c_i=\sum_{i=1}^{n} c_i+\Phi(D_n)-\Phi(D_0)
 \]</div>
 <p>恰好在这个求和的过程中，只留下了<span class="arithmatex">\(\Phi(D_0)\)</span>和<span class="arithmatex">\(\Phi(D_n)\)</span>，这两个值是常数，从而我们得到了<span class="arithmatex">\(\sum_{i=1}^{n} \hat c_i\)</span>的值</p>
 <p>实际操作中，我们：</p>
+<div class="admonition tip">
+<p class="admonition-title">设计势能函数</p>
 <ul>
 <li>选择一个合适的状态得分（势能）函数<span class="arithmatex">\(\Phi(D)\)</span><ul>
 <li>势能函数的定义要求：<span class="arithmatex">\(\Phi(D_0)=0\)</span></li>
-<li>反应函数的潜在复杂度</li>
 </ul>
 </li>
-<li>检查credit的值合法性</li>
+<li>反应函数的潜在复杂度</li>
+<li>检查Credit合法性</li>
 <li>计算<span class="arithmatex">\(\sum_{i=1}^{n} \hat c_i\)</span></li>
 </ul>
-<p>最好的势能函数应该确保n次操作的credit值尽可能小</p>
-<p>例子 对Splay树进行均摊分析</p>
-<p>若选深度作为势能函数，无法计算所有节点的深度变化，因此不能选择
+</div>
+<ul>
+<li>最好的势能函数应该确保n次操作的credit值尽可能小</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">对Splay树进行均摊分析</p>
+<p><span style="font-size: 1.1em;">
+若选深度作为势能函数，无法计算所有节点的深度变化，因此不能选择
+</span></p>
+<p><span style="font-size: 1.1em;">
 若选择所选转节点的子节点个数，可以行得通，但是X、G的变化太大，所得到的界太松
-最终选择的技巧是：</p>
-<p><strong>对节点数取对数 得到树的秩</strong></p>
-<p>即：<span class="arithmatex">\(\Phi(D)=Rank=\sum\log S(n)\)</span></p>
-<p>对势能函数分析时，如果进行完全分析，需要对每个节点的credit进行计算，但是这样计算太复杂，因此我们进行放缩，只对所寻找的目标节点的势能进行分析，这样可以简化问题</p>
-<p>需要用到下面的引理：</p>
-<p><strong>Lemma:</strong></p>
+</span></p>
+<p><span style="font-size: 1.1em;">
+最终选择的技巧是：
+</span></p>
+<p><span style="font-size: 1.1em;">
+<strong>对节点数取对数 得到树的秩</strong>
+</span></p>
+<p><span style="font-size: 1.1em;">
+即：<span class="arithmatex">\(\Phi(D)=Rank=\sum\log S(n)\)</span>
+</span></p>
+<p><span style="font-size: 1.1em;">  <br />
+对势能函数分析时，如果进行完全分析，需要对每个节点的credit进行计算，但是这样计算太复杂，因此我们进行放缩，只对所寻找的目标节点的势能进行分析，这样可以简化问题
+</span></p>
+<p><span style="font-size: 1.1em;">
+需要用到下面的引理：
+</span></p>
+<div class="admonition lemma">
+<p class="admonition-title">Lemma</p>
 <div class="arithmatex">\[
 if:a+b \leq c 
 \]</div>
 <div class="arithmatex">\[
 then:\log a + \log b \leq 2\log c + 2
 \]</div>
+</div>
 <p><img alt="ads-6" src="/../../../../assets/pics/ads/ads-6.png" /></p>
 <p>我手写了一下这三个放缩的过程：</p>
 <p><img alt="ads-7" src="/../../../../assets/pics/ads/ads-7.jpg" /></p>
+</div>
 <h2 id="red-black-tree">Red-Black Tree<a class="headerlink" href="#red-black-tree" title="Permanent link">&para;</a></h2>
 <h3 id="intro_2">Intro<a class="headerlink" href="#intro_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
 <p>AVL树是通过实现高度平衡来进行优化</p>
+</li>
+<li>
 <p>而红黑树是通过实现颜色平衡来进行优化</p>
+</li>
+</ul>
 <p>在树的代码中，遇到了叶子结点时需要<code>if</code>判定空，常用一个哨兵节点来避免大量的<code>if</code>语句，但是为了避免空间的浪费，在红黑树中，我们使用了<strong>一个</strong>NIL节点来代替哨兵节点,所有的叶子节点和根节点都指向NIL节点</p>
 <p>红黑树的性质：</p>
 <ul>
@@ -1860,7 +1895,10 @@ then:\log a + \log b \leq 2\log c + 2
 <li>对于每个节点，从该节点到其所有后代叶节点的路径上，均包含相同数目的黑色节点</li>
 </ul>
 <p><strong>black height</strong>：从某节点（不包含自身）到叶节点的黑色节点的个数</p>
-<p>Lemma: 一个有N个内部节点的红黑树的树高至多为<span class="arithmatex">\(2\log(N+1)\)</span></p>
+<div class="admonition lemma">
+<p class="admonition-title">Lemma</p>
+<p>一个有N个内部节点的红黑树的树高至多为<span class="arithmatex">\(2\log_2(N+1)\)</span></p>
+</div>
 <p>证明：设空树的树高为0</p>
 <p>归纳假设：</p>
 <div class="arithmatex">\[
@@ -1889,6 +1927,12 @@ Sizeof(Tree)=N \geq 2^{bh(Tree)}-1 \geq 2^{h/2}-1
 $$
 得证</p>
 <h3 id="operation_2">Operation<a class="headerlink" href="#operation_2" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">前提</p>
+<p><span style="font-size: 1.1em;">
+在这里我们假设在插入前树是满足红黑树性质的，因此进行对比的是插入红色节点前后的性质情况，<mark>补药计算例子中的绝对黑高</mark>
+</span></p>
+</div>
 <ul>
 <li>Insertion
 两个性质需要保持：</li>
@@ -1899,7 +1943,7 @@ $$
 </ol>
 <p>默认插入的节点为红色，插入后不会破坏第五条性质，但是继续插入后可能会遇到连续的红色节点，这时需要进行补救</p>
 <p>需注意性质2可能因为插入的是空树被破坏，这时需要将根节点涂黑</p>
-<p>接下来的分类讨论其实就是根据叔叔的颜色进行旋转</p>
+<p>接下来的分类讨论其实就是根据叔叔的颜色进行旋转，</p>
 <p><strong>Case 1</strong></p>
 <p>叔叔节点是红色</p>
 <div align="center">
@@ -1927,13 +1971,13 @@ $$
 <p>然后我们讨论删除节点是黑叶子的情况，这里需要引入一个双黑的概念，即删除叶节点是黑色，那么在删除它之后将它的黑色增加到2，再通过旋转和染色操作平衡黑高，最后将其变为单黑NIL</p>
 <p><strong>Case 1</strong></p>
 <div align="center">
-<img src="/../../../../assets/pics/ads/ads-11.png" alt="ads-11" height="200px" width="300px">
+<img src="/../../../../assets/pics/ads/ads-11.png" alt="ads-11" height="300px" width="400px">
 </div>
 
 <p>删除节点是黑色，父亲也是黑色但是兄弟是红色，此时将兄弟染黑，父亲染红，但是这样会使黑高右移，因此需要进行左旋转，旋转之后进入到Case 2</p>
 <p><strong>Case 2</strong></p>
 <div align="center">
-<img src="/../../../../assets/pics/ads/ads-12.png" alt="ads-12" height="200px" width="300px">
+<img src="/../../../../assets/pics/ads/ads-12.png" alt="ads-12" height="300px" width="400px">
 </div>
 
 <p>此时兄弟节点的颜色是黑色且侄子是双黑，这时候甩锅给父亲，将父亲染黑，此时右路黑色多了一个，然后在分类讨论，父节点本来是红色就结束了，染黑即可；父节点本来是黑色，就继续递归</p>
@@ -1946,13 +1990,13 @@ $$
 <p>这时候问题出现了，如果侄子有红色，那么在Case 2中我们将兄弟染红的操作就是错误的，因为这样会导致两个连续红色，这就进入了Case 3</p>
 <p><strong>Case 3</strong></p>
 <div align="center">
-<img src="/../../../../assets/pics/ads/ads-13.png" alt="ads-13" height="200px" width="300px">
+<img src="/../../../../assets/pics/ads/ads-13.png" alt="ads-13" height="400px" width="400px">
 </div>
 
 <p>远侄子是黑色，近侄子是红色，此时将红色侄子与其黑色父亲互换，会导致左侄子这条路的黑高多1，因此需要进行右旋转，然后这时远侄子就是红色了，进入Case 4</p>
 <p><strong>Case 4</strong></p>
 <div align="center">
-<img src="/../../../../assets/pics/ads/ads-14.png" alt="ads-14" height="200px" width="300px">
+<img src="/../../../../assets/pics/ads/ads-14.png" alt="ads-14" height="400px" width="400px">
 </div>
 
 <p>这个情况是：X是待删除节点，他的身上有两个黑色标记，他的兄弟是黑的，远侄子一定是红的，父亲和近侄子可红可黑，这时候的操作步骤：</p>
@@ -2001,7 +2045,7 @@ $$
 </ul>
 <ol>
 <li>根节点要么是叶子节点，要么有2到B个孩子</li>
-<li>每个非叶子节点有</li>
+<li>每个非叶子节点有<span class="arithmatex">\(\lceil \frac{B}{2} \rceil\)</span>到<span class="arithmatex">\(B\)</span>个孩子</li>
 <li>所有叶子节点在同一层</li>
 </ol>
 <ul>
@@ -2009,9 +2053,9 @@ $$
 </ul>
 <ol>
 <li>数值全部存放在叶子结点</li>
-<li>非叶子结点中存储routing element，用于确定子树中数值的分布,并且有介于<span class="arithmatex">\(\lceil B/2 \rceil\)</span>到<span class="arithmatex">\(B\)</span>个孩子,称为他的fanout</li>
-<li>非叶子节点的元素个数+1=孩子个数</li>
-<li>叶子节点存的元素个数在<span class="arithmatex">\(\lceil B/2 \rceil\)</span>到<span class="arithmatex">\(B\)</span>之间根节点可以存储1到B个元素</li>
+<li>非叶子结点中存储routing element，用于确定子树中数值的分布，<span class="arithmatex">\(\lceil B/2 \rceil\)</span>到<span class="arithmatex">\(B\)</span>个孩子,称为他的fanout</li>
+<li>非叶子节点中的元素个数+1=孩子个数</li>
+<li>叶子节点存的元素个数在<span class="arithmatex">\(\lceil B/2 \rceil\)</span>到<span class="arithmatex">\(B\)</span>之间，<mark>根节点作为叶子时可以存储1到B个元素</mark></li>
 <li>一个存储了<span class="arithmatex">\(K\)</span>个元素<span class="arithmatex">\(e_1,e_2,e_3,e_4,e_K\)</span>的internal node 有<span class="arithmatex">\(v_1,v_2,v_3,v_4,v_K\)</span>这些叶子结点：</li>
 </ol>
 <div class="arithmatex">\[
@@ -2037,7 +2081,7 @@ for\ keys\ in\ leaves\ i\ in\ v_i: Tv_1 \leq ... \leq Tv_K
 <li>FindKey</li>
 </ul>
 <p>对routing element进行二分查找，找到对应的叶子节点，然后对叶子节点进行二分查找</p>
-<p>这样得到的CPU时间复杂度为<span class="arithmatex">\(O(\log_N)\)</span>，也就是说，增加B树的阶数不会改变查找时间</p>
+<p>这样得到的CPU时间复杂度为<span class="arithmatex">\(O(logN)\)</span>，也就是说，增加B树的阶数不会改变查找时间</p>
 <p>磁盘的I/O次数为<span class="arithmatex">\(O(\log_B N)\)</span></p>
 <ul>
 <li>InsertKey</li>
@@ -2052,10 +2096,10 @@ for\ keys\ in\ leaves\ i\ in\ v_i: Tv_1 \leq ... \leq Tv_K
 <p>时间复杂度与插入相同</p>
 <h2 id="leftist-tree">Leftist Tree<a class="headerlink" href="#leftist-tree" title="Permanent link">&para;</a></h2>
 <h3 id="intro_4">Intro<a class="headerlink" href="#intro_4" title="Permanent link">&para;</a></h3>
-<p>满足堆的传统性质，即父节点的值小于等于子节点的值</p>
+<p>满足最小堆的传统性质，即父节点的值小于等于子节点的值</p>
 <p>同时满足左式堆的性质：</p>
-<p>对任意一个节点到一个没有两个孩子的节点的距离称为节点的<strong>null path length</strong>，记作<span class="arithmatex">\(npl(x)\)</span>，显然，对于一个有左孩子和右孩子的节点，<span class="arithmatex">\(npl(x)=1+\min(npl(lc),npl(rc))\)</span>，对于叶子节点，<span class="arithmatex">\(npl(x)=0\)</span>，在这里我们定义<span class="arithmatex">\(npl(null)=-1\)</span></p>
-<div class="admonition note">
+<p>任意一个节点x到一个 <mark>没有两个孩子的节点</mark> 的距离称为节点的<strong>null path length</strong>，记作<span class="arithmatex">\(npl(x)\)</span>，显然，对于一个有左孩子和右孩子的节点，<span class="arithmatex">\(npl(x)=1+\min(npl(lc),npl(rc))\)</span>，对于叶子节点，<span class="arithmatex">\(npl(x)=0\)</span>，在这里我们定义<span class="arithmatex">\(npl(null)=-1\)</span></p>
+<div class="admonition warning">
 <p class="admonition-title">一个没有两个孩子的节点</p>
 <p>这里注意这个定义，如果一个节点只有一个孩子，那么无论他的这个孩子有多长，他的null path length都是0，因为我们定义了空节点的null path length为-1，而计算时：</p>
 <div class="arithmatex">\[
