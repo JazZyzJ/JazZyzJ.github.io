@@ -960,9 +960,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#j-type" class="md-nav__link">
+  <a href="#j-typeuj" class="md-nav__link">
     <span class="md-ellipsis">
-      J-Type
+      J-Type(UJ)
     </span>
   </a>
   
@@ -1626,9 +1626,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#j-type" class="md-nav__link">
+  <a href="#j-typeuj" class="md-nav__link">
     <span class="md-ellipsis">
-      J-Type
+      J-Type(UJ)
     </span>
   </a>
   
@@ -1930,6 +1930,10 @@
 <p>RISC-V中，指令的长度是固定的，32-bit</p>
 <p>大部分情况下我们用16进制表示指令，因为16进制表示的指令更短，更方便。</p>
 <p>有四种基础的指令格式(R/I/S/U),再根据立即数解码的不同分出两种(B/J),共六种</p>
+<details class="example">
+<summary>常见指令编码</summary>
+<p><img alt="co-17" src="../../../../../assets/pics/co/co-17.png" /></p>
+</details>
 <h3 id="r-type">R-Type<a class="headerlink" href="#r-type" title="Permanent link">&para;</a></h3>
 <p>使用寄存器进行数字逻辑运算的指令</p>
 <div class="arithmatex">\[
@@ -1983,12 +1987,8 @@ rs1 = [rs2 + imm]
 <li>funct3: 对存储的数据类型(byte, halfword, word)进行区分</li>
 </ul>
 <p>立即数是<code>{{20{inst[31]}}, inst[31:25], inst[11:7]}</code></p>
-<details class="example">
-<summary>常见指令编码</summary>
-<p><img alt="co-17" src="../../../../../assets/pics/co/co-17.png" /></p>
-</details>
 <h3 id="b-typesb">B-Type(SB)<a class="headerlink" href="#b-typesb" title="Permanent link">&para;</a></h3>
-<p>由S-Type指令分化而来，区别是立即数的读取方式不同</p>
+<p>由S-Type指令分化而来，区别是立即数的读取方式不同，是所有分支类指令的编码方式</p>
 <p>左边高位imm是<code>imm[12, 10:5]</code>，右边低位imm是<code>imm[4:1, 11]</code></p>
 <p>立即数是<code>{{19{inst[31]}}, inst[31], inst[7], inst[30:25], inst[11:8], 1'b0}</code></p>
 <h3 id="u-type">U-Type<a class="headerlink" href="#u-type" title="Permanent link">&para;</a></h3>
@@ -1999,23 +1999,23 @@ rs1 = [rs2 + imm]
 
 <p>立即数是<code>{inst[31:12], 12'b0}</code></p>
 <p>就是填充高20位，低12位为0</p>
-<h3 id="j-type">J-Type<a class="headerlink" href="#j-type" title="Permanent link">&para;</a></h3>
+<h3 id="j-typeuj">J-Type(UJ)<a class="headerlink" href="#j-typeuj" title="Permanent link">&para;</a></h3>
 <p>仅有jal指令，用于存放跳转地址</p>
 <p>由U-Type指令分化而来，区别是立即数的读取方式不同</p>
 <p>将U-Type的立即数部分改为了：</p>
 <p><code>{{11{inst[31]}}, inst[31], inst[19:12], inst[20], inst[30:21], 1'b0}</code></p>
 <h2 id="instructions-for-making-decisions">Instructions for Making Decisions<a class="headerlink" href="#instructions-for-making-decisions" title="Permanent link">&para;</a></h2>
 <h3 id="branch">Branch<a class="headerlink" href="#branch" title="Permanent link">&para;</a></h3>
-<div class="language-asm highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">beq</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">beq</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span><span class="w"> </span><span class="c1">// branch if equal</span>
 </span></code></pre></div>
 <p>如果<code>reg1 == reg2</code>，则跳转到Label处执行</p>
-<div class="language-asm highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">bne</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">bne</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span><span class="w"> </span><span class="c1">// branch if not equal</span>
 </span></code></pre></div>
 <p>如果<code>reg1 != reg2</code>，则跳转到Label处执行</p>
-<div class="language-asm highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">blt</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">blt</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span><span class="w"> </span><span class="c1">// branch if less than</span>
 </span></code></pre></div>
 <p>如果<code>reg1 &lt; reg2</code>，则跳转到Label处执行</p>
-<div class="language-asm highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">bge</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">bge</span><span class="w"> </span><span class="no">reg1</span><span class="p">,</span><span class="w"> </span><span class="no">reg2</span><span class="p">,</span><span class="w"> </span><span class="no">Label</span><span class="w"> </span><span class="c1">// branch if greater than or equal</span>
 </span></code></pre></div>
 <p>如果<code>reg1 &gt;= reg2</code>，则跳转到Label处执行</p>
 <details class="example">
@@ -2027,14 +2027,14 @@ rs1 = [rs2 + imm]
 <p><img alt="co-19" src="../../../../../assets/pics/co/co-19.png" /></p>
 </details>
 <h3 id="slt">SLT<a class="headerlink" href="#slt" title="Permanent link">&para;</a></h3>
-<p>set on less than </p>
-<div class="language-asm highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">slt</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">slt</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w"> </span><span class="c1">// set on less than</span>
 </span></code></pre></div>
 <p>通常用来比较两个数的大小，得到的结果存放在一个临时寄存器中作为标记，如果<code>rs1 &lt; rs2</code>，则将临时寄存器置1，否则置0，这个临时寄存器和0相比是否相等可以作为<code>beq</code>指令的判断条件</p>
 <h3 id="jump">Jump<a class="headerlink" href="#jump" title="Permanent link">&para;</a></h3>
-<div class="language-asm highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">jalr</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">jalr</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w"> </span><span class="c1">// jump and link register</span>
 </span></code></pre></div>
 <p>当前pc地址的下一个地址(pc+4)存放在rd中(为了能回来)，然后跳转到rs1+imm处</p>
+<p>pc = (imm+rs1) &amp; 0xFFFFFFFE 即最低位会被设为 0</p>
 <details class="example">
 <summary>switch</summary>
 <p><img alt="co-20" src="../../../../../assets/pics/co/co-20.png" /></p>
@@ -2043,6 +2043,9 @@ rs1 = [rs2 + imm]
 <p>这里load指令的作用：</p>
 <p>先前我们用x7作为一个临时寄存器用于存储跳转表中需要跳转的地址，进行load后，x7仍然是一个临时寄存器，但是这时x7装载的就是这个地址中的信息，也就是jalr需要跳转到的程序的位置（仍然是个地址）</p>
 </details>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">jal</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="w"> </span><span class="c1">// jump and link</span>
+</span></code></pre></div>
+<p>rd = pc+4, pc = pc+imm 即将当前指令下一条指令的地址存入 rd，然后相对跳转到 imm 处</p>
 <h3 id="basic-block">Basic Block<a class="headerlink" href="#basic-block" title="Permanent link">&para;</a></h3>
 <p>基本块：最小的程序代码块，一个块内的指令是顺序执行的，块与块之间通过跳转指令连接，但是不会有指令跳转到基本块的内部</p>
 <h2 id="procedure-support">Procedure Support<a class="headerlink" href="#procedure-support" title="Permanent link">&para;</a></h2>
@@ -2057,19 +2060,20 @@ rs1 = [rs2 + imm]
 </ul>
 <h3 id="caller">Caller<a class="headerlink" href="#caller" title="Permanent link">&para;</a></h3>
 <p>use <code>jal</code>指令 jump and link</p>
-<div class="language-asm highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">jal</span><span class="w"> </span><span class="no">x1</span><span class="w"> </span><span class="no">ProcedureAddress</span>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">jal</span><span class="w"> </span><span class="no">x1</span><span class="w"> </span><span class="no">ProcedureAddress</span>
 </span></code></pre></div>
 <ul>
-<li>x1: 存放pc+4，也就是调用函数后需要返回的地址</li>
+<li>x1: 存放pc+4，也就是调用函数后需要返回的地址，同时跳转到<code>PC = PC+ProcedureAddress</code>的位置</li>
 </ul>
 <h3 id="callee">Callee<a class="headerlink" href="#callee" title="Permanent link">&para;</a></h3>
 <p>use <code>jalr</code>指令 jump and link register</p>
-<div class="language-asm highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">jalr</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x1</span><span class="p">)</span>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">jalr</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x1</span><span class="p">)</span>
 </span></code></pre></div>
 <ul>
 <li>x0: 固定为0</li>
 <li>x1: 跳回到返回的下一个指令的地址</li>
 </ul>
+<p>x0 是在 rd的位置上，这个位置本来是存放PC+4的，但是这里我们用x0来接收，因为在函数返回过程中，我们不需要用到这个位置，因此我们用不会被改变的x0来接收</p>
 <h3 id="arguments">Arguments<a class="headerlink" href="#arguments" title="Permanent link">&para;</a></h3>
 <p>通过寄存器传递参数</p>
 <p>用的是x10-x17这8个寄存器，在这里这几个寄存器被称为a0-a7寄存器</p>
@@ -2081,14 +2085,14 @@ rs1 = [rs2 + imm]
 <ul>
 <li>Push：</li>
 </ul>
-<div class="language-asm highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">-8</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nf">sd</span><span class="w"> </span><span class="no">xxx</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">-8</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">sd</span><span class="w"> </span><span class="no">xxx</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
 </span></code></pre></div>
 <ul>
 <li>Pop</li>
 </ul>
-<div class="language-asm highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">ld</span><span class="w"> </span><span class="no">xxx</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nf">ld</span><span class="w"> </span><span class="no">xxx</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span>
 </span></code></pre></div>
 <p><img alt="co-22" src="../../../../../assets/pics/co/co-22.png" /></p>
 <details class="example">
@@ -2311,10 +2315,10 @@ Target &amp;= PC + Branch\_offset \\
 <div class="admonition abstract">
 <p class="admonition-title">RISC-V Addressing Summary</p>
 <p><img alt="co-38" src="../../../../../assets/pics/co/co-38.png" /></p>
-<div class="language-asm highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="err">1.</span><span class="w"> </span><span class="nf">addi</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="no">add</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="err">3.</span><span class="w"> </span><span class="nf">ld</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">(</span><span class="no">x6</span><span class="p">)</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="err">4.</span><span class="w"> </span><span class="nf">beq</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L1</span>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="err">1.</span><span class="w"> </span><span class="nf">addi</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="no">add</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="err">3.</span><span class="w"> </span><span class="nf">ld</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">(</span><span class="no">x6</span><span class="p">)</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="err">4.</span><span class="w"> </span><span class="nf">beq</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L1</span>
 </span></code></pre></div>
 </div>
 <hr />

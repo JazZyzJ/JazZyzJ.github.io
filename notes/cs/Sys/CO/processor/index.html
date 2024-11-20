@@ -980,6 +980,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#main-control-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Control Unit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operation-of-datapath" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operation of Datapath
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1412,6 +1430,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#main-control-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Control Unit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operation-of-datapath" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operation of Datapath
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1496,7 +1532,7 @@
 <ul>
 <li>Register File: 寄存器堆，用于存储所有寄存器<ul>
 <li>进行选择的wire是5位，因为寄存器有32个。</li>
-<li>读取数据只需要进行选择，写入数据需要受<code>RegWrite</code>信号控制  </li>
+<li>读取数据只需要进行选择（在R型指令前已经有ld指令将数据写入寄存器），写入数据需要受<code>RegWrite</code>信号控制  </li>
 </ul>
 </li>
 <li>ALU: 进行算术逻辑运算<ul>
@@ -1508,15 +1544,21 @@
 <p>除了R型指令用到的两个元件，还需要两个</p>
 <p><img alt="co-44" src="/../../../../assets/pics/co/co-44.png" /></p>
 <ul>
-<li>Data Memory: 数据内存,不同于Register File，Data Memory同时具有读写控制</li>
+<li>Data Memory: 数据内存,不同于Register File，Data Memory同时具有读写控制<ul>
+<li>读取数据ld需要受<code>MemRead</code>信号控制，写入数据sd需要受<code>MemWrite</code>信号控制<ul>
+<li>内存的读取需要控制信号的原因是：并不是所有指令都会有访存操作，所以那些用不到内存值的指令就没必要读取内存数据，因此需要控制信号来关闭这扇门；而所有指令都要从寄存器堆里读取数据，因此寄存器堆的读取无需控制信号</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Imm Gen: 从 32 位指令中提取出与立即数相关的位，将这些位按正确的顺序拼接起来，同时对其符号扩展至 64 位</li>
 </ul>
 <h3 id="branch-inst">Branch Inst<a class="headerlink" href="#branch-inst" title="Permanent link">&para;</a></h3>
-<p>ALU 中的 zero 作用是判断是PC+4还是branch target address。</p>
+<p>这里只考虑了beq指令</p>
 <p><img alt="co-45" src="/../../../../assets/pics/co/co-45.png" /></p>
 <ul>
 <li>寄存器用于存放两个被比较的源操作数，进入ALU进行比较</li>
-<li>ALU：第一个ALU的作用是进行比较，并且有一个zero用于判断是否相等；第二个ALU用于计算branch target address</li>
+<li>ALU：第一个ALU的作用是进行比较，并且有一个zero用于判断是否相等进而选择PC+4还是branch target address；第二个ALU只有加法，用于计算branch target address</li>
 <li>Shift left 1:根据之前学到的，在进行branch target address计算时，我们所需的offset在立即数中是真实值的一半，因此对于Imm Gen输出的立即数，我们需要进行左移一位的操作乘2</li>
 </ul>
 <h3 id="compose">Compose<a class="headerlink" href="#compose" title="Permanent link">&para;</a></h3>
@@ -1527,8 +1569,8 @@
 <p class="admonition-title">datapath</p>
 <p><img alt="co-46" src="/../../../../assets/pics/co/co-46.png" /></p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">All types' datapath</p>
+<details class="note">
+<summary>All types' datapath</summary>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">R-type</label><label for="__tabbed_1_2">I-type</label><label for="__tabbed_1_3">S-type</label><label for="__tabbed_1_4">B-type</label><label for="__tabbed_1_5">J-type</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1549,7 +1591,7 @@
 </div>
 </div>
 </div>
-</div>
+</details>
 <h2 id="control-unit">Control Unit<a class="headerlink" href="#control-unit" title="Permanent link">&para;</a></h2>
 <p>只有7+4根信号</p>
 <p>实际上只需要处理八个信号</p>
@@ -1558,14 +1600,185 @@
 <p><img alt="co-52" src="/../../../../assets/pics/co/co-52.png" /></p>
 </div>
 <h4 id="alu-control">ALU Control<a class="headerlink" href="#alu-control" title="Permanent link">&para;</a></h4>
+<p>ALU的控制信号一共有4位：</p>
+<ul>
+<li>其中2位分别来自funct3和funct7</li>
+<li>另外2位是来自ALUop，它来自主控制单元 (main control unit)，用于指定具体执行何种指令，不同的值对应不同的类型：<ul>
+<li>00：加载/存储指令</li>
+<li>01：条件分支指令</li>
+<li>10：R型指令</li>
+</ul>
+</li>
+</ul>
+<details class="note">
+<summary>ALU control</summary>
+<table>
+<thead>
+<tr>
+<th>Instruction opcode</th>
+<th>ALUOp</th>
+<th>Operation</th>
+<th>Funct7</th>
+<th>Funct3</th>
+<th>Desired ALU action</th>
+<th>ALU control Input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ld</td>
+<td>00</td>
+<td>load doubleword</td>
+<td>XXXXXXX</td>
+<td>XXX</td>
+<td>add</td>
+<td>0010</td>
+</tr>
+<tr>
+<td>sd</td>
+<td>00</td>
+<td>store doubleword</td>
+<td>XXXXXXX</td>
+<td>XXX</td>
+<td>add</td>
+<td>0010</td>
+</tr>
+<tr>
+<td>beq</td>
+<td>01</td>
+<td>branch if equal</td>
+<td>XXXXXXX</td>
+<td>XXX</td>
+<td>subtract</td>
+<td>0110</td>
+</tr>
+<tr>
+<td>R-type</td>
+<td>10</td>
+<td>and</td>
+<td>0000000</td>
+<td>111</td>
+<td>AND</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>R-type</td>
+<td>10</td>
+<td>or</td>
+<td>0000000</td>
+<td>110</td>
+<td>OR</td>
+<td>0001</td>
+</tr>
+<tr>
+<td>R-type</td>
+<td>10</td>
+<td>add</td>
+<td>0000000</td>
+<td>000</td>
+<td>add</td>
+<td>0010</td>
+</tr>
+<tr>
+<td>R-type</td>
+<td>10</td>
+<td>sub</td>
+<td>0100000</td>
+<td>000</td>
+<td>subtract</td>
+<td>0110</td>
+</tr>
+<tr>
+<td>R-type</td>
+<td>10</td>
+<td>slt</td>
+<td>0000000</td>
+<td>010</td>
+<td>slt</td>
+<td>0111</td>
+</tr>
+<tr>
+<td>R-type</td>
+<td>10</td>
+<td>srl</td>
+<td>0000000</td>
+<td>101</td>
+<td>srl</td>
+<td>0101</td>
+</tr>
+<tr>
+<td>R-type</td>
+<td>10</td>
+<td>xor</td>
+<td>0000000</td>
+<td>011</td>
+<td>xor</td>
+<td>0011</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>采用两级解码，根据opcode就可以判断7根信号线的值，这时候 ALU 再看funct3和funct7就可以判断出剩下的4根信号线的值。</p>
 <p><img alt="co-53" src="/../../../../assets/pics/co/co-53.png" /></p>
-<p>对于我们常用的几种类型的指令，ALU的功能：</p>
+<h4 id="main-control-unit">Main Control Unit<a class="headerlink" href="#main-control-unit" title="Permanent link">&para;</a></h4>
+<p>余下的六个控制信号的作用如下：</p>
+<p><img alt="co-55" src="/../../../../assets/pics/co/co-55.png" /></p>
 <ul>
-<li>R-type: 取决于opcode</li>
-<li>Branch: sub</li>
-<li>Load/Store: add</li>
+<li>ALUSrc: 决定ALU的第二个输入，0时从寄存器堆中读取数据，1时从立即数中读取数据</li>
+<li>PCSrc: 决定PC的值，0时选择PC+4，1时选择branch target address</li>
+<li>MemtoReg: 0时将ALU的结果返回给目标寄存器，1时将内存中的数据返回给目标寄存器</li>
 </ul>
+<p>最终：</p>
+<p><img alt="co-56" src="/../../../../assets/pics/co/co-56.png" /></p>
+<hr />
+<h4 id="operation-of-datapath">Operation of Datapath<a class="headerlink" href="#operation-of-datapath" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>灰色的元件代表没有被使用</p>
+</blockquote>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">R-type</label><label for="__tabbed_2_2">L/S-type</label><label for="__tabbed_2_3">B-type</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><div align="center">
+<img src="/../../../../assets/pics/co/co-57.png" alt="co-57" height="200px" width="500px">
+</div></p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x3</span>
+</span></code></pre></div>
+<ol>
+<li>IF：取指，递增PC</li>
+<li>ID：解码，从寄存器堆中读取寄存器</li>
+<li>EX：执行，ALU根据操作码确定运算类型，然后对上一步的数据进行计算</li>
+<li>MEM：无</li>
+<li>WB：写回，将结果写入x1</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p><div align="center">
+<img src="/../../../../assets/pics/co/co-58.png" alt="co-58" height="200px" width="500px">
+</div></p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">ld</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">x2</span><span class="p">)</span>
+</span></code></pre></div>
+<ol>
+<li>IF：取指，递增PC</li>
+<li>ID：从寄存器堆中读取x2</li>
+<li>EX：ALU计算x2的数据和经过imm符号扩展的offset的和，得到内存地址</li>
+<li>MEM：根据地址得到对应数据</li>
+<li>WB：将数据写入x1</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p><div align="center">
+<img src="/../../../../assets/pics/co/co-59.png" alt="co-59" height="200px" width="500px">
+</div></p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nf">beq</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span>
+</span></code></pre></div>
+<ol>
+<li>IF：取指，递增PC</li>
+<li>ID：从寄存器堆中读取x1和x2</li>
+<li>EX：ALU将两个读取的数据相减，同时将PC与左移一位后的offset相加，得到branch target address，根据ALU的zero信号判断如何更新PC</li>
+</ol>
+</div>
+</div>
+</div>
 <h1 id="pipelining-process">Pipelining Process<a class="headerlink" href="#pipelining-process" title="Permanent link">&para;</a></h1>
 <p>流水线Pipeline的本质是提高吞吐量，通过将指令的执行过程分解为多个阶段，每个阶段在不同的时钟周期内执行，从而在每个时钟周期内完成多条指令的执行。</p>
 <p>在RISC-V中，流水线Pipeline的实现方式是：</p>
