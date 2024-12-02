@@ -22,7 +22,7 @@
     
     
       
-        <title>Single-Cycle Processor - Space . JaZzyzJ</title>
+        <title>Processor - Space . JaZzyzJ</title>
       
     
     
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Single-Cycle Processor
+              Processor
             
           </span>
         </div>
@@ -497,6 +497,8 @@
       
         
       
+        
+      
     
     
       
@@ -666,6 +668,27 @@
   
   <span class="md-ellipsis">
     NP Completeness
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algorithm/Approximation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Approximation
   </span>
   
 
@@ -851,7 +874,7 @@
           
   
   <span class="md-ellipsis">
-    Single-Cycle Processor
+    Processor
   </span>
   
 
@@ -862,7 +885,7 @@
         
   
   <span class="md-ellipsis">
-    Single-Cycle Processor
+    Processor
   </span>
   
 
@@ -988,6 +1011,21 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#operation-of-datapath" class="md-nav__link">
@@ -1439,6 +1477,21 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#operation-of-datapath" class="md-nav__link">
     <span class="md-ellipsis">
@@ -1607,6 +1660,7 @@
 <li>00：加载/存储指令</li>
 <li>01：条件分支指令</li>
 <li>10：R型指令</li>
+<li>11：I型指令（addi andi）好像会用到？</li>
 </ul>
 </li>
 </ul>
@@ -1726,11 +1780,11 @@
 <ul>
 <li>ALUSrc: 决定ALU的第二个输入，0时从寄存器堆中读取数据，1时从立即数中读取数据</li>
 <li>PCSrc: 决定PC的值，0时选择PC+4，1时选择branch target address</li>
-<li>MemtoReg: 0时将ALU的结果返回给目标寄存器，1时将内存中的数据返回给目标寄存器</li>
+<li>MemtoReg: 00时将ALU的结果返回给目标寄存器，01时将内存中的数据返回给目标寄存器，</li>
 </ul>
 <p>最终：</p>
 <p><img alt="co-56" src="/../../../../assets/pics/co/co-56.png" /></p>
-<hr />
+<h2 id="_1"><img alt="co-60" src="/../../../../assets/pics/co/co-60.png" /><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h4 id="operation-of-datapath">Operation of Datapath<a class="headerlink" href="#operation-of-datapath" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>灰色的元件代表没有被使用</p>
@@ -1782,8 +1836,6 @@
 <h1 id="pipelining-process">Pipelining Process<a class="headerlink" href="#pipelining-process" title="Permanent link">&para;</a></h1>
 <p>流水线Pipeline的本质是提高吞吐量，通过将指令的执行过程分解为多个阶段，每个阶段在不同的时钟周期内执行，从而在每个时钟周期内完成多条指令的执行。</p>
 <p>在RISC-V中，流水线Pipeline的实现方式是：</p>
-<div class="admonition note">
-<p class="admonition-title">pipeline</p>
 <ul>
 <li>IF: Instruction Fetch 从指令内存中取出指令</li>
 <li>ID: Instruction Decode 解码指令</li>
@@ -1791,19 +1843,210 @@
 <li>MEM: Memory Access 访问内存</li>
 <li>WB: Write Back 写回寄存器</li>
 </ul>
+<div class="admonition example">
+<p class="admonition-title">pipeline</p>
 <p><img alt="co-54" src="/../../../../assets/pics/co/co-54.png" /></p>
-<p>图形左半边阴影是写入，右半边阴影是读取，全阴影是都有（这里假设在一个时钟周期内，元件的前半个周期可以进行写操作，后半个周期可以进行读操作）</p>
+<p><span style="font-size: 1.1em">
+    图形左半边阴影是写入，右半边阴影是读取，全阴影是都有（这里假设在一个时钟周期内，元件的前半个周期可以进行写操作，后半个周期可以进行读操作）
+</span></p>
+<div class="admonition note">
+<p class="admonition-title">寄存器读写</p>
+<p>注意到对于寄存器的读写操作，只占用时钟周期的一半，但是ID和WB的完成分别是在一个时钟周期的前后两个部分，只是因为有时对寄存器的操作是同时进行的，为了避免冲突，所以才将ID和WB的完成时间错开，这一操作是通过将读写的操作分别由clk的上升沿和下降沿完成实现的</p>
+</div>
+<details class="example">
+<summary>comparison example</summary>
+<p><span style="font-size: 1.1em">
+    在规定好每个部件所需要的时间后，我们可以对单周期CPU和流水线CPU的执行指令时间进行比较
+</span></p>
+<p><img alt="co-61" src="/../../../../assets/pics/co/co-61.png" /></p>
+<p>执行：
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">ld</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">(</span><span class="no">x4</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nf">ld</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">(</span><span class="no">x4</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nf">ld</span><span class="w"> </span><span class="no">x3</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">(</span><span class="no">x4</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p><img alt="co-62" src="/../../../../assets/pics/co/co-62.png" /></p>
+<p><span style="font-size: 1.1em">
+    单周期CPU的时钟周期是取决于最长指令的时间，因此在这里时钟周期就是800ps，执行3个ld指令需要2400ps
+</span></p>
+<p><span style="font-size: 1.1em">
+    流水线CPU的执行是分阶段的，时钟周期取决于最长的阶段，在这里是200ps，reg操作虽然只用100ps，但是仍然需要进行200ps的操作，最终需要7 * 200ps = 1400ps
+</span></p>
+</details>
 </div>
 <p>但是不是所有指令都需要执行所有阶段的指令的，比如load和store指令就不需要执行EX和MEM阶段。</p>
 <p>性能方面：理想条件下</p>
 <div class="arithmatex">\[
 \text{Time between instructions}_{pipelined} = \frac{\text{Time between instructions}_{non-pipelined}}  {\text{Number of stages}}
 \]</div>
+<div class="admonition warning">
+<p class="admonition-title">时钟周期</p>
+<p><span style="font-size: 1.1em">
+    流水线CPU的时钟周期 = 耗时最长的阶段所花的时间
+</span></p>
+</div>
+<ul>
+<li>只有当每个阶段的时间相等的理想情况发生，才会有上述的性能提升</li>
+<li>同时对于Latency，每个指令是不减的</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>Pipeline 是通过增加通量（throughput）来提高性能的，而不是减少Latency</p>
+</div>
 <h2 id="hazards">Hazards<a class="headerlink" href="#hazards" title="Permanent link">&para;</a></h2>
-<h3 id="structure-hazards">Structure Hazards<a class="headerlink" href="#structure-hazards" title="Permanent link">&para;</a></h3>
-<p>流水线问题导致存储器或者ALU访问冲突（内部资源使用冲突）</p>
-<h3 id="data-hazards">Data Hazards<a class="headerlink" href="#data-hazards" title="Permanent link">&para;</a></h3>
-<p>需要等待上一条指令完成数据写入或者读取完成才能进行后续操作</p>
+<p>Harzard（竞争）：</p>
+<p>是指由于某种原因指令无法按照预期顺序继续执行，分为以下三种：</p>
+<ul>
+<li>
+<p>Structure Hazards</p>
+<ul>
+<li>需要的资源被占用，导致指令无法继续执行</li>
+<li>如多条加载存储指令在同一个时钟周期内对同一块内存进行访问</li>
+</ul>
+</li>
+<li>
+<p>Data Hazards</p>
+<ul>
+<li>需要等待上一条指令完成数据写入或者读取完成才能进行后续操作</li>
+<li>
+<p>解决方案：添加额外的硬件<strong>前递</strong>（forwarding）或称为<strong>旁路</strong>（bypassing）</p>
+</li>
+<li>
+<p><img alt="co-63" src="/../../../../assets/pics/co/co-63.png" /></p>
+<ul>
+<li>只有当目标阶段比源阶段晚时，才能进行前递</li>
+</ul>
+</li>
+<li>
+<p>这一情况对于R型指令是适用的，但是如果先执行加载指令，后执行依赖于该加载指令数据的指令，即使加了一个前递，CPU 还是不得不暂停一个时钟周期，这种情况称为<strong>加载使用数据冒险</strong>(load-use data hazard)，如下图所示：</p>
+</li>
+</ul>
+<p><img alt="co-64" src="/../../../../assets/pics/co/co-64.png" /></p>
+<p>中间的气泡称为流水线停顿（pipeline stall）或者bubble</p>
+<p>这种情况我们可以通过软件层面的优化来解决：</p>
+<details class="example">
+<summary>顺序调整</summary>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+</span></code></pre></div>
+<p>得到一个自然的汇编代码：</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">ld</span><span class="w">  </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x31</span><span class="p">)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="hll"><span class="nf">ld</span><span class="w">  </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">(</span><span class="no">x31</span><span class="p">)</span>
+</span></span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="hll"><span class="nf">add</span><span class="w"> </span><span class="no">x3</span><span class="p">,</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span>
+</span></span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nf">sd</span><span class="w">  </span><span class="no">x3</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">(</span><span class="no">x31</span><span class="p">)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="hll"><span class="nf">ld</span><span class="w">  </span><span class="no">x4</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">(</span><span class="no">x31</span><span class="p">)</span>
+</span></span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="hll"><span class="nf">add</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="no">x4</span>
+</span></span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nf">sd</span><span class="w">  </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">(</span><span class="no">x31</span><span class="p">)</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1">//我们可以看到高亮的两组代码都发生了load-use data hazard，需要增加两个stall</span>
+</span></code></pre></div>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">ld</span><span class="w">  </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x31</span><span class="p">)</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nf">ld</span><span class="w">  </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">(</span><span class="no">x31</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="hll"><span class="nf">ld</span><span class="w">  </span><span class="no">x4</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">(</span><span class="no">x31</span><span class="p">)</span>
+</span></span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nf">add</span><span class="w"> </span><span class="no">x3</span><span class="p">,</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nf">sd</span><span class="w">  </span><span class="no">x3</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">(</span><span class="no">x31</span><span class="p">)</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nf">add</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="no">x4</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nf">sd</span><span class="w">  </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">(</span><span class="no">x31</span><span class="p">)</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1">//因为在这里我们提前了f的读取，正好给了b读取指令时间，所以不需要增加stall了</span>
+</span></code></pre></div>
+<p><img alt="co-65" src="/../../../../assets/pics/co/co-65.png" /></p>
+<p>这种计算也是要掌握的，需要自己判断是否加入stall</p>
+</details>
+</li>
+<li>
+<p>Control Hazards</p>
+<ul>
+<li>需要决定的控制信号依赖于先前的指令，导致无法确定下一条指令的执行</li>
+<li>解决方案：将寄存器的比较和目标地址的计算提前到ID阶段</li>
+<li>但是这样仍然会有一个bubble的产生：</li>
+</ul>
+<p><img alt="co-66" src="/../../../../assets/pics/co/co-66.png" /></p>
+<ul>
+<li>我们需要一个更好的解决方法：<strong>分支预测</strong>：</li>
+<li>一种方法是<strong>静态预测</strong><ul>
+<li>无论什么条件都进行跳转，如果成功则继续进行，如果失败就撤回错误指令，这需要一个额外的时钟周期，效果就和插入bubble一样了，这样至少提高50%效率</li>
+</ul>
+</li>
+<li>另一种方法是<strong>动态预测</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="datapath-in-pipeline">DataPath in Pipeline<a class="headerlink" href="#datapath-in-pipeline" title="Permanent link">&para;</a></h2>
+<p>根据指令执行的阶段，将先前的datapath进行划分：</p>
+<p><img alt="co-67" src="/../../../../assets/pics/co/co-67.png" /></p>
+<p>大多数情况下，指令执行的顺序都是从左到右，但是也有例外：</p>
+<ul>
+<li>最后的写回阶段，将内存的数据写入寄存器是从右往左的（可能会导致数据冒险）</li>
+<li>
+<p>PC寄存器的输入数据（两种选择）是从右往左传递给PC选择MUX的（可能会导致控制冒险）</p>
+</li>
+<li>
+<p>在流水线中我们需要储存进入执行的指令，因此需要一个额外的寄存器，叫做<strong>流水线寄存器</strong>，位于两个阶段之间</p>
+</li>
+</ul>
+<p><img alt="co-68" src="/../../../../assets/pics/co/co-68.png" /></p>
+<div class="admonition example">
+<p class="admonition-title">ld process of pipeline</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:5"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">IF</label><label for="__tabbed_3_2">ID</label><label for="__tabbed_3_3">EX</label><label for="__tabbed_3_4">MEM</label><label for="__tabbed_3_5">WB</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="co-69" src="/../../../../assets/pics/co/co-69.png" /></p>
+<ul>
+<li>将PC寄存器的指令地址传给IF/ID流水线寄存器，供下一条指令使用</li>
+<li>同时传递指令内容</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="co-70" src="/../../../../assets/pics/co/co-70.png" /></p>
+<ul>
+<li>除了继续传递指令地址，还要传递寄存器堆的数据和立即数</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="co-71" src="/../../../../assets/pics/co/co-71.png" /></p>
+<ul>
+<li>将计算好的内存地址放入EX/MEM</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="co-72" src="/../../../../assets/pics/co/co-72.png" /></p>
+<ul>
+<li>从EX/MEM读取内存地址，然后将对应的内存数据写入MEM/WB</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="co-73" src="/../../../../assets/pics/co/co-73.png" /></p>
+<ul>
+<li>从MEM/WB读取内存数据，然后将数据写入寄存器</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">save register number</p>
+<p>在最后写回数据时，我们的指令中已经没有需要写回的寄存器编号了，所以我们改进了这个设计，将寄存器编号放在流水线寄存器中，这样在WB阶段就可以直接使用</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h2 id="control-in-pipeline">Control in Pipeline<a class="headerlink" href="#control-in-pipeline" title="Permanent link">&para;</a></h2>
+<p>在单周期CPU中我们引入了一系列控制信号来进行控制，在这里流水线CPU也需要控制指令，并且这些控制指令也是随着流水型寄存器的传递而传递的</p>
+<p><img alt="co-74" src="/../../../../assets/pics/co/co-74.png" /></p>
+<p>可以看到控制信号随着流水线的进行逐渐被使用，被使用的信号将不再被传递，节约了空间</p>
+<p>在加入控制器后：</p>
+<p><img alt="co-75" src="/../../../../assets/pics/co/co-75.png" /></p>
+<h2 id="data-harzards-fixing">Data Harzards Fixing<a class="headerlink" href="#data-harzards-fixing" title="Permanent link">&para;</a></h2>
+<p>data hazard的解决方法有两种，一种是进行前递forwarding，另一种是进行停顿stall</p>
+<h3 id="forwarding">Forwarding<a class="headerlink" href="#forwarding" title="Permanent link">&para;</a></h3>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">sub</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="no">x3</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nf">and</span><span class="w"> </span><span class="no">x12</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x5</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nf">or</span><span class="w">  </span><span class="no">x13</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nf">add</span><span class="w"> </span><span class="no">x14</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nf">sd</span><span class="w">  </span><span class="no">x15</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">(</span><span class="no">x2</span><span class="p">)</span>
+</span></code></pre></div>
+<p>可以看到x2寄存器的值在sub后的四个指令中都被使用，在正常情况下，x2寄存器的值需要等到MEM阶段才能被写入，但是我们在ALU后的输出端已经得到最终x2的数值了，可以通过前递将结果传递给接下来的指令</p>
+<p><img alt="co-76" src="/../../../../assets/pics/co/co-76.png" /></p>
+<p>图中蓝色的寄存器是需要前递数据的寄存器，我们在EX阶段得到x2的数值后，放入EX/MEM流水线寄存器的rd位置，记这段数据为：</p>
+<div class="arithmatex">\[
+\text{EX/MEM.RegisterRd}
+\]</div>
+<p>我们需要用这些数据的寄存器是：</p>
 
 
 

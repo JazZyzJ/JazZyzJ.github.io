@@ -8,24 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/HPC/">
+        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/algorithm/Approximation/">
       
       
+        <link rel="prev" href="../NP/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+        <link rel="next" href="../../Sys/CO/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>HPC learning notes - Space . JaZzyzJ</title>
+        <title>Approximation - Space . JaZzyzJ</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../docs/css/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../docs/css/stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -72,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hpc-learning-notes" class="md-skip">
+        <a href="#intro" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+    <a href="../../../.." title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
@@ -106,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              HPC learning notes
+              Approximation
             
           </span>
         </div>
@@ -213,7 +217,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
     
@@ -228,17 +232,21 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
     
@@ -273,7 +281,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Tool_Pool/GNU_Make/" class="md-tabs__link">
+        <a href="../../../../Tool_Pool/GNU_Make/" class="md-tabs__link">
           
   
     
@@ -314,7 +322,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+    <a href="../../../.." title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
@@ -344,7 +352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -361,8 +369,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -371,17 +381,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -392,7 +405,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             N0tes
@@ -403,6 +416,8 @@
                 
   
   
+    
+  
   
   
     
@@ -424,16 +439,16 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -450,7 +465,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             Computer Science
@@ -463,8 +478,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -490,11 +507,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
@@ -508,7 +525,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1_2">
             <span class="md-nav__icon md-icon"></span>
             DS & Algorithms
@@ -522,7 +539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/fds/fds/" class="md-nav__link">
+      <a href="../fds/fds/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -543,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/ads/ADS/" class="md-nav__link">
+      <a href="../ads/ADS/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -564,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/backtracking/" class="md-nav__link">
+      <a href="../backtracking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -585,7 +602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/DandC/" class="md-nav__link">
+      <a href="../DandC/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -606,7 +623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/dp/" class="md-nav__link">
+      <a href="../dp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -627,7 +644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/gdy/" class="md-nav__link">
+      <a href="../gdy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -648,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/NP/" class="md-nav__link">
+      <a href="../NP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -666,10 +683,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../algorithm/Approximation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Approximation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -678,6 +715,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#approximation-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approximation Ratio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#approximation-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approximation Scheme
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -767,7 +842,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../Sys/CO/" class="md-nav__link ">
+            <a href="../../Sys/CO/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -800,7 +875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Sys/CO/arithmetic/" class="md-nav__link">
+      <a href="../../Sys/CO/arithmetic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -821,7 +896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Sys/CO/instruction/" class="md-nav__link">
+      <a href="../../Sys/CO/instruction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -842,7 +917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Sys/CO/processor/" class="md-nav__link">
+      <a href="../../Sys/CO/processor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -923,7 +998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lingo/verilog/" class="md-nav__link">
+      <a href="../../../lingo/verilog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -944,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lingo/cs61a/" class="md-nav__link">
+      <a href="../../../lingo/cs61a/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1114,7 +1189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Tool_Pool/GNU_Make/" class="md-nav__link">
+      <a href="../../../../Tool_Pool/GNU_Make/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1178,9 +1253,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#table-of-contents" class="md-nav__link">
+  <a href="#approximation-ratio" class="md-nav__link">
     <span class="md-ellipsis">
-      Table of Contents
+      Approximation Ratio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#approximation-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approximation Scheme
     </span>
   </a>
   
@@ -1204,14 +1288,53 @@
   
 
 
-<h1 id="hpc-learning-notes">HPC learning notes<a class="headerlink" href="#hpc-learning-notes" title="Permanent link">&para;</a></h1>
-<div class="admonition abstract">
-<p class="admonition-title">Abstract</p>
-<p>This is a collection of notes on high performance computing.
-I took a course called HPC101 in the summer of 2024, maybe I'll not work on HPC in the future, but I'll keep these notes for reference.
-BTW HPC101 is definitely a good course, and I wanted to gain something from it so I took these notes.</p>
+<h1 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Dealing with HARD problems</p>
+</blockquote>
+<p>目标：得到一个近似解</p>
+<h2 id="approximation-ratio">Approximation Ratio<a class="headerlink" href="#approximation-ratio" title="Permanent link">&para;</a></h2>
+<p>我们通过<strong>近似比</strong><span class="arithmatex">\(\rho(n)\)</span>来衡量近似算法的好坏，称一个算法是<strong><span class="arithmatex">\(\rho(n)\)</span>-近似算法</strong>。它的意义是：规模为n的输入下，近似解<span class="arithmatex">\(C\)</span>与最优解<span class="arithmatex">\(C^*\)</span>的比值，也就是说</p>
+<div class="arithmatex">\[
+max(\frac{C}{C^*}, \frac{C^*}{C}) \leq \rho(n)
+\]</div>
+<p>算法的近似比与问题规模相关，通常情况下<span class="arithmatex">\(\rho(n)\)</span>随着n的增大而增大</p>
+<h2 id="approximation-scheme">Approximation Scheme<a class="headerlink" href="#approximation-scheme" title="Permanent link">&para;</a></h2>
+<p>最优解的近似方案(Approximation Scheme)，指的是一类近似算法，对给定<span class="arithmatex">\(\epsilon &gt; 0\)</span>，它是一个(1+<span class="arithmatex">\(\epsilon\)</span>)近似算法</p>
+<ul>
+<li><strong>多项式时间近似方案</strong>（PTAS）：对于任意给定<span class="arithmatex">\(\epsilon &gt; 0\)</span>，能在多项式时间复杂度完成计算，记作<span class="arithmatex">\(O(n^{f(\frac{1}{\epsilon}})\)</span><ul>
+<li><strong>完全多项式时间近似方案</strong>（FPTAS）：对于任意给定<span class="arithmatex">\(\epsilon &gt; 0\)</span>，能在多项式时间复杂度完成计算，记作<span class="arithmatex">\(O\left(n^{O(1)}\left(\frac{1}{\varepsilon}\right)^{O(1)}\right)\)</span></li>
+</ul>
+</li>
+</ul>
+<p>设计算法时，考虑如下三个方面：</p>
+<ul>
+<li>最优性（Optimality）：解的质量</li>
+<li>效率（Efficiency）：计算成本</li>
+<li>全部实例（All instances）：通用性</li>
+</ul>
+<p>对这几个方面进行trade-off</p>
+<ul>
+<li>A+B：对于特殊情况的精准快速算法</li>
+<li>A+C：针对全部实例的精准算法</li>
+<li>B+C：近似算法</li>
+</ul>
+<h1 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h1>
+<h2 id="bin-packing">Bin Packing<a class="headerlink" href="#bin-packing" title="Permanent link">&para;</a></h2>
+<p>Next fit 可以得到一个近似比为2的解</p>
+<p>First fit 1.7</p>
+<p>Best fit 大于等于1.7</p>
+<p>不用太多考虑边界情况：因为最坏情况下special case 不会太多</p>
+<h3 id="on-line-algotithm">On-line Algotithm<a class="headerlink" href="#on-line-algotithm" title="Permanent link">&para;</a></h3>
+<p>在装箱问题中是在线算法的 并且没有回溯</p>
+<p>在线算法很难对抗数据分布，因为看不到数据的整体分布</p>
+<p>对于所有在线算法，装箱问题都到不到5/3这个近似比</p>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
 </div>
-<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<h3 id="off-line-algorithm">Off-line Algorithm<a class="headerlink" href="#off-line-algorithm" title="Permanent link">&para;</a></h3>
+<h2 id="knapsack-problem">Knapsack Problem<a class="headerlink" href="#knapsack-problem" title="Permanent link">&para;</a></h2>
+<h2 id="k-center-problem">K-Center Problem<a class="headerlink" href="#k-center-problem" title="Permanent link">&para;</a></h2>
 
 
 
@@ -1264,12 +1387,12 @@ BTW HPC101 is definitely a good course, and I wanted to gain something from it s
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="../../../javascripts/mathjax.js"></script>
+        <script src="../../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
