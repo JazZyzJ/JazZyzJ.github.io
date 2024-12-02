@@ -98,12 +98,14 @@ nav:
           - Divide & Conquer: notes/cs/algorithm/DandC.md
           - Dynamic Programming: notes/cs/algorithm/dp.md
           - Greedy Algorithms: notes/cs/algorithm/gdy.md
+          - NP Completeness: notes/cs/algorithm/NP.md
+          - Approximation: notes/cs/algorithm/Approximation.md
         - System:
           - CO: 
             - notes/cs/Sys/CO/index.md
-            - notes/cs/Sys/CO/arithmetic.md
-            - notes/cs/Sys/CO/instruction.md
-            - notes/cs/Sys/CO/processor.md
+            - Arithmetic: notes/cs/Sys/CO/arithmetic.md
+            - Instruction: notes/cs/Sys/CO/instruction.md
+            - Processor: notes/cs/Sys/CO/processor.md
         - PL: 
           - Verilog: notes/lingo/verilog.md
           - Python(CS61a): notes/lingo/cs61a.md

@@ -12,6 +12,7 @@ Outline:
 - 指令的寻址 Instruction Addressing
 
 指令->Statement
+
 指令集->Syntax
 
 ## Operation
@@ -104,6 +105,10 @@ RISC-V中，指令的长度是固定的，32-bit
 
 有四种基础的指令格式(R/I/S/U),再根据立即数解码的不同分出两种(B/J),共六种
 
+??? example "常见指令编码"
+
+    ![co-17](../../../../assets/pics/co/co-17.png)
+
 
 ### R-Type
 
@@ -180,17 +185,17 @@ $$
 立即数是```{{20{inst[31]}}, inst[31:25], inst[11:7]}```
 
 
-??? example "常见指令编码"
 
-    ![co-17](../../../../assets/pics/co/co-17.png)
 
 ### B-Type(SB)
 
-由S-Type指令分化而来，区别是立即数的读取方式不同
+由S-Type指令分化而来，区别是立即数的读取方式不同，是所有分支类指令的编码方式
 
 左边高位imm是```imm[12, 10:5]```，右边低位imm是```imm[4:1, 11]```
 
 立即数是```{{19{inst[31]}}, inst[31], inst[7], inst[30:25], inst[11:8], 1'b0}```
+
+
 
 
 ### U-Type
@@ -205,7 +210,7 @@ $$
 
 就是填充高20位，低12位为0
 
-### J-Type
+### J-Type(UJ)
 
 仅有jal指令，用于存放跳转地址
 
@@ -226,25 +231,25 @@ $$
 ### Branch
 
 ```asm
-beq reg1, reg2, Label
+beq reg1, reg2, Label // branch if equal
 ```
 
 如果```reg1 == reg2```，则跳转到Label处执行
 
 ```asm
-bne reg1, reg2, Label
+bne reg1, reg2, Label // branch if not equal
 ```
 
 如果```reg1 != reg2```，则跳转到Label处执行
 
 ```asm
-blt reg1, reg2, Label
+blt reg1, reg2, Label // branch if less than
 ```
 
 如果```reg1 < reg2```，则跳转到Label处执行
 
 ```asm
-bge reg1, reg2, Label
+bge reg1, reg2, Label // branch if greater than or equal
 ```
 
 如果```reg1 >= reg2```，则跳转到Label处执行
@@ -258,11 +263,10 @@ bge reg1, reg2, Label
     ![co-19](../../../../assets/pics/co/co-19.png)
 
 ### SLT 
-
-set on less than 
+ 
 
 ```asm
-slt rd, rs1, rs2
+slt rd, rs1, rs2 // set on less than
 ```
 
 通常用来比较两个数的大小，得到的结果存放在一个临时寄存器中作为标记，如果```rs1 < rs2```，则将临时寄存器置1，否则置0，这个临时寄存器和0相比是否相等可以作为```beq```指令的判断条件
@@ -271,10 +275,12 @@ slt rd, rs1, rs2
 ### Jump
 
 ```asm
-jalr rd, imm(rs1)
+jalr rd, imm(rs1) // jump and link register
 ```
 
 当前pc地址的下一个地址(pc+4)存放在rd中(为了能回来)，然后跳转到rs1+imm处
+
+pc = (imm+rs1) & 0xFFFFFFFE 即最低位会被设为 0
 
 
 ??? example "switch"
@@ -289,6 +295,11 @@ jalr rd, imm(rs1)
 
     先前我们用x7作为一个临时寄存器用于存储跳转表中需要跳转的地址，进行load后，x7仍然是一个临时寄存器，但是这时x7装载的就是这个地址中的信息，也就是jalr需要跳转到的程序的位置（仍然是个地址）
 
+```asm
+jal rd, imm // jump and link
+```
+
+rd = pc+4, pc = pc+imm 即将当前指令下一条指令的地址存入 rd，然后相对跳转到 imm 处
 
 ### Basic Block
 
@@ -316,7 +327,7 @@ use ```jal```指令 jump and link
 jal x1 ProcedureAddress
 ```
 
-- x1: 存放pc+4，也就是调用函数后需要返回的地址
+- x1: 存放pc+4，也就是调用函数后需要返回的地址，同时跳转到```PC = PC+ProcedureAddress```的位置
 
 ### Callee
 
@@ -328,6 +339,8 @@ jalr x0, 0(x1)
 
 - x0: 固定为0
 - x1: 跳回到返回的下一个指令的地址
+
+x0 是在 rd的位置上，这个位置本来是存放PC+4的，但是这里我们用x0来接收，因为在函数返回过程中，我们不需要用到这个位置，因此我们用不会被改变的x0来接收
 
 ### Arguments
 
