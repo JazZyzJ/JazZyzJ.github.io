@@ -796,6 +796,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#kerninghan-lin-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kerninghan-Lin algorithm
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1348,6 +1357,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#kerninghan-lin-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kerninghan-Lin algorithm
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1492,7 +1510,7 @@ $$</p>
 \]</div>
 <p>因为<span class="arithmatex">\(u\)</span>是unsatisfied的，所以等式右边是正的（因为定义边权为整数，也一定大于1），因此势能函数一定递增至少1，最终势能不会超过总的边权重和，因此算法一定会完成（最坏情况就是每个顶点都反转，即<span class="arithmatex">\(O(W)\)</span>复杂度）</p>
 <div class="admonition warning">
-<p class="admonition-title">伪多项式</p>
+<p class="admonition-title">Pseudo-Poly 伪多项式</p>
 <p>这个操作的最坏情况是在<span class="arithmatex">\(W\)</span>次操作后停止，我们得到了<span class="arithmatex">\(O(W)\)</span>的时间复杂度，这看上去就是一个多项式时间复杂度的操作，但实际上我们的<span class="arithmatex">\(W\)</span>并不是输入问题的规模，而是输入图的边权重和，对于输入问题的大小，需要对其取对数换算成2进制长度，因此这个算法是伪多项式时间复杂度的</p>
 </div>
 </div>
@@ -1504,8 +1522,93 @@ $$</p>
 </blockquote>
 <div class="admonition note">
 <p class="admonition-title">定义</p>
+<p>给定有正整数权重的无向图<span class="arithmatex">\(G=(V,E)\)</span>，a cut (A, B)就是<span class="arithmatex">\(V\)</span>的一个划分，将<span class="arithmatex">\(V\)</span>划分为两个不相交的子集<span class="arithmatex">\(A\)</span>和<span class="arithmatex">\(B\)</span>，</p>
+<p>cut的权重定义为：</p>
+<div class="arithmatex">\[
+w(A,B) = \sum_{(u,v)\in E|u\in A, v\in B}w_{uv}
+\]</div>
+<p>也就是所有跨越<span class="arithmatex">\(A\)</span>和<span class="arithmatex">\(B\)</span>的边的权重之和</p>
 </div>
-<p>其实是一个Hopfield Network Problem的特例，</p>
+<p>我们的目标是找到一个cut，使得<span class="arithmatex">\(w(A,B)\)</span>最大</p>
+<p>其实是一个Hopfield Network Problem的特例，之前的config是正负两种配置，现在就对应到了A和B，好边也就是现在的cut边（交叉边）</p>
+<ul>
+<li>
+<p>使用state-flipping算法解决</p>
+<ul>
+<li>
+<p>这时这个算法是local optimal的，并且是一个近似算法</p>
+</li>
+<li>
+<p>近似比为2</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>给出证明：</p>
+<div class="admonition quote">
+<p class="admonition-title">证明</p>
+<p>在完成state-flipping后，我们可以得到一组<span class="arithmatex">\((A,B)\)</span>是stable的</p>
+<p>for any <span class="arithmatex">\(u\in A\)</span> and his neighbors <span class="arithmatex">\(v\)</span>构成的边<span class="arithmatex">\(e=(u,v)\)</span>我们有：</p>
+<div class="arithmatex">\[
+\sum_{v \in A}{w_e} \leq \sum_{v \in B}{w_e}
+\]</div>
+<p>对所有<span class="arithmatex">\(u\in A\)</span>，我们有：</p>
+<div class="arithmatex">\[
+\sum_{u \in A}{\sum_{v \in A}{w_e}} \leq \sum_{u \in A}{\sum_{v \in B}{w_e}}
+\]</div>
+<p>不等号右侧就是<span class="arithmatex">\(w(A,B)\)</span></p>
+<p>不等号左侧是将所有在<span class="arithmatex">\(A\)</span>内部边的权重相加，由对称性可知边被求和了两次，因此不等式左侧就是<span class="arithmatex">\(2\sum_{e\text{是内部边}}{w_e}\)</span></p>
+<p>对<span class="arithmatex">\(B\)</span>同理</p>
+<p>将整个图的边权重和记为<span class="arithmatex">\(W\)</span>，则有：</p>
+<div class="arithmatex">\[
+W = \sum_{e\text{是A内部边}}{w_e} + \sum_{e\text{是B内部边}}{w_e} + w(A,B)
+\]</div>
+<p>通过上面的不等式，将两个内部边放缩掉，我们得到：</p>
+<div class="arithmatex">\[
+w(A,B) \geq \frac{W}{2} \geq \frac{OPT}{2}
+\]</div>
+</div>
+<p>但是刚刚说到了，这个方法的时间复杂度太高，我们进行优化：</p>
+<p>在先前选择flip的点时，只要是好边和小于坏边和我们就进行反转，但是这样反转的频率太高，时间上花费太大，我们进行进一步的近似模糊，只有当改进足够大，我们才反转</p>
+<ul>
+<li>flip only when after flipping：</li>
+</ul>
+<div class="arithmatex">\[
+w(A',B') \geq (1+\frac{\epsilon}{|V|})w(A,B)
+\]</div>
+<p>由于一个不等式：</p>
+<div class="arithmatex">\[
+(1+\frac{\epsilon}{n})^{\frac{n}{\epsilon}} \geq 2
+\]</div>
+<p>这个不等式就是说我要让<span class="arithmatex">\(w(A',B')\)</span>翻倍，需要进行<span class="arithmatex">\(\frac{n}{\epsilon}\)</span>次数的反转</p>
+<p>而我们知道最多反转次数是<span class="arithmatex">\(\log W\)</span>，因此这个算法是<span class="arithmatex">\(O(\frac{n}{\epsilon}\log W)\)</span>的，达到了多项式时间复杂度</p>
+<ul>
+<li>这个近似算法的近似比为
+$$
+2+\frac{\epsilon}{2}
+$$</li>
+</ul>
+<p>证明的思路和上面类似，在进行第一步反转判断的时候需要更改不等式，不等号右边加入那个<span class="arithmatex">\(\frac{\epsilon}{|V|}w(A,B)\)</span>其他步骤相同</p>
+<div class="admonition tip">
+<p class="admonition-title">减少步数</p>
+<p>其实这就是相当于在local search的时候，我们每步走的太小了因此慢，这个判断条件就是在减少步数</p>
+</div>
+<h3 id="kerninghan-lin-algorithm">Kerninghan-Lin algorithm<a class="headerlink" href="#kerninghan-lin-algorithm" title="Permanent link">&para;</a></h3>
+<p>我们刚才的减少步数方法是一种提高效率的方法，也可以增大步长。</p>
+<p>在最基本的情况中我们通过改变一个点的config来进行操作，如果我们同时改变k个点呢？这样就增大了邻居</p>
+<ul>
+<li>好处是邻居变多加快收敛</li>
+<li>坏处是邻居要计算，走每一步的时间变长，总共要<span class="arithmatex">\(\rightarrow\)</span> <span class="arithmatex">\(O(n^k)\)</span></li>
+</ul>
+<p>这里提出了一个算法：</p>
+<p>在第一次操作中，选择使得反转收益最大的一个点进行反转得到(A_1,B_1)，然后在剩下没有被选中的点中选择使得剩下的点收益最大的点反转得到(A_2,B_2)，这样操作下去得到一个邻居集合</p>
+<div class="arithmatex">\[
+N(A,B) = \{(A_1,B_1),(A_2,B_2),...,(A_{n-1},B_{n-1})\}
+\]</div>
+<p>然后在这个邻居集合中进行local search    </p>
+<ul>
+<li>得到这个邻居集合时间复杂度是<span class="arithmatex">\(O(n^2)\)</span>的，跑出来效果不错myc说（）</li>
+</ul>
 
 
 
