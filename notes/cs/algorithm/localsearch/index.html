@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/">
+        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/algorithm/localsearch/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../Approximation/">
       
       
-        <link rel="next" href="algorithm/fds/fds/">
+        <link rel="next" href="../../Sys/CO/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>Computer Science Notes - Space . JaZzyzJ</title>
+        <title>Local Search - Space . JaZzyzJ</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../docs/css/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../docs/css/stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#computer-science-notes" class="md-skip">
+        <a href="#intro" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+    <a href="../../../.." title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Computer Science Notes
+              Local Search
             
           </span>
         </div>
@@ -217,7 +217,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
     
@@ -246,7 +246,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
     
@@ -281,7 +281,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../Tool_Pool/GNU_Make/" class="md-tabs__link">
+        <a href="../../../../Tool_Pool/GNU_Make/" class="md-tabs__link">
           
   
     
@@ -322,7 +322,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+    <a href="../../../.." title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
@@ -352,7 +352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -448,7 +448,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -459,7 +459,7 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -478,8 +478,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -507,11 +509,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
@@ -525,7 +527,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1_2">
             <span class="md-nav__icon md-icon"></span>
             DS & Algorithms
@@ -539,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="algorithm/fds/fds/" class="md-nav__link">
+      <a href="../fds/fds/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -560,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="algorithm/ads/ADS/" class="md-nav__link">
+      <a href="../ads/ADS/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -581,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="algorithm/backtracking/" class="md-nav__link">
+      <a href="../backtracking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -602,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="algorithm/DandC/" class="md-nav__link">
+      <a href="../DandC/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -623,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="algorithm/dp/" class="md-nav__link">
+      <a href="../dp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -644,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="algorithm/gdy/" class="md-nav__link">
+      <a href="../gdy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -665,7 +667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="algorithm/NP/" class="md-nav__link">
+      <a href="../NP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -686,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="algorithm/Approximation/" class="md-nav__link">
+      <a href="../Approximation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -704,10 +706,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="algorithm/localsearch/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Local Search
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -716,6 +736,75 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vertex-cover" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex Cover
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hopfield-network-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hopfield Network Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum-cut" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maximum Cut
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -805,7 +894,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="Sys/CO/" class="md-nav__link ">
+            <a href="../../Sys/CO/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -838,7 +927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Sys/CO/arithmetic/" class="md-nav__link">
+      <a href="../../Sys/CO/arithmetic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -859,7 +948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Sys/CO/instruction/" class="md-nav__link">
+      <a href="../../Sys/CO/instruction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -880,7 +969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Sys/CO/processor/" class="md-nav__link">
+      <a href="../../Sys/CO/processor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -961,7 +1050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lingo/verilog/" class="md-nav__link">
+      <a href="../../../lingo/verilog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -982,7 +1071,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lingo/cs61a/" class="md-nav__link">
+      <a href="../../../lingo/cs61a/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1152,7 +1241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tool_Pool/GNU_Make/" class="md-nav__link">
+      <a href="../../../../Tool_Pool/GNU_Make/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1206,8 +1295,65 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vertex-cover" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex Cover
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hopfield-network-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hopfield Network Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum-cut" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maximum Cut
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1225,18 +1371,141 @@
   
 
 
-<h1 id="computer-science-notes">Computer Science Notes<a class="headerlink" href="#computer-science-notes" title="Permanent link">&para;</a></h1>
-<div class="admonition abstract">
-<p class="admonition-title">Abstract</p>
-<p>"This is a collection of notes on computer science."</p>
-</div>
-<!-- ## Table of Contents
+  <h1>Local Search</h1>
 
-- [HPC Learning Notes](../HPC/index.md) 
-- [Fundamentals of Data Structure](../algorithm/fds/fds.md)
-<!-- - [Search Problem Solving](../algorithm/Search_ProblemSolving.md) -->
-<!-- - [Advanced Data Structures (ADS)](../algorithm/ads/ADS.md) -->
-<p>--&gt;</p>
+<h2 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h2>
+<p>局部搜索也是一种近似问题的延伸，我们可以给局部搜索进行一个全局性的定义：</p>
+<div class="admonition note">
+<p class="admonition-title">定义</p>
+<p>局部搜索算法是一种基于邻域的搜索算法，它通过在当前解的邻域内进行搜索，来找到更优的解。</p>
+<p>定义一个最优化问题有高维的可行解空间<span class="arithmatex">\(C= \{ S|S \text{ is feasible} \}\)</span>，并且对可行解来说有cost函数<span class="arithmatex">\(f:C\rightarrow R\)</span>，</p>
+<p>我们的目标就是找到一个解<span class="arithmatex">\(S\in C\)</span>使得<span class="arithmatex">\(f(S)\)</span>最小。</p>
+</div>
+<p>基本的解决思路：</p>
+<ul>
+<li>给定一个初始解<span class="arithmatex">\(S_0\in C\)</span></li>
+<li>找到<span class="arithmatex">\(S_0\)</span>的邻居<span class="arithmatex">\(S'\)</span></li>
+<li>如果<span class="arithmatex">\(f(S')&lt;f(S_0)\)</span>，那么更新<span class="arithmatex">\(S_0=S'\)</span></li>
+<li>重复2，3步骤直到满足某个终止条件</li>
+</ul>
+<p>关键的步骤就是定义neighborhood，然后进行better neighbor的搜索。</p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<h3 id="vertex-cover">Vertex Cover<a class="headerlink" href="#vertex-cover" title="Permanent link">&para;</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Vertex Cover</p>
+<p>给定一个图<span class="arithmatex">\(G=(V,E)\)</span>，我们需要找到一个最小顶点集合<span class="arithmatex">\(min S\subseteq V\)</span>，使得每一条边至少有一个顶点在集合<span class="arithmatex">\(C\)</span>中。</p>
+</div>
+<p>可行解解空间：<span class="arithmatex">\(C= \{ S|S \text{ is a vertex cover} \}\)</span></p>
+<p>cost函数：<span class="arithmatex">\(f(S)=|S|\)</span></p>
+<ul>
+<li>进行neighbor定义：</li>
+</ul>
+<p>定义neighbor是与当前解<span class="arithmatex">\(S\)</span>相差一个顶点的解，即</p>
+<div class="arithmatex">\[ 
+N(S)= \{ S'|S' \text{ is a vertex cover and } |S' \text{can be obtained from } S \text{ by + or - one vertex} \} 
+\]</div>
+<div class="admonition failure">
+<p class="admonition-title">失败的man</p>
+<p>一种情况的算法设计是将全集设置为初始解，然后每次剪掉一个顶点，但是这样很容易陷入局部最优：</p>
+<p>可以想像一个蜘蛛网，中心点连接所有边缘节点，一旦第一次剪掉中心点，外部的每一个点都不能去掉，但是最优解其实是只保留中心点</p>
+</div>
+<ul>
+<li>因此需要爬出local optimum</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Metropolis Algorithm</p>
+<p><span style="font-size: 1.1em">
+    核心思想是在选定一个解<span class="arithmatex">\(S\)</span>后，在邻居中随机再找一个解<span class="arithmatex">\(S'\)</span>，如果新的解更优，那么就更新，即使这个<span class="arithmatex">\(S'\)</span>比<span class="arithmatex">\(S\)</span>差，也有一定的概率接受。这样就有机会选到局部差解，从而爬出local optimum。
+</span></p>
+</div>
+<p>这个概率的设置是：</p>
+<div class="arithmatex">\[
+\text{with given constant } K \text{ and } T
+\]</div>
+<div class="arithmatex">\[
+P(S\rightarrow S') = e^{-\frac{f(S')-f(S)}{KT}}
+\]</div>
+<ul>
+<li>
+<p>分子上的<span class="arithmatex">\(f(S')-f(S)\)</span>称为坡度</p>
+<ul>
+<li>坡度大时，概率较小，不倾向于选择爬坡 </li>
+</ul>
+</li>
+<li>
+<p>称<span class="arithmatex">\(T\)</span>为temperature，<span class="arithmatex">\(K\)</span>为Boltzmann常数。</p>
+<ul>
+<li>当<span class="arithmatex">\(T\)</span>比较大时，系统十分活跃，容易进行爬坡，反之不易</li>
+<li>在系统初期，<span class="arithmatex">\(T\)</span>比较大，容易爬坡，随着<span class="arithmatex">\(T\)</span>逐渐减小，爬坡越来越难，这个操作被称为<strong>模拟退火</strong>（simulated annealing gradully decrease T）</li>
+</ul>
+</li>
+</ul>
+<p>坏处在于：难以分析🥲，myc老师这种做算法分析的人不喜欢（）</p>
+<p>但是做应用的人喜欢，因为实验结果导向，还好用（）</p>
+<h3 id="hopfield-network-problem">Hopfield Network Problem<a class="headerlink" href="#hopfield-network-problem" title="Permanent link">&para;</a></h3>
+<div class="admonition definition">
+<p class="admonition-title">Hopfield Network</p>
+<p>输入一个图<span class="arithmatex">\(G=(V,E)\)</span>，每个边的权重<span class="arithmatex">\(w\)</span></p>
+<ul>
+<li>定义configuration <span class="arithmatex">\(S\)</span>，其中<span class="arithmatex">\(S_v \in \{0,1\}\)</span>，</li>
+<li>定义一个边<span class="arithmatex">\(e\)</span>为好的，当且仅当：
+$$
+w_{e}S_uS_v \leq 0
+$$</li>
+</ul>
+<p>也就是说正权重边连接S不同的顶点，负权重边连接S相同的点</p>
+</div>
+<p>在设计所有点的configuration时，我们有如下两个目标：</p>
+<ul>
+<li>最大化好边权重绝对值之和</li>
+<li>对每个顶点<span class="arithmatex">\(u\)</span>，最大化所有与<span class="arithmatex">\(u\)</span>相连的好边的权重之和</li>
+</ul>
+<p>在给出两个定义：</p>
+<div class="admonition note">
+<p class="admonition-title">Definition</p>
+<p>一个顶点<span class="arithmatex">\(u\)</span>是满意的satisfied，当且仅当：
+$$
+\sum_{\text{邻接好边}}{|w_u|} \geq \sum_{{邻接坏边}}{|w_u|}
+$$</p>
+<p>一个configuration是stable的，当且仅当所有顶点都是满意的</p>
+</div>
+<p>很容易可以看出，一个顶点经过反转，可以使好的边变坏，坏的边变好，也就是说可以通过对顶点的flip操作，来改变configuration</p>
+<p>进而引出方法</p>
+<div class="admonition success">
+<p class="admonition-title">State-Flipping</p>
+<ul>
+<li>随机选取一个configuration <span class="arithmatex">\(S\)</span></li>
+<li>while <span class="arithmatex">\(S\)</span> is unstable with <span class="arithmatex">\(u\)</span> is not satisfied <ul>
+<li>flip <span class="arithmatex">\(u\)</span></li>
+</ul>
+</li>
+<li>return <span class="arithmatex">\(S\)</span></li>
+</ul>
+</div>
+<p>可以证明这个算法一定会在有限步内完成：</p>
+<div class="admonition quote">
+<p class="admonition-title">势能函数证明</p>
+<p>定义势能函数<span class="arithmatex">\(\Phi(S)\)</span>为所有好边的权重绝对值的和</p>
+<p>在改变一个顶点<span class="arithmatex">\(u\)</span>时，config变为<span class="arithmatex">\(S'\)</span>，此时势能函数的变化为：</p>
+<div class="arithmatex">\[
+\Phi(S')-\Phi(S) = - \sum_{u \text{的好邻边}}{|w_e|} + \sum_{u \text{的坏邻边}}{|w_e|}
+\]</div>
+<p>因为<span class="arithmatex">\(u\)</span>是unsatisfied的，所以等式右边是正的（因为定义边权为整数，也一定大于1），因此势能函数一定递增至少1，最终势能不会超过总的边权重和，因此算法一定会完成（最坏情况就是每个顶点都反转，即<span class="arithmatex">\(O(W)\)</span>复杂度）</p>
+<div class="admonition warning">
+<p class="admonition-title">伪多项式</p>
+<p>这个操作的最坏情况是在<span class="arithmatex">\(W\)</span>次操作后停止，我们得到了<span class="arithmatex">\(O(W)\)</span>的时间复杂度，这看上去就是一个多项式时间复杂度的操作，但实际上我们的<span class="arithmatex">\(W\)</span>并不是输入问题的规模，而是输入图的边权重和，对于输入问题的大小，需要对其取对数换算成2进制长度，因此这个算法是伪多项式时间复杂度的</p>
+</div>
+</div>
+<p>值得注意的是，这个势能函数也就是我们的目标一要达到最大值的函数，因此这个算法也就是 </p>
+<div class="arithmatex">\[ \text{local search to maximize objective } 1 \]</div>
+<h3 id="maximum-cut">Maximum Cut<a class="headerlink" href="#maximum-cut" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>NP-Hard</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">定义</p>
+</div>
+<p>其实是一个Hopfield Network Problem的特例，</p>
 
 
 
@@ -1289,12 +1558,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

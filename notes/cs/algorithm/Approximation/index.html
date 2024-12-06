@@ -14,7 +14,7 @@
         <link rel="prev" href="../NP/">
       
       
-        <link rel="next" href="../../Sys/CO/">
+        <link rel="next" href="../localsearch/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -501,6 +501,8 @@
       
         
       
+        
+      
     
     
       
@@ -753,6 +755,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localsearch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Local Search
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1302,7 +1325,7 @@ max(\frac{C}{C^*}, \frac{C^*}{C}) \leq \rho(n)
 <h2 id="approximation-scheme">Approximation Scheme<a class="headerlink" href="#approximation-scheme" title="Permanent link">&para;</a></h2>
 <p>最优解的近似方案(Approximation Scheme)，指的是一类近似算法，对给定<span class="arithmatex">\(\epsilon &gt; 0\)</span>，它是一个(1+<span class="arithmatex">\(\epsilon\)</span>)近似算法</p>
 <ul>
-<li><strong>多项式时间近似方案</strong>（PTAS）：对于任意给定<span class="arithmatex">\(\epsilon &gt; 0\)</span>，能在多项式时间复杂度完成计算，记作<span class="arithmatex">\(O(n^{f(\frac{1}{\epsilon}})\)</span><ul>
+<li><strong>多项式时间近似方案</strong>（PTAS）：对于任意给定<span class="arithmatex">\(\epsilon &gt; 0\)</span>，能在多项式时间复杂度完成计算，记作<span class="arithmatex">\(O(n^{f(\frac{1}{\epsilon})})\)</span><ul>
 <li><strong>完全多项式时间近似方案</strong>（FPTAS）：对于任意给定<span class="arithmatex">\(\epsilon &gt; 0\)</span>，能在多项式时间复杂度完成计算，记作<span class="arithmatex">\(O\left(n^{O(1)}\left(\frac{1}{\varepsilon}\right)^{O(1)}\right)\)</span></li>
 </ul>
 </li>
@@ -1321,20 +1344,151 @@ max(\frac{C}{C^*}, \frac{C^*}{C}) \leq \rho(n)
 </ul>
 <h1 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h1>
 <h2 id="bin-packing">Bin Packing<a class="headerlink" href="#bin-packing" title="Permanent link">&para;</a></h2>
-<p>Next fit 可以得到一个近似比为2的解</p>
-<p>First fit 1.7</p>
-<p>Best fit 大于等于1.7</p>
-<p>不用太多考虑边界情况：因为最坏情况下special case 不会太多</p>
-<h3 id="on-line-algotithm">On-line Algotithm<a class="headerlink" href="#on-line-algotithm" title="Permanent link">&para;</a></h3>
-<p>在装箱问题中是在线算法的 并且没有回溯</p>
-<p>在线算法很难对抗数据分布，因为看不到数据的整体分布</p>
-<p>对于所有在线算法，装箱问题都到不到5/3这个近似比</p>
-<div class="admonition quote">
-<p class="admonition-title">Quote</p>
+<div class="admonition note">
+<p class="admonition-title">3 Solutions</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Next fit</label><label for="__tabbed_1_2">First fit</label><label for="__tabbed_1_3">Best fit</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Next fit：按照输入顺序一个个放物品，如果当前物品能够放在与上一个物品相同的箱子中，放入，否则新开</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">NextFit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">read</span><span class="w"> </span><span class="n">item1</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">read</span><span class="w"> </span><span class="n">item2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">item2</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">packed</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">bin</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">item1</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="n">place</span><span class="w"> </span><span class="n">item2</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">bin</span><span class="p">;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">bin</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">item2</span><span class="p">;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">item1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item2</span><span class="p">;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span><span class="w"> </span><span class="c1">// end-while</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>时间复杂度为<span class="arithmatex">\(O(n)\)</span></p>
+<p>可以得到一个近似比为2的解</p>
 </div>
-<h3 id="off-line-algorithm">Off-line Algorithm<a class="headerlink" href="#off-line-algorithm" title="Permanent link">&para;</a></h3>
+<div class="tabbed-block">
+<p>First fit：按照输入顺序一个个放物品，如果当前物品能够放在当前任意一个箱子中，放入，否则新开</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">FirstFit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">read</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">scan</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="n">bin</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">large</span><span class="w"> </span><span class="n">enough</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">found</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">place</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">bin</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">else</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">bin</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="p">;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// end-while</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>时间复杂度为<span class="arithmatex">\(O(nlogn)\)</span></p>
+<p>可以得到近似比为1.7的解</p>
+</div>
+<div class="tabbed-block">
+<p>Best fit：按照输入顺序一个个放物品，当前物品需要放在剩余空间最小的箱子中，如果不存在，则新开</p>
+<p>时间复杂度为<span class="arithmatex">\(O(nlogn)\)</span></p>
+<p>可以得到近似比大于1.7的解</p>
+<div class="admonition failure">
+<p class="admonition-title">Failure</p>
+<p>不用太多考虑边界情况：因为最坏情况下special case 不会太多</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>On-line Algorithm</li>
+</ul>
+<p>装箱问题中是在线算法，并且没有回溯，这样是很难对抗数据分布的——因为看不到数据的整体情况</p>
+<div class="admonition failure">
+<p class="admonition-title">Failure</p>
+<p>对于所有在线算法，装箱问题都到不了<span class="arithmatex">\(\frac{5}{3}\)</span>这个近似比</p>
+</div>
+<ul>
+<li>Off-line Algorithm</li>
+</ul>
+<p>在离线算法中，我们可以得到如下结论：令<span class="arithmatex">\(M\)</span>为桶的个数，则：</p>
+<div class="arithmatex">\[M \leq \frac{11}{9}OPT + 6\]</div>
+<p>使用First fit Decreasing 算法，即先对物品按大小降序排列，再使用First fit算法，则有</p>
+<div class="arithmatex">\[FFD(L) \leq \frac{3}{2}OPT(L)\]</div>
 <h2 id="knapsack-problem">Knapsack Problem<a class="headerlink" href="#knapsack-problem" title="Permanent link">&para;</a></h2>
+<h3 id="_1">小数背包<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>令背包容量为<span class="arithmatex">\(M\)</span>，给定<span class="arithmatex">\(n\)</span>个物品，每个物品<span class="arithmatex">\(i\)</span>有重量<span class="arithmatex">\(w_i\)</span>和价值<span class="arithmatex">\(p_i\)</span>，被放进背包的比例不超过<span class="arithmatex">\(x_i\)</span>，此时该物品的价值为<span class="arithmatex">\(p_i x_i\)</span>，目标是令<span class="arithmatex">\(\sum_{i=1}^{n} p_i x_i\)</span>最大</p>
+</div>
+<ul>
+<li>解决方法是每次按照价值密度：<span class="arithmatex">\(\frac{p_i}{w_i}\)</span>降序排列，然后贪心选择</li>
+</ul>
+<h3 id="0-1">0-1 背包<a class="headerlink" href="#0-1" title="Permanent link">&para;</a></h3>
+<p>在先前我们使用的贪心算法这里就不一定会得到最优解，因此那个贪心算法就是一个近似算法，下面对其近似比<span class="arithmatex">\(2\)</span>进行证明：</p>
+<div class="admonition quote">
+<p class="admonition-title">证明</p>
+<p>显然：所有物品中价值最大的一个物品的价值肯定小于最优解的总价值，也小于小数背包的最优解</p>
+<div class="arithmatex">\[
+p_{max} \leq P_{opt} \leq P_{frac}
+\]</div>
+<p>并且：最大价值物品的价值小于贪心解的总价值（可以反证来理解最大价值物品一定会被贪心选择，当然这里假设每个物品的大小都小于背包大小）</p>
+<div class="arithmatex">\[
+p_{max} \leq P_{greedy}
+\]</div>
+<p>还有一个式子：</p>
+<div class="arithmatex">\[
+P_{opt} \leq P_{greedy} + p_{max}
+\]</div>
+<p>这是因为一个前提：在小数解中，其实只会有一个物品被拆分放入，也就是说贪心解和小数解的差值就是没有被拆分放入背包的物品的价值，这个物品肯定是放入背包的物品中的价值最小的一个，在这里进行放缩，将这个拆分的物品价值替换为价值最大的物品，这时<span class="arithmatex">\(P_{greedy} + p_{max}\)</span>一定大于<span class="arithmatex">\(P_{frac}\)</span>，进而大于<span class="arithmatex">\(P_{opt}\)</span></p>
+<p>对这个式子除以<span class="arithmatex">\(P_{greedy}\)</span>，得到：</p>
+<div class="arithmatex">\[
+P_{opt} \leq 2P_{greedy}
+\]</div>
+</div>
 <h2 id="k-center-problem">K-Center Problem<a class="headerlink" href="#k-center-problem" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">K-Center Problem</p>
+<p>给定<span class="arithmatex">\(n\)</span>个点，在地图上选择<span class="arithmatex">\(k\)</span>个点，使得所有点到最近的中心点的距离最小</p>
+<p><div style="text-align: center;">
+<img src="/../../../../assets/pics/approximation/approximation-1.png" style="width: 60%;">
+</div></p>
+</div>
+<p>这里运用贪心算法解决问题</p>
+<ul>
+<li>
+<p>让第一个点选择为所有点的中点：显然不行，如果有两坨点离得很远那这个点就非常不合适</p>
+</li>
+<li>
+<p>随机选取算法：</p>
+</li>
+</ul>
+<div class="admonition quote">
+<p class="admonition-title">引理</p>
+<p>在改进的贪心算法中，我们直接挑选某个地址作为中心点。这种做法之所以可行，是因为某个中心点覆盖半径为r的区域，可以近似为以（接近）区域边界上一点s为新的中心点，2r为半径的区域。虽然这个区域明显比原区域大，但它保证能够覆盖原区域所能覆盖的点。这样的话我们就不必通过繁琐的计算算出中心点，而是从原有的地址中选择中心点，方便了很多。</p>
+<p><div style="text-align: center;">
+<img src="/../../../../assets/pics/approximation/app-2.png" style="width: 60%;">
+</div></p>
+</div>
+<ol>
+<li>
+<p>从输入点中随机选取一个点作为第一个中心，然后删除该点为中心，<span class="arithmatex">\(2r\)</span>为半径的所有点</p>
+<ul>
+<li>这里的参数<span class="arithmatex">\(r\)</span>可以通过二分查找来计算，先令<span class="arithmatex">\(r = \frac{max(d(i,j))}{2}\)</span>，然后检查是否满足条件，如果满足则缩小<span class="arithmatex">\(r\)</span>，否则增大<span class="arithmatex">\(r\)</span></li>
+<li>时间复杂度为<span class="arithmatex">\(O(logr_{max})\)</span></li>
+</ul>
+</li>
+<li>
+<p>在剩余的点中继续选择第二个中心，以此类推</p>
+</li>
+</ol>
+<ul>
+<li>如果一个值<span class="arithmatex">\(r\)</span>是最优的，那么这一算法得到的解是最优解的两倍——即这是一个<span class="arithmatex">\(\rho(n) = 2\)</span>的近似算法</li>
+</ul>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">Centers</span><span class="w"> </span><span class="n">Greedy</span><span class="mi">-2</span><span class="n">r</span><span class="p">(</span><span class="n">Sites</span><span class="w"> </span><span class="n">S</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Sites</span><span class="w"> </span><span class="n">S</span><span class="err">`</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">S</span><span class="p">[];</span><span class="w">  </span><span class="c1">// S` is the set of the remaining sites</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">Centers</span><span class="w"> </span><span class="n">C</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">S</span><span class="err">`</span><span class="p">[]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="n">Select</span><span class="w"> </span><span class="n">any</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="n">form</span><span class="w"> </span><span class="n">S</span><span class="err">`</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">C</span><span class="p">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="n">Delete</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">s</span><span class="err">`</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">S</span><span class="err">`</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">s</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2</span><span class="n">r</span><span class="p">;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// end-while</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">|</span><span class="n">C</span><span class="o">|</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">C</span><span class="p">;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="n">ERROR</span><span class="p">(</span><span class="s">&quot;No set of K centers with covering radius at most r&quot;</span><span class="p">);</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">}</span>
+</span></code></pre></div>
 
 
 
