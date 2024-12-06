@@ -1,4 +1,4 @@
-# Intro
+## Intro
 
 局部搜索也是一种近似问题的延伸，我们可以给局部搜索进行一个全局性的定义：
 
@@ -20,9 +20,9 @@
 
 关键的步骤就是定义neighborhood，然后进行better neighbor的搜索。
 
-# Example
+## Example
 
-## Vertex Cover
+### Vertex Cover
 
 !!! question "Vertex Cover"
 
@@ -80,11 +80,74 @@ $$
 但是做应用的人喜欢，因为实验结果导向，还好用（）
 
 
-## Hopfield Network Problem
+### Hopfield Network Problem
 
-!!! question "Hopfield Network"
+!!! definition "Hopfield Network"
+    输入一个图$G=(V,E)$，每个边的权重$w$
 
-    
+	- 定义configuration $S$，其中$S_v \in \{0,1\}$，
+	- 定义一个边$e$为好的，当且仅当：
+    $$
+	w_{e}S_uS_v \leq 0
+	$$
 
+	也就是说正权重边连接S不同的顶点，负权重边连接S相同的点
+
+在设计所有点的configuration时，我们有如下两个目标：
+
+- 最大化好边权重绝对值之和
+- 对每个顶点$u$，最大化所有与$u$相连的好边的权重之和
+
+在给出两个定义：
+
+!!! note "Definition"
+    一个顶点$u$是满意的satisfied，当且仅当：
+    $$
+    \sum_{\text{邻接好边}}{|w_u|} \geq \sum_{\{邻接坏边}}{|w_u|}
+	$$
+
+	一个configuration是stable的，当且仅当所有顶点都是满意的
+
+
+很容易可以看出，一个顶点经过反转，可以使好的边变坏，坏的边变好，也就是说可以通过对顶点的flip操作，来改变configuration
+
+进而引出方法
+
+!!! success "State-Flipping"
+
+    - 随机选取一个configuration $S$
+    - while $S$ is unstable with $u$ is not satisfied 
+        - flip $u$
+    - return $S$
+
+可以证明这个算法一定会在有限步内完成：
+
+!!! quote "势能函数证明"
+
+    定义势能函数$\Phi(S)$为所有好边的权重绝对值的和
+
+	在改变一个顶点$u$时，config变为$S'$，此时势能函数的变化为：
+
+	$$
+	\Phi(S')-\Phi(S) = - \sum_{u \text{的好邻边}}{|w_e|} + \sum_{u \text{的坏邻边}}{|w_e|}
+	$$
+
+	因为$u$是unsatisfied的，所以等式右边是正的（因为定义边权为整数，也一定大于1），因此势能函数一定递增至少1，最终势能不会超过总的边权重和，因此算法一定会完成（最坏情况就是每个顶点都反转，即$O(W)$复杂度）
+
+	!!! warning "伪多项式"
+	    这个操作的最坏情况是在$W$次操作后停止，我们得到了$O(W)$的时间复杂度，这看上去就是一个多项式时间复杂度的操作，但实际上我们的$W$并不是输入问题的规模，而是输入图的边权重和，对于输入问题的大小，需要对其取对数换算成2进制长度，因此这个算法是伪多项式时间复杂度的
+
+值得注意的是，这个势能函数也就是我们的目标一要达到最大值的函数，因此这个算法也就是 
+
+$$ \text{local search to maximize objective } 1 $$
+
+### Maximum Cut
+
+> NP-Hard
+
+!!! note "定义"
+
+
+其实是一个Hopfield Network Problem的特例，
 
 
