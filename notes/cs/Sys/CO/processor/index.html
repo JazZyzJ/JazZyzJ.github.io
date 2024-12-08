@@ -1601,10 +1601,16 @@
 <h2 id="datapath">Datapath<a class="headerlink" href="#datapath" title="Permanent link">&para;</a></h2>
 <p>构建数据通路时，我们关心的是指令中的存储数据而不是控制信号。</p>
 <h3 id="instruction-fetch">Instruction Fetch<a class="headerlink" href="#instruction-fetch" title="Permanent link">&para;</a></h3>
-<p><img alt="co-42" src="/../../../../assets/pics/co/co-42.png" /></p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-42.png" alt="co-42" height="200px" width="500px">
+</div>
+
 <p>64bit寄存器，需要64个D触发器。</p>
 <h3 id="r-inst">R Inst<a class="headerlink" href="#r-inst" title="Permanent link">&para;</a></h3>
-<p><img alt="co-43" src="/../../../../assets/pics/co/co-43.png" /></p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-43.png" alt="co-43" height="200px" width="500px">
+</div>
+
 <ul>
 <li>Register File: 寄存器堆，用于存储所有寄存器<ul>
 <li>进行选择的wire是5位，因为寄存器有32个。</li>
@@ -1618,7 +1624,10 @@
 </ul>
 <h3 id="load-store-inst">Load Store Inst<a class="headerlink" href="#load-store-inst" title="Permanent link">&para;</a></h3>
 <p>除了R型指令用到的两个元件，还需要两个</p>
-<p><img alt="co-44" src="/../../../../assets/pics/co/co-44.png" /></p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-44.png" alt="co-44" height="200px" width="500px">
+</div>
+
 <ul>
 <li>Data Memory: 数据内存,不同于Register File，Data Memory同时具有读写控制<ul>
 <li>读取数据ld需要受<code>MemRead</code>信号控制，写入数据sd需要受<code>MemWrite</code>信号控制<ul>
@@ -1631,7 +1640,10 @@
 </ul>
 <h3 id="branch-inst">Branch Inst<a class="headerlink" href="#branch-inst" title="Permanent link">&para;</a></h3>
 <p>这里只考虑了beq指令</p>
-<p><img alt="co-45" src="/../../../../assets/pics/co/co-45.png" /></p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-45.png" alt="co-45" height="200px" width="500px">
+</div>
+
 <ul>
 <li>寄存器用于存放两个被比较的源操作数，进入ALU进行比较</li>
 <li>ALU：第一个ALU的作用是进行比较，并且有一个zero用于判断是否相等进而选择PC+4还是branch target address；第二个ALU只有加法，用于计算branch target address</li>
@@ -1930,20 +1942,18 @@
 <p>Data Hazards</p>
 <ul>
 <li>需要等待上一条指令完成数据写入或者读取完成才能进行后续操作</li>
-<li>
-<p>解决方案：添加额外的硬件<strong>前递</strong>（forwarding）或称为<strong>旁路</strong>（bypassing）</p>
-</li>
-<li>
-<p><img alt="co-63" src="/../../../../assets/pics/co/co-63.png" /></p>
+<li>解决方案：添加额外的硬件<strong>前递</strong>（forwarding）或称为<strong>旁路</strong>（bypassing）</li>
+</ul>
+<p><div align="center">
+<img src="/../../../../assets/pics/co/co-63.png" alt="co-63" height="200px" width="500px">
+</div></p>
+<p>只有当目标阶段比源阶段晚时，才能进行前递</p>
 <ul>
-<li>只有当目标阶段比源阶段晚时，才能进行前递</li>
+<li>这一情况对于R型指令是适用的，但是如果先执行加载指令，后执行依赖于该加载指令数据的指令，即使加了一个前递，CPU 还是不得不暂停一个时钟周期，这种情况称为<strong>加载使用数据冒险</strong>(load-use data hazard)，如下图所示：</li>
 </ul>
-</li>
-<li>
-<p>这一情况对于R型指令是适用的，但是如果先执行加载指令，后执行依赖于该加载指令数据的指令，即使加了一个前递，CPU 还是不得不暂停一个时钟周期，这种情况称为<strong>加载使用数据冒险</strong>(load-use data hazard)，如下图所示：</p>
-</li>
-</ul>
-<p><img alt="co-64" src="/../../../../assets/pics/co/co-64.png" /></p>
+<p><div align="center">
+<img src="/../../../../assets/pics/co/co-64.png" alt="co-64" height="200px" width="500px">
+</div></p>
 <p>中间的气泡称为流水线停顿（pipeline stall）或者bubble</p>
 <p>这种情况我们可以通过软件层面的优化来解决：</p>
 <details class="example">
@@ -1981,7 +1991,9 @@
 <li>解决方案：将寄存器的比较和目标地址的计算提前到ID阶段</li>
 <li>但是这样仍然会有一个bubble的产生：</li>
 </ul>
-<p><img alt="co-66" src="/../../../../assets/pics/co/co-66.png" /></p>
+<p><div align="center">
+<img src="/../../../../assets/pics/co/co-66.png" alt="co-66" height="200px" width="500px">
+</div></p>
 <ul>
 <li>我们需要一个更好的解决方法：<strong>分支预测</strong>：</li>
 <li>一种方法是<strong>静态预测</strong><ul>
@@ -2005,7 +2017,10 @@
 <p>在流水线中我们需要储存进入执行的指令，因此需要一个额外的寄存器，叫做<strong>流水线寄存器</strong>，位于两个阶段之间</p>
 </li>
 </ul>
-<p><img alt="co-68" src="/../../../../assets/pics/co/co-68.png" /></p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-68.png" alt="co-68" height="200px" width="500px">
+</div>
+
 <div class="admonition example">
 <p class="admonition-title">ld process of pipeline</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:5"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">IF</label><label for="__tabbed_3_2">ID</label><label for="__tabbed_3_3">EX</label><label for="__tabbed_3_4">MEM</label><label for="__tabbed_3_5">WB</label></div>
@@ -2050,7 +2065,10 @@
 </div>
 <h2 id="control-in-pipeline">Control in Pipeline<a class="headerlink" href="#control-in-pipeline" title="Permanent link">&para;</a></h2>
 <p>在单周期CPU中我们引入了一系列控制信号来进行控制，在这里流水线CPU也需要控制指令，并且这些控制指令也是随着流水型寄存器的传递而传递的</p>
-<p><img alt="co-74" src="/../../../../assets/pics/co/co-74.png" /></p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-74.png" alt="co-74" height="200px" width="500px">
+</div>
+
 <p>可以看到控制信号随着流水线的进行逐渐被使用，被使用的信号将不再被传递，节约了空间</p>
 <p>在加入控制器后：</p>
 <p><img alt="co-75" src="/../../../../assets/pics/co/co-75.png" /></p>
@@ -2063,13 +2081,139 @@
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nf">add</span><span class="w"> </span><span class="no">x14</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nf">sd</span><span class="w">  </span><span class="no">x15</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">(</span><span class="no">x2</span><span class="p">)</span>
 </span></code></pre></div>
-<p>可以看到x2寄存器的值在sub后的四个指令中都被使用，在正常情况下，x2寄存器的值需要等到MEM阶段才能被写入，但是我们在ALU后的输出端已经得到最终x2的数值了，可以通过前递将结果传递给接下来的指令</p>
-<p><img alt="co-76" src="/../../../../assets/pics/co/co-76.png" /></p>
-<p>图中蓝色的寄存器是需要前递数据的寄存器，我们在EX阶段得到x2的数值后，放入EX/MEM流水线寄存器的rd位置，记这段数据为：</p>
+<p>画出流水线图：</p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-76.png" alt="co-76" height="200px" width="500px">
+</div>
+
+<p>图中下方四个蓝色的寄存器是需要前递数据的寄存器，在正常情况下，我们得到最终的x2数值是在MEM/WB阶段，也就是图中所示第一个蓝色寄存器，但是显然上方的两个需要x2寄存器数值的指令无法前递，而我们在EX阶段其实已经得到了x2的数值，因此我们可以将x2的数值前递给上方两个指令</p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-77.png" alt="co-77" height="200px" width="500px">
+</div>
+
+<p>我们观察到两个前递的发生：</p>
+<ul>
+<li>"1"型是相邻的前递：</li>
+</ul>
 <div class="arithmatex">\[
-\text{EX/MEM.RegisterRd}
+\text{EX/MEM.RegRd} \rightarrow \text{ID/EX.RegRs1(Or Rs1)}
 \]</div>
-<p>我们需要用这些数据的寄存器是：</p>
+<ul>
+<li>"2"型是相邻两个指令之间的前递：</li>
+</ul>
+<div class="arithmatex">\[
+\text{MEM/WB.RegRd} \rightarrow \text{ID/EX.RegRs2(Or Rs2)}
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">前递的判断</p>
+<p>除了上述两个判断，还需要补充一些判断条件</p>
+<ul>
+<li>并不是所有指令都包含写入寄存器的操作，所以提前检测<code>RegWrite</code>信号是否为1，不是的话直接不用前递</li>
+<li>
+<p>如果目标寄存器的数值是0，我们不希望进行前递，因为0值的寄存器没有任何意义</p>
+</li>
+<li>
+<p>同样还需要注意的是dubble data harzard，如果连续三条指令都在使用同一个寄存器，那么我们只需要对最新的指令进行前递，例如下面的指令：</p>
+</li>
+</ul>
+<p><div class="language-asm highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">add</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x3</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nf">add</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x4</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nf">add</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x5</span>
+</span></code></pre></div>
+我们需要增加一个判断，就是下方伪代码的高亮部分</p>
+</div>
+<p>最终我们可以将整个forwarding unit的逻辑写成一个大的判断模块：</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">//For EX to ID</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="na">RegWrite</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="na">RegRd</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="na">RegRd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="na">RegRs1</span><span class="p">)</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="n">ForwardA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="na">RegRd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="na">RegRs2</span><span class="p">)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="n">ForwardB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1">//For MEM to ID</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">MEM</span><span class="o">/</span><span class="n">WB</span><span class="p">.</span><span class="na">RegWrite</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">MEM</span><span class="o">/</span><span class="n">WB</span><span class="p">.</span><span class="na">RegRd</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="hll"><span class="w">    </span><span class="n">and</span><span class="w"> </span><span class="nf">not</span><span class="w"> </span><span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="na">RegWrite</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="na">RegRd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="na">RegRs1</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="na">RegRd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="na">RegRs2</span><span class="p">))</span>
+</span></span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">MEM</span><span class="o">/</span><span class="n">WB</span><span class="p">.</span><span class="na">RegRd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="na">RegRs1</span><span class="p">)</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="n">ForwardA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">01</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">MEM</span><span class="o">/</span><span class="n">WB</span><span class="p">.</span><span class="na">RegRd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="na">RegRs2</span><span class="p">)</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">        </span><span class="n">ForwardB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">01</span>
+</span></code></pre></div>
+<p>我们在这段判读中使用了<code>ForwardA</code>和<code>ForwardB</code>来表示前递的类型，其实就是添加一个Mux来选择ALU的输入位置是A还是B</p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-78.png" alt="co-78" height="200px" width="500px">
+</div>
+
+<p>这样我们就得到了完整的datapath：</p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-79.png" alt="co-79" height="200px" width="500px">
+</div>
+
+<h3 id="stalling">Stalling<a class="headerlink" href="#stalling" title="Permanent link">&para;</a></h3>
+<p>先前我们讲到过，当发生load-use data hazard时，我们需要进行停顿，也就是插入stall，这是为什么呢？</p>
+<div class="admonition example">
+<p class="admonition-title">load-use data hazard</p>
+<p><div align="center">
+<img src="/../../../../assets/pics/co/co-80.png" alt="co-80" height="200px" width="500px">
+</div></p>
+<p>可以看到在ld指令得到数据的位置是在MEM/WB阶段，这样我们就不能在ALU计算出结果（imm + x1 的地址）后的直接拿出，因为ALU的计算结果地址从内存中读取的数据才是x2的值</p>
+<p>这时无论怎样前递都达不到目的，只能添加一个stall</p>
+</div>
+<p>给出判断条件：</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="na">MemRead</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="na">RegRs</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">IF</span><span class="o">/</span><span class="n">ID</span><span class="p">.</span><span class="na">RegRd</span><span class="p">))</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">stall</span><span class="w"> </span><span class="n">pipeline</span><span class="w"> </span>
+</span></code></pre></div>
+<ul>
+<li>我在学习这里时并没有很理解，因为在上面的示例中，我们是看到了ld指令执行结束后的情况，但其实在ld指令执行到ID/EX阶段时，add指令就已经译码完成了，我们在CC2-CC3这个时刻就已经要进行判断</li>
+</ul>
+<p>这样我们stall后的流水线进程就变为了：</p>
+<div style="display: flex; justify-content: center;">
+    <img src="/../../../../assets/pics/co/co-81.png" alt="co-81" style="width: 50%;">
+    <img src="/../../../../assets/pics/co/co-82.png" alt="co-82" style="width: 50%;">
+</div>
+
+<p>hygg的作业题中这张图片不错，对齐的是每个指令阶段，这样就很容易看出stall的插入位置，向hygg学习（）</p>
+<p>接下来我们来解决怎么进行stall：</p>
+<ul>
+<li>停止IF：不能改变PC寄存器的数值（进行重复读取），所以要为 PC 寄存器添加写信号 <code>PCWrite</code></li>
+<li>停止ID：不能改变 IF/ID 流水线寄存器的值（读取重复的值）所以要为该寄存器添加写信号 <code>IF/IDWrite</code></li>
+<li>确保空操作nops：保证流水线不改变状态，需要让所有的控制信号为0（实际上只需要<code>RegWrite</code>和<code>MemWrite</code>为0，其他无所谓）</li>
+</ul>
+<p><img alt="co-83" src="/../../../../assets/pics/co/co-83.png" /></p>
+<h2 id="control-hazards-fixing">Control Hazards Fixing<a class="headerlink" href="#control-hazards-fixing" title="Permanent link">&para;</a></h2>
+<p>如图，在beq指令中，我们正常情况下需要在WB阶段才能知道beq指令的执行结果，这之中会有三个指令的执行（被浪费），因此分支指令的优化是很重要的</p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-84.png" alt="co-84" height="200px" width="500px">
+</div>
+
+<ul>
+<li>一个思路是：Calculate in advance</li>
+</ul>
+<p>正常情况下用ALU来计算出beq指令的地址，但实际上在ID阶段已经有imm和x1的值了，所以我们在ID阶段后增加一个专门的分支加法器就可以提前算出，可以减少两个指令的浪费</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">1</label><label for="__tabbed_4_2">2</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="co-85" src="/../../../../assets/pics/co/co-85.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="co-86" src="/../../../../assets/pics/co/co-86.png" /></p>
+</div>
+</div>
+</div>
+<ul>
+<li>一个更好的思路是：Branch Prediction，有两种<ul>
+<li>Static Prediction</li>
+<li>Dynamic Prediction</li>
+</ul>
+</li>
+</ul>
+<p>静态预测就是一直认为自己跳转或者不跳转，动态预测则是根据历史情况进行判断</p>
+<p>1-bit predictor：</p>
+<p>用0 1来区别上次的分支指令是否发生跳转，如果预测失败，反转这个bit。</p>
+<p>2-bit predictor：</p>
+<p>相当于只有连续两次判断错误才会更改判断，可以优化while loop的犯错次数</p>
+<div align="center">
+<img src="/../../../../assets/pics/co/co-87.png" alt="co-87" height="200px" width="500px">
+</div>
 
 
 
