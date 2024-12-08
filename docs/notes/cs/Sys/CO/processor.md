@@ -52,13 +52,17 @@
 
 ### Instruction Fetch
 
-![co-42](/../../../../assets/pics/co/co-42.png)
+<div align="center">
+<img src="/../../../../assets/pics/co/co-42.png" alt="co-42" height="200px" width="500px">
+</div>
 
 64bit寄存器，需要64个D触发器。
 
 ### R Inst
 
-![co-43](/../../../../assets/pics/co/co-43.png)
+<div align="center">
+<img src="/../../../../assets/pics/co/co-43.png" alt="co-43" height="200px" width="500px">
+</div>
 
 - Register File: 寄存器堆，用于存储所有寄存器
     - 进行选择的wire是5位，因为寄存器有32个。
@@ -70,7 +74,9 @@
 
 除了R型指令用到的两个元件，还需要两个
 
-![co-44](/../../../../assets/pics/co/co-44.png)
+<div align="center">
+<img src="/../../../../assets/pics/co/co-44.png" alt="co-44" height="200px" width="500px">
+</div>
 
 - Data Memory: 数据内存,不同于Register File，Data Memory同时具有读写控制
     - 读取数据ld需要受`MemRead`信号控制，写入数据sd需要受`MemWrite`信号控制
@@ -81,7 +87,10 @@
 
 这里只考虑了beq指令
 
-![co-45](/../../../../assets/pics/co/co-45.png)
+
+<div align="center">
+<img src="/../../../../assets/pics/co/co-45.png" alt="co-45" height="200px" width="500px">
+</div>
 
 - 寄存器用于存放两个被比较的源操作数，进入ALU进行比较
 - ALU：第一个ALU的作用是进行比较，并且有一个zero用于判断是否相等进而选择PC+4还是branch target address；第二个ALU只有加法，用于计算branch target address
@@ -320,14 +329,18 @@ Harzard（竞争）：
 - Data Hazards
     - 需要等待上一条指令完成数据写入或者读取完成才能进行后续操作
     - 解决方案：添加额外的硬件**前递**（forwarding）或称为**旁路**（bypassing）
+    
+    <div align="center">
+    <img src="/../../../../assets/pics/co/co-63.png" alt="co-63" height="200px" width="500px">
+    </div>
 
-    - ![co-63](/../../../../assets/pics/co/co-63.png)
-
-        - 只有当目标阶段比源阶段晚时，才能进行前递
+    只有当目标阶段比源阶段晚时，才能进行前递
 
     - 这一情况对于R型指令是适用的，但是如果先执行加载指令，后执行依赖于该加载指令数据的指令，即使加了一个前递，CPU 还是不得不暂停一个时钟周期，这种情况称为**加载使用数据冒险**(load-use data hazard)，如下图所示：
-
-    ![co-64](/../../../../assets/pics/co/co-64.png)
+    
+    <div align="center">
+    <img src="/../../../../assets/pics/co/co-64.png" alt="co-64" height="200px" width="500px">
+    </div>
 
     中间的气泡称为流水线停顿（pipeline stall）或者bubble
     
@@ -377,7 +390,9 @@ Harzard（竞争）：
     - 解决方案：将寄存器的比较和目标地址的计算提前到ID阶段
     - 但是这样仍然会有一个bubble的产生：
 
-    ![co-66](/../../../../assets/pics/co/co-66.png)
+    <div align="center">
+    <img src="/../../../../assets/pics/co/co-66.png" alt="co-66" height="200px" width="500px">
+    </div>
     
     - 我们需要一个更好的解决方法：**分支预测**：
     - 一种方法是**静态预测**
@@ -398,7 +413,9 @@ Harzard（竞争）：
 
 - 在流水线中我们需要储存进入执行的指令，因此需要一个额外的寄存器，叫做**流水线寄存器**，位于两个阶段之间
 
-![co-68](/../../../../assets/pics/co/co-68.png)
+<div align="center">
+<img src="/../../../../assets/pics/co/co-68.png" alt="co-68" height="200px" width="500px">
+</div>
 
 !!! example "ld process of pipeline"
 
@@ -441,13 +458,17 @@ Harzard（竞争）：
 
 在单周期CPU中我们引入了一系列控制信号来进行控制，在这里流水线CPU也需要控制指令，并且这些控制指令也是随着流水型寄存器的传递而传递的
 
-![co-74](/../../../../assets/pics/co/co-74.png)
+
+<div align="center">
+<img src="/../../../../assets/pics/co/co-74.png" alt="co-74" height="200px" width="500px">
+</div>
 
 可以看到控制信号随着流水线的进行逐渐被使用，被使用的信号将不再被传递，节约了空间
 
 
 
 在加入控制器后：
+
 
 ![co-75](/../../../../assets/pics/co/co-75.png)
 
@@ -469,16 +490,157 @@ add x14, x2, x2
 sd  x15, 100(x2)
 ```
 
-可以看到x2寄存器的值在sub后的四个指令中都被使用，在正常情况下，x2寄存器的值需要等到MEM阶段才能被写入，但是我们在ALU后的输出端已经得到最终x2的数值了，可以通过前递将结果传递给接下来的指令
+画出流水线图：
 
-![co-76](/../../../../assets/pics/co/co-76.png)
+<div align="center">
+<img src="/../../../../assets/pics/co/co-76.png" alt="co-76" height="200px" width="500px">
+</div>
 
-图中蓝色的寄存器是需要前递数据的寄存器，我们在EX阶段得到x2的数值后，放入EX/MEM流水线寄存器的rd位置，记这段数据为：
+图中下方四个蓝色的寄存器是需要前递数据的寄存器，在正常情况下，我们得到最终的x2数值是在MEM/WB阶段，也就是图中所示第一个蓝色寄存器，但是显然上方的两个需要x2寄存器数值的指令无法前递，而我们在EX阶段其实已经得到了x2的数值，因此我们可以将x2的数值前递给上方两个指令
+
+
+<div align="center">
+<img src="/../../../../assets/pics/co/co-77.png" alt="co-77" height="200px" width="500px">
+</div>
+
+我们观察到两个前递的发生：
+
+- "1"型是相邻的前递：
 
 $$
-\text{EX/MEM.RegisterRd}
+\text{EX/MEM.RegRd} \rightarrow \text{ID/EX.RegRs1(Or Rs1)}
 $$
 
-我们需要用这些数据的寄存器是：
+- "2"型是相邻两个指令之间的前递：
+
+$$
+\text{MEM/WB.RegRd} \rightarrow \text{ID/EX.RegRs2(Or Rs2)}
+$$
+
+!!! note "前递的判断"
+    除了上述两个判断，还需要补充一些判断条件
+
+    - 并不是所有指令都包含写入寄存器的操作，所以提前检测```RegWrite```信号是否为1，不是的话直接不用前递
+    - 如果目标寄存器的数值是0，我们不希望进行前递，因为0值的寄存器没有任何意义
+    
+    - 同样还需要注意的是dubble data harzard，如果连续三条指令都在使用同一个寄存器，那么我们只需要对最新的指令进行前递，例如下面的指令：
+
+    ```asm
+    add x2, x2, x3
+    add x2, x2, x4
+    add x2, x2, x5
+    ```
+    我们需要增加一个判断，就是下方伪代码的高亮部分
+
+最终我们可以将整个forwarding unit的逻辑写成一个大的判断模块：
+
+```java hl_lines="10"
+//For EX to ID
+if (EX/MEM.RegWrite == 1 and EX/MEM.RegRd != 0)
+    if (EX/MEM.RegRd == ID/EX.RegRs1)
+        ForwardA = 10
+    if (EX/MEM.RegRd == ID/EX.RegRs2)
+        ForwardB = 10
+
+//For MEM to ID
+if (MEM/WB.RegWrite == 1 and MEM/WB.RegRd != 0)
+    and not (EX/MEM.RegWrite == 1 and (EX/MEM.RegRd == ID/EX.RegRs1 or EX/MEM.RegRd == ID/EX.RegRs2))
+    if (MEM/WB.RegRd == ID/EX.RegRs1)
+        ForwardA = 01
+    if (MEM/WB.RegRd == ID/EX.RegRs2)
+        ForwardB = 01
+```
+
+我们在这段判读中使用了```ForwardA```和```ForwardB```来表示前递的类型，其实就是添加一个Mux来选择ALU的输入位置是A还是B
+
+<div align="center">
+<img src="/../../../../assets/pics/co/co-78.png" alt="co-78" height="200px" width="500px">
+</div>
 
 
+这样我们就得到了完整的datapath：
+
+<div align="center">
+<img src="/../../../../assets/pics/co/co-79.png" alt="co-79" height="200px" width="500px">
+</div>
+
+### Stalling
+
+先前我们讲到过，当发生load-use data hazard时，我们需要进行停顿，也就是插入stall，这是为什么呢？
+
+!!! example "load-use data hazard"
+    <div align="center">
+    <img src="/../../../../assets/pics/co/co-80.png" alt="co-80" height="200px" width="500px">
+    </div>
+    
+    可以看到在ld指令得到数据的位置是在MEM/WB阶段，这样我们就不能在ALU计算出结果（imm + x1 的地址）后的直接拿出，因为ALU的计算结果地址从内存中读取的数据才是x2的值
+
+    这时无论怎样前递都达不到目的，只能添加一个stall
+
+
+给出判断条件：
+
+```java
+if (ID/EX.MemRead == 1 and (ID/EX.RegRs(1 or 2) == IF/ID.RegRd))
+stall pipeline 
+```
+
+- 我在学习这里时并没有很理解，因为在上面的示例中，我们是看到了ld指令执行结束后的情况，但其实在ld指令执行到ID/EX阶段时，add指令就已经译码完成了，我们在CC2-CC3这个时刻就已经要进行判断
+
+这样我们stall后的流水线进程就变为了：
+
+<div style="display: flex; justify-content: center;">
+    <img src="/../../../../assets/pics/co/co-81.png" alt="co-81" style="width: 50%;">
+    <img src="/../../../../assets/pics/co/co-82.png" alt="co-82" style="width: 50%;">
+</div>
+
+hygg的作业题中这张图片不错，对齐的是每个指令阶段，这样就很容易看出stall的插入位置，向hygg学习（）
+
+接下来我们来解决怎么进行stall：
+
+- 停止IF：不能改变PC寄存器的数值（进行重复读取），所以要为 PC 寄存器添加写信号 ```PCWrite```
+- 停止ID：不能改变 IF/ID 流水线寄存器的值（读取重复的值）所以要为该寄存器添加写信号 ```IF/IDWrite```
+- 确保空操作nops：保证流水线不改变状态，需要让所有的控制信号为0（实际上只需要```RegWrite```和```MemWrite```为0，其他无所谓）
+
+![co-83](/../../../../assets/pics/co/co-83.png)
+
+
+## Control Hazards Fixing
+
+
+如图，在beq指令中，我们正常情况下需要在WB阶段才能知道beq指令的执行结果，这之中会有三个指令的执行（被浪费），因此分支指令的优化是很重要的
+
+<div align="center">
+<img src="/../../../../assets/pics/co/co-84.png" alt="co-84" height="200px" width="500px">
+</div>
+
+- 一个思路是：Calculate in advance
+
+正常情况下用ALU来计算出beq指令的地址，但实际上在ID阶段已经有imm和x1的值了，所以我们在ID阶段后增加一个专门的分支加法器就可以提前算出，可以减少两个指令的浪费
+
+=== "1"
+
+    ![co-85](/../../../../assets/pics/co/co-85.png)
+
+=== "2"
+
+    ![co-86](/../../../../assets/pics/co/co-86.png)
+
+
+- 一个更好的思路是：Branch Prediction，有两种
+    - Static Prediction
+    - Dynamic Prediction
+
+静态预测就是一直认为自己跳转或者不跳转，动态预测则是根据历史情况进行判断
+
+1-bit predictor：
+
+用0 1来区别上次的分支指令是否发生跳转，如果预测失败，反转这个bit。
+
+2-bit predictor：
+
+相当于只有连续两次判断错误才会更改判断，可以优化while loop的犯错次数
+
+<div align="center">
+<img src="/../../../../assets/pics/co/co-87.png" alt="co-87" height="200px" width="500px">
+</div>
