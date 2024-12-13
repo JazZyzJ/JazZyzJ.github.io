@@ -101,6 +101,7 @@ nav:
           - NP Completeness: notes/cs/algorithm/NP.md
           - Approximation: notes/cs/algorithm/Approximation.md
           - Local Search: notes/cs/algorithm/localsearch.md
+          - Randomized: notes/cs/algorithm/random.md
         - System:
           - CO: 
             - notes/cs/Sys/CO/index.md
