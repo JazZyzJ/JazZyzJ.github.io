@@ -1,6 +1,6 @@
-# Single-Cycle Processor
+## Single-Cycle Processor
 
-## Intro
+### Intro
 
 指令执行的步骤概述：
 
@@ -44,13 +44,13 @@
     ![co-41](../../../../assets/pics/co/co-41.png)
 
 
-## Clock Methodology
+### Clock Methodology
 
-## Datapath
+### Datapath
 
 构建数据通路时，我们关心的是指令中的存储数据而不是控制信号。
 
-### Instruction Fetch
+#### Instruction Fetch
 
 <div align="center">
 <img src="/../../../../assets/pics/co/co-42.png" alt="co-42" height="200px" width="500px">
@@ -58,7 +58,7 @@
 
 64bit寄存器，需要64个D触发器。
 
-### R Inst
+#### R Inst
 
 <div align="center">
 <img src="/../../../../assets/pics/co/co-43.png" alt="co-43" height="200px" width="500px">
@@ -70,7 +70,7 @@
 - ALU: 进行算术逻辑运算
     - 有一个四位的MUX进行控制，但事实上只需要三位，有一位是浪费的（但我们必须使用四位，因为MUX的输入端口数必须是2的幂次）
   
-### Load Store Inst
+#### Load Store Inst
 
 除了R型指令用到的两个元件，还需要两个
 
@@ -83,7 +83,7 @@
         - 内存的读取需要控制信号的原因是：并不是所有指令都会有访存操作，所以那些用不到内存值的指令就没必要读取内存数据，因此需要控制信号来关闭这扇门；而所有指令都要从寄存器堆里读取数据，因此寄存器堆的读取无需控制信号
 - Imm Gen: 从 32 位指令中提取出与立即数相关的位，将这些位按正确的顺序拼接起来，同时对其符号扩展至 64 位
 
-### Branch Inst
+#### Branch Inst
 
 这里只考虑了beq指令
 
@@ -96,7 +96,7 @@
 - ALU：第一个ALU的作用是进行比较，并且有一个zero用于判断是否相等进而选择PC+4还是branch target address；第二个ALU只有加法，用于计算branch target address
 - Shift left 1:根据之前学到的，在进行branch target address计算时，我们所需的offset在立即数中是真实值的一半，因此对于Imm Gen输出的立即数，我们需要进行左移一位的操作乘2
 
-### Compose
+#### Compose
 
 - 每个数据通路都是单周期的
 
@@ -129,7 +129,7 @@
 
         ![co-51](/../../../../assets/pics/co/co-51.png)
 
-## Control Unit
+### Control Unit
 
 只有7+4根信号
 
@@ -141,7 +141,7 @@
 
 
 
-#### ALU Control
+##### ALU Control
 
 ALU的控制信号一共有4位：
 
@@ -175,7 +175,7 @@ ALU的控制信号一共有4位：
 
 
 
-#### Main Control Unit
+##### Main Control Unit
 
 余下的六个控制信号的作用如下：
 
@@ -193,7 +193,7 @@ ALU的控制信号一共有4位：
 ![co-60](/../../../../assets/pics/co/co-60.png)
 ----
 
-#### Operation of Datapath
+##### Operation of Datapath
 
 > 灰色的元件代表没有被使用
 
@@ -244,7 +244,7 @@ ALU的控制信号一共有4位：
     2. ID：从寄存器堆中读取x1和x2
     3. EX：ALU将两个读取的数据相减，同时将PC与左移一位后的offset相加，得到branch target address，根据ALU的zero信号判断如何更新PC
 
-# Pipelining Process
+## Pipelining Process
 
 流水线Pipeline的本质是提高吞吐量，通过将指令的执行过程分解为多个阶段，每个阶段在不同的时钟周期内执行，从而在每个时钟周期内完成多条指令的执行。
 
@@ -315,7 +315,7 @@ $$
 
 
 
-## Hazards
+### Hazards
 
 Harzard（竞争）：
 
@@ -400,7 +400,7 @@ Harzard（竞争）：
     - 另一种方法是**动态预测**
 
 
-## DataPath in Pipeline
+### DataPath in Pipeline
 
 根据指令执行的阶段，将先前的datapath进行划分：
 
@@ -454,7 +454,7 @@ Harzard（竞争）：
             在最后写回数据时，我们的指令中已经没有需要写回的寄存器编号了，所以我们改进了这个设计，将寄存器编号放在流水线寄存器中，这样在WB阶段就可以直接使用
 
 
-## Control in Pipeline
+### Control in Pipeline
 
 在单周期CPU中我们引入了一系列控制信号来进行控制，在这里流水线CPU也需要控制指令，并且这些控制指令也是随着流水型寄存器的传递而传递的
 
@@ -476,11 +476,11 @@ Harzard（竞争）：
 
 
 
-## Data Harzards Fixing 
+### Data Harzards Fixing 
 
 data hazard的解决方法有两种，一种是进行前递forwarding，另一种是进行停顿stall
 
-### Forwarding
+#### Forwarding
 
 ```asm
 sub x2, x1, x3
@@ -564,7 +564,7 @@ if (MEM/WB.RegWrite == 1 and MEM/WB.RegRd != 0)
 <img src="/../../../../assets/pics/co/co-79.png" alt="co-79" height="200px" width="500px">
 </div>
 
-### Stalling
+#### Stalling
 
 先前我们讲到过，当发生load-use data hazard时，我们需要进行停顿，也就是插入stall，这是为什么呢？
 
@@ -605,7 +605,7 @@ hygg的作业题中这张图片不错，对齐的是每个指令阶段，这样�
 ![co-83](/../../../../assets/pics/co/co-83.png)
 
 
-## Control Hazards Fixing
+### Control Hazards Fixing
 
 
 如图，在beq指令中，我们正常情况下需要在WB阶段才能知道beq指令的执行结果，这之中会有三个指令的执行（被浪费），因此分支指令的优化是很重要的

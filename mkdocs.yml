@@ -102,12 +102,14 @@ nav:
           - Approximation: notes/cs/algorithm/Approximation.md
           - Local Search: notes/cs/algorithm/localsearch.md
           - Randomized: notes/cs/algorithm/random.md
+          - Parallel: notes/cs/algorithm/para.md
         - System:
           - CO: 
             - notes/cs/Sys/CO/index.md
             - Arithmetic: notes/cs/Sys/CO/arithmetic.md
             - Instruction: notes/cs/Sys/CO/instruction.md
             - Processor: notes/cs/Sys/CO/processor.md
+            - Memory: notes/cs/Sys/CO/memory.md
         - PL: 
           - Verilog: notes/lingo/verilog.md
           - Python(CS61a): notes/lingo/cs61a.md
@@ -116,5 +118,7 @@ nav:
     - Workflow:
       - Coding:
         - GNU Make: Tool_Pool/GNU_Make.md
+  - L0g: log/index.md
+    
     # - Widgets:
       
