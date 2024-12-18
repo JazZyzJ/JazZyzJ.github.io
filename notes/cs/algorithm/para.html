@@ -1627,6 +1627,9 @@ W = O(n) \quad D = O(\log n)
 \]</div>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <h3 id="_1">并行排序<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>使用归并排序，我们也能将工作过程写为一个二叉树，在第<span class="arithmatex">\(i\)</span>层中，我们已经将所有元素分成了<span class="arithmatex">\(2^i\)</span>个部分，每个部分有<span class="arithmatex">\(n/2^i\)</span>个元素，进行两两合并，这时每个节点的<span class="arithmatex">\(W\)</span>是<span class="arithmatex">\(O(n/2^i)\)</span>，<span class="arithmatex">\(D\)</span>也是<span class="arithmatex">\(O(n/2^i)\)</span>，在这一层中所有节点进行求和，所以<span class="arithmatex">\(W\)</span>是<span class="arithmatex">\(O(n)\)</span>，<span class="arithmatex">\(D\)</span>并行处理的，因此还是<span class="arithmatex">\(O(n/2^i)\)</span></p>
+<p>最后对每一层进行求和，<span class="arithmatex">\(W\)</span>是<span class="arithmatex">\(O(n \log n)\)</span>，<span class="arithmatex">\(D\)</span>是<span class="arithmatex">\(O(n)\)</span></p>
+<p>在这里可以看出我们算法的瓶颈在于merge，如果我们能对merge进行优化，那么我们就能提高整个算法的效率。</p>
 
 
 
