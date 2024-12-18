@@ -2,10 +2,14 @@ site_name: Space . JaZzyzJ
 site_url: https://jazzyzj.github.io/
 repo_name: JaZzyzJ.Space
 repo_url: https://github.com/JazZyzJ/JazZyzJ.github.io
+use_directory_urls: false
+
+
 
 theme: 
   name: material
   language: en
+  favicon: docs/assets/pics/harry.png
   icon:
     logo: material/notebook-outline
   features:
@@ -74,6 +78,7 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.tasklist:
       custom_checkbox: true
+  - md_in_html
 
 extra_javascript:
   - javascripts/mathjax.js
@@ -83,8 +88,18 @@ extra_javascript:
 extra_css:
   - docs/css/stylesheets/extra.css
 
-
-
+# plugins:
+#   - search
+#   - toc
+#   - statistics:
+#       page_template: "stylesheets/template.html"
+#       page_check_metadata: counter  # 检查页面元数据
+#       page_count_strict: "true"    # 严格计数模式
+#       count_pages: "true"          # 统计页面数
+#       count_words: "true"          # 统计字数
+#       count_chinese_words: "true"  # 统计中文字数
+#       count_code_lines: "true"     # 统计代码行数
+#       read_time: "true"           # 估计阅读时间
 
 nav:
   - Home: index.md
