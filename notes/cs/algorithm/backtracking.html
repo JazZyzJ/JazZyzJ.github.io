@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/algorithm/DandC/">
+        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/algorithm/backtracking.html">
       
       
-        <link rel="prev" href="../backtracking/">
+        <link rel="prev" href="ads/ADS.html">
       
       
-        <link rel="next" href="../dp/">
+        <link rel="next" href="DandC.html">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../docs/assets/pics/harry.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>Divide & Conquer - Space . JaZzyzJ</title>
+        <title>Backtracking - Space . JaZzyzJ</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../docs/css/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../docs/css/stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#divide-and-conquer" class="md-skip">
+        <a href="#backtracking" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+    <a href="../../../index.html" title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Divide & Conquer
+              Backtracking
             
           </span>
         </div>
@@ -217,7 +217,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../../../index.html" class="md-tabs__link">
         
   
     
@@ -246,7 +246,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../index.html" class="md-tabs__link">
           
   
     
@@ -281,7 +281,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../Tool_Pool/GNU_Make/" class="md-tabs__link">
+        <a href="../../../Tool_Pool/GNU_Make.html" class="md-tabs__link">
           
   
     
@@ -297,6 +297,23 @@
   
 
     
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../log/index.html" class="md-tabs__link">
+        
+  
+    
+  
+  L0g
+
+      </a>
+    </li>
   
 
       
@@ -322,7 +339,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+    <a href="../../../index.html" title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
@@ -352,7 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -448,7 +465,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -484,6 +501,8 @@
   
     
     
+      
+        
       
         
       
@@ -543,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fds/fds/" class="md-nav__link">
+      <a href="fds/fds.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -564,32 +583,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../ads/ADS/" class="md-nav__link">
+      <a href="ads/ADS.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     ADS
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../backtracking/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Backtracking
   </span>
   
 
@@ -619,18 +617,18 @@
           
   
   <span class="md-ellipsis">
-    Divide & Conquer
+    Backtracking
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="backtracking.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Divide & Conquer
+    Backtracking
   </span>
   
 
@@ -652,6 +650,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
       Example
@@ -662,18 +669,55 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#maximum-subarray" class="md-nav__link">
+  <a href="#8-queens" class="md-nav__link">
     <span class="md-ellipsis">
-      Maximum Subarray
+      8 Queens
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nearest-neighbor" class="md-nav__link">
+  <a href="#the-turnpike-problem" class="md-nav__link">
     <span class="md-ellipsis">
-      Nearest Neighbor
+      The Turnpike Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stick-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stick Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimax-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimax Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimax Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alpha-beta-pruning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alpha-Beta Pruning
     </span>
   </a>
   
@@ -683,22 +727,9 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      Analysis
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#three-methods-for-solving-recurrence" class="md-nav__link">
-    <span class="md-ellipsis">
-      Three Methods for Solving Recurrence
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -718,7 +749,28 @@
   
   
     <li class="md-nav__item">
-      <a href="../dp/" class="md-nav__link">
+      <a href="DandC.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Divide & Conquer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dp.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -739,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gdy/" class="md-nav__link">
+      <a href="gdy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -760,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../NP/" class="md-nav__link">
+      <a href="NP.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -781,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Approximation/" class="md-nav__link">
+      <a href="Approximation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -802,7 +854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../localsearch/" class="md-nav__link">
+      <a href="localsearch.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -823,11 +875,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../random/" class="md-nav__link">
+      <a href="random.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Randomized
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="para.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallel
   </span>
   
 
@@ -906,6 +979,8 @@
       
         
       
+        
+      
     
     
       
@@ -921,7 +996,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../Sys/CO/" class="md-nav__link ">
+            <a href="../Sys/CO/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -954,7 +1029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Sys/CO/arithmetic/" class="md-nav__link">
+      <a href="../Sys/CO/arithmetic.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -975,7 +1050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Sys/CO/instruction/" class="md-nav__link">
+      <a href="../Sys/CO/instruction.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -996,11 +1071,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Sys/CO/processor/" class="md-nav__link">
+      <a href="../Sys/CO/processor.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Processor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sys/CO/memory.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory
   </span>
   
 
@@ -1077,7 +1173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lingo/verilog/" class="md-nav__link">
+      <a href="../../lingo/verilog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1098,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lingo/cs61a/" class="md-nav__link">
+      <a href="../../lingo/cs61a.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1268,7 +1364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Tool_Pool/GNU_Make/" class="md-nav__link">
+      <a href="../../../Tool_Pool/GNU_Make.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1305,6 +1401,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../log/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    L0g
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1332,6 +1448,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
       Example
@@ -1342,18 +1467,55 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#maximum-subarray" class="md-nav__link">
+  <a href="#8-queens" class="md-nav__link">
     <span class="md-ellipsis">
-      Maximum Subarray
+      8 Queens
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nearest-neighbor" class="md-nav__link">
+  <a href="#the-turnpike-problem" class="md-nav__link">
     <span class="md-ellipsis">
-      Nearest Neighbor
+      The Turnpike Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stick-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stick Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimax-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimax Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimax Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alpha-beta-pruning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alpha-Beta Pruning
     </span>
   </a>
   
@@ -1363,22 +1525,9 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      Analysis
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#three-methods-for-solving-recurrence" class="md-nav__link">
-    <span class="md-ellipsis">
-      Three Methods for Solving Recurrence
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1400,153 +1549,155 @@
   
 
 
-<h1 id="divide-and-conquer">Divide and Conquer<a class="headerlink" href="#divide-and-conquer" title="Permanent link">&para;</a></h1>
-<p>核心思想：将较大的问题分解为较小的子问题，分别解决子问题，然后将子问题的解合并为原问题的解</p>
-<p>Recursively:</p>
-<p><strong>Divide</strong> the problem into a number of subproblems</p>
-<p><strong>Conquer</strong> the subproblems by solving them recursively</p>
-<p><strong>Combine</strong> the solutions to the subproblems into the solution for the original problem</p>
-<div class="arithmatex">\[
-T(n) = aT(n/b) + f(n)
-\]</div>
-<div class="arithmatex">\[
-N 是原问题的规定大小, f(n) 是划分和合并子问题的解消耗的时间
-\]</div>
+<h1 id="backtracking">Backtracking<a class="headerlink" href="#backtracking" title="Permanent link">&para;</a></h1>
+<h2 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h2>
+<p>解决问题可以将所有可能解罗列出来，但是这样时间复杂度太高，因此需要使用回溯法进行优化</p>
+<p>回溯法就是在所有解的空间中进行正确解搜索的一种方式，他通过消除不必要解的搜索空间（剪枝prune）来减少时间复杂度</p>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<h3 id="maximum-subarray">Maximum Subarray<a class="headerlink" href="#maximum-subarray" title="Permanent link">&para;</a></h3>
-<p>常见套路是均匀的一分为二</p>
-<p>在这里，我们将数组一分为二，分别求出左半部分的最大子数组和右半部分的最大子数组，然后考虑跨越中点的最大子数组</p>
-<p>横跨子序列的求算方法：</p>
-<p>从中间向两边扫描，分别求出由中间向左的最大子数组和由中间向右的最大子数组，然后合并</p>
-<h3 id="nearest-neighbor">Nearest Neighbor<a class="headerlink" href="#nearest-neighbor" title="Permanent link">&para;</a></h3>
+<h3 id="8-queens">8 Queens<a class="headerlink" href="#8-queens" title="Permanent link">&para;</a></h3>
 <div class="admonition question">
-<p class="admonition-title">平面上给定的N个点中找到距离最近的两个点</p>
+<p class="admonition-title">8 Queens</p>
+<p>在一个8x8的棋盘上，放置8个皇后，使得他们互相之间无法进行攻击</p>
 </div>
-<div class="admonition solution">
-<p class="admonition-title">Solution</p>
-<p>在先前的例子中，我们也采用了将问题均匀一分为二的方法，在这里，我们同样采用这种方法。</p>
+<p>对这个问题进行数学化描述：</p>
 <ul>
-<li>首先根据这些点的x坐标，将这些点一分为二，分别求出左半部分和右半部分最近的两个点</li>
-<li>然后考虑跨越中点的最近两个点：</li>
-<li>如果考虑分割线左右两边所有的点，那么时间复杂度是<span class="arithmatex">\(O(N^2)\)</span>，显然太大了</li>
-<li>我们第一步考虑的是选取一个束状带型区域，这个区域距离分割线的距离是<span class="arithmatex">\(\delta\)</span>，则此时如果能保证这个区域中只有<span class="arithmatex">\(O(\sqrt{N})\)</span>个点，那么我们就可以在<span class="arithmatex">\(O(N)\)</span>的时间内找到跨越中点的最近两个点，但万一不呢？</li>
-<li>所以我们需要进一步的改进，再确定的垂直带状区域中，我们再选取一个竖直高度为<span class="arithmatex">\(\delta\)</span>的的区域，这样构成了一个长为<span class="arithmatex">\(2\delta\)</span>，宽为<span class="arithmatex">\(\delta\)</span>的矩形
-<div align="center">
-<img src="/../../../../assets/pics/dandc/dc-1.png" alt="dc-1" height="100px" width="300px">
-</div></li>
-<li>在这个情况下，每个点只需要考虑与其他七个点（也就是边框的角上）之间的距离即可</li>
-<li>即使在所有点都在这个区域的情况下，因为每个点的判断次数是常数的，所以时间复杂度最差仍然是<span class="arithmatex">\(O(N)\)</span></li>
-</ul>
-</div>
-<h2 id="analysis">Analysis<a class="headerlink" href="#analysis" title="Permanent link">&para;</a></h2>
-<p>分治法的时间复杂度计算依托于我们先前定义的算式</p>
-<div class="arithmatex">\[
-T(n) = aT(n/b) + f(n)
-\]</div>
-<p>对于这种递归式，我们可以直接进行递归展开然后计算：</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="arithmatex">\[
-\begin{aligned}
-T(n) &amp;= 2T(n/2) + N\\
-&amp;= 2(2T(n/4) + N/2) + N\\
-&amp;= 4T(n/4) + 2N\\
-&amp;= 4(2T(n/8) + N/4) + 2N\\
-&amp;= 8T(n/8) + 3N\\
-&amp;= ...\\
-&amp;= 2^k T(n/2^k) + kN\\
-&amp;= O(NlogN)
-\end{aligned}
-\]</div>
-</div>
-<h2 id="three-methods-for-solving-recurrence">Three Methods for Solving Recurrence<a class="headerlink" href="#three-methods-for-solving-recurrence" title="Permanent link">&para;</a></h2>
-<ul>
-<li>假定<span class="arithmatex">\(\frac{n}{b}\)</span> 是整数</li>
-<li>对于较小的n，我们假定<span class="arithmatex">\(T(n) = \Theta(1)\)</span></li>
-</ul>
-<ol>
-<li>Substitution Method</li>
-</ol>
-<p>猜测一个结果，然后用数学归纳法证明</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>在进行这样的一个猜测时：</p>
-<p>已知<span class="arithmatex">\(T(N) = 2T(\lfloor{N/2}\rfloor) + N\)</span>，如果我们猜测<span class="arithmatex">\(T(N) = O(N)\)</span>，那么我们会有如下的证明：</p>
-<ul>
-<li>假设对于<span class="arithmatex">\(m \leq N\)</span>，结论成立</li>
-<li>那么存在一个常数<span class="arithmatex">\(c\)</span>，取<span class="arithmatex">\(m = \lfloor{N/2}\rfloor\)</span>，则有<span class="arithmatex">\(T(\lfloor{N/2}\rfloor) \leq c \lfloor{N/2}\rfloor\)</span></li>
-<li>将这个式子代入<span class="arithmatex">\(T(N) = 2T(\lfloor{N/2}\rfloor) + N\)</span>，则有<span class="arithmatex">\(T(N) \leq 2c \lfloor{N/2}\rfloor + N = cN + N = O(N)\)</span></li>
-</ul>
-<p>看起来似乎没有问题，但是在最后一个等式中，我们得到了<span class="arithmatex">\(cN+N=(c+1)N\)</span>，这显然是<span class="arithmatex">\(O(N)\)</span>的，但是在形式上它是错误的，因为我们预先假设正确的结论是<span class="arithmatex">\(T(m) \leq c m\)</span>，所以要根据这个格式来证明出<span class="arithmatex">\(T(N) \leq cN\)</span>，而不是<span class="arithmatex">\(T(N) \leq (c+1)N\)</span>，必须保证<strong>精确的格式</strong>，常数项也必须一致</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tips</p>
-<p>在时间复杂度递推中出现了类似<span class="arithmatex">\(T(\sqrt{N})\)</span>的形式，可以采用换元来处理，这里的方法来源于noughtq同学的笔记：</p>
-<ul>
-<li>令<span class="arithmatex">\(m = \log2 N\)</span>，那么<span class="arithmatex">\(T(\sqrt{N}) = T(2^{m/2})\)</span>，<span class="arithmatex">\(T(N) = T(2^m)\)</span></li>
-<li>再令<span class="arithmatex">\(S(m) = T(2^m)\)</span>，则有<span class="arithmatex">\(S(m/2) = T(2^{m/2}) = T(\sqrt{N})\)</span></li>
-<li>这时候我们就可以将<span class="arithmatex">\(T(N)\)</span>的递推式转换为<span class="arithmatex">\(S(m)\)</span>的递推式：<span class="arithmatex">\(S(m) = 2S(m/2) +  　m\)</span></li>
-</ul>
-</div>
-<hr />
-<ol start="2">
-<li>Recursion-tree Method</li>
-</ol>
-<p>画出一些例子，用树表示递归的展开</p>
-<p>在树中，每个非叶子节点表示的是向上递归时所需要消耗的时间，也就是公式中的<span class="arithmatex">\(f(n)\)</span>，而叶子节点表示的是递归的结束，也就是<span class="arithmatex">\(T(1)\)</span></p>
-<ul>
-<li>我们在运算时假设了这棵树的开销就是每个节点的开销之和:</li>
-<li>第一部分是叶子结点的<span class="arithmatex">\(T(1)\)</span>开销之和</li>
-<li>第二部分是所有非叶子节点的递归合并开销之和</li>
-</ul>
-<details class="example">
-<summary>Example</summary>
-<p><img alt="recursion-tree" src="/../../../../assets/pics/dandc/dc-2.png" /></p>
-</details>
-<ul>
-<li>递归树的作用不是为了能够得到最准确的证明，而是为了能得到一个好的猜测，之后再用Substitution Method来严格证明</li>
-</ul>
-<p>进行猜测的时候一般会进行一个放大的猜测，可能与真实的相同，也可能比真实值大，但一定不能比真实值小（那样就不用证了，肯定错了），所以对于无法画出树的全貌的例子一般放大一点猜测是没有问题的</p>
-<hr />
-<ol start="3">
-<li>Master Method</li>
-</ol>
-<p>先给出公式：</p>
-<div class="admonition note">
-<p class="admonition-title">Master Method</p>
-<ol>
-<li>If <span class="arithmatex">\(f(n) = O(N^{\log_b a - \epsilon})\)</span> for some constant <span class="arithmatex">\(\epsilon &gt; 0\)</span>, then <span class="arithmatex">\(T(n) = \Theta(N^{\log_b a})\)</span></li>
-<li>If <span class="arithmatex">\(f(n) = \Theta(N^{\log_b a})\)</span>, then <span class="arithmatex">\(T(n) = \Theta(N^{\log_b a} \log N)\)</span></li>
-<li>If <span class="arithmatex">\(f(n) = \Omega(N^{\log_b a + \epsilon})\)</span> for some constant <span class="arithmatex">\(\epsilon &gt; 0\)</span>, and if <span class="arithmatex">\(af(n/b) \leq cf(n)\)</span> for some constant <span class="arithmatex">\(c &lt; 1\)</span> and all sufficiently large <span class="arithmatex">\(n\)</span>, then <span class="arithmatex">\(T(n) = \Theta(f(n))\)</span></li>
-</ol>
-</div>
-<p>yy哥的形象解释，我觉得很有帮助（至少对于记忆来说）：</p>
-<ul>
-<li>
-<p>在分析算法性能时一定要找到占主导的部分--我们从树的角度出发:</p>
-<ul>
-<li>如果我们的树长得非常霸气，巨高，叶子巨多无比，这时候时间开销被叶子dominate了，用Master 1，时间开销就是<span class="arithmatex">\(\Theta (N^{\log_b a})\)</span>——也就是<strong>叶子的个数</strong></li>
-<li>如果我们的树身材非常匀称，一片欣欣向荣，用Master 2，时间开销就是<span class="arithmatex">\(\Theta (N^{\log_b a} \log N)\)</span>——也就是<strong>每一层的开销乘以树的高度</strong></li>
-<li>如果我们的树根特别大，也就是说合并问题所需的时间非常多，甚至比第一层划分节点所需要的时间还要多（就是正则式的意义）用Master 3，时间开销就是<span class="arithmatex">\(\Theta (f(N))\)</span>——也就是<strong>树根的值</strong></li>
+<li>令<span class="arithmatex">\(Q_i\)</span>表示第<span class="arithmatex">\(i\)</span>行的皇后，<span class="arithmatex">\(x_i\)</span>表示<span class="arithmatex">\(Q_i\)</span>的列坐标，<span class="arithmatex">\(S_i\)</span>表示<span class="arithmatex">\(x_i\)</span>可取值的集合</li>
+<li>限制条件：<ul>
+<li><span class="arithmatex">\(S_i = \{1, 2, 3, 4, 5, 6, 7, 8\}\)</span>, 表明可能的取值空间大小是<span class="arithmatex">\(8^8\)</span></li>
+<li>任意两个皇后<span class="arithmatex">\(Q_i\)</span>和<span class="arithmatex">\(Q_j\)</span>不能在同一列，即<span class="arithmatex">\(x_i \neq x_j\)</span></li>
+<li>任意两个皇后<span class="arithmatex">\(Q_i\)</span>和<span class="arithmatex">\(Q_j\)</span>不能在同一对角线，即<span class="arithmatex">\(|x_i - x_j| \neq |i - j|\)</span></li>
 </ul>
 </li>
 </ul>
-<p>我们发现这个公式并没有cover到所有情况的，就比如Master 3中，如果根很大，但是划分问题也很慢，就没办法用主方法了，所以主方法适用的情况就是三个很极端的情况</p>
-<div class="admonition success">
-<p class="admonition-title">加强版的Master Method</p>
+<p>解决方案：</p>
+<p>构建<strong>game tree</strong>，以四皇后为例：</p>
+<p><img alt="bk-1" src="/../../../../assets/pics/backtrack/bk-1.png" /></p>
+<p>进行深度优先搜索（后序遍历 也就是左中右），在进行遍历的时候主要进行的是对角线的检查（因为本身列的检查在树的结构上已经隐含了）</p>
+<ul>
+<li>剪枝的过程就是在我遇到一个节点的时候判断这个节点是否满足条件，如果不满足，就将这个节点以及他的所有子节点都剪掉（不进行遍历）然后对这个节点的兄弟节点进行尝试，如果所有兄弟节点都不满足条件，就说明父亲节点也不满足条件，继续往上返回直到找到一组完整解</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>实际上树的构建只是为了方便理解，实际上在回溯的过程中，我们并不需要构建树，构建树的过程让我们对“剪枝”这个过程有了更直观的理解，就是在约束条件下提前排除不可能的解，从而减少搜索空间</p>
 </div>
-<p>当<span class="arithmatex">\(a \geq 1, b &gt; 1, p \geq 0\)</span>时，方程</p>
+<details class="example">
+<summary>Hunting On Mars</summary>
+<p>这里补充一个例题加深对树的构建的理解</p>
+<p>问题是：在火星上有一个图，图中的每个节点有可能有兔子(1)也有可能没有兔子(0)，但是猎人出发时所背的氧气只能支撑他走<span class="arithmatex">\(k\)</span>步并且需要返回出发点，并且猎人至少需要抓到<span class="arithmatex">\(m\)</span>只兔子，找到这样的路径</p>
+<p>在这里有两个约束条件：</p>
+<ul>
+<li>猎人只能走<span class="arithmatex">\(k\)</span>步并且需要返回出发点</li>
+<li>猎人需要抓到<span class="arithmatex">\(m\)</span>只兔子</li>
+</ul>
+<p>这里我们构建树的思路是以路过的节点数作为树的节点，以猎人走过的路径作为树的边，同时计算猎人走过的路径上的兔子数量</p>
+<p>剪枝的条件是：</p>
+<ul>
+<li>如果当前节点走完剩下的步数小于所需的兔子数量，那么就剪枝</li>
+<li>当前节点距离出发点的最短路长度大于剩余的步数，那么就剪枝</li>
+</ul>
+<p>但是这里比较tricky的地方在于我们如何进行遍历，如果采用广度优先搜索，那么我们大概率会遍历所有可能的路径，这样时间复杂度会非常高，因此我们采用深度优先搜索，这样在求到一组解之后就可以进行返回，从而节省了时间</p>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Key of pruning</p>
+<ul>
+<li>由这个例子我们可以看到在进行剪枝条件的设计时，我们可以考虑放弃一个条件而严格遵循另一个条件</li>
+<li>高效的剪枝往往不是依据当前所处节点的，而是具有预见性的剪枝</li>
+</ul>
+</div>
+<h3 id="the-turnpike-problem">The Turnpike Problem<a class="headerlink" href="#the-turnpike-problem" title="Permanent link">&para;</a></h3>
+<div class="admonition question">
+<p class="admonition-title">The Turnpike Problem</p>
+<p>在一条直线上有多个点，这些点之间的距离是<span class="arithmatex">\(d_1, d_2, \cdots, d_{n}\)</span>，共<span class="arithmatex">\(\frac{n(n-1)}{2}\)</span>个距离，现在要找到这些点在直线上的位置，已知最左边的第一个加油站的位置是固定的在<span class="arithmatex">\(0\)</span></p>
+</div>
+<ul>
+<li>
+<p>分析</p>
+<p>最大的距离一定是最左边的点<span class="arithmatex">\(0\)</span>和最右边的点<span class="arithmatex">\(d_n\)</span>，接着处理第二大的距离，但这时最左边的点可以和右边的第二个点构成这个距离，最右边的点也可以和左边的倒数第二个点构成这个距离，所以这就引入了这个问题的game tree</p>
+<p>就是选取左边还是右边，然后通过检查这个新加入的节点与其他已存在节点构成的距离是否在原距离集合中，在就删掉，不在就剪枝，剪枝的时候需要注意需要把加入非法节点所删掉的距离加回来</p>
+</li>
+<li>
+<p>过程</p>
+</li>
+</ul>
+<p><img alt="bk-2" src="/../../../../assets/pics/backtrack/bk-2.png" /></p>
+<h3 id="stick-problem">Stick Problem<a class="headerlink" href="#stick-problem" title="Permanent link">&para;</a></h3>
+<p>Idea:</p>
+<h3 id="coding">Coding<a class="headerlink" href="#coding" title="Permanent link">&para;</a></h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Backtracking</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// i 一般是表示当前的答案集合中已经包含i个元素了</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="n">Found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w">  </span><span class="c1">// solved with (x1, ..., xN)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">each</span><span class="w"> </span><span class="n">xi</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">Si</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">            </span><span class="c1">// check if satisfies the restriction R</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">            </span><span class="n">OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Check</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">xi</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="p">);</span><span class="w">  </span><span class="c1">// pruning 假设我加入xi后查看是否满足条件</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">                </span><span class="n">Count</span><span class="w"> </span><span class="n">xi</span><span class="w"> </span><span class="n">in</span><span class="p">;</span><span class="w"> </span><span class="c1">// 将xi加入答案集合</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">                </span><span class="n">Found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Backtracking</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Found</span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">                    </span><span class="n">Undo</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">  </span><span class="c1">// recover to (x1, ..., x{i-1}) // 如果我加入xi后没有找到解，那么就恢复到加入xi前的状态</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Found</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Found</span><span class="p">;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h3 id="minimax-strategy">Minimax Strategy<a class="headerlink" href="#minimax-strategy" title="Permanent link">&para;</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>以井字棋为例</p>
+</div>
+<p>Minimax Strategy 中很重要的一个思想在于<strong>博弈</strong>，即在当前状态下，我作为当前玩家，我应该怎么走，才能使得我赢，而进行操作的判断条件之一就是对当前状态的评估，我们称这个评估函数为<strong>evaluation function</strong></p>
+<p>比如这样一种评估函数：</p>
 <div class="arithmatex">\[
-T(n) = aT(n/b) + \Theta(N^k \log^p N)
+f(P) = W_{computer} - W_{human} 
 \]</div>
-<p>的解为：</p>
 <div class="arithmatex">\[
-T(n) = \begin{cases}
-\Theta(N^{\log_b a}) &amp; \text{if } k &lt; \log_b a\\
-\Theta(N^k \log^{p+1} N) &amp; \text{if } k = \log_b a\\
-\Theta(N^k \log^p N) &amp; \text{if } k &gt; \log_b a
-\end{cases}
+\text{where } W \text{ is the number of potential wins at position } P
 \]</div>
+<p>在井字棋游戏中，我们可以这样实例化：</p>
+<ul>
+<li>将<span class="arithmatex">\(W_{computer}\)</span>定义为假如现在人类不进行任何操作，计算机可能的获胜方式</li>
+</ul>
+<p>这样我们在每一步操作之后，都可以得到一个当前状态的评估值，这个评估值就可以作为我们博弈树的节点</p>
+<div class="admonition note">
+<p class="admonition-title">Key of Minimax Strategy</p>
+<ul>
+<li>在博弈树中，我们总是假设对方是理性的，即对方总是会做出最优的选择</li>
+</ul>
+<p>这就是 Minimax 的来源：</p>
+<p><strong>在自己选择的时候我们做<span class="arithmatex">\(f(P)\)</span>的最大化，在对方选择的时候我们做<span class="arithmatex">\(f(P)\)</span>的最小化</strong></p>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="bk-3" src="/../../../../assets/pics/backtrack/bk-3.png" /></p>
+</details>
+</div>
+<hr />
+<h4 id="alpha-beta-pruning">Alpha-Beta Pruning<a class="headerlink" href="#alpha-beta-pruning" title="Permanent link">&para;</a></h4>
+<p><strong><span class="arithmatex">\(\alpha - \beta\)</span> Pruning</strong> 是 Minimax 的优化版本，他通过剪枝的方式将博弈树的搜索规模限制在<span class="arithmatex">\(O(\sqrt{N})\)</span>个节点</p>
+<ul>
+<li><span class="arithmatex">\(\alpha\)</span>剪枝：在如下的状态下我们不需要在进行<code>?</code>树的求算了</li>
+</ul>
+<div align="center">
+  <img src="/../../../../assets/pics/backtrack/bk-4.png" alt="bk-4" height="200px" width="200px">
+</div>
+
+<ul>
+<li>在<code>? &gt;= 40(sibling)</code>时，<code>min</code>节点不会采用这个大于四十的值</li>
+<li>在<code>? &lt; 40(sibling)</code>时，<code>min</code>节点虽然会更新，但是<code>max</code>节点不会采用</li>
+</ul>
+<hr />
+<ul>
+<li><span class="arithmatex">\(\beta\)</span>剪枝：在如下的状态下我们不需要在进行<code>?</code>树的求算了</li>
+</ul>
+<div align="center">
+<img src="/../../../../assets/pics/backtrack/bk-5.png" alt="bk-5" height="200px" width="200px">
+</div>
+
+<ul>
+<li>在<code>? &lt;= 68(sibling)</code>时，<code>max</code>节点不会采用这个小于等于68的值</li>
+<li>在<code>? &gt; 68(sibling)</code>时，<code>max</code>节点虽然会更新，但是<code>min</code>节点不会采用</li>
+</ul>
 
 
 
@@ -1599,12 +1750,12 @@ T(n) = \begin{cases}
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="../../../../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

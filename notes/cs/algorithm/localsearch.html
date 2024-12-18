@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/HPC/index.html">
+        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/algorithm/localsearch.html">
       
       
+        <link rel="prev" href="Approximation.html">
+      
+      
+        <link rel="next" href="random.html">
       
       
       <link rel="icon" href="../../../docs/assets/pics/harry.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>HPC learning notes - Space . JaZzyzJ</title>
+        <title>Local Search - Space . JaZzyzJ</title>
       
     
     
@@ -72,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hpc-learning-notes" class="md-skip">
+        <a href="#intro" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              HPC learning notes
+              Local Search
             
           </span>
         </div>
@@ -228,16 +232,20 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../index.html" class="md-tabs__link">
           
   
@@ -378,8 +386,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -388,17 +398,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -409,7 +422,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             N0tes
@@ -419,6 +432,8 @@
               
                 
   
+  
+    
   
   
   
@@ -441,11 +456,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           
@@ -467,7 +482,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             Computer Science
@@ -480,8 +495,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -513,11 +530,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
@@ -531,7 +548,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1_2">
             <span class="md-nav__icon md-icon"></span>
             DS & Algorithms
@@ -545,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/fds/fds.html" class="md-nav__link">
+      <a href="fds/fds.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -566,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/ads/ADS.html" class="md-nav__link">
+      <a href="ads/ADS.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -587,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/backtracking.html" class="md-nav__link">
+      <a href="backtracking.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -608,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/DandC.html" class="md-nav__link">
+      <a href="DandC.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -629,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/dp.html" class="md-nav__link">
+      <a href="dp.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -650,7 +667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/gdy.html" class="md-nav__link">
+      <a href="gdy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -671,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/NP.html" class="md-nav__link">
+      <a href="NP.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -692,7 +709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/Approximation.html" class="md-nav__link">
+      <a href="Approximation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -710,10 +727,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../algorithm/localsearch.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Local Search
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="localsearch.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -722,6 +757,84 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vertex-cover" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex Cover
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hopfield-network-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hopfield Network Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum-cut" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maximum Cut
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kerninghan-lin-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kerninghan-Lin algorithm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -734,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/random.html" class="md-nav__link">
+      <a href="random.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -755,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/para.html" class="md-nav__link">
+      <a href="para.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1297,8 +1410,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1307,11 +1418,62 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#table-of-contents" class="md-nav__link">
+  <a href="#intro" class="md-nav__link">
     <span class="md-ellipsis">
-      Table of Contents
+      Intro
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vertex-cover" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex Cover
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hopfield-network-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hopfield Network Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum-cut" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maximum Cut
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kerninghan-lin-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kerninghan-Lin algorithm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1333,14 +1495,226 @@
   
 
 
-<h1 id="hpc-learning-notes">HPC learning notes<a class="headerlink" href="#hpc-learning-notes" title="Permanent link">&para;</a></h1>
-<div class="admonition abstract">
-<p class="admonition-title">Abstract</p>
-<p>This is a collection of notes on high performance computing.
-I took a course called HPC101 in the summer of 2024, maybe I'll not work on HPC in the future, but I'll keep these notes for reference.
-BTW HPC101 is definitely a good course, and I wanted to gain something from it so I took these notes.</p>
+  <h1>Local Search</h1>
+
+<h2 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h2>
+<p>局部搜索也是一种近似问题的延伸，我们可以给局部搜索进行一个全局性的定义：</p>
+<div class="admonition note">
+<p class="admonition-title">定义</p>
+<p>局部搜索算法是一种基于邻域的搜索算法，它通过在当前解的邻域内进行搜索，来找到更优的解。</p>
+<p>定义一个最优化问题有高维的可行解空间<span class="arithmatex">\(C= \{ S|S \text{ is feasible} \}\)</span>，并且对可行解来说有cost函数<span class="arithmatex">\(f:C\rightarrow R\)</span>，</p>
+<p>我们的目标就是找到一个解<span class="arithmatex">\(S\in C\)</span>使得<span class="arithmatex">\(f(S)\)</span>最小。</p>
 </div>
-<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<p>基本的解决思路：</p>
+<ul>
+<li>给定一个初始解<span class="arithmatex">\(S_0\in C\)</span></li>
+<li>找到<span class="arithmatex">\(S_0\)</span>的邻居<span class="arithmatex">\(S'\)</span></li>
+<li>如果<span class="arithmatex">\(f(S')&lt;f(S_0)\)</span>，那么更新<span class="arithmatex">\(S_0=S'\)</span></li>
+<li>重复2，3步骤直到满足某个终止条件</li>
+</ul>
+<p>关键的步骤就是定义neighborhood，然后进行better neighbor的搜索。</p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<h3 id="vertex-cover">Vertex Cover<a class="headerlink" href="#vertex-cover" title="Permanent link">&para;</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Vertex Cover</p>
+<p>给定一个图<span class="arithmatex">\(G=(V,E)\)</span>，我们需要找到一个最小顶点集合<span class="arithmatex">\(min S\subseteq V\)</span>，使得每一条边至少有一个顶点在集合<span class="arithmatex">\(C\)</span>中。</p>
+</div>
+<p>可行解解空间：<span class="arithmatex">\(C= \{ S|S \text{ is a vertex cover} \}\)</span></p>
+<p>cost函数：<span class="arithmatex">\(f(S)=|S|\)</span></p>
+<ul>
+<li>进行neighbor定义：</li>
+</ul>
+<p>定义neighbor是与当前解<span class="arithmatex">\(S\)</span>相差一个顶点的解，即</p>
+<div class="arithmatex">\[ 
+N(S)= \{ S'|S' \text{ is a vertex cover and } |S' \text{can be obtained from } S \text{ by + or - one vertex} \} 
+\]</div>
+<div class="admonition failure">
+<p class="admonition-title">失败的man</p>
+<p>一种情况的算法设计是将全集设置为初始解，然后每次剪掉一个顶点，但是这样很容易陷入局部最优：</p>
+<p>可以想像一个蜘蛛网，中心点连接所有边缘节点，一旦第一次剪掉中心点，外部的每一个点都不能去掉，但是最优解其实是只保留中心点</p>
+</div>
+<ul>
+<li>因此需要爬出local optimum</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Metropolis Algorithm</p>
+<p><span style="font-size: 1.1em">
+    核心思想是在选定一个解<span class="arithmatex">\(S\)</span>后，在邻居中随机再找一个解<span class="arithmatex">\(S'\)</span>，如果新的解更优，那么就更新，即使这个<span class="arithmatex">\(S'\)</span>比<span class="arithmatex">\(S\)</span>差，也有一定的概率接受。这样就有机会选到局部差解，从而爬出local optimum。
+</span></p>
+</div>
+<p>这个概率的设置是：</p>
+<div class="arithmatex">\[
+\text{with given constant } K \text{ and } T
+\]</div>
+<div class="arithmatex">\[
+P(S\rightarrow S') = e^{-\frac{|f(S')-f(S)|}{KT}}
+\]</div>
+<ul>
+<li>
+<p>分子上的<span class="arithmatex">\(f(S')-f(S)\)</span>称为坡度</p>
+<ul>
+<li>坡度大时，概率较小，不倾向于选择爬坡 </li>
+</ul>
+</li>
+<li>
+<p>称<span class="arithmatex">\(T\)</span>为temperature，<span class="arithmatex">\(K\)</span>为Boltzmann常数。</p>
+<ul>
+<li>当<span class="arithmatex">\(T\)</span>比较大时，系统十分活跃，容易进行爬坡，反之不易</li>
+<li>在系统初期，<span class="arithmatex">\(T\)</span>比较大，容易爬坡，随着<span class="arithmatex">\(T\)</span>逐渐减小，爬坡越来越难，这个操作被称为<strong>模拟退火</strong>（simulated annealing gradully decrease T）</li>
+</ul>
+</li>
+</ul>
+<p>坏处在于：难以分析🥲，myc老师这种做算法分析的人不喜欢（）</p>
+<p>但是做应用的人喜欢，因为实验结果导向，还好用（）</p>
+<h3 id="hopfield-network-problem">Hopfield Network Problem<a class="headerlink" href="#hopfield-network-problem" title="Permanent link">&para;</a></h3>
+<div class="admonition definition">
+<p class="admonition-title">Hopfield Network</p>
+<p>输入一个图<span class="arithmatex">\(G=(V,E)\)</span>，每个边的权重<span class="arithmatex">\(w\)</span></p>
+<ul>
+<li>定义configuration <span class="arithmatex">\(S\)</span>，其中<span class="arithmatex">\(S_v \in \{0,1\}\)</span>，</li>
+<li>定义一个边<span class="arithmatex">\(e\)</span>为好的，当且仅当：
+$$
+w_{e}S_uS_v \leq 0
+$$</li>
+</ul>
+<p>也就是说正权重边连接S不同的顶点，负权重边连接S相同的点</p>
+</div>
+<p>在设计所有点的configuration时，我们有如下两个目标：</p>
+<ul>
+<li>最大化好边权重绝对值之和</li>
+<li>对每个顶点<span class="arithmatex">\(u\)</span>，最大化所有与<span class="arithmatex">\(u\)</span>相连的好边的权重之和</li>
+</ul>
+<p>在给出两个定义：</p>
+<div class="admonition note">
+<p class="admonition-title">Definition</p>
+<p>一个顶点<span class="arithmatex">\(u\)</span>是满意的satisfied，当且仅当：
+$$
+\sum_{\text{邻接好边}}{|w_u|} \geq \sum_{{邻接坏边}}{|w_u|}
+$$</p>
+<p>一个configuration是stable的，当且仅当所有顶点都是满意的</p>
+</div>
+<p>很容易可以看出，一个顶点经过反转，可以使好的边变坏，坏的边变好，也就是说可以通过对顶点的flip操作，来改变configuration</p>
+<p>进而引出方法</p>
+<div class="admonition success">
+<p class="admonition-title">State-Flipping</p>
+<ul>
+<li>随机选取一个configuration <span class="arithmatex">\(S\)</span></li>
+<li>while <span class="arithmatex">\(S\)</span> is unstable with <span class="arithmatex">\(u\)</span> is not satisfied <ul>
+<li>flip <span class="arithmatex">\(u\)</span></li>
+</ul>
+</li>
+<li>return <span class="arithmatex">\(S\)</span></li>
+</ul>
+</div>
+<p>可以证明这个算法一定会在有限步内完成：</p>
+<div class="admonition quote">
+<p class="admonition-title">势能函数证明</p>
+<p>定义势能函数<span class="arithmatex">\(\Phi(S)\)</span>为所有好边的权重绝对值的和</p>
+<p>在改变一个顶点<span class="arithmatex">\(u\)</span>时，config变为<span class="arithmatex">\(S'\)</span>，此时势能函数的变化为：</p>
+<div class="arithmatex">\[
+\Phi(S')-\Phi(S) = - \sum_{u \text{的好邻边}}{|w_e|} + \sum_{u \text{的坏邻边}}{|w_e|}
+\]</div>
+<p>因为<span class="arithmatex">\(u\)</span>是unsatisfied的，所以等式右边是正的（因为定义边权为整数，也一定大于1），因此势能函数一定递增至少1，最终势能不会超过总的边权重和，因此算法一定会完成（最坏情况就是每个顶点都反转，即<span class="arithmatex">\(O(W)\)</span>复杂度）</p>
+<div class="admonition warning">
+<p class="admonition-title">Pseudo-Poly 伪多项式</p>
+<p>这个操作的最坏情况是在<span class="arithmatex">\(W\)</span>次操作后停止，我们得到了<span class="arithmatex">\(O(W)\)</span>的时间复杂度，这看上去就是一个多项式时间复杂度的操作，但实际上我们的<span class="arithmatex">\(W\)</span>并不是输入问题的规模，而是输入图的边权重和，对于输入问题的大小，需要对其取对数换算成2进制长度，因此这个算法是伪多项式时间复杂度的</p>
+</div>
+</div>
+<p>值得注意的是，这个势能函数也就是我们的目标一要达到最大值的函数，因此这个算法也就是 </p>
+<div class="arithmatex">\[ \text{local search to maximize objective } 1 \]</div>
+<h3 id="maximum-cut">Maximum Cut<a class="headerlink" href="#maximum-cut" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>NP-Hard</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">定义</p>
+<p>给定有正整数权重的无向图<span class="arithmatex">\(G=(V,E)\)</span>，a cut (A, B)就是<span class="arithmatex">\(V\)</span>的一个划分，将<span class="arithmatex">\(V\)</span>划分为两个不相交的子集<span class="arithmatex">\(A\)</span>和<span class="arithmatex">\(B\)</span>，</p>
+<p>cut的权重定义为：</p>
+<div class="arithmatex">\[
+w(A,B) = \sum_{(u,v)\in E|u\in A, v\in B}w_{uv}
+\]</div>
+<p>也就是所有跨越<span class="arithmatex">\(A\)</span>和<span class="arithmatex">\(B\)</span>的边的权重之和</p>
+</div>
+<p>我们的目标是找到一个cut，使得<span class="arithmatex">\(w(A,B)\)</span>最大</p>
+<p>其实是一个Hopfield Network Problem的特例，之前的config是正负两种配置，现在就对应到了A和B，好边也就是现在的cut边（交叉边）</p>
+<ul>
+<li>
+<p>使用state-flipping算法解决</p>
+<ul>
+<li>
+<p>这时这个算法是local optimal的，并且是一个近似算法</p>
+</li>
+<li>
+<p>近似比为2</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>给出证明：</p>
+<div class="admonition quote">
+<p class="admonition-title">证明</p>
+<p>在完成state-flipping后，我们可以得到一组<span class="arithmatex">\((A,B)\)</span>是stable的</p>
+<p>for any <span class="arithmatex">\(u\in A\)</span> and his neighbors <span class="arithmatex">\(v\)</span>构成的边<span class="arithmatex">\(e=(u,v)\)</span>我们有：</p>
+<div class="arithmatex">\[
+\sum_{v \in A}{w_e} \leq \sum_{v \in B}{w_e}
+\]</div>
+<p>对所有<span class="arithmatex">\(u\in A\)</span>，我们有：</p>
+<div class="arithmatex">\[
+\sum_{u \in A}{\sum_{v \in A}{w_e}} \leq \sum_{u \in A}{\sum_{v \in B}{w_e}}
+\]</div>
+<p>不等号右侧就是<span class="arithmatex">\(w(A,B)\)</span></p>
+<p>不等号左侧是将所有在<span class="arithmatex">\(A\)</span>内部边的权重相加，由对称性可知边被求和了两次，因此不等式左侧就是<span class="arithmatex">\(2\sum_{e\text{是内部边}}{w_e}\)</span></p>
+<p>对<span class="arithmatex">\(B\)</span>同理</p>
+<p>将整个图的边权重和记为<span class="arithmatex">\(W\)</span>，则有：</p>
+<div class="arithmatex">\[
+W = \sum_{e\text{是A内部边}}{w_e} + \sum_{e\text{是B内部边}}{w_e} + w(A,B)
+\]</div>
+<p>通过上面的不等式，将两个内部边放缩掉，我们得到：</p>
+<div class="arithmatex">\[
+w(A,B) \geq \frac{W}{2} \geq \frac{OPT}{2}
+\]</div>
+</div>
+<p>但是刚刚说到了，这个方法的时间复杂度太高，我们进行优化：</p>
+<p>在先前选择flip的点时，只要是好边和小于坏边和我们就进行反转，但是这样反转的频率太高，时间上花费太大，我们进行进一步的近似模糊，只有当改进足够大，我们才反转</p>
+<ul>
+<li>flip only when after flipping：</li>
+</ul>
+<div class="arithmatex">\[
+w(A',B') \geq (1+\frac{\epsilon}{|V|})w(A,B)
+\]</div>
+<p>由于一个不等式：</p>
+<div class="arithmatex">\[
+(1+\frac{\epsilon}{n})^{\frac{n}{\epsilon}} \geq 2
+\]</div>
+<p>这个不等式就是说我要让<span class="arithmatex">\(w(A',B')\)</span>翻倍，需要进行<span class="arithmatex">\(\frac{n}{\epsilon}\)</span>次数的反转</p>
+<p>而我们知道最多反转次数是<span class="arithmatex">\(\log W\)</span>，因此这个算法是<span class="arithmatex">\(O(\frac{n}{\epsilon}\log W)\)</span>的，达到了多项式时间复杂度</p>
+<ul>
+<li>这个近似算法的近似比为
+$$
+2+\frac{\epsilon}{2}
+$$</li>
+</ul>
+<p>证明的思路和上面类似，在进行第一步反转判断的时候需要更改不等式，不等号右边加入那个<span class="arithmatex">\(\frac{\epsilon}{|V|}w(A,B)\)</span>其他步骤相同</p>
+<div class="admonition tip">
+<p class="admonition-title">减少步数</p>
+<p>其实这就是相当于在local search的时候，我们每步走的太小了因此慢，这个判断条件就是在减少步数</p>
+</div>
+<h3 id="kerninghan-lin-algorithm">Kerninghan-Lin algorithm<a class="headerlink" href="#kerninghan-lin-algorithm" title="Permanent link">&para;</a></h3>
+<p>我们刚才的减少步数方法是一种提高效率的方法，也可以增大步长。</p>
+<p>在最基本的情况中我们通过改变一个点的config来进行操作，如果我们同时改变k个点呢？这样就增大了邻居</p>
+<ul>
+<li>好处是邻居变多加快收敛</li>
+<li>坏处是邻居要计算，走每一步的时间变长，总共要<span class="arithmatex">\(\rightarrow\)</span> <span class="arithmatex">\(O(n^k)\)</span></li>
+</ul>
+<p>这里提出了一个算法：</p>
+<p>在第一次操作中，选择使得反转收益最大的一个点进行反转得到<span class="arithmatex">\((A_1,B_1)\)</span>，然后在剩下没有被选中的点中选择使得剩下的点收益最大的点反转得到<span class="arithmatex">\((A_2,B_2)\)</span>，这样操作下去得到一个邻居集合</p>
+<div class="arithmatex">\[
+N(A,B) = \{(A_1,B_1),(A_2,B_2),...,(A_{n-1},B_{n-1})\}
+\]</div>
+<p>然后在这个邻居集合中进行local search    </p>
+<ul>
+<li>得到这个邻居集合时间复杂度是<span class="arithmatex">\(O(n^2)\)</span>的，跑出来效果不错myc说（）</li>
+</ul>
 
 
 

@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/Sys/CO/arithmetic/">
+        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/algorithm/DandC.html">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="backtracking.html">
       
       
-        <link rel="next" href="../instruction/">
+        <link rel="next" href="dp.html">
       
       
-      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../docs/assets/pics/harry.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>Arithmetic - Space . JaZzyzJ</title>
+        <title>Divide & Conquer - Space . JaZzyzJ</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../docs/css/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../docs/css/stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#arithmetic" class="md-skip">
+        <a href="#divide-and-conquer" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../.." title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+    <a href="../../../index.html" title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Arithmetic
+              Divide & Conquer
             
           </span>
         </div>
@@ -217,7 +217,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../.." class="md-tabs__link">
+      <a href="../../../index.html" class="md-tabs__link">
         
   
     
@@ -246,7 +246,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../" class="md-tabs__link">
+        <a href="../index.html" class="md-tabs__link">
           
   
     
@@ -281,7 +281,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../Tool_Pool/GNU_Make/" class="md-tabs__link">
+        <a href="../../../Tool_Pool/GNU_Make.html" class="md-tabs__link">
           
   
     
@@ -297,6 +297,23 @@
   
 
     
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../log/index.html" class="md-tabs__link">
+        
+  
+    
+  
+  L0g
+
+      </a>
+    </li>
   
 
       
@@ -322,7 +339,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../.." title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+    <a href="../../../index.html" title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
@@ -352,7 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../.." class="md-nav__link">
+      <a href="../../../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -448,7 +465,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../" class="md-nav__link ">
+            <a href="../index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -478,8 +495,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -503,17 +522,19 @@
       
         
       
+        
+      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
@@ -527,7 +548,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1_2">
             <span class="md-nav__icon md-icon"></span>
             DS & Algorithms
@@ -541,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/fds/fds/" class="md-nav__link">
+      <a href="fds/fds.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -562,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/ads/ADS/" class="md-nav__link">
+      <a href="ads/ADS.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -583,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/backtracking/" class="md-nav__link">
+      <a href="backtracking.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -595,267 +616,6 @@
     </li>
   
 
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../algorithm/DandC/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Divide & Conquer
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../algorithm/dp/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Dynamic Programming
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../algorithm/gdy/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Greedy Algorithms
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../algorithm/NP/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    NP Completeness
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../algorithm/Approximation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Approximation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../algorithm/localsearch/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Local Search
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../algorithm/random/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Randomized
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    System
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_1_3">
-            <span class="md-nav__icon md-icon"></span>
-            System
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3_1" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
-  
-  <span class="md-ellipsis">
-    CO
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_2_1_3_1" id="__nav_2_1_3_1_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_1_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            CO
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
               
             
               
@@ -878,18 +638,18 @@
           
   
   <span class="md-ellipsis">
-    Arithmetic
+    Divide & Conquer
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="DandC.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Arithmetic
+    Divide & Conquer
   </span>
   
 
@@ -911,64 +671,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#numbers" class="md-nav__link">
+  <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
-      Numbers
+      Example
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-sub" class="md-nav__link">
-    <span class="md-ellipsis">
-      Add &amp; Sub
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multiplication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Multiplication
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#division" class="md-nav__link">
-    <span class="md-ellipsis">
-      Division
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#floating-point" class="md-nav__link">
-    <span class="md-ellipsis">
-      Floating Point
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Floating Point">
+    <nav class="md-nav" aria-label="Example">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#floating-point-arithmetic" class="md-nav__link">
+  <a href="#maximum-subarray" class="md-nav__link">
     <span class="md-ellipsis">
-      Floating Point Arithmetic
+      Maximum Subarray
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#accurate-arithmetic" class="md-nav__link">
+  <a href="#nearest-neighbor" class="md-nav__link">
     <span class="md-ellipsis">
-      Accurate Arithmetic
+      Nearest Neighbor
     </span>
   </a>
   
@@ -976,6 +700,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#three-methods-for-solving-recurrence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Three Methods for Solving Recurrence
+    </span>
+  </a>
   
 </li>
       
@@ -995,7 +737,287 @@
   
   
     <li class="md-nav__item">
-      <a href="../instruction/" class="md-nav__link">
+      <a href="dp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dynamic Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="gdy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Greedy Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="NP.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NP Completeness
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Approximation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Approximation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="localsearch.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Local Search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="random.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Randomized
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="para.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    System
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Sys/CO/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CO
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_3_1" id="__nav_2_1_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            CO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sys/CO/arithmetic.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arithmetic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sys/CO/instruction.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1016,11 +1038,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../processor/" class="md-nav__link">
+      <a href="../Sys/CO/processor.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Processor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sys/CO/memory.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory
   </span>
   
 
@@ -1097,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../lingo/verilog/" class="md-nav__link">
+      <a href="../../lingo/verilog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1118,7 +1161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../lingo/cs61a/" class="md-nav__link">
+      <a href="../../lingo/cs61a.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1288,7 +1331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../Tool_Pool/GNU_Make/" class="md-nav__link">
+      <a href="../../../Tool_Pool/GNU_Make.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1325,6 +1368,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../log/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    L0g
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1352,64 +1415,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#numbers" class="md-nav__link">
+  <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
-      Numbers
+      Example
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-sub" class="md-nav__link">
-    <span class="md-ellipsis">
-      Add &amp; Sub
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multiplication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Multiplication
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#division" class="md-nav__link">
-    <span class="md-ellipsis">
-      Division
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#floating-point" class="md-nav__link">
-    <span class="md-ellipsis">
-      Floating Point
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Floating Point">
+    <nav class="md-nav" aria-label="Example">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#floating-point-arithmetic" class="md-nav__link">
+  <a href="#maximum-subarray" class="md-nav__link">
     <span class="md-ellipsis">
-      Floating Point Arithmetic
+      Maximum Subarray
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#accurate-arithmetic" class="md-nav__link">
+  <a href="#nearest-neighbor" class="md-nav__link">
     <span class="md-ellipsis">
-      Accurate Arithmetic
+      Nearest Neighbor
     </span>
   </a>
   
@@ -1417,6 +1444,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#three-methods-for-solving-recurrence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Three Methods for Solving Recurrence
+    </span>
+  </a>
   
 </li>
       
@@ -1438,153 +1483,153 @@
   
 
 
-<h1 id="arithmetic">Arithmetic<a class="headerlink" href="#arithmetic" title="Permanent link">&para;</a></h1>
-<h2 id="numbers">Numbers<a class="headerlink" href="#numbers" title="Permanent link">&para;</a></h2>
+<h1 id="divide-and-conquer">Divide and Conquer<a class="headerlink" href="#divide-and-conquer" title="Permanent link">&para;</a></h1>
+<p>核心思想：将较大的问题分解为较小的子问题，分别解决子问题，然后将子问题的解合并为原问题的解</p>
+<p>Recursively:</p>
+<p><strong>Divide</strong> the problem into a number of subproblems</p>
+<p><strong>Conquer</strong> the subproblems by solving them recursively</p>
+<p><strong>Combine</strong> the solutions to the subproblems into the solution for the original problem</p>
+<div class="arithmatex">\[
+T(n) = aT(n/b) + f(n)
+\]</div>
+<div class="arithmatex">\[
+N 是原问题的规定大小, f(n) 是划分和合并子问题的解消耗的时间
+\]</div>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<h3 id="maximum-subarray">Maximum Subarray<a class="headerlink" href="#maximum-subarray" title="Permanent link">&para;</a></h3>
+<p>常见套路是均匀的一分为二</p>
+<p>在这里，我们将数组一分为二，分别求出左半部分的最大子数组和右半部分的最大子数组，然后考虑跨越中点的最大子数组</p>
+<p>横跨子序列的求算方法：</p>
+<p>从中间向两边扫描，分别求出由中间向左的最大子数组和由中间向右的最大子数组，然后合并</p>
+<h3 id="nearest-neighbor">Nearest Neighbor<a class="headerlink" href="#nearest-neighbor" title="Permanent link">&para;</a></h3>
+<div class="admonition question">
+<p class="admonition-title">平面上给定的N个点中找到距离最近的两个点</p>
+</div>
+<div class="admonition solution">
+<p class="admonition-title">Solution</p>
+<p>在先前的例子中，我们也采用了将问题均匀一分为二的方法，在这里，我们同样采用这种方法。</p>
 <ul>
-<li>Two's Complement</li>
+<li>首先根据这些点的x坐标，将这些点一分为二，分别求出左半部分和右半部分最近的两个点</li>
+<li>然后考虑跨越中点的最近两个点：</li>
+<li>如果考虑分割线左右两边所有的点，那么时间复杂度是<span class="arithmatex">\(O(N^2)\)</span>，显然太大了</li>
+<li>我们第一步考虑的是选取一个束状带型区域，这个区域距离分割线的距离是<span class="arithmatex">\(\delta\)</span>，则此时如果能保证这个区域中只有<span class="arithmatex">\(O(\sqrt{N})\)</span>个点，那么我们就可以在<span class="arithmatex">\(O(N)\)</span>的时间内找到跨越中点的最近两个点，但万一不呢？</li>
+<li>所以我们需要进一步的改进，再确定的垂直带状区域中，我们再选取一个竖直高度为<span class="arithmatex">\(\delta\)</span>的的区域，这样构成了一个长为<span class="arithmatex">\(2\delta\)</span>，宽为<span class="arithmatex">\(\delta\)</span>的矩形
+<div align="center">
+<img src="/../../../../assets/pics/dandc/dc-1.png" alt="dc-1" height="100px" width="300px">
+</div></li>
+<li>在这个情况下，每个点只需要考虑与其他七个点（也就是边框的角上）之间的距离即可</li>
+<li>即使在所有点都在这个区域的情况下，因为每个点的判断次数是常数的，所以时间复杂度最差仍然是<span class="arithmatex">\(O(N)\)</span></li>
 </ul>
-<p>正数最高位为0，负数最高位为1。</p>
-<p>正数正常表示，负数取反加1。</p>
-<h2 id="add-sub">Add &amp; Sub<a class="headerlink" href="#add-sub" title="Permanent link">&para;</a></h2>
-<h2 id="multiplication">Multiplication<a class="headerlink" href="#multiplication" title="Permanent link">&para;</a></h2>
-<p>乘法器的实现就是加法器，但是需要进行移位和多次加法。</p>
-<p><strong>Version 1</strong></p>
-<p>实现一个64位的乘法器，需要128位的加法器：</p>
-<p><img alt="co-1" src="/../../../../assets/pics/co/co-1.png" /></p>
-<p>还是比较好理解的，就是模仿手写乘法的过程：非常的复杂缓慢，运用128位加法器，但是真正在相加的只有64位。</p>
-<p>在乘数(Multiplier)的当前位为1时，将被乘数(Multiplicand)加到乘积(Product)上，然后乘数右移，被乘数左移。（这里乘数右移是因为我们每次只看乘数的最低位是否为1，在看完了之后需要看下一位，所以需要右移）</p>
-<p>在乘数(Multiplier)的当前位为0时，乘数右移，被乘数左移。</p>
-<p>进行64次循环后结束。</p>
-<p><strong>Version 2</strong></p>
-<p><img alt="co-2" src="/../../../../assets/pics/co/co-2.png" /></p>
-<p>改变思路，移动乘积，这样避免了使用较大的加法器。</p>
-<p>这里需要一个128位的寄存器作为乘积寄存器，分为高64位和低64位，刚开始第一个乘积放在最高位。</p>
-<p>在每次循环中，如果乘数最低位为1，将被乘数加到乘积寄存器的的高64位，然后乘积寄存器右移，乘数右移；</p>
-<p>如果乘数最低位为0，乘积寄存器右移，乘数右移。</p>
-<p>经过64次循环后，乘积寄存器的低64位就是我们想要的结果了。</p>
-<p><strong>Version 3</strong></p>
-<p><img alt="co-3" src="/../../../../assets/pics/co/co-3.png" /></p>
-<p>在先前的版本中，乘积寄存器最终会有一半的空间是浪费掉的，这一半的长度正好与乘数的长度相同，因此我们可以用128位乘积寄存器初始的右半部分来存储乘数，这样就不需要乘数寄存器了。</p>
-<details class="example">
-<summary>Example</summary>
-<p><img alt="co-3-1" src="/../../../../assets/pics/co/co-3-1.png" /></p>
-<p>这个例子就是Version 3的实现过程，需要注意的是我们运用这个算法可以适配不同的数据格式和长度，比如这个书写过程中就是用6-bit的八进制数进行运算，同时下方还给出了同样数据如果是8-bit的十六进制数进行运算的结果。</p>
-</details>
-<hr />
-<p>对有符号数乘法，需要存储符号位，然后进行无符号数乘法，最后根据符号位确定结果的符号。</p>
-<p>但是注意</p>
+</div>
+<h2 id="analysis">Analysis<a class="headerlink" href="#analysis" title="Permanent link">&para;</a></h2>
+<p>分治法的时间复杂度计算依托于我们先前定义的算式</p>
+<div class="arithmatex">\[
+T(n) = aT(n/b) + f(n)
+\]</div>
+<p>对于这种递归式，我们可以直接进行递归展开然后计算：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="arithmatex">\[
+\begin{aligned}
+T(n) &amp;= 2T(n/2) + N\\
+&amp;= 2(2T(n/4) + N/2) + N\\
+&amp;= 4T(n/4) + 2N\\
+&amp;= 4(2T(n/8) + N/4) + 2N\\
+&amp;= 8T(n/8) + 3N\\
+&amp;= ...\\
+&amp;= 2^k T(n/2^k) + kN\\
+&amp;= O(NlogN)
+\end{aligned}
+\]</div>
+</div>
+<h2 id="three-methods-for-solving-recurrence">Three Methods for Solving Recurrence<a class="headerlink" href="#three-methods-for-solving-recurrence" title="Permanent link">&para;</a></h2>
+<ul>
+<li>假定<span class="arithmatex">\(\frac{n}{b}\)</span> 是整数</li>
+<li>对于较小的n，我们假定<span class="arithmatex">\(T(n) = \Theta(1)\)</span></li>
+</ul>
+<ol>
+<li>Substitution Method</li>
+</ol>
+<p>猜测一个结果，然后用数学归纳法证明</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>乘法不能用补码计算</strong></p>
+<p>在进行这样的一个猜测时：</p>
+<p>已知<span class="arithmatex">\(T(N) = 2T(\lfloor{N/2}\rfloor) + N\)</span>，如果我们猜测<span class="arithmatex">\(T(N) = O(N)\)</span>，那么我们会有如下的证明：</p>
+<ul>
+<li>假设对于<span class="arithmatex">\(m \leq N\)</span>，结论成立</li>
+<li>那么存在一个常数<span class="arithmatex">\(c\)</span>，取<span class="arithmatex">\(m = \lfloor{N/2}\rfloor\)</span>，则有<span class="arithmatex">\(T(\lfloor{N/2}\rfloor) \leq c \lfloor{N/2}\rfloor\)</span></li>
+<li>将这个式子代入<span class="arithmatex">\(T(N) = 2T(\lfloor{N/2}\rfloor) + N\)</span>，则有<span class="arithmatex">\(T(N) \leq 2c \lfloor{N/2}\rfloor + N = cN + N = O(N)\)</span></li>
+</ul>
+<p>看起来似乎没有问题，但是在最后一个等式中，我们得到了<span class="arithmatex">\(cN+N=(c+1)N\)</span>，这显然是<span class="arithmatex">\(O(N)\)</span>的，但是在形式上它是错误的，因为我们预先假设正确的结论是<span class="arithmatex">\(T(m) \leq c m\)</span>，所以要根据这个格式来证明出<span class="arithmatex">\(T(N) \leq cN\)</span>，而不是<span class="arithmatex">\(T(N) \leq (c+1)N\)</span>，必须保证<strong>精确的格式</strong>，常数项也必须一致</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tips</p>
+<p>在时间复杂度递推中出现了类似<span class="arithmatex">\(T(\sqrt{N})\)</span>的形式，可以采用换元来处理，这里的方法来源于noughtq同学的笔记：</p>
+<ul>
+<li>令<span class="arithmatex">\(m = \log2 N\)</span>，那么<span class="arithmatex">\(T(\sqrt{N}) = T(2^{m/2})\)</span>，<span class="arithmatex">\(T(N) = T(2^m)\)</span></li>
+<li>再令<span class="arithmatex">\(S(m) = T(2^m)\)</span>，则有<span class="arithmatex">\(S(m/2) = T(2^{m/2}) = T(\sqrt{N})\)</span></li>
+<li>这时候我们就可以将<span class="arithmatex">\(T(N)\)</span>的递推式转换为<span class="arithmatex">\(S(m)\)</span>的递推式：<span class="arithmatex">\(S(m) = 2S(m/2) +  　m\)</span></li>
+</ul>
 </div>
 <hr />
-<ul>
-<li>Improved Multiplier</li>
-</ul>
-<p><strong>Booth's Algorithm</strong></p>
-<p>我不想写了，放了xyx学长的笔记：
-<a href="https://xuan-insr.github.io/computer_organization/3_arithmetic/#booths-algorithm">🔗</a></p>
-<h2 id="division">Division<a class="headerlink" href="#division" title="Permanent link">&para;</a></h2>
-<p><strong>Version 1</strong>
-除法最初的版本也是模仿手写除法：</p>
-<p><img alt="co-4" src="/../../../../assets/pics/co/co-4.png" /></p>
-<p>进行除法时，主要是通过判断余数的正负来进行的</p>
-<p>除数初始时存放在除数寄存器的高位半边，余数寄存器初始时是存放被除数并放在低位半边的，</p>
-<p>从余数寄存器中减去除数，如果结果为正，左移商寄存器，将最新的右位设为1，如果结果为负，将除数寄存器加回到余数寄存器，左移商寄存器，将最新的右位设为0。</p>
-<p>这之后将除数寄存器右移一位，重复65次循环后结束。</p>
-<p><strong>Version 2</strong></p>
-<p><img alt="co-5" src="/../../../../assets/pics/co/co-5.png" /></p>
-<p>除数不动，被除数放在128位余数的低位半边</p>
-<p>循环开始时，先将余数部分左移一位，然后减去除数，如果结果为正，左移余数寄存器，将最新的右位设为1，如果结果为负，将除数寄存器加回到余数寄存器，左移余数寄存器，将最新的右位设为0。</p>
-<p>这样最后余数寄存器低半位就是商，高半位就是余数。</p>
-<details class="example">
-<summary>7/2</summary>
-<p><img alt="co-6" src="/../../../../assets/pics/co/co-6.png" /></p>
-</details>
-<ul>
-<li>Signed Division</li>
-</ul>
-<p>Reminder 需要与被除数同号</p>
-<h2 id="floating-point">Floating Point<a class="headerlink" href="#floating-point" title="Permanent link">&para;</a></h2>
-<p>32位处理器的数表示范围：</p>
-<p><span class="arithmatex">\(-2^{31} 到 2^{31}-1\)</span></p>
-<p>浮点数的表示：</p>
-<ul>
-<li>Sign</li>
-<li>Significand 增加精确度</li>
-<li>Exponent 增加范围</li>
-</ul>
-<p>二进制数的标准表示方法：</p>
-<p><span class="arithmatex">\(1.xxx * 2^{yyy}\)</span></p>
-<p>对单精度浮点数，y有8位，x有23位</p>
-<p>对双精度浮点数，y有11位，x有52位</p>
-<p><img alt="co-7" src="/../../../../assets/pics/co/co-7.png" /></p>
-<p>第一位的1是一定的，因此不需要计入存储，Exponent是带有Bias的</p>
-<p>单精度浮点数Bias为127，双精度浮点数Bias为1023</p>
-<p>因此最后总的表示方法是：</p>
-<div class="arithmatex">\[
-(-1)^{\text{Sign}} * (1 + \text{Significand(Fraction)}) * 2^{\text{Exponent - Bias}}
-\]</div>
-<details class="example">
-<summary>0.75 和 -0.4375</summary>
-<p><img alt="co-8" src="/../../../../assets/pics/co/co-8.png" /></p>
-<p><img alt="co-9" src="/../../../../assets/pics/co/co-9.png" /></p>
-</details>
-<ul>
-<li>Single Precision Range</li>
-</ul>
-<p>指数中 00000000 和 11111111 是特殊值</p>
-<p>当Exponent为11111111，Fraction为00000000时，表示无穷大</p>
-<p>当Exponent为11111111，Fraction不为00000000时，表示NaN(Not a Number)</p>
-<p>因此单精度浮点数的范围是：</p>
-<p>Smallest Number: <span class="arithmatex">\(1.0 * 2^{1-127} \approx 1.2 * 10^{-38}\)</span></p>
-<p>Largest Number: <span class="arithmatex">\(1.111... * 2^{254-127} \approx 2 * 2^{127} \approx 3.4 * 10^{38}\)</span></p>
-<p>每一位都是1的时候（1.111...），表示无限接近于2</p>
-<h3 id="floating-point-arithmetic">Floating Point Arithmetic<a class="headerlink" href="#floating-point-arithmetic" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Addition and Subtraction</li>
-</ul>
-<ol>
-<li>Alignment</li>
-</ol>
-<p>将两个数进行对齐，通常是将较小的数往大的靠近，因为如果将大的向小的对齐，损失的位数是更高的位数，损失的精度更多</p>
 <ol start="2">
-<li>
-<p>Addition</p>
-</li>
-<li>
-<p>Normalization</p>
-</li>
-<li>
-<p>Rounding</p>
-</li>
+<li>Recursion-tree Method</li>
 </ol>
-<details class="example">
-<summary>0.5 + -0.4375</summary>
-<p><img alt="co-10" src="/../../../../assets/pics/co/co-10.png" /></p>
-</details>
+<p>画出一些例子，用树表示递归的展开</p>
+<p>在树中，每个非叶子节点表示的是向上递归时所需要消耗的时间，也就是公式中的<span class="arithmatex">\(f(n)\)</span>，而叶子节点表示的是递归的结束，也就是<span class="arithmatex">\(T(1)\)</span></p>
 <ul>
-<li>Multiplication</li>
+<li>我们在运算时假设了这棵树的开销就是每个节点的开销之和:</li>
+<li>第一部分是叶子结点的<span class="arithmatex">\(T(1)\)</span>开销之和</li>
+<li>第二部分是所有非叶子节点的递归合并开销之和</li>
 </ul>
-<p>相对简单，只需要将指数相加，尾数相乘即可。</p>
-<p>除法也是类似的</p>
-<h3 id="accurate-arithmetic">Accurate Arithmetic<a class="headerlink" href="#accurate-arithmetic" title="Permanent link">&para;</a></h3>
-<p><img alt="co-10-round" src="/../../../../assets/pics/co/co-10-round.png" /></p>
-<p>为了提高舍入的精度，IEEE 754 标准规定为浮点数额外添加 2 位，从左到右分别称为<strong>Guard</strong>和<strong>Round</strong>，这两位数字保留了浮点数计算的中间过程，从而尽可能地避免精度上的损失。</p>
-<ul>
-<li>Sticky Bit：Sticky 位用于记录移出的尾数中的非零信息，是指只要在Round右边出现过1，那么sticky位就为1</li>
-</ul>
-<div class="admonition summary">
-<p class="admonition-title">浮点数的舍入</p>
-</div>
-<ol>
-<li>如果Guard位为0，那么直接舍去Round和Sticky位</li>
-<li>如果Guard位为1，Round位为1或者Sticky位为1：结果向上舍入，如果都为0，结果向下舍入（保持不变）</li>
-</ol>
 <details class="example">
 <summary>Example</summary>
-<p><img alt="co-10-e" src="/../../../../assets/pics/co/co-10-e.png" /></p>
+<p><img alt="recursion-tree" src="/../../../../assets/pics/dandc/dc-2.png" /></p>
 </details>
+<ul>
+<li>递归树的作用不是为了能够得到最准确的证明，而是为了能得到一个好的猜测，之后再用Substitution Method来严格证明</li>
+</ul>
+<p>进行猜测的时候一般会进行一个放大的猜测，可能与真实的相同，也可能比真实值大，但一定不能比真实值小（那样就不用证了，肯定错了），所以对于无法画出树的全貌的例子一般放大一点猜测是没有问题的</p>
+<hr />
+<ol start="3">
+<li>Master Method</li>
+</ol>
+<p>先给出公式：</p>
+<div class="admonition note">
+<p class="admonition-title">Master Method</p>
+<ol>
+<li>If <span class="arithmatex">\(f(n) = O(N^{\log_b a - \epsilon})\)</span> for some constant <span class="arithmatex">\(\epsilon &gt; 0\)</span>, then <span class="arithmatex">\(T(n) = \Theta(N^{\log_b a})\)</span></li>
+<li>If <span class="arithmatex">\(f(n) = \Theta(N^{\log_b a})\)</span>, then <span class="arithmatex">\(T(n) = \Theta(N^{\log_b a} \log N)\)</span></li>
+<li>If <span class="arithmatex">\(f(n) = \Omega(N^{\log_b a + \epsilon})\)</span> for some constant <span class="arithmatex">\(\epsilon &gt; 0\)</span>, and if <span class="arithmatex">\(af(n/b) \leq cf(n)\)</span> for some constant <span class="arithmatex">\(c &lt; 1\)</span> and all sufficiently large <span class="arithmatex">\(n\)</span>, then <span class="arithmatex">\(T(n) = \Theta(f(n))\)</span></li>
+</ol>
+</div>
+<p>yy哥的形象解释，我觉得很有帮助（至少对于记忆来说）：</p>
+<ul>
+<li>
+<p>在分析算法性能时一定要找到占主导的部分--我们从树的角度出发:</p>
+<ul>
+<li>如果我们的树长得非常霸气，巨高，叶子巨多无比，这时候时间开销被叶子dominate了，用Master 1，时间开销就是<span class="arithmatex">\(\Theta (N^{\log_b a})\)</span>——也就是<strong>叶子的个数</strong></li>
+<li>如果我们的树身材非常匀称，一片欣欣向荣，用Master 2，时间开销就是<span class="arithmatex">\(\Theta (N^{\log_b a} \log N)\)</span>——也就是<strong>每一层的开销乘以树的高度</strong></li>
+<li>如果我们的树根特别大，也就是说合并问题所需的时间非常多，甚至比第一层划分节点所需要的时间还要多（就是正则式的意义）用Master 3，时间开销就是<span class="arithmatex">\(\Theta (f(N))\)</span>——也就是<strong>树根的值</strong></li>
+</ul>
+</li>
+</ul>
+<p>我们发现这个公式并没有cover到所有情况的，就比如Master 3中，如果根很大，但是划分问题也很慢，就没办法用主方法了，所以主方法适用的情况就是三个很极端的情况</p>
+<div class="admonition success">
+<p class="admonition-title">加强版的Master Method</p>
+</div>
+<p>当<span class="arithmatex">\(a \geq 1, b &gt; 1, p \geq 0\)</span>时，方程</p>
+<div class="arithmatex">\[
+T(n) = aT(n/b) + \Theta(N^k \log^p N)
+\]</div>
+<p>的解为：</p>
+<div class="arithmatex">\[
+T(n) = \begin{cases}
+\Theta(N^{\log_b a}) &amp; \text{if } k &lt; \log_b a\\
+\Theta(N^k \log^{p+1} N) &amp; \text{if } k = \log_b a\\
+\Theta(N^k \log^p N) &amp; \text{if } k &gt; \log_b a
+\end{cases}
+\]</div>
 
 
 
@@ -1637,12 +1682,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="../../../../../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

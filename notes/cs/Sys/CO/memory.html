@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://jazzyzj.github.io/Tool_Pool/GNU_Make/">
+        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/Sys/CO/memory.html">
       
       
-        <link rel="prev" href="../../notes/lingo/cs61a/">
+        <link rel="prev" href="processor.html">
       
       
+        <link rel="next" href="../../../lingo/verilog.html">
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      
+      <link rel="icon" href="../../../../docs/assets/pics/harry.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>GNU Make - Space . JaZzyzJ</title>
+        <title>Memory - Space . JaZzyzJ</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../docs/css/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../docs/css/stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gnu-make" class="md-skip">
+        <a href="#memory" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+    <a href="../../../../index.html" title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              GNU Make
+              Memory
             
           </span>
         </div>
@@ -215,7 +217,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../../../index.html" class="md-tabs__link">
         
   
     
@@ -230,17 +232,21 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../notes/cs/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../index.html" class="md-tabs__link">
           
   
     
@@ -259,7 +265,11 @@
         
   
   
+  
     
+    
+      
+  
   
   
     
@@ -267,21 +277,11 @@
       
   
   
-    
-  
   
     
     
-      
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../Tool_Pool/GNU_Make.html" class="md-tabs__link">
           
   
     
@@ -297,6 +297,23 @@
   
 
     
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../log/index.html" class="md-tabs__link">
+        
+  
+    
+  
+  L0g
+
+      </a>
+    </li>
   
 
       
@@ -322,7 +339,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+    <a href="../../../../index.html" title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
@@ -352,7 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -369,8 +386,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -379,17 +398,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -400,7 +422,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             N0tes
@@ -411,6 +433,8 @@
                 
   
   
+    
+  
   
   
     
@@ -432,16 +456,16 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../notes/cs/" class="md-nav__link ">
+            <a href="../../index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -458,7 +482,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             Computer Science
@@ -475,6 +499,8 @@
   
     
     
+      
+        
       
         
       
@@ -534,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/algorithm/fds/fds/" class="md-nav__link">
+      <a href="../../algorithm/fds/fds.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -555,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/algorithm/ads/ADS/" class="md-nav__link">
+      <a href="../../algorithm/ads/ADS.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -576,7 +602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/algorithm/backtracking/" class="md-nav__link">
+      <a href="../../algorithm/backtracking.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -597,7 +623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/algorithm/DandC/" class="md-nav__link">
+      <a href="../../algorithm/DandC.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -618,7 +644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/algorithm/dp/" class="md-nav__link">
+      <a href="../../algorithm/dp.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -639,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/algorithm/gdy/" class="md-nav__link">
+      <a href="../../algorithm/gdy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -660,7 +686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/algorithm/NP/" class="md-nav__link">
+      <a href="../../algorithm/NP.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -681,7 +707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/algorithm/Approximation/" class="md-nav__link">
+      <a href="../../algorithm/Approximation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -702,7 +728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/algorithm/localsearch/" class="md-nav__link">
+      <a href="../../algorithm/localsearch.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -723,11 +749,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/algorithm/random/" class="md-nav__link">
+      <a href="../../algorithm/random.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Randomized
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/para.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallel
   </span>
   
 
@@ -749,8 +796,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -762,11 +811,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
@@ -780,7 +829,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1_3">
             <span class="md-nav__icon md-icon"></span>
             System
@@ -791,6 +840,8 @@
                 
   
   
+    
+  
   
   
     
@@ -806,22 +857,24 @@
       
         
       
+        
+      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3_1" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../notes/cs/Sys/CO/" class="md-nav__link ">
+            <a href="index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -838,7 +891,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_3_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_3_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1_3_1">
             <span class="md-nav__icon md-icon"></span>
             CO
@@ -854,7 +907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/Sys/CO/arithmetic/" class="md-nav__link">
+      <a href="arithmetic.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -875,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/Sys/CO/instruction/" class="md-nav__link">
+      <a href="instruction.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -896,7 +949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/cs/Sys/CO/processor/" class="md-nav__link">
+      <a href="processor.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -905,6 +958,127 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Memory
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="memory.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Memory
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#memory-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Technology
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cache
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cache-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cache Mapping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-cache-miss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Cache Miss
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deep-cache-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Cache Concepts
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -977,7 +1151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/lingo/verilog/" class="md-nav__link">
+      <a href="../../../lingo/verilog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -998,7 +1172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/lingo/cs61a/" class="md-nav__link">
+      <a href="../../../lingo/cs61a.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1039,10 +1213,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -1051,20 +1223,17 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1075,7 +1244,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             To0l Box
@@ -1086,8 +1255,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1101,11 +1268,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -1119,7 +1286,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             Workflow
@@ -1130,8 +1297,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1145,11 +1310,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
@@ -1163,7 +1328,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1_1">
             <span class="md-nav__icon md-icon"></span>
             Coding
@@ -1174,30 +1339,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    GNU Make
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../Tool_Pool/GNU_Make.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1206,77 +1351,50 @@
   
 
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
   
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
   
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
   
+
     
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      关于程序的编译和链接
-    </span>
-  </a>
-  
-</li>
       
-        <li class="md-nav__item">
-  <a href="#makefile" class="md-nav__link">
-    <span class="md-ellipsis">
-      makefile
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      参考
-    </span>
-  </a>
   
-</li>
-      
-    </ul>
   
-</nav>
-      
-    </li>
+  
+    <li class="md-nav__item">
+      <a href="../../../../log/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    L0g
+  </span>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
+      </a>
     </li>
   
 
@@ -1308,27 +1426,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#memory-technology" class="md-nav__link">
     <span class="md-ellipsis">
-      关于程序的编译和链接
+      Memory Technology
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#makefile" class="md-nav__link">
+  <a href="#intro" class="md-nav__link">
     <span class="md-ellipsis">
-      makefile
+      Intro
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#cache" class="md-nav__link">
     <span class="md-ellipsis">
-      参考
+      Cache
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cache-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cache Mapping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-cache-miss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Cache Miss
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deep-cache-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Cache Concepts
     </span>
   </a>
   
@@ -1352,68 +1503,242 @@
   
 
 
-<h1 id="gnu-make">GNU Make<a class="headerlink" href="#gnu-make" title="Permanent link">&para;</a></h1>
-<p>对于大型的项目，我们无法在命令行中一条一条地输入编译命令，这时候就需要一个自动化的编译工具，这个工具就是 make。</p>
-<p>一个工程中的源文件不计其数，并且按类型、功能、模块分别放在若干个目录中，makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令，然后只需要一个make命令，makefile里的规则就会自动生效。</p>
-<p>即：<strong>makefile关系到整个工程的编译规则, 采用自动化编译</strong></p>
-<h2 id="_1">关于程序的编译和链接<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>正常的文件在进行编译时，需要经过四个步骤：预处理、编译、汇编和链接。而在makefile中，我们可以将这四个过程简化为两个过程：
-1. <strong>编译</strong>：将所有的.c文件编译成.o文件
-编译时，编译器需要的是语法的正确，函数与变量的声明的正确。</p>
-<ol start="2">
-<li><strong>链接</strong>：将所有的.o文件链接成可执行文件
-链接时，主要是链接函数和全局变量。
-链接器并不管函数所在的源文件，只管函数的中间目标文件（Object File），在大多数时候，由于源文件太多，编译生成的中间目标文件太多，而在链接时需要明显地指出中间目标文件名，这对于编译很不方便。所以，我们要给中间目标文件打个包，在UNIX下，是Archive File，也就是<code>.a</code>文件。</li>
-</ol>
-<h2 id="makefile">makefile<a class="headerlink" href="#makefile" title="Permanent link">&para;</a></h2>
-<p>make命令执行时，需要一个makefile文件，以告诉make命令需要怎么样的去编译和链接程序。</p>
-<p>基础的规则是：
-1. 如果这个工程没有编译过，那么我们的所有c文件都要编译并被链接。
-2. 如果这个工程的某几个c文件被修改，那么我们只编译被修改的c文件，并链接目标程序。
-3. 如果这个工程的头文件被改变了，那么我们需要编译引用了这几个头文件的c文件，并链接目标程序。</p>
-<p>makefile的规则：
-<div class="language-makefile highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">target ... </span><span class="o">:</span><span class="w"> </span><span class="n">prerequisites</span> ...
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nb">command</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span>...
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span>...
-</span></code></pre></div>
-- target: 目标文件，可以是Object File，也可以是执行文件, 还可以是一个标签.
-- prerequisites: 生成target所需要的文件或者目标.
-- command: 生成target的命令(命令行)，任意Shell命令.(必须以一个Tab键开始)</p>
-<p>target这一个或多个的目标文件依赖于prerequisites中的文件，其生成规则定义在command中, 也就是说
-<strong>prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行。</strong></p>
-<div class="admonition example">
-<p class="admonition-title">一个实例</p>
-<div class="language-makefile highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">edit </span><span class="o">:</span><span class="w"> </span><span class="n">main</span>.<span class="n">o</span> <span class="n">kbd</span>.<span class="n">o</span> <span class="n">command</span>.<span class="n">o</span> <span class="n">display</span>.<span class="n">o</span> \
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        <span class="n">insert</span>.<span class="n">o</span> <span class="n">search</span>.<span class="n">o</span> <span class="n">files</span>.<span class="n">o</span> <span class="n">utils</span>.<span class="n">o</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>cc<span class="w"> </span>-o<span class="w"> </span>edit<span class="w"> </span>main.o<span class="w"> </span>kbd.o<span class="w"> </span>command.o<span class="w"> </span>display.o<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span>insert.o<span class="w"> </span>search.o<span class="w"> </span>files.o<span class="w"> </span>utils.o
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nf">main.o </span><span class="o">:</span><span class="w"> </span><span class="n">main</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>cc<span class="w"> </span>-c<span class="w"> </span>main.c
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nf">kbd.o </span><span class="o">:</span><span class="w"> </span><span class="n">kbd</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span>cc<span class="w"> </span>-c<span class="w"> </span>kbd.c
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nf">command.o </span><span class="o">:</span><span class="w"> </span><span class="n">command</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span>cc<span class="w"> </span>-c<span class="w"> </span>command.c
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nf">display.o </span><span class="o">:</span><span class="w"> </span><span class="n">display</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span>cc<span class="w"> </span>-c<span class="w"> </span>display.c
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nf">insert.o </span><span class="o">:</span><span class="w"> </span><span class="n">insert</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span>cc<span class="w"> </span>-c<span class="w"> </span>insert.c
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="nf">search.o </span><span class="o">:</span><span class="w"> </span><span class="n">search</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span>cc<span class="w"> </span>-c<span class="w"> </span>search.c
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="nf">files.o </span><span class="o">:</span><span class="w"> </span><span class="n">files</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span>cc<span class="w"> </span>-c<span class="w"> </span>files.c
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="nf">utils.o </span><span class="o">:</span><span class="w"> </span><span class="n">utils</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span>cc<span class="w"> </span>-c<span class="w"> </span>utils.c
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="nf">clean </span><span class="o">:</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span>rm<span class="w"> </span>edit<span class="w"> </span>main.o<span class="w"> </span>kbd.o<span class="w"> </span>command.o<span class="w"> </span>display.o<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span>insert.o<span class="w"> </span>search.o<span class="w"> </span>files.o<span class="w"> </span>utils.o
-</span></code></pre></div>
-<p>在实际使用过程中，我们通常会使用<code>make -f &lt;makefile_name&gt;</code>来指定makefile文件，如果不指定，make会默认使用当前目录下的<code>Makefile</code>文件。</p>
-<p>在这个例子中，我们<code>make</code>一下就会生成<code>edit</code>文件，然后使用<code>make clean</code>就会删除<code>edit</code>文件。</p>
+<h1 id="memory">Memory<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h1>
+<h2 id="memory-technology">Memory Technology<a class="headerlink" href="#memory-technology" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>SRAM: Static Random Access Memory 静态随机内存访问存储器</p>
+<ul>
+<li>它只有一个访问端口，具备读和写的能力</li>
+<li>访问任何数据所需的时间是固定的</li>
+<li>由于无需刷新 (refresh)，因此访问时间接近于处理器的周期时间</li>
+<li>应用：高速缓存 cache</li>
+</ul>
+</li>
+<li>
+<p>DRAM: Dynamic Random Access Memory 动态随机内存访问存储器</p>
+<ul>
+<li>1 位数据以电荷的形式被存储在 1 个电容中</li>
+<li>电容会随着时间逐渐泄漏电荷，因此需要定期刷新 (refresh) 以保持数据</li>
+<li>访问时间取决于电容的刷新时间</li>
+<li>应用：主存</li>
+</ul>
+</li>
+<li>
+<p>Flash</p>
+</li>
+<li>Disk</li>
+</ul>
+<h2 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h2>
+<p>局部性locality原理：</p>
+<ul>
+<li>
+<p>Temporal Locality: 时间局部性</p>
+<p>最近访问过的item，大概率会被再次访问（loop）</p>
+</li>
+<li>
+<p>Spacial Locality: 空间局部性</p>
+<p>最近访问过的item附近的item，大概率会被访问（array）</p>
+</li>
+</ul>
+<p>离CPU越近的memory，访问速度越快，容量越小，价格越贵</p>
+<p>Important Items</p>
+<div align="center" >
+<img src="/../../../../assets/pics/comem/mem-1.png" alt="mem-1" height="100px" width="300px">
 </div>
-<h2 id="_2">参考<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>GNU Make: <a href="https://seisman.github.io/how-to-write-makefile/overview.html">https://seisman.github.io/how-to-write-makefile/overview.html</a></p>
+
+<ul>
+<li>Block(line): 操作单元，就如上图从内存搬运到cache的单位</li>
+<li>
+<p>Hit: 命中，我们所需要访问的数据处于upper level（这里就是说蓝色的方块到cache中了）</p>
+<ul>
+<li>Hit Ratio：命中率=命中次数/访问次数，计算机中通常程序指令的命中率在90%以上，数据相对来说低一些</li>
+<li>Hit Time：访问upper level数据的时间，其中包括了判断数据是否命中的时间</li>
+</ul>
+</li>
+<li>
+<p>Miss：所需访问的数据没有被拉到upper level中</p>
+<ul>
+<li>
+<p>措施：copy一个block到upper level中</p>
+<ul>
+<li>Time taken：搬运的时间成为miss penalty</li>
+<li>Miss Ratio：= 1-Hit Ratio</li>
+<li>Miss Penalty：替换upper level中block的时间，加上将block送到processor的时间</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>这里我们说的upper level就是说cache，但实际上在计算机中可以是由内存到cache，也可以是硬盘到内存</p>
+<p>常见的memory hierarchy：</p>
+<div align="center">
+<img src="/../../../../assets/pics/comem/mem-2.png" alt="mem-2" height="200px" width="400px">
+</div>
+
+<p>接下来我们要解决两个方面的问题：</p>
+<ol>
+<li>
+<p>The basics of Cache - <strong>speed</strong></p>
+<p>SRAM and DRAM</p>
+</li>
+<li>
+<p>Virtual Memory - <strong>size</strong></p>
+<p>DRAM and Disk</p>
+</li>
+</ol>
+<h2 id="cache">Cache<a class="headerlink" href="#cache" title="Permanent link">&para;</a></h2>
+<p>内存中的每一个数据在cache中都有一个唯一的地址对应，这意味着lower level中的很多item在upper level中共享同一个地址</p>
+<p>需要解决两个问题：</p>
+<ul>
+<li>如何确定一个数据是否在cache中</li>
+<li>如何找到它</li>
+</ul>
+<h3 id="cache-mapping">Cache Mapping<a class="headerlink" href="#cache-mapping" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Direct Mapping</p>
+<ul>
+<li>方法：取模，将内存地址的低位作为cache的index，如图就是取低3位作为index</li>
+<li>tag：在进行存储时，我们放进的位置是block的低位，但是很多个block都在一个位置，因此我们需要存储数据的完整地址，所以需要将内存地址的高位作为<strong>tag</strong></li>
+<li>Valid bit：用于判断cache中是否存在数据</li>
+</ul>
+</li>
+</ul>
+<div align="center" >
+<img src="/../../../../assets/pics/comem/mem-3.png" alt="mem-3" height="200px" width="400px">
+</div>
+
+<p>下面这张图给出了内存地址与高速缓存中的地址的映射关系：</p>
+<ul>
+<li>这里地址是64位，</li>
+</ul>
+<div align="center" >
+<img src="/../../../../assets/pics/comem/mem-4.png" alt="mem-4" height="200px" width="400px">
+</div>
+
+<ul>
+<li>
+<p>Byte offset：由block size决定</p>
+<ul>
+<li>当size为1 word时，offset有两位</li>
+<li>当size为4 word时，offset有四位</li>
+</ul>
+</li>
+<li>
+<p>Index：由cache size决定，也就是cache中的block数量</p>
+<ul>
+<li>当cache size是8个block时，index有3位</li>
+</ul>
+</li>
+<li>
+<p>Tag：总的地址长度减去index和offset后得到的</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>在这里我只给出了计算方法，实际上如果理解了每个部分的作用，那么就可以直接从内存地址中得到index和tag，但是我对offset的理解不太到位，马德上课说offset要直接砍掉的（？）所以我选择记住（）……</p>
+</div>
+<p>这里有一个例题：对一个8block的cache进行访问，我们得到的内存地址已经直接砍掉了offset</p>
+<div class="admonition example">
+<p class="admonition-title">例子</p>
+<p>给出完整的访问过程，我们逐步对每个状态进行分析：</p>
+<p><div align="center"     >
+<img src="/../../../../assets/pics/comem/mem-5.png" alt="mem-5" height="200px" width="400px">
+</div></p>
+<p>接下来就是每一步的状态，我们可以分析得出每一步是否hit</p>
+<p><div align="center"     >
+<img src="/../../../../assets/pics/comem/mem-6.png" alt="mem-6" height="400px" width="600px">
+</div></p>
+</div>
+<p>大体的流程就是：</p>
+<ul>
+<li>读取CPU给出的目标内存地址</li>
+<li>通过index找到cache中的block</li>
+<li>
+<p>判断内存地址的tag是否与cache中block的tag匹配</p>
+<ul>
+<li>如果匹配，则hit</li>
+<li>如果不匹配，则miss，同时在默认策略下，将所需要的tag的那个内存替换到cache中</li>
+</ul>
+</li>
+<li>
+<p>对于没有写过的block，Valid bit为0，只要写过，Valid bit就为1</p>
+</li>
+<li>
+<p>最后取数据时，根据offset，从cache对应block中的data位置取出对应的   </p>
+</li>
+</ul>
+<details class="example">
+<summary>例题</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">1</label><label for="__tabbed_1_2">2</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How many total bits are required for a direct-mapped cache with 16KB of data and 4-word blocks, assuming that the address is 32 bits long?</p>
+<ul>
+<li>16 KB = 4K word = <span class="arithmatex">\(2^{12}\)</span> words</li>
+<li>4 word block = <span class="arithmatex">\(2^2\)</span> word block</li>
+<li>number of blocks = <span class="arithmatex">\(2^{12}\)</span> words / <span class="arithmatex">\(2^2\)</span> word per block = <span class="arithmatex">\(2^{10}\)</span> blocks</li>
+<li>data bits = 4 word * 32 bits = 128 bits</li>
+<li>tag bits = 32 bits - 10 bits - 4 offset = 18 bits</li>
+<li>valid bits = 1 bit</li>
+<li>total bits = <span class="arithmatex">\(2^{10}\)</span>(18 + 128 + 1) = 147 Kbits</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>给定一个高速缓存，它有 64 block，每块空间为 16 bytes，请问内存byte address为 1200 的数据所映射到的块的编号为多少？</p>
+<ul>
+<li>1200 / 16 = 75 得到block address</li>
+<li>75 % 64 = 11 得到index</li>
+</ul>
+<p>所以，内存byte address为 1200 的数据所映射到的块的编号为 11</p>
+</div>
+</div>
+</div>
+</details>
+<h3 id="handling-cache-miss">Handling Cache Miss<a class="headerlink" href="#handling-cache-miss" title="Permanent link">&para;</a></h3>
+<p>当发生miss时，整个系统的操作：</p>
+<ul>
+<li>
+<p>Read miss：</p>
+<ul>
+<li>将源地址送进内存（current_PC-4，也就是发生miss的指令的地址）</li>
+<li>让main memory做一次read</li>
+<li>将main memory取回的数据写到cache entry中（entry就是Valid bit，tag，data一整个完整组成）</li>
+<li>Restart 指令流程，相当于重新执行fetch操作</li>
+</ul>
+</li>
+<li>
+<p>Write hit：有两种策略写回数据</p>
+<ul>
+<li>Write through：将数据同时写入memory和cache</li>
+<li>Write back：只写入cache，之后再写入memory</li>
+</ul>
+</li>
+</ul>
+<h2 id="deep-cache-concepts">Deep Cache Concepts<a class="headerlink" href="#deep-cache-concepts" title="Permanent link">&para;</a></h2>
+<p>在这一节，我们将深入讨论cache的相关问题，一共有四个问题：</p>
+<div class="admonition question">
+<p class="admonition-title">核心问题</p>
+<ol>
+<li>
+<p><strong>Block Placement</strong></p>
+<p>在哪里替换block？</p>
+</li>
+<li>
+<p><strong>Block Identification</strong></p>
+<p>怎样找到一个block？ </p>
+</li>
+<li>
+<p><strong>Block Replacement</strong></p>
+<p>怎样替换一个block？</p>
+</li>
+<li>
+<p><strong>Write Strategy</strong></p>
+<p>怎样写入数据？</p>
+</li>
+</ol>
+</div>
 
 
 
@@ -1466,12 +1791,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
