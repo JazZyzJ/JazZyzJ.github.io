@@ -1,14 +1,13 @@
-
 :root {
-    --md-text-font: "JetBrains Mono", "LXGW WenKai Screen"; 
-    --md-code-font: "JetBrains Mono";
+    /* --md-text-font: "JetBrains Mono", "LXGW WenKai Screen"; 
+    --md-code-font: "JetBrains Mono"; */
   }
   
   
   @media screen and (min-width: 960px) {
-    /* body {
+    body {
       zoom: 1.1;
-    } */
+    }
     html {
       font-size: 137.5%;
     }
@@ -229,7 +228,7 @@
       rgb(0 0 0 / 30%) 50%, rgb(0 0 0 / 30%) 75%, transparent 75%, transparent
     );
     background-size: 10px 10px;
-  }
+  /* }
   [data-md-color-scheme="slate"] .fl-special {
     background: rgb(255 255 255 / 30%);
   }
@@ -238,8 +237,8 @@
   }
   [data-md-color-scheme="slate"] .fl-undefined {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><g><line x1="0" y1="0" x2="100%" y2="100%" stroke="rgba(255,255,255,0.9)" stroke-width="1"/></g><g><line x1="0" y1="100%" x2="100%" y2="0" stroke="rgba(255,255,255,0.9)" stroke-width="1"/></g></svg>');
-  }
-  [data-md-color-scheme="default"] .fl-undefined {
+  } */
+  /* [data-md-color-scheme="default"] .fl-undefined {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><g><line x1="0" y1="0" x2="100%" y2="100%" stroke="rgba(0, 0, 0, 0.85)" stroke-width="1"/></g><g><line x1="0" y1="100%" x2="100%" y2="0" stroke="rgba(0, 0, 0, 0.85)" stroke-width="1"/></g></svg>');
   }
   
@@ -252,9 +251,9 @@
     border-radius: 3px;
     font-size: 80%;
     padding: 3px;
-  }
+  } */
   
-  .toc-tag-classnotes {
+  /* .toc-tag-classnotes {
     background-color: #e6ad5bb0;
   }
   
@@ -268,19 +267,27 @@
   
   .toc-tag-reports::before {
     content: "实验报告"
-  }
-  
+  } */
+/*   
   .center {
     width: auto;
     display: table;
     margin-left: auto;
-    margin-right: auto;
-  }
+    margin-right: auto; */
+  /* }
   
   [data-md-color-scheme="slate"] .md-content {
     --md-typeset-a-color: #09bfdd;
   }
   [data-md-color-scheme="default"] .md-content {
     --md-typeset-a-color: #466aff;
+  } */
+  
+  /* 使logo变成圆形 */
+  .md-header__button.md-logo img {
+    border-radius: 50%;  /* 使图片变成圆形 */
+    width: 40px;        /* 设置宽度 */
+    height: 40px;       /* 设置高度 */
+    object-fit: cover;  /* 确保图片填充整个圆形区域 */
   }
   

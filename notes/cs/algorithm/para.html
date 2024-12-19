@@ -17,7 +17,7 @@
         <link rel="next" href="../Sys/CO/index.html">
       
       
-      <link rel="icon" href="../../../docs/assets/pics/harry.png">
+      <link rel="icon" href="../../../assets/pics/logo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
@@ -48,7 +48,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../docs/css/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../css/stylesheets/extra.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -93,7 +93,7 @@
     <a href="../../../index.html" title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -342,7 +342,7 @@
     <a href="../../../index.html" title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     Space . JaZzyzJ
@@ -849,6 +849,15 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       并行排序
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maximum Finding
     </span>
   </a>
   
@@ -1442,6 +1451,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#maximum-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maximum Finding
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1630,6 +1648,174 @@ W = O(n) \quad D = O(\log n)
 <p>使用归并排序，我们也能将工作过程写为一个二叉树，在第<span class="arithmatex">\(i\)</span>层中，我们已经将所有元素分成了<span class="arithmatex">\(2^i\)</span>个部分，每个部分有<span class="arithmatex">\(n/2^i\)</span>个元素，进行两两合并，这时每个节点的<span class="arithmatex">\(W\)</span>是<span class="arithmatex">\(O(n/2^i)\)</span>，<span class="arithmatex">\(D\)</span>也是<span class="arithmatex">\(O(n/2^i)\)</span>，在这一层中所有节点进行求和，所以<span class="arithmatex">\(W\)</span>是<span class="arithmatex">\(O(n)\)</span>，<span class="arithmatex">\(D\)</span>并行处理的，因此还是<span class="arithmatex">\(O(n/2^i)\)</span></p>
 <p>最后对每一层进行求和，<span class="arithmatex">\(W\)</span>是<span class="arithmatex">\(O(n \log n)\)</span>，<span class="arithmatex">\(D\)</span>是<span class="arithmatex">\(O(n)\)</span></p>
 <p>在这里可以看出我们算法的瓶颈在于merge，如果我们能对merge进行优化，那么我们就能提高整个算法的效率。</p>
+<p>因此问题变成了：</p>
+<div class="admonition question">
+<p class="admonition-title">merge</p>
+<p>给定两个有序的数组<span class="arithmatex">\(A\)</span>和<span class="arithmatex">\(B\)</span>，如何将他们合并为一个有序的数组<span class="arithmatex">\(C\)</span>？</p>
+</div>
+<ul>
+<li>serial：得到每个元素在另外一个数组中的位置（rank），然后放进新的数组</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="n">pardo</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">C</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">rank</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">C</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">rank</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span></code></pre></div>
+<p>这个rank法得到的<span class="arithmatex">\(W\)</span>是<span class="arithmatex">\(O(n)\)</span>，<span class="arithmatex">\(D\)</span>是<span class="arithmatex">\(O(1)\)</span></p>
+<p>是一个不错的结果，但问题是我们怎样得到rank？</p>
+<p>问题变成了：</p>
+<div class="admonition question">
+<p class="admonition-title">rank</p>
+<p>在两个有序数组中，如何找到一个元素在另外一个数组中的位置：</p>
+<p><span class="arithmatex">\(A\)</span>的第<span class="arithmatex">\(i\)</span>个元素在<span class="arithmatex">\(B\)</span>中的rank是<span class="arithmatex">\(rank(i, B)\)</span></p>
+<p><span class="arithmatex">\(B\)</span>的第<span class="arithmatex">\(j\)</span>个元素在<span class="arithmatex">\(A\)</span>中的rank是<span class="arithmatex">\(rank(j, A)\)</span></p>
+</div>
+<ul>
+<li>serial:</li>
+</ul>
+<p>在两个数组中设置双指针：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">j</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="n">rank</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span> <span class="o">=</span> <span class="n">j</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="n">rank</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span> <span class="o">=</span> <span class="n">i</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></code></pre></div>
+<p>这个算法得到的<span class="arithmatex">\(W\)</span>是<span class="arithmatex">\(O(n)\)</span>，<span class="arithmatex">\(D\)</span>是<span class="arithmatex">\(O(n)\)</span>，不太好，是纯种串行（）</p>
+<ul>
+<li>Binary Search：</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="n">pardo</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">rank</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span> <span class="o">=</span> <span class="n">binary_search</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">rank</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span> <span class="o">=</span> <span class="n">binary_search</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></code></pre></div>
+<p>这个算法得到的<span class="arithmatex">\(W\)</span>是<span class="arithmatex">\(O(n \log n)\)</span>，因为每次二分查找的复杂度是<span class="arithmatex">\(O(\log n)\)</span>，然后有<span class="arithmatex">\(n\)</span>个元素</p>
+<p><span class="arithmatex">\(D\)</span>是<span class="arithmatex">\(O(\log n)\)</span>，因为每次二分查找可以并行执行，深度就是单次二分查找的深度</p>
+<p>这两种算法一种是W好，一种是D好，那么我们能不能找到一个W和D都好的算法呢？</p>
+<ul>
+<li>parallel ranking</li>
+</ul>
+<p>这个算法是结合了上述两种方法的一种算法，在serial中，我们使用完全串行，导致深度很大，在binary中，我们每一步都进行二分查找，导致工作量很大，在这个方法中，我们只挑选一部分关键元素进行二分查找，然后对这些关键元素间隔出的数组块进行<strong>并行的</strong>串行连接，这样就能大大减小深度，同时也能减小工作量</p>
+<div class="admonition success">
+<p class="admonition-title">parallel ranking</p>
+<ol>
+<li>
+<p>间隔<span class="arithmatex">\(k\)</span>个元素，对两个数组挑选一个元素<span class="arithmatex">\(A[i], B[i]\)</span>进行binary ranking，箭头指向对方数组中的位置，每对箭头将两个数组分成k个group</p>
+<p>注意：这里不会形成交叉（推理一下就能知道，大小关系会发生矛盾）
+<div align="center">
+<img src="/../../../../assets/pics/ads/cross.png" alt="rank-1" height="300px" width="400px">
+</div></p>
+<div class="arithmatex">\[
+W = O(\frac{2n}{k} \log n) \quad D = O(\log n)
+\]</div>
+</li>
+<li>
+<p>并行地将每个group进行serial rank</p>
+<div class="arithmatex">\[
+W = O(n) \quad D = O(k)
+\]</div>
+</li>
+</ol>
+<p>Total:</p>
+<div class="arithmatex">\[
+W = O(\frac{2n}{k} \log n + n) \quad D = O(\log n + k)
+\]</div>
+<p>当<span class="arithmatex">\(k = \log n\)</span>时，<span class="arithmatex">\(W = O(n)\)</span>，<span class="arithmatex">\(D = O(\log n)\)</span>，是一个不错的结果 </p>
+</div>
+<p>得到较好的ranking方法后，我们在计算merge开销时就能得到<span class="arithmatex">\(W = O(n)\)</span>，<span class="arithmatex">\(D = O(\log n)\)</span></p>
+<p>这时候整个mergesort的<span class="arithmatex">\(D_i\)</span>可以对<span class="arithmatex">\(O(n/2^i)\)</span>取对数，求和后得到<span class="arithmatex">\(D = O(\log^2 n)\)</span></p>
+<h3 id="maximum-finding">Maximum Finding<a class="headerlink" href="#maximum-finding" title="Permanent link">&para;</a></h3>
+<p>给出<span class="arithmatex">\(n\)</span>个数，求出其中的最大值</p>
+<ul>
+<li>
+<p>serial:</p>
+<p><span class="arithmatex">\(W = O(n) \quad D = O(n)\)</span></p>
+</li>
+<li>
+<p>summation algorithm</p>
+<p>将加法改成max</p>
+<div class="arithmatex">\[
+W = O(n) \quad D = O(\log n)
+\]</div>
+</li>
+<li>
+<p>compare all pairs</p>
+<p>在不考虑Work的情况下，我们使用并行：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="n">pardo</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 初始化 标记值全部为0</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">for</span> <span class="n">every</span> <span class="n">pair</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span> <span class="n">pardo</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#将小的标记为1</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span></code></pre></div>
+</li>
+</ul>
+<p>这样最终标记值还是0的元素就是最大值</p>
+<div class="arithmatex">\[
+W = O(n^2) \quad D = O(1)
+\]</div>
+<div class="admonition warning">
+<p class="admonition-title">问题</p>
+<p>在这里我们会发现对标记值进行更改时可能多个processor同时进行，因此要允许，但是还要保证写入时的数据是相同的，我们在这里使用 common CRCW 模型</p>
+</div>
+<ul>
+<li>
+<p>Divide and Conquer</p>
+<ol>
+<li>将整个问题拆分成<span class="arithmatex">\(\sqrt{n}\)</span>个子问题，每个部分有<span class="arithmatex">\(\sqrt{n}\)</span>个元素</li>
+<li>在每个子问题中用compare all pairs的方法求出最大值</li>
+</ol>
+<p>写出递推关系式：</p>
+<div class="arithmatex">\[
+W(n) = \sqrt{n} W(\sqrt{n}) + O(n)
+\]</div>
+<div class="arithmatex">\[
+D(n) = D(\sqrt{n}) + O(1)
+\]</div>
+<p>最后解得：</p>
+<div class="arithmatex">\[
+W(n) = O(n \log \log n) \quad D(n) = O(\log \log n)
+\]</div>
+</li>
+</ul>
+<p>同样的我们会想，有没有能够降低Work的方法：</p>
+<ul>
+<li>
+<p>分块后再D&amp;C</p>
+<ol>
+<li>将整个问题拆分成<span class="arithmatex">\(k\)</span>个部分，每个部分有<span class="arithmatex">\(n/k\)</span>个元素</li>
+<li>在每个子问题中用compare all pairs的方法求出最大值</li>
+<li>将每个子问题的最大值进行D&amp;C比较，得到全局最大值</li>
+</ol>
+</li>
+</ul>
+<p>第一步的<span class="arithmatex">\(W\)</span>是<span class="arithmatex">\(O(n)\)</span>，<span class="arithmatex">\(D\)</span>是<span class="arithmatex">\(O(n/k)\)</span></p>
+<p>第二步的<span class="arithmatex">\(W\)</span>是<span class="arithmatex">\(O(k \log \log k)\)</span>，<span class="arithmatex">\(D\)</span>是<span class="arithmatex">\(O(\log \log k)\)</span></p>
+<p>求和，令<span class="arithmatex">\(k = \log \log n\)</span>，得到：</p>
+<div class="arithmatex">\[
+W = O(n) \quad D = O(\log \log n)
+\]</div>
+<ul>
+<li>Random Sampling</li>
+</ul>
+<p>通过随机取样可以得到一个<span class="arithmatex">\(W=O(n) \quad D=O(1)\)</span>的算法</p>
+<p>思想就是通过随机取样后并行两两比较，不断缩小数组的规模，直到数组规模达到<span class="arithmatex">\(\sqrt{n}\)</span>，然后使用compare all pairs的方法</p>
+<ol>
+<li>在A中随机取样<span class="arithmatex">\(n^\frac{7}{8}\)</span>个元素，形成数组<span class="arithmatex">\(B\)</span></li>
+<li>在B中分块，每块有<span class="arithmatex">\(n^\frac{1}{8}\)</span>个元素，这样<span class="arithmatex">\(B\)</span>就有<span class="arithmatex">\(n^\frac{3}{4}\)</span>个块</li>
+<li>用compare all pairs的方法求出每一组的最大值</li>
+<li>得到一个C只有<span class="arithmatex">\(n^\frac{3}{4}\)</span>个元素的数组</li>
+<li>对C分为<span class="arithmatex">\(n^\frac{1}{2}\)</span>个块，然后对每个块进行compare all pairs，得到最大值</li>
+<li>得到D，D中只有<span class="arithmatex">\(n^\frac{1}{2}\)</span>个元素，然后对D进行compare all pairs，得到最大值</li>
+</ol>
+<p>random sampling：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">^</span><span class="p">(</span><span class="mi">7</span><span class="o">/</span><span class="mi">8</span><span class="p">)):</span> <span class="n">pardo</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span> <span class="n">select</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</span></code></pre></div>
+<p>这样得到的算法准确性很高，出现错误的概率是<span class="arithmatex">\(O(\frac{1}{n})\)</span></p>
 
 
 
