@@ -9,9 +9,9 @@ use_directory_urls: false
 theme: 
   name: material
   language: en
-  favicon: docs/assets/pics/harry.png
-  icon:
-    logo: material/notebook-outline
+  favicon: assets/pics/logo.png
+  # icon: 
+  #   logo: assets/pics/logo.png
   features:
     - content.code.annotate
     - content.code.line_numbers
@@ -86,7 +86,7 @@ extra_javascript:
 
 
 extra_css:
-  - docs/css/stylesheets/extra.css
+  - css/stylesheets/extra.css
 
 # plugins:
 #   - search

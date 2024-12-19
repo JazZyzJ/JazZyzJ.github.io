@@ -222,10 +222,203 @@ $$
 在这里可以看出我们算法的瓶颈在于merge，如果我们能对merge进行优化，那么我们就能提高整个算法的效率。
 
 
+因此问题变成了：
+
+!!! question "merge"
+
+    给定两个有序的数组$A$和$B$，如何将他们合并为一个有序的数组$C$？
 
 
+- serial：得到每个元素在另外一个数组中的位置（rank），然后放进新的数组
+
+```python
+for i in range(1, n): pardo
+    C[i + rank(i, B) - 1] = A[i]
+    C[i + rank(i, A) - 1] = B[i]
+```
+
+这个rank法得到的$W$是$O(n)$，$D$是$O(1)$
+
+是一个不错的结果，但问题是我们怎样得到rank？
+
+问题变成了：
+
+!!! question "rank"
+
+    在两个有序数组中，如何找到一个元素在另外一个数组中的位置：
+
+    $A$的第$i$个元素在$B$中的rank是$rank(i, B)$
+
+    $B$的第$j$个元素在$A$中的rank是$rank(j, A)$
 
 
+- serial:
+
+在两个数组中设置双指针：
+
+```python
+i = 1
+j = 1
+while i <= n and j <= n:
+    if A[i] < B[j]:
+        rank(i, B) = j
+        i += 1
+    else:
+        rank(j, A) = i
+        j += 1
+```
+
+这个算法得到的$W$是$O(n)$，$D$是$O(n)$，不太好，是纯种串行（）
+
+- Binary Search：
+
+```python
+for i in range(1, n): pardo
+    rank(i, B) = binary_search(A, B[i])
+    rank(i, A) = binary_search(B, A[i])
+```
+
+这个算法得到的$W$是$O(n \log n)$，因为每次二分查找的复杂度是$O(\log n)$，然后有$n$个元素
+
+$D$是$O(\log n)$，因为每次二分查找可以并行执行，深度就是单次二分查找的深度
+
+这两种算法一种是W好，一种是D好，那么我们能不能找到一个W和D都好的算法呢？
+
+- parallel ranking
+
+这个算法是结合了上述两种方法的一种算法，在serial中，我们使用完全串行，导致深度很大，在binary中，我们每一步都进行二分查找，导致工作量很大，在这个方法中，我们只挑选一部分关键元素进行二分查找，然后对这些关键元素间隔出的数组块进行**并行的**串行连接，这样就能大大减小深度，同时也能减小工作量
+
+!!! success "parallel ranking"
+
+    1. 间隔$k$个元素，对两个数组挑选一个元素$A[i], B[i]$进行binary ranking，箭头指向对方数组中的位置，每对箭头将两个数组分成k个group
+
+        注意：这里不会形成交叉（推理一下就能知道，大小关系会发生矛盾）
+        <div align="center">
+        <img src="/../../../../assets/pics/ads/cross.png" alt="rank-1" height="300px" width="400px">
+        </div>
+        
+        $$
+        W = O(\frac{2n}{k} \log n) \quad D = O(\log n)
+        $$
+
+    2. 并行地将每个group进行serial rank
+        
+        $$
+        W = O(n) \quad D = O(k)
+        $$
+
+    Total:
+
+    $$
+    W = O(\frac{2n}{k} \log n + n) \quad D = O(\log n + k)
+    $$
+
+    当$k = \log n$时，$W = O(n)$，$D = O(\log n)$，是一个不错的结果 
+
+得到较好的ranking方法后，我们在计算merge开销时就能得到$W = O(n)$，$D = O(\log n)$
+
+这时候整个mergesort的$D_i$可以对$O(n/2^i)$取对数，求和后得到$D = O(\log^2 n)$
 
 
+### Maximum Finding 
 
+给出$n$个数，求出其中的最大值
+
+- serial:
+
+    $W = O(n) \quad D = O(n)$
+
+- summation algorithm
+
+    将加法改成max
+
+    $$
+    W = O(n) \quad D = O(\log n)
+    $$
+
+- compare all pairs
+
+    在不考虑Work的情况下，我们使用并行：
+
+    ```python
+    for i in range(1, n): pardo
+        B[i] = 0 # 初始化 标记值全部为0
+    for every pair (i, j): pardo
+        if A[i] < A[j]:
+            B[i] = 1  #将小的标记为1
+        else:
+            B[j] = 1
+    ```
+
+这样最终标记值还是0的元素就是最大值
+
+$$
+W = O(n^2) \quad D = O(1)
+$$
+
+!!! warning "问题"
+
+    在这里我们会发现对标记值进行更改时可能多个processor同时进行，因此要允许，但是还要保证写入时的数据是相同的，我们在这里使用 common CRCW 模型
+
+- Divide and Conquer
+
+    1. 将整个问题拆分成$\sqrt{n}$个子问题，每个部分有$\sqrt{n}$个元素
+    2. 在每个子问题中用compare all pairs的方法求出最大值
+
+    写出递推关系式：
+
+    $$
+    W(n) = \sqrt{n} W(\sqrt{n}) + O(n)
+    $$
+
+    $$
+    D(n) = D(\sqrt{n}) + O(1)
+    $$
+
+    最后解得：
+
+    $$
+    W(n) = O(n \log \log n) \quad D(n) = O(\log \log n)
+    $$
+
+
+同样的我们会想，有没有能够降低Work的方法：
+
+- 分块后再D&C
+    
+    1. 将整个问题拆分成$k$个部分，每个部分有$n/k$个元素
+    2. 在每个子问题中用compare all pairs的方法求出最大值
+    3. 将每个子问题的最大值进行D&C比较，得到全局最大值
+
+第一步的$W$是$O(n)$，$D$是$O(n/k)$
+
+第二步的$W$是$O(k \log \log k)$，$D$是$O(\log \log k)$
+
+求和，令$k = \log \log n$，得到：
+
+$$
+W = O(n) \quad D = O(\log \log n)
+$$
+
+
+- Random Sampling
+
+通过随机取样可以得到一个$W=O(n) \quad D=O(1)$的算法
+
+思想就是通过随机取样后并行两两比较，不断缩小数组的规模，直到数组规模达到$\sqrt{n}$，然后使用compare all pairs的方法
+
+1. 在A中随机取样$n^\frac{7}{8}$个元素，形成数组$B$
+2. 在B中分块，每块有$n^\frac{1}{8}$个元素，这样$B$就有$n^\frac{3}{4}$个块
+3. 用compare all pairs的方法求出每一组的最大值
+4. 得到一个C只有$n^\frac{3}{4}$个元素的数组
+5. 对C分为$n^\frac{1}{2}$个块，然后对每个块进行compare all pairs，得到最大值
+6. 得到D，D中只有$n^\frac{1}{2}$个元素，然后对D进行compare all pairs，得到最大值
+
+random sampling：
+
+```python
+for i in range(1, n^(7/8)): pardo
+    B[i] = random select(A)
+```
+
+这样得到的算法准确性很高，出现错误的概率是$O(\frac{1}{n})$
