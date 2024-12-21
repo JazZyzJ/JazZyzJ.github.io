@@ -10,8 +10,8 @@ theme:
   name: material
   language: en
   favicon: assets/pics/logo.png
-  # icon: 
-  #   logo: assets/pics/logo.png
+  icon: 
+    logo: material/book-open-variant
   features:
     - content.code.annotate
     - content.code.line_numbers
@@ -118,6 +118,7 @@ nav:
           - Local Search: notes/cs/algorithm/localsearch.md
           - Randomized: notes/cs/algorithm/random.md
           - Parallel: notes/cs/algorithm/para.md
+          - External Sort: notes/cs/algorithm/external.md
         - System:
           - CO: 
             - notes/cs/Sys/CO/index.md
