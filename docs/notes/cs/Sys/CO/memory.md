@@ -213,3 +213,31 @@ Important Items
         怎样写入数据？
 
 
+### Block Placement
+
+- direct map
+
+    
+  
+- fully associative 全关联
+
+    一个数据块可以放在高速缓存的任意位置上
+
+- set associative 组关联
+
+    $$\text{Set Number = (Block number) modulo (Number of sets in the cache)}$$ 
+    
+    - 这样去到一个set中，然后再选择set中的block，往往是相连的block
+
+    - 如果一个set中有n个block，那么就称为n-way set associative（direct map就是1-way set associative）
+
+??? example "例子"
+
+    <div align="center">
+    <img src="/../../../../assets/pics/comem/mem-7.png" alt="mem-7" height="600px" width="600px">
+    </div>
+
+虽然方式发生了变化，但是我们仍然采用相同的计算模式：用index、tag、ValidBit、ByteOffset来计算
+
+
+   
