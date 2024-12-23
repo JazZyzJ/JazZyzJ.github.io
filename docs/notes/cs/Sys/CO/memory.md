@@ -419,5 +419,24 @@ $$\begin{aligned}
 
 - Write：不仅是Program中的Write部分会出现stall，Write buffer也会出现stall
 
+    - 如果write buffer很小，可以忽略不计
+    - 如果cache block size是一个word，那么miss penalty是0
+
+- 通常write-through策略下，读和写的miss penalty是相同的
+
+
+??? example "例子"
+
+    <div align="center" >
+    <img src="/../../../../assets/pics/comem/mem-16.png" alt="mem-16" height="500px" width="500px">
+    </div>
+
+    所以加上penalty后的CPI就是2+3.44=5.44，与理想的CPI=2相比，比例是2.72
+
+    如果我们只对处理器优化，不优化内存结构，反而会增大这个比例：
+    
+    <div align="center">
+    <img src="/../../../../assets/pics/comem/mem-17.png" alt="mem-17" height="500px" width="500px">
+    </div>
 
 
