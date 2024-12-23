@@ -109,16 +109,25 @@ Important Items
     
     - 当size为1 word时，offset有两位
     - 当size为4 word时，offset有四位
+    - 后面有补充：
+        
+        $$
+        \text{Byte Offset} = \log_2(\text{# bytes per block})
+        $$
 
 - Index：由cache size决定，也就是cache中的block数量
  
     - 当cache size是8个block时，index有3位
 
-- Tag：总的地址长度减去index和offset后得到的
+- Tag：总的地址长度减去index和offset后得到的，存放在cache中用来判断是否命中
+
+<div align="center" >
+<img src="/../../../../assets/pics/comem/mem-8.png" alt="mem-5" height="200px" width="400px">
+</div>
 
 !!! warning "注意"
 
-    在这里我只给出了计算方法，实际上如果理解了每个部分的作用，那么就可以直接从内存地址中得到index和tag，但是我对offset的理解不太到位，马德上课说offset要直接砍掉的（？）所以我选择记住（）……
+    在这里我只给出了计算方法，实际上如果理解了每个部分的作用，那么就可以直接从内存地址中得到index和tag，但是我对offset的理解不太到位，马德上课说offset要直接砍掉的（？）所以我选择记住（）……  好吧他后来讲明白了，byte offset就是一个block中byte的个数决定的
 
 这里有一个例题：对一个8block的cache进行访问，我们得到的内存地址已经直接砍掉了offset
 
@@ -198,7 +207,7 @@ Important Items
  
       1. **Block Placement**
       
-          在哪里替换block？
+        在哪里替换block？
 
       2. **Block Identification**
 
@@ -237,7 +246,176 @@ Important Items
     <img src="/../../../../assets/pics/comem/mem-7.png" alt="mem-7" height="600px" width="600px">
     </div>
 
+
+### Block Identification
+
 虽然方式发生了变化，但是我们仍然采用相同的计算模式：用index、tag、ValidBit、ByteOffset来计算
 
+对于 Physical Address：
 
-   
+- Index：
+
+    - 直接映射：是相对于多少个block来说，位宽：$\log_2(\text{# blocks})$
+    - 组关联：是相对于多少个set来说，位宽：$\log_2(\text{# sets})$
+    
+- Byte Offset：
+
+    前面已经给出了
+
+- Tag：
+    
+    直接用物理地址减去index和offset即可
+
+!!! tip "compare"
+
+    === "直接映射"
+
+        <div align="center">
+        <img src="/../../../../assets/pics/comem/mem-9.png" alt="mem-9" height="500px" width="500px">
+        </div>
+
+    === "全关联"
+
+        <div align="center">
+        <img src="/../../../../assets/pics/comem/mem-10.png" alt="mem-10" height="500px" width="500px">
+        </div>
+
+        暴力搜索
+
+    === "组关联"
+
+        <div align="center">
+        <img src="/../../../../assets/pics/comem/mem-11.png" alt="mem-11" height="500px" width="500px">
+        </div>
+        
+        分成了两组，因此index = 1位，在这个图片中，比较tag发生在所有block中，但其实只需在所选的set中比较即可（图是错的）
+
+
+### Block Replacement
+
+- direct map：没有什么替换策略，来了新的就把老的扔了
+
+但是非直接映射中，我们定位不到精确的block，因此在一个set中，我们需要一个策略来决定替换哪一个block
+
+**Goal：提高命中率**
+
+- Random Replacement 随机替换
+
+    容易实现
+
+- Least Recently Used (LRU) 最近最少使用
+
+    最近没有被用过的踢出
+
+    并不是很好实现，尤其是set中有很多block的时候
+
+    需要额外的bits来记录每个block的LRU状态
+
+- First In First Out (FIFO) 先进先出
+
+    类似于队列，定一个时间戳
+
+
+### Write Strategy
+
+- Write through
+
+    直接将数据写入memory，可以随时把cache中的数据丢掉
+
+    只需要Valid bit一位
+
+- Write back
+    
+    将数据写入cache，之后再写入memory
+
+    需要Valid bit和Dirty bit
+
+    好处是memory的带宽可以降低，因为可以减少写入的次数
+
+如果不命中呢？
+
+需要处理Write Stall
+
+- Write Buffer
+
+    相当于一个小的cache，可以暂时存储数据
+
+Write Miss后：
+
+- Write Allocate
+
+    将数据从memory中读到cache中
+
+- Write Around
+
+    不将数据从memory中读到cache中，直接写入memory
+
+通常情况下，Write through 采用Write Around，而Write back采用Write Allocate
+
+
+### Memory Organization
+
+对于每次访问操作，我们是要进行block为单位的访问，但是往往有时候我们的block很大，我们需要的word只是block中很小的一部分，这时搬运block就会很浪费时间，因此在这里我们要降低block搬运的时间，尽量做到与word搬运时间差不多
+
+这时候会对memory进行调整，设计出不同的memory organization
+
+<div align="center">
+<img src="/../../../../assets/pics/comem/mem-12.png" alt="mem-12" height="700px" width="600px">
+</div>
+
+=== "单字宽"
+
+    
+    <div align="center">
+    <img src="/../../../../assets/pics/comem/mem-13.png" alt="mem-13" height="500px" width="500px">
+    </div>
+
+
+=== "更宽的"
+
+    增大width，一次可以读两个word，送回还是一个word，这样可以对读取次数减半
+
+    甚至可以增大到4个word，但是这样就miss penalty就很大了
+
+    <div align="center">
+    <img src="/../../../../assets/pics/comem/mem-14.png" alt="mem-13" height="500px" width="500px">
+    </div>
+
+
+
+=== "交错的"
+
+    用四个时钟将地址分别传给四个分块的memory，然后进行读取，这样并行的读取后，等待时间就被压缩了
+
+    <div align="center" >
+    <img src="/../../../../assets/pics/comem/mem-15.png" alt="mem-15" height="500px" width="500px">
+    </div>
+
+
+## Measure Cache Performance
+
+!!! question "核心问题"
+
+    怎样测量cache的性能？
+    
+    如何提高性能？
+
+
+用CPU的执行时间来衡量cache的性能：
+
+$$\begin{aligned}
+    \text{CPU Time} &= \text{Instruction Count} \times \text{CPI(Clock Cycles Per Instruction)} \times \text{Clock Rate} \\
+    &= \text{CPU 执行时间} + \text{Memory stall 时间} \times \text{Clock Cycle Time}
+\end{aligned}$$
+
+$$\begin{aligned}
+\text{Memory stall 时间} &= \text{Read stall 时间} + \text{Write stall 时间} \\ 
+&= \text{# of instructions} \times \text{miss rate} \times \text{miss penalty}
+\end{aligned}$$
+
+- Read：取指令+取数据
+
+- Write：不仅是Program中的Write部分会出现stall，Write buffer也会出现stall
+
+
+
