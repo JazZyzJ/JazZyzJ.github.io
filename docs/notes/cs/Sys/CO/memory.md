@@ -415,6 +415,8 @@ $$\begin{aligned}
 
 - Read：取指令+取数据
 
+
+
 - Write：不仅是Program中的Write部分会出现stall，Write buffer也会出现stall
 
 
