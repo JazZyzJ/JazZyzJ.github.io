@@ -182,6 +182,39 @@ Important Items
 
         所以，内存byte address为 1200 的数据所映射到的块的编号为 11
 
+    === "3"
+        
+        假设一个高速缓存有 4096 个高速缓存块，每个块的大小为 4 字，并且内存采用 64 位地址。请计算在直接映射、两路组相联、四路组相联以及全相联的置放方案下高速缓存的组数以及总的标签位数。
+        
+        - 每个块大小是4个word，offset = 4
+        
+        1. 直接映射
+
+            - 直接映射的组数就是cache的block数量，4096
+            - index = $\log_2(4096) = 12$
+            - tag = 64 - 12 - 4 = 48
+            - 总的标签位数 = 4096 * 48 = 192Kb
+        
+        2. 两路组相联
+
+            - 组数 = 4096 / 2 = 2048
+            - index = $\log_2(2048) = 11$
+            - tag = 64 - 11 - 4 = 49
+            - 总的标签位数 = 4096 * 49 = 196Kb
+        
+        3. 四路组相联
+
+            - 4096 * (64 - 10 - 4) = 4096 * 50 = 205Kb
+        
+        4. 全相联
+
+            - 组数 = 1
+            - index = 0
+            - tag = 64 - 0 - 4 = 60
+            - 总的标签位数 = 4096 * 60 = 240Kb
+
+
+
 ### Handling Cache Miss
 
 当发生miss时，整个系统的操作：
@@ -246,6 +279,29 @@ Important Items
     <img src="/../../../../assets/pics/comem/mem-7.png" alt="mem-7" height="600px" width="600px">
     </div>
 
+??? example "miss次数的比较"
+
+    题目要求是在一个4-block的cache中分别使用direct map、2-way set associative、fully associative三种方式，计算出miss的次数
+    
+    === "direct map"
+
+        <div align="center">
+        <img src="/../../../../assets/pics/comem/mem-18.png" alt="mem-18" height="500px" width="500px">
+        </div>
+    
+    === "2-way set associative"
+
+        <div align="center">
+        <img src="/../../../../assets/pics/comem/mem-19.png" alt="mem-19" height="500px" width="500px">
+        </div>  
+
+    === "fully associative"
+
+        <div align="center">
+        <img src="/../../../../assets/pics/comem/mem-20.png" alt="mem-20" height="500px" width="500px">
+        </div>
+
+
 
 ### Block Identification
 
@@ -289,6 +345,9 @@ Important Items
         </div>
         
         分成了两组，因此index = 1位，在这个图片中，比较tag发生在所有block中，但其实只需在所选的set中比较即可（图是错的）
+
+
+
 
 
 ### Block Replacement
@@ -438,5 +497,123 @@ $$\begin{aligned}
     <div align="center">
     <img src="/../../../../assets/pics/comem/mem-17.png" alt="mem-17" height="500px" width="500px">
     </div>
+
+
+## Performance Improvement
+
+提高性能的思路只有两种：
+
+1. 提高命中率
+2. 减小下一个访问的延时
+
+
+### Multilevel Cache
+
+> 用于减少miss penalty
+
+
+常用方法是：加入二级缓存
+
+增加一个二级缓存（SRAM）：
+
+- 原来的高速缓存为一级高速缓存 (SRAM)
+- 如果一级高速缓存失效，且能够在二级高速缓存找到数据，那么失效损失就是访问二级高速缓存的时间了，大大减小miss penalty
+- 如果二级高速缓存也找不到数据，那还是得访问主存，此时的失效损失还是很大
+
+一级缓存：专注于最小化命中时间
+
+- 空间更小，缓存块大小也减小，减小了miss penalty
+
+二级缓存：专注于最小化miss penalty
+
+- 空间更大，缓存块大小更大，降低失效率
+
+
+!!! example "例子"
+
+    有一块 CPI 为 1.0，时钟频率为 4GHz 的处理器，访问主存的时间为 100ns，一级高速缓存的每条指令失效率为 2%，如果加上一块访问时间为 5ns，且能将失效率降至 0.5% 的二级高速缓存，处理器将会变得多快？
+    
+    clock cycle time = 1 / 5GHz = 0.2ns
+
+    - miss penalty to main memory = 100ns/0.2ns = 500
+    
+    1. 一级缓存：
+
+        - Total CPI = 1 + 2% * 500 = 11
+    
+    2. 二级缓存：
+        
+        - 二级miss penalty = 5ns/0.2ns = 25
+        - Total CPI = 1 + 2% * 25 + 0.5% * 500 = 1 + 0.5 + 2.5 = 4
+    
+    faster by 11/4 = 2.75 times
+
+
+## Virtual Memory
+
+是对main memory而言的，主要解决的是size问题
+
+- 让每个程序都以为自己的内存是独有的，并且足够大
+- 让程序觉得自己的内存是连续的
+
+虚拟存储的本质其实与cache类似。它自动地管理主存与辅助存储之间的映射关系，只是名称不同：我们称虚拟空间中的一个存储块称为**页**（virtual page），
+
+<div align="center">
+<img src="/../../../../assets/pics/comem/mem-21.png" alt="mem-18" height="500px" width="500px">
+</div>
+
+- 虚拟空间（virtual address space）：一块单独的内存地址范围，只能被特定的一个程序使用
+    
+    - 虚拟地址（virtual address）：关联虚拟空间位置的地址，会被转译为物理地址
+        
+        - 可以看到虚拟地址的指向空间并不连续，并且还会有重复地址、指向Disk的情况
+
+    - 地址转译（address translation）：将虚拟地址转译为物理地址的过程
+
+
+<div align="center">
+<img src="/../../../../assets/pics/comem/mem-22.png" alt="mem-22" height="500px" width="500px">
+</div>
+
+- 一个存储块--页的构成由两部分组成：
+
+    在RISC-V中，64位地址的高16位不使用，因此需要映射的地址有48位
+
+    - 页号（page number）：虚拟地址的一部分，用于索引，指向物理地址，
+    - 页偏移（page offset）：虚拟地址的一部分，用于索引页内的字节，页偏移的大小决定了页的大小
+
+??? example "size of page table"
+    
+    一个32bits的虚拟地址，page size = 4KB，Entry size = 4 bytes，至少要多大的page table？
+
+    - 32位的虚拟地址可以寻址$2^{32}$个字节的内存
+    - 每个page的大小是4KB，因此需要$2^{32} / 4KB = 2^{32-12} = 2^{20}$个page
+    - 每个page的entry size是4 bytes，因此需要$2^{20} * 4B = 2^{22}B = 2^{12}KB = 4MB$的内存来存储page table
+    
+
+<div align="center">
+<img src="/../../../../assets/pics/comem/mem-23.png" alt="mem-23" height="500px" width="500px">
+</div>
+
+整个虚拟内存的空间都是储存在memory中的
+
+- Page Table：页表，用于存储虚拟地址与物理地址的映射关系
+- Page Table register：页表寄存器，用于存储页表的基地址
+
+映射过程就是：
+
+- 当一个程序开始运行，我们读取到他对应的Page table register，然后通过虚拟地址的页号找到对应的物理地址，如果物理地址的Valid bit = 1，说明这个内存块是在memory中的，那么我们就可以直接访问这个内存块
+
+如果这个Valid bit = 0，说明这个内存块在Disk中，这时就发生了**page fault**
+
+### TLB
+
+TLB：Translation Lookaside Buffer，增加一个buffer用于追踪最近使用过的地址映射，直接保存物理地址
+
+<div align="center">
+<img src="/../../../../assets/pics/comem/mem-24.png" alt="mem-24" height="500px" width="500px">
+</div>
+
+
 
 
