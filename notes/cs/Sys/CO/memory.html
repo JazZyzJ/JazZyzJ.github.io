@@ -1096,6 +1096,114 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Deep Cache Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#block-placement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Placement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Identification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-replacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Replacement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Organization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measure-cache-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measure Cache Performance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-improvement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Improvement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Improvement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multilevel-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multilevel Cache
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Memory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tlb" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1506,6 +1614,114 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Deep Cache Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#block-placement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Placement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Identification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-replacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Replacement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Organization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measure-cache-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measure Cache Performance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-improvement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Improvement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Improvement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multilevel-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multilevel Cache
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Memory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tlb" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1646,6 +1862,12 @@
 <ul>
 <li>当size为1 word时，offset有两位</li>
 <li>当size为4 word时，offset有四位</li>
+<li>
+<p>后面有补充：</p>
+<div class="arithmatex">\[
+\text{Byte Offset} = \log_2(\text{# bytes per block})
+\]</div>
+</li>
 </ul>
 </li>
 <li>
@@ -1655,12 +1877,16 @@
 </ul>
 </li>
 <li>
-<p>Tag：总的地址长度减去index和offset后得到的</p>
+<p>Tag：总的地址长度减去index和offset后得到的，存放在cache中用来判断是否命中</p>
 </li>
 </ul>
+<div align="center" >
+<img src="/../../../../assets/pics/comem/mem-8.png" alt="mem-5" height="200px" width="400px">
+</div>
+
 <div class="admonition warning">
 <p class="admonition-title">注意</p>
-<p>在这里我只给出了计算方法，实际上如果理解了每个部分的作用，那么就可以直接从内存地址中得到index和tag，但是我对offset的理解不太到位，马德上课说offset要直接砍掉的（？）所以我选择记住（）……</p>
+<p>在这里我只给出了计算方法，实际上如果理解了每个部分的作用，那么就可以直接从内存地址中得到index和tag，但是我对offset的理解不太到位，马德上课说offset要直接砍掉的（？）所以我选择记住（）……  好吧他后来讲明白了，byte offset就是一个block中byte的个数决定的</p>
 </div>
 <p>这里有一个例题：对一个8block的cache进行访问，我们得到的内存地址已经直接砍掉了offset</p>
 <div class="admonition example">
@@ -1694,7 +1920,7 @@
 </ul>
 <details class="example">
 <summary>例题</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">1</label><label for="__tabbed_1_2">2</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">1</label><label for="__tabbed_1_2">2</label><label for="__tabbed_1_3">3</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>How many total bits are required for a direct-mapped cache with 16KB of data and 4-word blocks, assuming that the address is 32 bits long?</p>
@@ -1715,6 +1941,47 @@
 <li>75 % 64 = 11 得到index</li>
 </ul>
 <p>所以，内存byte address为 1200 的数据所映射到的块的编号为 11</p>
+</div>
+<div class="tabbed-block">
+<p>假设一个高速缓存有 4096 个高速缓存块，每个块的大小为 4 字，并且内存采用 64 位地址。请计算在直接映射、两路组相联、四路组相联以及全相联的置放方案下高速缓存的组数以及总的标签位数。</p>
+<ul>
+<li>每个块大小是4个word，offset = 4</li>
+</ul>
+<ol>
+<li>
+<p>直接映射</p>
+<ul>
+<li>直接映射的组数就是cache的block数量，4096</li>
+<li>index = <span class="arithmatex">\(\log_2(4096) = 12\)</span></li>
+<li>tag = 64 - 12 - 4 = 48</li>
+<li>总的标签位数 = 4096 * 48 = 192Kb</li>
+</ul>
+</li>
+<li>
+<p>两路组相联</p>
+<ul>
+<li>组数 = 4096 / 2 = 2048</li>
+<li>index = <span class="arithmatex">\(\log_2(2048) = 11\)</span></li>
+<li>tag = 64 - 11 - 4 = 49</li>
+<li>总的标签位数 = 4096 * 49 = 196Kb</li>
+</ul>
+</li>
+<li>
+<p>四路组相联</p>
+<ul>
+<li>4096 * (64 - 10 - 4) = 4096 * 50 = 205Kb</li>
+</ul>
+</li>
+<li>
+<p>全相联</p>
+<ul>
+<li>组数 = 1</li>
+<li>index = 0</li>
+<li>tag = 64 - 0 - 4 = 60</li>
+<li>总的标签位数 = 4096 * 60 = 240Kb</li>
+</ul>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1761,6 +2028,345 @@
 <p>怎样写入数据？</p>
 </li>
 </ol>
+</div>
+<h3 id="block-placement">Block Placement<a class="headerlink" href="#block-placement" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>direct map</p>
+</li>
+<li>
+<p>fully associative 全关联</p>
+<p>一个数据块可以放在高速缓存的任意位置上</p>
+</li>
+<li>
+<p>set associative 组关联</p>
+<div class="arithmatex">\[\text{Set Number = (Block number) modulo (Number of sets in the cache)}\]</div>
+<ul>
+<li>
+<p>这样去到一个set中，然后再选择set中的block，往往是相连的block</p>
+</li>
+<li>
+<p>如果一个set中有n个block，那么就称为n-way set associative（direct map就是1-way set associative）</p>
+</li>
+</ul>
+</li>
+</ul>
+<details class="example">
+<summary>例子</summary>
+<p><div align="center">
+<img src="/../../../../assets/pics/comem/mem-7.png" alt="mem-7" height="600px" width="600px">
+</div></p>
+</details>
+<details class="example">
+<summary>miss次数的比较</summary>
+<p>题目要求是在一个4-block的cache中分别使用direct map、2-way set associative、fully associative三种方式，计算出miss的次数</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">direct map</label><label for="__tabbed_2_2">2-way set associative</label><label for="__tabbed_2_3">fully associative</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><div align="center">
+<img src="/../../../../assets/pics/comem/mem-18.png" alt="mem-18" height="500px" width="500px">
+</div></p>
+</div>
+<div class="tabbed-block">
+<p><div align="center">
+<img src="/../../../../assets/pics/comem/mem-19.png" alt="mem-19" height="500px" width="500px">
+</div>  </p>
+</div>
+<div class="tabbed-block">
+<p><div align="center">
+<img src="/../../../../assets/pics/comem/mem-20.png" alt="mem-20" height="500px" width="500px">
+</div></p>
+</div>
+</div>
+</div>
+</details>
+<h3 id="block-identification">Block Identification<a class="headerlink" href="#block-identification" title="Permanent link">&para;</a></h3>
+<p>虽然方式发生了变化，但是我们仍然采用相同的计算模式：用index、tag、ValidBit、ByteOffset来计算</p>
+<p>对于 Physical Address：</p>
+<ul>
+<li>
+<p>Index：</p>
+<ul>
+<li>直接映射：是相对于多少个block来说，位宽：<span class="arithmatex">\(\log_2(\text{# blocks})\)</span></li>
+<li>组关联：是相对于多少个set来说，位宽：<span class="arithmatex">\(\log_2(\text{# sets})\)</span></li>
+</ul>
+</li>
+<li>
+<p>Byte Offset：</p>
+<p>前面已经给出了</p>
+</li>
+<li>
+<p>Tag：</p>
+<p>直接用物理地址减去index和offset即可</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">compare</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">直接映射</label><label for="__tabbed_3_2">全关联</label><label for="__tabbed_3_3">组关联</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><div align="center">
+<img src="/../../../../assets/pics/comem/mem-9.png" alt="mem-9" height="500px" width="500px">
+</div></p>
+</div>
+<div class="tabbed-block">
+<p><div align="center">
+<img src="/../../../../assets/pics/comem/mem-10.png" alt="mem-10" height="500px" width="500px">
+</div></p>
+<p>暴力搜索</p>
+</div>
+<div class="tabbed-block">
+<p><div align="center">
+<img src="/../../../../assets/pics/comem/mem-11.png" alt="mem-11" height="500px" width="500px">
+</div></p>
+<p>分成了两组，因此index = 1位，在这个图片中，比较tag发生在所有block中，但其实只需在所选的set中比较即可（图是错的）</p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="block-replacement">Block Replacement<a class="headerlink" href="#block-replacement" title="Permanent link">&para;</a></h3>
+<ul>
+<li>direct map：没有什么替换策略，来了新的就把老的扔了</li>
+</ul>
+<p>但是非直接映射中，我们定位不到精确的block，因此在一个set中，我们需要一个策略来决定替换哪一个block</p>
+<p><strong>Goal：提高命中率</strong></p>
+<ul>
+<li>
+<p>Random Replacement 随机替换</p>
+<p>容易实现</p>
+</li>
+<li>
+<p>Least Recently Used (LRU) 最近最少使用</p>
+<p>最近没有被用过的踢出</p>
+<p>并不是很好实现，尤其是set中有很多block的时候</p>
+<p>需要额外的bits来记录每个block的LRU状态</p>
+</li>
+<li>
+<p>First In First Out (FIFO) 先进先出</p>
+<p>类似于队列，定一个时间戳</p>
+</li>
+</ul>
+<h3 id="write-strategy">Write Strategy<a class="headerlink" href="#write-strategy" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Write through</p>
+<p>直接将数据写入memory，可以随时把cache中的数据丢掉</p>
+<p>只需要Valid bit一位</p>
+</li>
+<li>
+<p>Write back</p>
+<p>将数据写入cache，之后再写入memory</p>
+<p>需要Valid bit和Dirty bit</p>
+<p>好处是memory的带宽可以降低，因为可以减少写入的次数</p>
+</li>
+</ul>
+<p>如果不命中呢？</p>
+<p>需要处理Write Stall</p>
+<ul>
+<li>
+<p>Write Buffer</p>
+<p>相当于一个小的cache，可以暂时存储数据</p>
+</li>
+</ul>
+<p>Write Miss后：</p>
+<ul>
+<li>
+<p>Write Allocate</p>
+<p>将数据从memory中读到cache中</p>
+</li>
+<li>
+<p>Write Around</p>
+<p>不将数据从memory中读到cache中，直接写入memory</p>
+</li>
+</ul>
+<p>通常情况下，Write through 采用Write Around，而Write back采用Write Allocate</p>
+<h3 id="memory-organization">Memory Organization<a class="headerlink" href="#memory-organization" title="Permanent link">&para;</a></h3>
+<p>对于每次访问操作，我们是要进行block为单位的访问，但是往往有时候我们的block很大，我们需要的word只是block中很小的一部分，这时搬运block就会很浪费时间，因此在这里我们要降低block搬运的时间，尽量做到与word搬运时间差不多</p>
+<p>这时候会对memory进行调整，设计出不同的memory organization</p>
+<div align="center">
+<img src="/../../../../assets/pics/comem/mem-12.png" alt="mem-12" height="700px" width="600px">
+</div>
+
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">单字宽</label><label for="__tabbed_4_2">更宽的</label><label for="__tabbed_4_3">交错的</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><div align="center">
+<img src="/../../../../assets/pics/comem/mem-13.png" alt="mem-13" height="500px" width="500px">
+</div></p>
+</div>
+<div class="tabbed-block">
+<p>增大width，一次可以读两个word，送回还是一个word，这样可以对读取次数减半</p>
+<p>甚至可以增大到4个word，但是这样就miss penalty就很大了</p>
+<p><div align="center">
+<img src="/../../../../assets/pics/comem/mem-14.png" alt="mem-13" height="500px" width="500px">
+</div></p>
+</div>
+<div class="tabbed-block">
+<p>用四个时钟将地址分别传给四个分块的memory，然后进行读取，这样并行的读取后，等待时间就被压缩了</p>
+<p><div align="center" >
+<img src="/../../../../assets/pics/comem/mem-15.png" alt="mem-15" height="500px" width="500px">
+</div></p>
+</div>
+</div>
+</div>
+<h2 id="measure-cache-performance">Measure Cache Performance<a class="headerlink" href="#measure-cache-performance" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">核心问题</p>
+<p>怎样测量cache的性能？</p>
+<p>如何提高性能？</p>
+</div>
+<p>用CPU的执行时间来衡量cache的性能：</p>
+<div class="arithmatex">\[\begin{aligned}
+    \text{CPU Time} &amp;= \text{Instruction Count} \times \text{CPI(Clock Cycles Per Instruction)} \times \text{Clock Rate} \\
+    &amp;= \text{CPU 执行时间} + \text{Memory stall 时间} \times \text{Clock Cycle Time}
+\end{aligned}\]</div>
+<div class="arithmatex">\[\begin{aligned}
+\text{Memory stall 时间} &amp;= \text{Read stall 时间} + \text{Write stall 时间} \\ 
+&amp;= \text{# of instructions} \times \text{miss rate} \times \text{miss penalty}
+\end{aligned}\]</div>
+<ul>
+<li>
+<p>Read：取指令+取数据</p>
+</li>
+<li>
+<p>Write：不仅是Program中的Write部分会出现stall，Write buffer也会出现stall</p>
+<ul>
+<li>如果write buffer很小，可以忽略不计</li>
+<li>如果cache block size是一个word，那么miss penalty是0</li>
+</ul>
+</li>
+<li>
+<p>通常write-through策略下，读和写的miss penalty是相同的</p>
+</li>
+</ul>
+<details class="example">
+<summary>例子</summary>
+<p><div align="center" >
+<img src="/../../../../assets/pics/comem/mem-16.png" alt="mem-16" height="500px" width="500px">
+</div></p>
+<p>所以加上penalty后的CPI就是2+3.44=5.44，与理想的CPI=2相比，比例是2.72</p>
+<p>如果我们只对处理器优化，不优化内存结构，反而会增大这个比例：</p>
+<p><div align="center">
+<img src="/../../../../assets/pics/comem/mem-17.png" alt="mem-17" height="500px" width="500px">
+</div></p>
+</details>
+<h2 id="performance-improvement">Performance Improvement<a class="headerlink" href="#performance-improvement" title="Permanent link">&para;</a></h2>
+<p>提高性能的思路只有两种：</p>
+<ol>
+<li>提高命中率</li>
+<li>减小下一个访问的延时</li>
+</ol>
+<h3 id="multilevel-cache">Multilevel Cache<a class="headerlink" href="#multilevel-cache" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>用于减少miss penalty</p>
+</blockquote>
+<p>常用方法是：加入二级缓存</p>
+<p>增加一个二级缓存（SRAM）：</p>
+<ul>
+<li>原来的高速缓存为一级高速缓存 (SRAM)</li>
+<li>如果一级高速缓存失效，且能够在二级高速缓存找到数据，那么失效损失就是访问二级高速缓存的时间了，大大减小miss penalty</li>
+<li>如果二级高速缓存也找不到数据，那还是得访问主存，此时的失效损失还是很大</li>
+</ul>
+<p>一级缓存：专注于最小化命中时间</p>
+<ul>
+<li>空间更小，缓存块大小也减小，减小了miss penalty</li>
+</ul>
+<p>二级缓存：专注于最小化miss penalty</p>
+<ul>
+<li>空间更大，缓存块大小更大，降低失效率</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">例子</p>
+<p>有一块 CPI 为 1.0，时钟频率为 4GHz 的处理器，访问主存的时间为 100ns，一级高速缓存的每条指令失效率为 2%，如果加上一块访问时间为 5ns，且能将失效率降至 0.5% 的二级高速缓存，处理器将会变得多快？</p>
+<p>clock cycle time = 1 / 5GHz = 0.2ns</p>
+<ul>
+<li>miss penalty to main memory = 100ns/0.2ns = 500</li>
+</ul>
+<ol>
+<li>
+<p>一级缓存：</p>
+<ul>
+<li>Total CPI = 1 + 2% * 500 = 11</li>
+</ul>
+</li>
+<li>
+<p>二级缓存：</p>
+<ul>
+<li>二级miss penalty = 5ns/0.2ns = 25</li>
+<li>Total CPI = 1 + 2% * 25 + 0.5% * 500 = 1 + 0.5 + 2.5 = 4</li>
+</ul>
+</li>
+</ol>
+<p>faster by 11/4 = 2.75 times</p>
+</div>
+<h2 id="virtual-memory">Virtual Memory<a class="headerlink" href="#virtual-memory" title="Permanent link">&para;</a></h2>
+<p>是对main memory而言的，主要解决的是size问题</p>
+<ul>
+<li>让每个程序都以为自己的内存是独有的，并且足够大</li>
+<li>让程序觉得自己的内存是连续的</li>
+</ul>
+<p>虚拟存储的本质其实与cache类似。它自动地管理主存与辅助存储之间的映射关系，只是名称不同：我们称虚拟空间中的一个存储块称为<strong>页</strong>（virtual page），</p>
+<div align="center">
+<img src="/../../../../assets/pics/comem/mem-21.png" alt="mem-18" height="500px" width="500px">
+</div>
+
+<ul>
+<li>
+<p>虚拟空间（virtual address space）：一块单独的内存地址范围，只能被特定的一个程序使用</p>
+<ul>
+<li>
+<p>虚拟地址（virtual address）：关联虚拟空间位置的地址，会被转译为物理地址</p>
+<ul>
+<li>可以看到虚拟地址的指向空间并不连续，并且还会有重复地址、指向Disk的情况</li>
+</ul>
+</li>
+<li>
+<p>地址转译（address translation）：将虚拟地址转译为物理地址的过程</p>
+</li>
+</ul>
+</li>
+</ul>
+<div align="center">
+<img src="/../../../../assets/pics/comem/mem-22.png" alt="mem-22" height="500px" width="500px">
+</div>
+
+<ul>
+<li>
+<p>一个存储块--页的构成由两部分组成：</p>
+<p>在RISC-V中，64位地址的高16位不使用，因此需要映射的地址有48位</p>
+<ul>
+<li>页号（page number）：虚拟地址的一部分，用于索引，指向物理地址，</li>
+<li>页偏移（page offset）：虚拟地址的一部分，用于索引页内的字节，页偏移的大小决定了页的大小</li>
+</ul>
+</li>
+</ul>
+<details class="example">
+<summary>size of page table</summary>
+<p>一个32bits的虚拟地址，page size = 4KB，Entry size = 4 bytes，至少要多大的page table？</p>
+<ul>
+<li>32位的虚拟地址可以寻址<span class="arithmatex">\(2^{32}\)</span>个字节的内存</li>
+<li>每个page的大小是4KB，因此需要<span class="arithmatex">\(2^{32} / 4KB = 2^{32-12} = 2^{20}\)</span>个page</li>
+<li>每个page的entry size是4 bytes，因此需要<span class="arithmatex">\(2^{20} * 4B = 2^{22}B = 2^{12}KB = 4MB\)</span>的内存来存储page table</li>
+</ul>
+</details>
+<div align="center">
+<img src="/../../../../assets/pics/comem/mem-23.png" alt="mem-23" height="500px" width="500px">
+</div>
+
+<p>整个虚拟内存的空间都是储存在memory中的</p>
+<ul>
+<li>Page Table：页表，用于存储虚拟地址与物理地址的映射关系</li>
+<li>Page Table register：页表寄存器，用于存储页表的基地址</li>
+</ul>
+<p>映射过程就是：</p>
+<ul>
+<li>当一个程序开始运行，我们读取到他对应的Page table register，然后通过虚拟地址的页号找到对应的物理地址，如果物理地址的Valid bit = 1，说明这个内存块是在memory中的，那么我们就可以直接访问这个内存块</li>
+</ul>
+<p>如果这个Valid bit = 0，说明这个内存块在Disk中，这时就发生了<strong>page fault</strong></p>
+<h3 id="tlb">TLB<a class="headerlink" href="#tlb" title="Permanent link">&para;</a></h3>
+<p>TLB：Translation Lookaside Buffer，增加一个buffer用于追踪最近使用过的地址映射，直接保存物理地址</p>
+<div align="center">
+<img src="/../../../../assets/pics/comem/mem-24.png" alt="mem-24" height="500px" width="500px">
 </div>
 
 
