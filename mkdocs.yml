@@ -109,6 +109,7 @@ nav:
         - DS & Algorithms:
           - FDS: notes/cs/algorithm/fds/fds.md
           - ADS: notes/cs/algorithm/ads/ADS.md
+          - Amortized Analysis: notes/cs/algorithm/ads/amortize.md
           - Backtracking: notes/cs/algorithm/backtracking.md
           - Divide & Conquer: notes/cs/algorithm/DandC.md
           - Dynamic Programming: notes/cs/algorithm/dp.md
