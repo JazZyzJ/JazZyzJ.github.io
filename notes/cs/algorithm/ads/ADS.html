@@ -14,7 +14,7 @@
         <link rel="prev" href="../fds/fds.html">
       
       
-        <link rel="next" href="../backtracking.html">
+        <link rel="next" href="amortize.html">
       
       
       <link rel="icon" href="../../../../assets/pics/logo.png">
@@ -526,6 +526,8 @@
       
         
       
+        
+      
     
     
       
@@ -658,15 +660,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ananlysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ananlysis
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -702,15 +695,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#amortized-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      Amortized Analysis
-    </span>
-  </a>
   
 </li>
       
@@ -883,6 +867,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="amortize.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amortized Analysis
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1663,15 +1668,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ananlysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ananlysis
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1707,15 +1703,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#amortized-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      Amortized Analysis
-    </span>
-  </a>
   
 </li>
       
@@ -1934,7 +1921,9 @@
 <p>按照片上的解释根据树的合法性可以推出中间步骤
 也可以这样理解：
 在对Mar进行旋转时，Mar的左位是被占用的，而Mar的父亲是比Mar小的，只有把Jan移开才能给Aug腾出位置</p>
-<h3 id="ananlysis">Ananlysis<a class="headerlink" href="#ananlysis" title="Permanent link">&para;</a></h3>
+<ul>
+<li>最小节点数：</li>
+</ul>
 <p><span class="arithmatex">\(n_h\)</span>：高度为h的最小节点数
 为了保持树有h的高度，至少一个子树的高度为h-1，另一个子树的高度与他相差为1，= n-2
 因此：</p>
@@ -1947,12 +1936,17 @@ n_h = n_{h-1} + n_{h-2} + 1
 <div class="arithmatex">\[
 \text{F is Fibonacci Number}\]</div>
 </p>
+<hr />
 <h2 id="splay-tree">Splay Tree<a class="headerlink" href="#splay-tree" title="Permanent link">&para;</a></h2>
 <h3 id="intro_1">Intro<a class="headerlink" href="#intro_1" title="Permanent link">&para;</a></h3>
 <p><strong>Target</strong>: 由空树进行M个连续操作最多需要<span class="arithmatex">\(O(M \log N)\)</span>的时间</p>
 <p>即：<strong>Amortized Time Complexity 均摊时间复杂度 = <span class="arithmatex">\(O(log N)\)</span></strong></p>
 <h3 id="operation_1">Operation<a class="headerlink" href="#operation_1" title="Permanent link">&para;</a></h3>
 <p>将最近访问的节点提升到根节点，这一操作通过旋转来实现</p>
+<div class="admonition tip">
+<p class="admonition-title">Splay Tree vs AVL Tree</p>
+<p>要注意不要将splay tree和AVL树的操作进行参照，splay tree的操作对象是一直固定的，而AVL树的操作对象是根据平衡因子决定的</p>
+</div>
 <ul>
 <li>Zig
 Single Rotation</li>
@@ -1963,127 +1957,27 @@ Single Rotation</li>
 </ul>
 <p>Double Rotation
 转两次X</p>
+<p>像AVL树的LR和RL</p>
 <ul>
 <li>Zig-zig</li>
 </ul>
 <p>Single Rotation 
 先转X再转P</p>
-<p><img alt="ads-4" src="/../../../../assets/pics/ads/ads-4.png" /></p>
-<h2 id="amortized-analysis">Amortized Analysis<a class="headerlink" href="#amortized-analysis" title="Permanent link">&para;</a></h2>
-<p>均摊法分析是对一系列操作的平均性能进行分析，而不是对单个操作的性能进行分析
-bound介于worst和average之间
-且均摊界与概率无关
-通常有三种方法：Aggregate Accounting Potential</p>
-<ul>
-<li><strong>Aggregate Method</strong></li>
-</ul>
-<p>对一系列的操作进行最坏时间情况分析得到<span class="arithmatex">\(T(n)\)</span>，此时：
-$$
-T(n) \leq \sum_{i=1}^{n} t_i=O(n)
-$$
-这时<span class="arithmatex">\(T(n)\)</span>逼近于<span class="arithmatex">\(O(n)\)</span>，即均摊时间复杂度为<span class="arithmatex">\(O(1)\)</span>
-但是这个方法的难点在于需要确定这个<span class="arithmatex">\(\sum_{i=1}^{n} t_i\)</span>，也就是总的时间开销</p>
-<p>在讲解其余的两个方法之前，yy哥说了一个很有趣的故事：
-yy在学校门口开了一个小卖部买汽水，每次卖出一瓶成本为1的汽水，学生至少要交一块钱，但是也可以多交钱存到下次使用，汽水的成本就是<code>actual cost</code>，而学生交的钱就是<code>amortized cost</code>，多出来的钱我们称作<code>credit</code></p>
+<div align="center">
+<img src="/../../../../assets/pics/ads/ads-4.png" alt="ads-4" height="500px" width="400px">
+</div>
+
 <hr />
-<ul>
-<li><strong>Accounting Method</strong></li>
-</ul>
-<p>在这个方法中，我们自己设置均摊价值，但需要保证均摊价值不会小于实际价值，即：</p>
-<div class="arithmatex">\[
-\sum \text{amortized cost} \geq \sum \text{actual cost}
-\]</div>
-<p>(也就是不会赊账)</p>
-<p>这时候就会得到一个实际价值的上界</p>
-<p>这个方法的过程就是：</p>
-<ul>
-<li>首先分析实际价值</li>
-<li>然后设置均摊价值</li>
-<li>分析credit的值，确保其大于等于0</li>
-</ul>
-<div class="admonition example">
-<p class="admonition-title">MultiPop</p>
-<p><img alt="ads-5" src="/../../../../assets/pics/ads/ads-5.png" /></p>
-</div>
-<hr />
-<ul>
-<li><strong>Potential Method</strong>:
-直观的、一次性定义所有操作的均摊代价，对于某些大量操作需要定义均摊价值的情况，这种方法更加适用</li>
-</ul>
-<div class="arithmatex">\[
-\hat{c}_i-c_i=\text { Credit }_i=\Phi\left(D_i\right)-\Phi\left(D_{i-1}\right)
-\]</div>
-<p>解释：</p>
-<p><span class="arithmatex">\(Credit_i\)</span>：第<span class="arithmatex">\(i\)</span>次操作的credit，这时我们引入一个状态得分函数<span class="arithmatex">\(\Phi(D)\)</span>，这个函数的值是一个状态的代价<span class="arithmatex">\(D_i\)</span>是第<span class="arithmatex">\(i\)</span>次操作后的状态</p>
-<p>但是对于每一次操作，<span class="arithmatex">\(Credit_i\)</span>的数值不仅由当前的状态决定，还受到之前状态的影响，因此我们用<span class="arithmatex">\(\Phi(D_i-\Phi(D_{i-1})\)</span>来表示</p>
-<p>此时，我们可以得到：</p>
-<div class="arithmatex">\[
-\sum_{i=1}^{n} \hat c_i=\sum_{i=1}^{n} c_i+\Phi(D_n)-\Phi(D_0)
-\]</div>
-<p>恰好在这个求和的过程中，只留下了<span class="arithmatex">\(\Phi(D_0)\)</span>和<span class="arithmatex">\(\Phi(D_n)\)</span>，这两个值是常数，从而我们得到了<span class="arithmatex">\(\sum_{i=1}^{n} \hat c_i\)</span>的值</p>
-<p>实际操作中，我们：</p>
-<div class="admonition tip">
-<p class="admonition-title">设计势能函数</p>
-<ul>
-<li>选择一个合适的状态得分（势能）函数<span class="arithmatex">\(\Phi(D)\)</span><ul>
-<li>势能函数的定义要求：<span class="arithmatex">\(\Phi(D_0)=0\)</span></li>
-</ul>
-</li>
-<li>反应函数的潜在复杂度</li>
-<li>检查Credit合法性</li>
-<li>计算<span class="arithmatex">\(\sum_{i=1}^{n} \hat c_i\)</span></li>
-</ul>
-</div>
-<ul>
-<li>最好的势能函数应该确保n次操作的credit值尽可能小</li>
-</ul>
-<div class="admonition example">
-<p class="admonition-title">对Splay树进行均摊分析</p>
-<p><span style="font-size: 1.1em;">
-若选深度作为势能函数，无法计算所有节点的深度变化，因此不能选择
-</span></p>
-<p><span style="font-size: 1.1em;">
-若选择所选转节点的子节点个数，可以行得通，但是X、G的变化太大，所得到的界太松
-</span></p>
-<p><span style="font-size: 1.1em;">
-最终选择的技巧是：
-</span></p>
-<p><span style="font-size: 1.1em;">
-<strong>对节点数取对数 得到树的秩</strong>
-</span></p>
-<p><span style="font-size: 1.1em;">
-即：<span class="arithmatex">\(\Phi(D)=Rank=\sum\log S(n)\)</span>
-</span></p>
-<p><span style="font-size: 1.1em;">  <br />
-对势能函数分析时，如果进行完全分析，需要对每个节点的credit进行计算，但是这样计算太复杂，因此我们进行放缩，只对所寻找的目标节点的势能进行分析，这样可以简化问题
-</span></p>
-<p><span style="font-size: 1.1em;">
-需要用到下面的引理：
-</span></p>
-<div class="admonition lemma">
-<p class="admonition-title">Lemma</p>
-<div class="arithmatex">\[
-if:a+b \leq c 
-\]</div>
-<div class="arithmatex">\[
-then:\log a + \log b \leq 2\log c + 2
-\]</div>
-</div>
-<p><img alt="ads-6" src="/../../../../assets/pics/ads/ads-6.png" /></p>
-<p>我手写了一下这三个放缩的过程：</p>
-<p><img alt="ads-7" src="/../../../../assets/pics/ads/ads-7.jpg" /></p>
-</div>
 <h2 id="red-black-tree">Red-Black Tree<a class="headerlink" href="#red-black-tree" title="Permanent link">&para;</a></h2>
 <h3 id="intro_2">Intro<a class="headerlink" href="#intro_2" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p>AVL树是通过实现高度平衡来进行优化</p>
-</li>
-<li>
-<p>而红黑树是通过实现颜色平衡来进行优化</p>
-</li>
-</ul>
+<blockquote>
+<p>AVL树是通过实现高度平衡来进行优化
+而红黑树是通过实现颜色平衡来进行优化</p>
+</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">NIL节点</p>
 <p>在树的代码中，遇到了叶子结点时需要<code>if</code>判定空，常用一个哨兵节点来避免大量的<code>if</code>语句，但是为了避免空间的浪费，在红黑树中，我们使用了<strong>一个</strong>NIL节点来代替哨兵节点,所有的叶子节点和根节点都指向NIL节点</p>
+</div>
 <p>红黑树的性质：</p>
 <ul>
 <li>每个节点要么是红色，要么是黑色</li>
@@ -2117,7 +2011,7 @@ $$
 即子树的节点数有一个下界</p>
 <p>由于：
 $$
-bh(Tree) \geq h(Tree)/2
+bh(Tree) \geq \frac{h(Tree)}{2}
 $$
 则：
 $$
@@ -2234,6 +2128,7 @@ $$
 </tr>
 </tbody>
 </table>
+<hr />
 <h2 id="b-tree">B+ Tree<a class="headerlink" href="#b-tree" title="Permanent link">&para;</a></h2>
 <h3 id="intro_3">Intro<a class="headerlink" href="#intro_3" title="Permanent link">&para;</a></h3>
 <p>B树是一种平衡的树状数据结构，主要用于在磁盘上存储数据，减少磁盘的I/O次数</p>
