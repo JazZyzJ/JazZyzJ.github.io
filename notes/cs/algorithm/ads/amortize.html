@@ -67,7 +67,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -123,9 +123,15 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
@@ -133,7 +139,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -1482,10 +1488,9 @@
 
 
 <h1 id="amortized-analysis">Amortized Analysis<a class="headerlink" href="#amortized-analysis" title="Permanent link">&para;</a></h1>
-<p>均摊法分析是对一系列操作的平均性能进行分析，而不是对单个操作的性能进行分析
-bound介于worst和average之间
-且均摊界与概率无关
-通常有三种方法：Aggregate Accounting Potential</p>
+<p>均摊法分析是对一系列操作的平均性能进行分析，而不是对单个操作的性能进行分析</p>
+<p>bound介于worst和average之间且均摊界与概率无关</p>
+<p>通常有三种方法：Aggregate Accounting Potential</p>
 <h2 id="aggregate-method">Aggregate Method<a class="headerlink" href="#aggregate-method" title="Permanent link">&para;</a></h2>
 <p>对一系列的操作进行最坏时间情况分析得到<span class="arithmatex">\(T(n)\)</span>，此时：
 $$
@@ -1523,7 +1528,7 @@ yy在学校门口开了一个小卖部买汽水，每次卖出一瓶成本为1�
 \]</div>
 <p>解释：</p>
 <p><span class="arithmatex">\(Credit_i\)</span>：第<span class="arithmatex">\(i\)</span>次操作的credit，这时我们引入一个状态得分函数<span class="arithmatex">\(\Phi(D)\)</span>，这个函数的值是一个状态的代价<span class="arithmatex">\(D_i\)</span>是第<span class="arithmatex">\(i\)</span>次操作后的状态</p>
-<p>但是对于每一次操作，<span class="arithmatex">\(Credit_i\)</span>的数值不仅由当前的状态决定，还受到之前状态的影响，因此我们用<span class="arithmatex">\(\Phi(D_i-\Phi(D_{i-1})\)</span>来表示</p>
+<p>但是对于每一次操作，<span class="arithmatex">\(Credit_i\)</span>的数值不仅由当前的状态决定，还受到之前状态的影响，因此我们用<span class="arithmatex">\(\Phi(D_i)-\Phi(D_{i-1})\)</span>来表示</p>
 <p>此时，我们可以得到：</p>
 <div class="arithmatex">\[
 \sum_{i=1}^{n} \hat c_i=\sum_{i=1}^{n} c_i+\Phi(D_n)-\Phi(D_0)

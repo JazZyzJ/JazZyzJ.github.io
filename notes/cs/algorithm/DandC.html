@@ -67,7 +67,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -123,9 +123,15 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
@@ -133,7 +139,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -1536,7 +1542,7 @@
 <p><strong>Conquer</strong> the subproblems by solving them recursively</p>
 <p><strong>Combine</strong> the solutions to the subproblems into the solution for the original problem</p>
 <div class="arithmatex">\[
-T(n) = aT(n/b) + f(n)
+T(n) = aT(\frac{n}{b}) + f(n)
 \]</div>
 <div class="arithmatex">\[
 N 是原问题的规定大小, f(n) 是划分和合并子问题的解消耗的时间
@@ -1570,20 +1576,20 @@ N 是原问题的规定大小, f(n) 是划分和合并子问题的解消耗的�
 <h2 id="analysis">Analysis<a class="headerlink" href="#analysis" title="Permanent link">&para;</a></h2>
 <p>分治法的时间复杂度计算依托于我们先前定义的算式</p>
 <div class="arithmatex">\[
-T(n) = aT(n/b) + f(n)
+T(n) = aT(\frac{n}{b}) + f(n)
 \]</div>
 <p>对于这种递归式，我们可以直接进行递归展开然后计算：</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="arithmatex">\[
 \begin{aligned}
-T(n) &amp;= 2T(n/2) + N\\
-&amp;= 2(2T(n/4) + N/2) + N\\
-&amp;= 4T(n/4) + 2N\\
-&amp;= 4(2T(n/8) + N/4) + 2N\\
-&amp;= 8T(n/8) + 3N\\
+T(n) &amp;= 2T(\frac{n}{2}) + N\\
+&amp;= 2(2T(\frac{n}{4}) + \frac{n}{2}) + N\\
+&amp;= 4T(\frac{n}{4}) + 2N\\
+&amp;= 4(2T(\frac{n}{8}) + \frac{n}{4}) + 2N\\
+&amp;= 8T(\frac{n}{8}) + 3N\\
 &amp;= ...\\
-&amp;= 2^k T(n/2^k) + kN\\
+&amp;= 2^k T(\frac{n}{2^k}) + kN\\
 &amp;= O(NlogN)
 \end{aligned}
 \]</div>
@@ -1600,11 +1606,11 @@ T(n) &amp;= 2T(n/2) + N\\
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>在进行这样的一个猜测时：</p>
-<p>已知<span class="arithmatex">\(T(N) = 2T(\lfloor{N/2}\rfloor) + N\)</span>，如果我们猜测<span class="arithmatex">\(T(N) = O(N)\)</span>，那么我们会有如下的证明：</p>
+<p>已知<span class="arithmatex">\(T(N) = 2T(\lfloor{\frac{N}{2}\rfloor}) + N\)</span>，如果我们猜测<span class="arithmatex">\(T(N) = O(N)\)</span>，那么我们会有如下的证明：</p>
 <ul>
 <li>假设对于<span class="arithmatex">\(m \leq N\)</span>，结论成立</li>
-<li>那么存在一个常数<span class="arithmatex">\(c\)</span>，取<span class="arithmatex">\(m = \lfloor{N/2}\rfloor\)</span>，则有<span class="arithmatex">\(T(\lfloor{N/2}\rfloor) \leq c \lfloor{N/2}\rfloor\)</span></li>
-<li>将这个式子代入<span class="arithmatex">\(T(N) = 2T(\lfloor{N/2}\rfloor) + N\)</span>，则有<span class="arithmatex">\(T(N) \leq 2c \lfloor{N/2}\rfloor + N = cN + N = O(N)\)</span></li>
+<li>那么存在一个常数<span class="arithmatex">\(c\)</span>，取<span class="arithmatex">\(m = \lfloor{\frac{N}{2}\rfloor}\)</span>，则有<span class="arithmatex">\(T(\lfloor{\frac{N}{2}\rfloor}) \leq c \lfloor{\frac{N}{2}\rfloor}\)</span></li>
+<li>将这个式子代入<span class="arithmatex">\(T(N) = 2T(\lfloor{\frac{N}{2}\rfloor}) + N\)</span>，则有<span class="arithmatex">\(T(N) \leq 2c \lfloor{\frac{N}{2}\rfloor} + N = cN + N = O(N)\)</span></li>
 </ul>
 <p>看起来似乎没有问题，但是在最后一个等式中，我们得到了<span class="arithmatex">\(cN+N=(c+1)N\)</span>，这显然是<span class="arithmatex">\(O(N)\)</span>的，但是在形式上它是错误的，因为我们预先假设正确的结论是<span class="arithmatex">\(T(m) \leq c m\)</span>，所以要根据这个格式来证明出<span class="arithmatex">\(T(N) \leq cN\)</span>，而不是<span class="arithmatex">\(T(N) \leq (c+1)N\)</span>，必须保证<strong>精确的格式</strong>，常数项也必须一致</p>
 </div>
@@ -1612,9 +1618,9 @@ T(n) &amp;= 2T(n/2) + N\\
 <p class="admonition-title">Tips</p>
 <p>在时间复杂度递推中出现了类似<span class="arithmatex">\(T(\sqrt{N})\)</span>的形式，可以采用换元来处理，这里的方法来源于noughtq同学的笔记：</p>
 <ul>
-<li>令<span class="arithmatex">\(m = \log2 N\)</span>，那么<span class="arithmatex">\(T(\sqrt{N}) = T(2^{m/2})\)</span>，<span class="arithmatex">\(T(N) = T(2^m)\)</span></li>
-<li>再令<span class="arithmatex">\(S(m) = T(2^m)\)</span>，则有<span class="arithmatex">\(S(m/2) = T(2^{m/2}) = T(\sqrt{N})\)</span></li>
-<li>这时候我们就可以将<span class="arithmatex">\(T(N)\)</span>的递推式转换为<span class="arithmatex">\(S(m)\)</span>的递推式：<span class="arithmatex">\(S(m) = 2S(m/2) +  　m\)</span></li>
+<li>令<span class="arithmatex">\(m = \log_2 N\)</span>，那么<span class="arithmatex">\(T(\sqrt{N}) = T(2^{\frac{m}{2}})\)</span>，<span class="arithmatex">\(T(N) = T(2^m)\)</span></li>
+<li>再令<span class="arithmatex">\(S(m) = T(2^m)\)</span>，则有<span class="arithmatex">\(S(\frac{m}{2}) = T(2^{\frac{m}{2}}) = T(\sqrt{N})\)</span></li>
+<li>这时候我们就可以将<span class="arithmatex">\(T(N)\)</span>的递推式转换为<span class="arithmatex">\(S(m)\)</span>的递推式：<span class="arithmatex">\(S(m) = 2S(\frac{m}{2}) + m\)</span></li>
 </ul>
 </div>
 <hr />
@@ -1666,7 +1672,7 @@ T(n) &amp;= 2T(n/2) + N\\
 </div>
 <p>当<span class="arithmatex">\(a \geq 1, b &gt; 1, p \geq 0\)</span>时，方程</p>
 <div class="arithmatex">\[
-T(n) = aT(n/b) + \Theta(N^k \log^p N)
+T(n) = aT(\frac{n}{b}) + \Theta(N^k \log^p N)
 \]</div>
 <p>的解为：</p>
 <div class="arithmatex">\[

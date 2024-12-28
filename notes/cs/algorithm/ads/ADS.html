@@ -67,7 +67,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -123,9 +123,15 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
@@ -133,7 +139,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -1976,13 +1982,13 @@ Single Rotation</li>
 </blockquote>
 <div class="admonition tip">
 <p class="admonition-title">NIL节点</p>
-<p>在树的代码中，遇到了叶子结点时需要<code>if</code>判定空，常用一个哨兵节点来避免大量的<code>if</code>语句，但是为了避免空间的浪费，在红黑树中，我们使用了<strong>一个</strong>NIL节点来代替哨兵节点,所有的叶子节点和根节点都指向NIL节点</p>
+<p>在树的代码中，遇到了叶子结点时需要<code>if</code>判定空，常用一个哨兵节点来避免大量的<code>if</code>语句，但是为了避免空间的浪费，在红黑树中，我们使用了<strong>一个</strong>NIL节点来代替哨兵节点,所有的叶子节点和根节点都指向（同一个）NIL节点</p>
 </div>
-<p>红黑树的性质：</p>
+<p><strong>红黑树的性质：</strong></p>
 <ul>
 <li>每个节点要么是红色，要么是黑色</li>
 <li>根节点是黑色</li>
-<li>每个叶节点（NIL节点）是黑色</li>
+<li>每个叶节点（即NIL节点）是黑色</li>
 <li>如果一个节点是红色，那么它的两个子节点都是黑色</li>
 <li>对于每个节点，从该节点到其所有后代叶节点的路径上，均包含相同数目的黑色节点</li>
 </ul>
@@ -1991,6 +1997,8 @@ Single Rotation</li>
 <p class="admonition-title">Lemma</p>
 <p>一个有N个内部节点的红黑树的树高至多为<span class="arithmatex">\(2\log_2(N+1)\)</span></p>
 </div>
+<details class="quote" open="open">
+<summary>Black Height</summary>
 <p>证明：设空树的树高为0</p>
 <p>归纳假设：</p>
 <div class="arithmatex">\[
@@ -2018,11 +2026,13 @@ $$
 Sizeof(Tree)=N \geq 2^{bh(Tree)}-1 \geq 2^{h/2}-1
 $$
 得证</p>
+</details>
 <h3 id="operation_2">Operation<a class="headerlink" href="#operation_2" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">前提</p>
 <p><span style="font-size: 1.1em;">
-在这里我们假设在插入前树是满足红黑树性质的，因此进行对比的是插入红色节点前后的性质情况，<mark>补药计算例子中的绝对黑高</mark>
+在这里我们假设在插入前树是满足红黑树性质的，因此进行对比的是插入红色节点前后的性质情况，只需要考虑操作前后是否相对平衡
+<mark>补药计算例子中的绝对黑高</mark>
 </span></p>
 </div>
 <ul>
@@ -2037,6 +2047,9 @@ $$
 <p>需注意性质2可能因为插入的是空树被破坏，这时需要将根节点涂黑</p>
 <p>接下来的分类讨论其实就是根据叔叔的颜色进行旋转，</p>
 <p><strong>Case 1</strong></p>
+<blockquote>
+<p>具有对称情况：LL（图中）、LR、RL、RR</p>
+</blockquote>
 <p>叔叔节点是红色</p>
 <div align="center">
 <img src="/../../../../assets/pics/ads/ads-8.png" alt="ads-8" height="200px" width="300px">
@@ -2044,18 +2057,39 @@ $$
 
 <p>插入一个节点后，父亲与叔叔都是红色，这时将父亲涂黑，发现左树的黑高比右树的黑高多1，再将叔叔涂黑，发现整棵树对于树外部分整体黑高+1，这时将祖父涂红，满足了红黑树的性质，但是会遇到祖父的父亲是红色的情况，这时需要递归处理</p>
 <p>这也是插入唯一需要迭代的操作</p>
+<p><img alt="ads-5" src="/../../../../assets/pics/ads/case1.png" /></p>
+<p>可以看到我们在进行case1的操作后可能进入到任何一种情况</p>
 <p><strong>Case 2</strong></p>
-<div align="center">
+<blockquote>
+<p>具有对称情况RL</p>
+</blockquote>
+<!-- <div align="center">
 <img src="/../../../../assets/pics/ads/ads-9.png" alt="ads-9" height="200px" width="300px">
+</div> -->
+
+<div align="center">
+<img src="/../../../../assets/pics/ads/case2.png" alt="case2" height="200px" width="300px">
 </div>
 
 <p>叔叔的颜色是黑色，且插入节点靠近叔叔节点，此时无法通过传递祖父的黑色维持黑高，需要进行旋转操作，将插入节点与父亲进行旋转，进入Case 3</p>
 <p><strong>Case 3</strong></p>
-<div align="center">
+<blockquote>
+<p>具有对称情况RR</p>
+</blockquote>
+<!-- <div align="center">
 <img src="/../../../../assets/pics/ads/ads-10.png" alt="ads-10" height="200px" width="300px">
+</div> -->
+
+<div align="center">
+<img src="/../../../../assets/pics/ads/case3.png" alt="case3" height="500px" width="500px">
 </div>
 
 <p>先将爸爸染黑，爷爷染红，此时左子树的黑高比右子树的黑高多1，因此要进行右旋转平衡黑高</p>
+<p>最后对insertion进行总结：（来源于<a href="https://note.noughtq.top/algorithms/ads/2#operations">noughq同学的笔记</a>）</p>
+<div align="center">
+<img src="/../../../../assets/pics/ads/insert.png" alt="" height="600px" width="600px">
+</div>
+
 <ul>
 <li><strong>Delete</strong></li>
 </ul>
@@ -2146,9 +2180,9 @@ $$
 </ul>
 <ol>
 <li>数值全部存放在叶子结点</li>
-<li>非叶子结点中存储routing element，用于确定子树中数值的分布，<span class="arithmatex">\(\lceil B/2 \rceil\)</span>到<span class="arithmatex">\(B\)</span>个孩子,称为他的fanout</li>
+<li>非叶子结点中存储routing element，用于确定子树中数值的分布，<span class="arithmatex">\(\lceil \frac{B}{2} \rceil\)</span>到<span class="arithmatex">\(B\)</span>个孩子,称为他的fanout</li>
 <li>非叶子节点中的元素个数+1=孩子个数</li>
-<li>叶子节点存的元素个数在<span class="arithmatex">\(\lceil B/2 \rceil\)</span>到<span class="arithmatex">\(B\)</span>之间，<mark>根节点作为叶子时可以存储1到B个元素</mark></li>
+<li>叶子节点存的元素个数在<span class="arithmatex">\(\lceil \frac{B}{2} \rceil\)</span>到<span class="arithmatex">\(B\)</span>之间，<mark>根节点作为叶子时可以存储1到B个元素</mark></li>
 <li>一个存储了<span class="arithmatex">\(K\)</span>个元素<span class="arithmatex">\(e_1,e_2,e_3,e_4,e_K\)</span>的internal node 有<span class="arithmatex">\(v_1,v_2,v_3,v_4,v_K\)</span>这些叶子结点：</li>
 </ol>
 <div class="arithmatex">\[
@@ -2159,13 +2193,13 @@ for\ keys\ in\ leaves\ i\ in\ v_i: Tv_1 \leq ... \leq Tv_K
 \]</div>
 <p>补充的性质：N表示元素个数</p>
 <ol>
-<li>leaves <span class="arithmatex">\(\leq N/ \lceil B/2 \rceil\)</span></li>
-<li>nodes <span class="arithmatex">\(\leq 2N/ \lceil B/2 \rceil\)</span></li>
+<li>leaves <span class="arithmatex">\(\leq \frac{N}{ \lceil \frac{B}{2} \rceil}\)</span></li>
+<li>nodes <span class="arithmatex">\(\leq \frac{2N}{ \lceil \frac{B}{2} \rceil}\)</span></li>
 <li>elements <span class="arithmatex">\(\leq 2N\)</span> 这里用nodes数乘B得到的似乎是4N，但需要注意的是路径上的节点存储的数值全部是元素的副本，总数不会超过2N</li>
 <li></li>
 </ol>
 <div class="arithmatex">\[
-{ Height }=\log _{\lceil B/2 \rceil} \frac{N}{\lceil R / 2\rceil} \leqslant \log _{\lceil B / 2\rceil} N=\frac{\log _2 N}{\log _2 B-1} \leqslant O(\log_B N)
+{ Height }=\log _{\lceil \frac{B}{2} \rceil} \frac{N}{\lceil \frac{B}{2} \rceil} \leqslant \log _{\lceil \frac{B}{2} \rceil} N=\frac{\log _2 N}{\log _2 B-1} \leqslant O(\log_B N)
 \]</div>
 <p>这意味着B树的高度是非常低的（相较于二叉树的<span class="arithmatex">\(O(\log_2 N)\)</span>），因此可以减少磁盘的I/O次数</p>
 <p><img alt="ads-16" src="/../../../../assets/pics/ads/ads-16.png" /></p>
@@ -2191,7 +2225,14 @@ for\ keys\ in\ leaves\ i\ in\ v_i: Tv_1 \leq ... \leq Tv_K
 <h3 id="intro_4">Intro<a class="headerlink" href="#intro_4" title="Permanent link">&para;</a></h3>
 <p>满足最小堆的传统性质，即父节点的值小于等于子节点的值</p>
 <p>同时满足左式堆的性质：</p>
-<p>任意一个节点x到一个 <mark>没有两个孩子的节点</mark> 的距离称为节点的<strong>null path length</strong>，记作<span class="arithmatex">\(npl(x)\)</span>，显然，对于一个有左孩子和右孩子的节点，<span class="arithmatex">\(npl(x)=1+\min(npl(lc),npl(rc))\)</span>，对于叶子节点，<span class="arithmatex">\(npl(x)=0\)</span>，在这里我们定义<span class="arithmatex">\(npl(null)=-1\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">定义</p>
+<p>任意一个节点x到一个 <mark>没有两个孩子的节点</mark> 的距离称为节点的<strong>null path length</strong>，记作<span class="arithmatex">\(npl(x)\)</span></p>
+<p>显然，对于一个有左孩子和右孩子的节点，<span class="arithmatex">\(npl(x)=1+\min(npl(lc),npl(rc))\)</span>，对于叶子节点，<span class="arithmatex">\(npl(x)=0\)</span>，在这里我们定义<span class="arithmatex">\(npl(null)=-1\)</span></p>
+<ul>
+<li>在左式堆中，<span class="arithmatex">\(npl(lc(x)) \geq npl(rc(x))\)</span>，即左孩子的null path length总是大于等于右孩子的null path length，因此，左式堆也被称为<strong>左偏树</strong></li>
+</ul>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">一个没有两个孩子的节点</p>
 <p>这里注意这个定义，如果一个节点只有一个孩子，那么无论他的这个孩子有多长，他的null path length都是0，因为我们定义了空节点的null path length为-1，而计算时：</p>
@@ -2199,7 +2240,6 @@ for\ keys\ in\ leaves\ i\ in\ v_i: Tv_1 \leq ... \leq Tv_K
 npl(x)=1+\min(npl(lc),npl(rc))=1+(-1)=0
 \]</div>
 </div>
-<p>在左式堆中，<span class="arithmatex">\(npl(lc(x)) \geq npl(rc(x))\)</span>，即左孩子的null path length总是大于等于右孩子的null path length，因此，左式堆也被称为<strong>左偏树</strong></p>
 <p>对于一个有n节点的二叉树，若满足左式堆的性质，则有<span class="arithmatex">\(npl(root) \leq \log_2(n+1)\)</span>，即对于一个长度为r的right path，至少有<span class="arithmatex">\(2^r-1\)</span>个节点</p>
 <h3 id="operation_4">Operation<a class="headerlink" href="#operation_4" title="Permanent link">&para;</a></h3>
 <ul>
