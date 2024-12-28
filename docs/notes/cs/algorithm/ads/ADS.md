@@ -122,13 +122,13 @@ Single Rotation
 
 !!! tip "NIL节点"
 
-    在树的代码中，遇到了叶子结点时需要```if```判定空，常用一个哨兵节点来避免大量的```if```语句，但是为了避免空间的浪费，在红黑树中，我们使用了**一个**NIL节点来代替哨兵节点,所有的叶子节点和根节点都指向NIL节点
+    在树的代码中，遇到了叶子结点时需要```if```判定空，常用一个哨兵节点来避免大量的```if```语句，但是为了避免空间的浪费，在红黑树中，我们使用了**一个**NIL节点来代替哨兵节点,所有的叶子节点和根节点都指向（同一个）NIL节点
 
-红黑树的性质：
+**红黑树的性质：**
 
 - 每个节点要么是红色，要么是黑色
 - 根节点是黑色
-- 每个叶节点（NIL节点）是黑色
+- 每个叶节点（即NIL节点）是黑色
 - 如果一个节点是红色，那么它的两个子节点都是黑色
 - 对于每个节点，从该节点到其所有后代叶节点的路径上，均包含相同数目的黑色节点
 
@@ -137,43 +137,44 @@ Single Rotation
 !!! lemma
     一个有N个内部节点的红黑树的树高至多为$2\log_2(N+1)$
 
-证明：设空树的树高为0
+???+ quote "Black Height"    
+    证明：设空树的树高为0
 
-归纳假设：
+    归纳假设：
 
-$$
-for\ any\ node\ x, sizeof(x) \geq 2^{bh(x)}-1
-$$
+    $$
+    for\ any\ node\ x, sizeof(x) \geq 2^{bh(x)}-1
+    $$
 
-归纳奠基显然在空树上成立
+    归纳奠基显然在空树上成立
 
-归纳演绎：
+    归纳演绎：
 
-对一个非空树时：$h(x) \leq k$ 成立，现在证明$h(x) \leq k+1$也成立
+    对一个非空树时：$h(x) \leq k$ 成立，现在证明$h(x) \leq k+1$也成立
 
-对一个x满足$h(x) \leq k+1$，其子树的黑高要么等于x的黑高，要么等于x的黑高-1（子树的根节点是红色）
+    对一个x满足$h(x) \leq k+1$，其子树的黑高要么等于x的黑高，要么等于x的黑高-1（子树的根节点是红色）
 
-因为：
+    因为：
 
-$$
-h(child) \leq k
-$$
+    $$
+    h(child) \leq k
+    $$
 
-则有：
-$$
-sizeof(child) \geq 2^{bh(child)}-1 \geq 2^{bh(x)-1}-1
-$$
-即子树的节点数有一个下界
+    则有：
+    $$
+    sizeof(child) \geq 2^{bh(child)}-1 \geq 2^{bh(x)-1}-1
+    $$
+    即子树的节点数有一个下界
 
-由于：
-$$
-bh(Tree) \geq \frac{h(Tree)}{2}
-$$
-则：
-$$
-Sizeof(Tree)=N \geq 2^{bh(Tree)}-1 \geq 2^{h/2}-1
-$$
-得证
+    由于：
+    $$
+    bh(Tree) \geq \frac{h(Tree)}{2}
+    $$
+    则：
+    $$
+    Sizeof(Tree)=N \geq 2^{bh(Tree)}-1 \geq 2^{h/2}-1
+    $$
+    得证
 
 
 
@@ -183,7 +184,8 @@ $$
 
 !!! warning "前提"
     <span style="font-size: 1.1em;">
-    在这里我们假设在插入前树是满足红黑树性质的，因此进行对比的是插入红色节点前后的性质情况，==补药计算例子中的绝对黑高==
+    在这里我们假设在插入前树是满足红黑树性质的，因此进行对比的是插入红色节点前后的性质情况，只需要考虑操作前后是否相对平衡
+    ==补药计算例子中的绝对黑高==
     </span>
 
 - Insertion
@@ -200,6 +202,8 @@ $$
 接下来的分类讨论其实就是根据叔叔的颜色进行旋转，
 
 **Case 1**
+>具有对称情况：LL（图中）、LR、RL、RR
+
 
 叔叔节点是红色
 
@@ -211,23 +215,41 @@ $$
 
 这也是插入唯一需要迭代的操作
 
+![ads-5](/../../../../assets/pics/ads/case1.png)
+
+可以看到我们在进行case1的操作后可能进入到任何一种情况
+
 **Case 2**
+>具有对称情况RL
+
+<!-- <div align="center">
+<img src="/../../../../assets/pics/ads/ads-9.png" alt="ads-9" height="200px" width="300px">
+</div> -->
 
 <div align="center">
-<img src="/../../../../assets/pics/ads/ads-9.png" alt="ads-9" height="200px" width="300px">
+<img src="/../../../../assets/pics/ads/case2.png" alt="case2" height="200px" width="300px">
 </div>
 
 叔叔的颜色是黑色，且插入节点靠近叔叔节点，此时无法通过传递祖父的黑色维持黑高，需要进行旋转操作，将插入节点与父亲进行旋转，进入Case 3
 
 **Case 3**
+>具有对称情况RR
+
+<!-- <div align="center">
+<img src="/../../../../assets/pics/ads/ads-10.png" alt="ads-10" height="200px" width="300px">
+</div> -->
 
 <div align="center">
-<img src="/../../../../assets/pics/ads/ads-10.png" alt="ads-10" height="200px" width="300px">
+<img src="/../../../../assets/pics/ads/case3.png" alt="case3" height="500px" width="500px">
 </div>
 
 先将爸爸染黑，爷爷染红，此时左子树的黑高比右子树的黑高多1，因此要进行右旋转平衡黑高
 
+最后对insertion进行总结：（来源于[noughq同学的笔记](https://note.noughtq.top/algorithms/ads/2#operations)）
 
+<div align="center">
+<img src="/../../../../assets/pics/ads/insert.png" alt="" height="600px" width="600px">
+</div>
 
 
 - **Delete**
@@ -324,9 +346,9 @@ B-Tree with order B:
 - 数值性质
 
 1. 数值全部存放在叶子结点
-2. 非叶子结点中存储routing element，用于确定子树中数值的分布，$\lceil B/2 \rceil$到$B$个孩子,称为他的fanout
+2. 非叶子结点中存储routing element，用于确定子树中数值的分布，$\lceil \frac{B}{2} \rceil$到$B$个孩子,称为他的fanout
 3. 非叶子节点中的元素个数+1=孩子个数
-4. 叶子节点存的元素个数在$\lceil B/2 \rceil$到$B$之间，==根节点作为叶子时可以存储1到B个元素==
+4. 叶子节点存的元素个数在$\lceil \frac{B}{2} \rceil$到$B$之间，==根节点作为叶子时可以存储1到B个元素==
 5. 一个存储了$K$个元素$e_1,e_2,e_3,e_4,e_K$的internal node 有$v_1,v_2,v_3,v_4,v_K$这些叶子结点：
 
 $$
@@ -339,13 +361,13 @@ $$
 
 补充的性质：N表示元素个数
 
-1. leaves $\leq N/ \lceil B/2 \rceil$
-2. nodes $\leq 2N/ \lceil B/2 \rceil$
+1. leaves $\leq \frac{N}{ \lceil \frac{B}{2} \rceil}$
+2. nodes $\leq \frac{2N}{ \lceil \frac{B}{2} \rceil}$
 3. elements $\leq 2N$ 这里用nodes数乘B得到的似乎是4N，但需要注意的是路径上的节点存储的数值全部是元素的副本，总数不会超过2N
 4. 
 
 $$
-{ Height }=\log _{\lceil B/2 \rceil} \frac{N}{\lceil R / 2\rceil} \leqslant \log _{\lceil B / 2\rceil} N=\frac{\log _2 N}{\log _2 B-1} \leqslant O(\log_B N)
+{ Height }=\log _{\lceil \frac{B}{2} \rceil} \frac{N}{\lceil \frac{B}{2} \rceil} \leqslant \log _{\lceil \frac{B}{2} \rceil} N=\frac{\log _2 N}{\log _2 B-1} \leqslant O(\log_B N)
 $$
 
 这意味着B树的高度是非常低的（相较于二叉树的$O(\log_2 N)$），因此可以减少磁盘的I/O次数
@@ -386,7 +408,12 @@ CPU时间复杂度为$O(B\log_B N)$，磁盘的I/O次数为$O(\log_B N)$
 
 同时满足左式堆的性质：
 
-任意一个节点x到一个 ==没有两个孩子的节点== 的距离称为节点的**null path length**，记作$npl(x)$，显然，对于一个有左孩子和右孩子的节点，$npl(x)=1+\min(npl(lc),npl(rc))$，对于叶子节点，$npl(x)=0$，在这里我们定义$npl(null)=-1$
+!!! note "定义"
+    任意一个节点x到一个 ==没有两个孩子的节点== 的距离称为节点的**null path length**，记作$npl(x)$
+    
+    显然，对于一个有左孩子和右孩子的节点，$npl(x)=1+\min(npl(lc),npl(rc))$，对于叶子节点，$npl(x)=0$，在这里我们定义$npl(null)=-1$
+
+    - 在左式堆中，$npl(lc(x)) \geq npl(rc(x))$，即左孩子的null path length总是大于等于右孩子的null path length，因此，左式堆也被称为**左偏树**
 
 !!! warning "一个没有两个孩子的节点"
     这里注意这个定义，如果一个节点只有一个孩子，那么无论他的这个孩子有多长，他的null path length都是0，因为我们定义了空节点的null path length为-1，而计算时：
@@ -396,7 +423,7 @@ CPU时间复杂度为$O(B\log_B N)$，磁盘的I/O次数为$O(\log_B N)$
     $$
 
 
-在左式堆中，$npl(lc(x)) \geq npl(rc(x))$，即左孩子的null path length总是大于等于右孩子的null path length，因此，左式堆也被称为**左偏树**
+
 
 对于一个有n节点的二叉树，若满足左式堆的性质，则有$npl(root) \leq \log_2(n+1)$，即对于一个长度为r的right path，至少有$2^r-1$个节点
 

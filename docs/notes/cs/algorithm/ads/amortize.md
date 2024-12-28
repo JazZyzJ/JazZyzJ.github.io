@@ -1,8 +1,9 @@
 # Amortized Analysis
 
 均摊法分析是对一系列操作的平均性能进行分析，而不是对单个操作的性能进行分析
-bound介于worst和average之间
-且均摊界与概率无关
+
+bound介于worst和average之间且均摊界与概率无关
+
 通常有三种方法：Aggregate Accounting Potential
 
 ## Aggregate Method
@@ -62,7 +63,7 @@ $Credit_i$：第$i$次操作的credit，这时我们引入一个状态得分函�
 
 
 
-但是对于每一次操作，$Credit_i$的数值不仅由当前的状态决定，还受到之前状态的影响，因此我们用$\Phi(D_i-\Phi(D_{i-1})$来表示
+但是对于每一次操作，$Credit_i$的数值不仅由当前的状态决定，还受到之前状态的影响，因此我们用$\Phi(D_i)-\Phi(D_{i-1})$来表示
 
 
     

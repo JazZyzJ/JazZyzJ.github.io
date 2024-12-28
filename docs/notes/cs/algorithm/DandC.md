@@ -11,7 +11,7 @@ Recursively:
 **Combine** the solutions to the subproblems into the solution for the original problem
 
 $$
-T(n) = aT(n/b) + f(n)
+T(n) = aT(\frac{n}{b}) + f(n)
 $$
 
 $$
@@ -58,7 +58,7 @@ $$
 分治法的时间复杂度计算依托于我们先前定义的算式
 
 $$
-T(n) = aT(n/b) + f(n)
+T(n) = aT(\frac{n}{b}) + f(n)
 $$
 
 对于这种递归式，我们可以直接进行递归展开然后计算：
@@ -66,13 +66,13 @@ $$
 !!! example
     $$
 	\begin{aligned}
-	T(n) &= 2T(n/2) + N\\
-	&= 2(2T(n/4) + N/2) + N\\
-	&= 4T(n/4) + 2N\\
-	&= 4(2T(n/8) + N/4) + 2N\\
-	&= 8T(n/8) + 3N\\
+	T(n) &= 2T(\frac{n}{2}) + N\\
+	&= 2(2T(\frac{n}{4}) + \frac{n}{2}) + N\\
+	&= 4T(\frac{n}{4}) + 2N\\
+	&= 4(2T(\frac{n}{8}) + \frac{n}{4}) + 2N\\
+	&= 8T(\frac{n}{8}) + 3N\\
 	&= ...\\
-	&= 2^k T(n/2^k) + kN\\
+	&= 2^k T(\frac{n}{2^k}) + kN\\
 	&= O(NlogN)
 	\end{aligned}
 	$$
@@ -90,20 +90,20 @@ $$
 !!! warning
 	在进行这样的一个猜测时：
 
-    已知$T(N) = 2T(\lfloor{N/2}\rfloor) + N$，如果我们猜测$T(N) = O(N)$，那么我们会有如下的证明：
+    已知$T(N) = 2T(\lfloor{\frac{N}{2}\rfloor}) + N$，如果我们猜测$T(N) = O(N)$，那么我们会有如下的证明：
 
 	- 假设对于$m \leq N$，结论成立
-	- 那么存在一个常数$c$，取$m = \lfloor{N/2}\rfloor$，则有$T(\lfloor{N/2}\rfloor) \leq c \lfloor{N/2}\rfloor$
-	- 将这个式子代入$T(N) = 2T(\lfloor{N/2}\rfloor) + N$，则有$T(N) \leq 2c \lfloor{N/2}\rfloor + N = cN + N = O(N)$
+	- 那么存在一个常数$c$，取$m = \lfloor{\frac{N}{2}\rfloor}$，则有$T(\lfloor{\frac{N}{2}\rfloor}) \leq c \lfloor{\frac{N}{2}\rfloor}$
+	- 将这个式子代入$T(N) = 2T(\lfloor{\frac{N}{2}\rfloor}) + N$，则有$T(N) \leq 2c \lfloor{\frac{N}{2}\rfloor} + N = cN + N = O(N)$
 
 	看起来似乎没有问题，但是在最后一个等式中，我们得到了$cN+N=(c+1)N$，这显然是$O(N)$的，但是在形式上它是错误的，因为我们预先假设正确的结论是$T(m) \leq c m$，所以要根据这个格式来证明出$T(N) \leq cN$，而不是$T(N) \leq (c+1)N$，必须保证**精确的格式**，常数项也必须一致
 
 !!! Tip "Tips"
 	在时间复杂度递推中出现了类似$T(\sqrt{N})$的形式，可以采用换元来处理，这里的方法来源于noughtq同学的笔记：
 	
-	- 令$m = \log2 N$，那么$T(\sqrt{N}) = T(2^{m/2})$，$T(N) = T(2^m)$
-	- 再令$S(m) = T(2^m)$，则有$S(m/2) = T(2^{m/2}) = T(\sqrt{N})$
-	- 这时候我们就可以将$T(N)$的递推式转换为$S(m)$的递推式：$S(m) = 2S(m/2) +  　m$
+	- 令$m = \log_2 N$，那么$T(\sqrt{N}) = T(2^{\frac{m}{2}})$，$T(N) = T(2^m)$
+	- 再令$S(m) = T(2^m)$，则有$S(\frac{m}{2}) = T(2^{\frac{m}{2}}) = T(\sqrt{N})$
+	- 这时候我们就可以将$T(N)$的递推式转换为$S(m)$的递推式：$S(m) = 2S(\frac{m}{2}) + m$
 ---
 2. Recursion-tree Method
 
@@ -153,7 +153,7 @@ yy哥的形象解释，我觉得很有帮助（至少对于记忆来说）：
 当$a \geq 1, b > 1, p \geq 0$时，方程
 
 $$
-T(n) = aT(n/b) + \Theta(N^k \log^p N)
+T(n) = aT(\frac{n}{b}) + \Theta(N^k \log^p N)
 $$
 
 的解为：

@@ -26,7 +26,7 @@ theme:
     # - navigation.prune
   
   palette:
-    # - custom_dir: docs/css/stylesheets/extra.css
+    - custom_dir: css/stylesheets/extra.css
     - scheme: 
       primary: white
       toggle:
@@ -88,9 +88,9 @@ extra_javascript:
 extra_css:
   - css/stylesheets/extra.css
 
-# plugins:
-#   - search
-#   - toc
+plugins:
+  - search
+  # - toc
 #   - statistics:
 #       page_template: "stylesheets/template.html"
 #       page_check_metadata: counter  # 检查页面元数据
