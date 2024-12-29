@@ -38,7 +38,7 @@ cost函数：$f(S)=|S|$
 定义neighbor是与当前解$S$相差一个顶点的解，即
 
 $$ 
-N(S)= \{ S'|S' \text{ is a vertex cover and } |S' \text{can be obtained from } S \text{ by + or - one vertex} \} 
+N(S)= \{ S'|S' \text{ is a vertex cover and } S' \text{can be obtained from } S \text{ by + or - one vertex} \} 
 $$
 
 !!! failure "失败的man"
@@ -101,12 +101,13 @@ $$
 在给出两个定义：
 
 !!! note "Definition"
-    一个顶点$u$是满意的satisfied，当且仅当：
+
+    - 一个顶点$u$是满意的satisfied，当且仅当：
     $$
     \sum_{\text{邻接好边}}{|w_u|} \geq \sum_{\{邻接坏边}}{|w_u|}
 	$$
 
-	一个configuration是stable的，当且仅当所有顶点都是满意的
+	- 一个configuration是stable的，当且仅当所有顶点都是满意的
 
 
 很容易可以看出，一个顶点经过反转，可以使好的边变坏，坏的边变好，也就是说可以通过对顶点的flip操作，来改变configuration
@@ -257,4 +258,4 @@ $$
 
 然后在这个邻居集合中进行local search	
 
-- 得到这个邻居集合时间复杂度是$O(n^2)$的，跑出来效果不错myc说（）
+- 得到这个邻居集合时间复杂度是$O(n^2)$的，跑出来效果不错myc老师说（）

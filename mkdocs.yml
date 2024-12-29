@@ -21,9 +21,10 @@ theme:
     - navigation.path
     - navigation.indexes
     - navigation.top
-    # - navigation.footer
+    - navigation.footer
     # - navigation.sections
-    # - navigation.prune
+    - navigation.prune
+    - navigation.expand
   
   palette:
     - custom_dir: css/stylesheets/extra.css

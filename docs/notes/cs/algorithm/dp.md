@@ -222,7 +222,7 @@
 	</span>
 
 	$$
-	T(N) = \sum_{i=1}^{N} p_i \times (depth_i + 1)
+	T(N) = \sum_{i=1}^{N} (p_i \times (depth_i + 1))
 	$$
 
 !!! success "Solution"

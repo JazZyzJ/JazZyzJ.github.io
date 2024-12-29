@@ -64,7 +64,8 @@ $$ n_h=F_{h+3}-1
 ,h \geq -1  $$
 
 $$
-\text{F is Fibonacci Number}$$
+\text{F is Fibonacci Number with } F_0=0, F_1=1
+$$
 
 
 </p>
@@ -109,6 +110,21 @@ Single Rotation
 <div align="center">
 <img src="/../../../../assets/pics/ads/ads-4.png" alt="ads-4" height="500px" width="400px">
 </div>
+
+
+!!! note "Operation"
+
+    === "Insert"
+
+        - 将新节点插入到树中
+        - 将新节点旋转到根节点
+
+    === "Delete"
+
+        - 将待删除节点旋转到根节点
+        - 将根节点删除得到两个子树T1和T2
+        - FindMax(T1)或者FindMin(T2)作为新的根节点
+
 
 
 ---
@@ -252,7 +268,24 @@ Single Rotation
 </div>
 
 
+???+ example "Insert Example(nb)"
+
+    <div align="center">
+    <img src="/../../../../assets/pics/ads/inserteg.png" alt="" height="300px" width="300px">
+    </div>
+    
+    一个牛逼的例子，好像是包含了所有的情况，主要是还写了对称的情况（让我这种弱质复习时很爽的例子）
+    
+    来自：[oneko前辈](https://www.yuque.com/oneko/something/iloveads)
+
+
+
+
+<br>
+
 - **Delete**
+
+> 我认为自己写的红黑树删除是一坨屎，但是考试周来不及更新别的好方法了，期末周结束我会更新一下的（）如果忘了（）不是 应该不会忘。。。太屎了。。。。。。。。。。。。。。。
 
 总体的思路是将删除节点增黑，然后通过转移这个黑色到父亲节点，在进行黑高的平衡，当然最简单的情况就是删除节点是红色，这时直接删除即可，其次删除节点删除节点只有一个孩子（只能是红孩子）代替他爹后变黑即可
 
