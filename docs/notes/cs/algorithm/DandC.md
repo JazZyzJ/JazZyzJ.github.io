@@ -104,8 +104,23 @@ $$
 	- 令$m = \log_2 N$，那么$T(\sqrt{N}) = T(2^{\frac{m}{2}})$，$T(N) = T(2^m)$
 	- 再令$S(m) = T(2^m)$，则有$S(\frac{m}{2}) = T(2^{\frac{m}{2}}) = T(\sqrt{N})$
 	- 这时候我们就可以将$T(N)$的递推式转换为$S(m)$的递推式：$S(m) = 2S(\frac{m}{2}) + m$
+
+	???+ example "Example"
+	    附上一个例子：
+        
+		<div align="center">
+		<img src="/../../../../assets/pics/dandc/dc-3.png" alt="dc-3" height="100px" width="300px">
+		</div>
+
+		
+
+
+
+
+
+
 ---
-2. Recursion-tree Method
+1. Recursion-tree Method
 
 
 
