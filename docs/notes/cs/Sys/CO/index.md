@@ -11,6 +11,6 @@
 - [计算机算术运算](arithmetic.md)
 - [指令](instruction.md)
 - [处理器](processor.md)
-- 内存层次架构
-- IO
+- [内存层次架构](memory.md)
+- I/O
 
