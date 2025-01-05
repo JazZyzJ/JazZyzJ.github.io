@@ -319,7 +319,7 @@ $D$是$O(\log n)$，因为每次二分查找可以并行执行，深度就是单
 
 得到较好的ranking方法后，我们在计算merge开销时就能得到$W = O(n)$，$D = O(\log n)$
 
-这时候整个mergesort的$D_i$可以对$O(\frac{n}{2^i})$取对数，求和后得到$D = O(\log_2 n)$
+这时候整个mergesort的$D_i$可以对$O(\frac{n}{2^i})$取对数，求和后得到$D = O((\log n)^2)$
 
 
 ### Maximum Finding 

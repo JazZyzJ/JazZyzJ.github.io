@@ -312,7 +312,7 @@ Important Items
 - Index：
 
     - 直接映射：是相对于多少个block来说，位宽：$\log_2(\text{# blocks})$
-    - 组关联：是相对于多少个set来说，位宽：$\log_2(\text{# sets})$
+    - 组关联：是相对于多少个set来说，位宽：$\log_2(\text{# blocks in one set})$
     
 - Byte Offset：
 
