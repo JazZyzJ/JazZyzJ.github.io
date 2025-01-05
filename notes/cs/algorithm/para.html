@@ -1475,7 +1475,7 @@ W = O(\frac{2n}{k} \log n + n) \quad D = O(\log n + k)
 <p>当<span class="arithmatex">\(k = \log n\)</span>时，<span class="arithmatex">\(W = O(n)\)</span>，<span class="arithmatex">\(D = O(\log n)\)</span>，是一个不错的结果 </p>
 </div>
 <p>得到较好的ranking方法后，我们在计算merge开销时就能得到<span class="arithmatex">\(W = O(n)\)</span>，<span class="arithmatex">\(D = O(\log n)\)</span></p>
-<p>这时候整个mergesort的<span class="arithmatex">\(D_i\)</span>可以对<span class="arithmatex">\(O(\frac{n}{2^i})\)</span>取对数，求和后得到<span class="arithmatex">\(D = O(\log_2 n)\)</span></p>
+<p>这时候整个mergesort的<span class="arithmatex">\(D_i\)</span>可以对<span class="arithmatex">\(O(\frac{n}{2^i})\)</span>取对数，求和后得到<span class="arithmatex">\(D = O((\log n)^2)\)</span></p>
 <h3 id="maximum-finding">Maximum Finding<a class="headerlink" href="#maximum-finding" title="Permanent link">&para;</a></h3>
 <p>给出<span class="arithmatex">\(n\)</span>个数，求出其中的最大值</p>
 <ul>
