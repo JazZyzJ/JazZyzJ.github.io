@@ -146,6 +146,7 @@ nav:
         - Deep Generative Model: 
             - notes/ai/dgm/index.md
             - VAE: notes/ai/dgm/vae.md
+            
           
   - To0ls:
     - Tool_Pool/index.md
