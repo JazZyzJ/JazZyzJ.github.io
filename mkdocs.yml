@@ -104,7 +104,7 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       exclude:
-        - index.md
+        # - index.md
         - friends.md
 
 
@@ -113,6 +113,7 @@ nav:
     - index.md
     - friends.md
   - N0tes:
+      - notes/index.md
       - Computer Science:
         # - notes/cs/index.md
         - DS & Algorithms:
@@ -142,7 +143,9 @@ nav:
           - Python(CS61a): notes/lingo/cs61a.md
       - Artifical Intelligence:
         - notes/ai/index.md
-        - Deep Generative Model: notes/ai/dgm.md
+        - Deep Generative Model: 
+            - notes/ai/dgm/index.md
+            - Variational Autoencoder: notes/ai/dgm/vae.md
           
   - To0ls:
     - Tool_Pool/index.md
@@ -151,5 +154,4 @@ nav:
         - GNU Make: Tool_Pool/GNU_Make.md
   - L0g: log/index.md
     
-    # - Widgets:
       
