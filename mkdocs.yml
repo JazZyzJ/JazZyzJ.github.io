@@ -145,7 +145,7 @@ nav:
         - notes/ai/index.md
         - Deep Generative Model: 
             - notes/ai/dgm/index.md
-            - Variational Autoencoder: notes/ai/dgm/vae.md
+            - VAE: notes/ai/dgm/vae.md
           
   - To0ls:
     - Tool_Pool/index.md
