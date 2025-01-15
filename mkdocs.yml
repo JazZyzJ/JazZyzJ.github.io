@@ -8,7 +8,7 @@ use_directory_urls: false
 
 theme: 
   name: material
-  language: en
+  language: zh
   favicon: assets/pics/logo.png
   icon: 
     logo: material/book-open-variant
@@ -26,6 +26,8 @@ theme:
     - navigation.prune
     - navigation.expand
   
+  custom_dir: overrides
+
   palette:
     - custom_dir: css/stylesheets/extra.css
     - scheme: 
@@ -50,36 +52,35 @@ markdown_extensions:
       toc_depth: 4
   - meta
   - def_list
-  - attr_list
-  - md_in_html
+  - md_in_html 
   - sane_lists
   - admonition
-  - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.tilde
-  - pymdownx.critic
   - pymdownx.details
   - pymdownx.snippets
   - pymdownx.magiclink
   - pymdownx.superfences
   - pymdownx.inlinehilite
+  - pymdownx.betterem
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - attr_list
   - pymdownx.tabbed:
       alternate_style: true 
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.highlight:
       anchor_linenums: true
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.highlight:
-      anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - md_in_html
+  - neoteroi.cards
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji: # 在使用statistics时需要用到这个完成图标的显示
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg  
 
 extra_javascript:
   - javascripts/mathjax.js
@@ -88,26 +89,29 @@ extra_javascript:
 
 extra_css:
   - css/stylesheets/extra.css
+  - css/cards.css 
 
 plugins:
   - search
-  # - toc
-#   - statistics:
-#       page_template: "stylesheets/template.html"
-#       page_check_metadata: counter  # 检查页面元数据
-#       page_count_strict: "true"    # 严格计数模式
-#       count_pages: "true"          # 统计页面数
-#       count_words: "true"          # 统计字数
-#       count_chinese_words: "true"  # 统计中文字数
-#       count_code_lines: "true"     # 统计代码行数
-#       read_time: "true"           # 估计阅读时间
+  - statistics:
+      page_template: css/stylesheets/template.html
+      # page_statistics: False
+  - git-revision-date-localized:
+      enable_creation_date: true
+      exclude:
+        - index.md
+        - friends.md
+
 
 nav:
-  - Home: index.md
+  - Home: 
+    - index.md
+    - friends.md
   - N0tes:
       - Computer Science:
         - notes/cs/index.md
         - DS & Algorithms:
+          - notes/cs/algorithm/index.md
           - FDS: notes/cs/algorithm/fds/fds.md
           - ADS: notes/cs/algorithm/ads/ADS.md
           - Amortized Analysis: notes/cs/algorithm/ads/amortize.md
@@ -133,8 +137,9 @@ nav:
           - Python(CS61a): notes/lingo/cs61a.md
       # - Artifical Intelligence:
   - To0l Box:
-    - Workflow:
-      - Coding:
+    - Tool_Pool/index.md
+    - Coding:
+        - Git: Tool_Pool/git.md
         - GNU Make: Tool_Pool/GNU_Make.md
   - L0g: log/index.md
     
