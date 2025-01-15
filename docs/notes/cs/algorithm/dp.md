@@ -1,6 +1,14 @@
+---
+comment: true
+---
+
+
 # Dynamic Programming
 
-> #TODO:感觉ads课程中的dp讲的有点简单有点少，假期时准备多学一点
+
+
+
+> TODO:感觉ads课程中的dp讲的有点简单有点少，假期时准备多学一点
 
 ## Intro
 
