@@ -22,7 +22,7 @@ theme:
     - navigation.indexes
     - navigation.top
     - navigation.footer
-    # - navigation.prune
+    - navigation.prune
     - navigation.expand
   
   custom_dir: overrides
@@ -66,6 +66,8 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - attr_list
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.tabbed:
       alternate_style: true 
   - pymdownx.tasklist:
@@ -75,15 +77,17 @@ markdown_extensions:
       line_spans: __span
       pygments_lang_class: true
   - neoteroi.cards
-  - pymdownx.arithmatex:
-      generic: true
+  
   - pymdownx.emoji: # 在使用statistics时需要用到这个完成图标的显示
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg  
 
-# extra_javascript:
-#   
-#   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+extra_javascript:
+  - js/katex.js
+  - js/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+
 
 
 extra_css:
@@ -110,7 +114,7 @@ nav:
     - friends.md
   - N0tes:
       - Computer Science:
-        - notes/cs/index.md
+        # - notes/cs/index.md
         - DS & Algorithms:
           - notes/cs/algorithm/index.md
           - FDS: notes/cs/algorithm/fds/fds.md
@@ -136,8 +140,11 @@ nav:
         - PL: 
           - Verilog: notes/lingo/verilog.md
           - Python(CS61a): notes/lingo/cs61a.md
-      # - Artifical Intelligence:
-  - To0l:
+      - Artifical Intelligence:
+        - notes/ai/index.md
+        - Deep Generative Model: notes/ai/dgm.md
+          
+  - To0ls:
     - Tool_Pool/index.md
     - Coding:
         - Git: Tool_Pool/git.md
