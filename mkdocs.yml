@@ -137,7 +137,7 @@ nav:
           - Verilog: notes/lingo/verilog.md
           - Python(CS61a): notes/lingo/cs61a.md
       # - Artifical Intelligence:
-  - To0l Box:
+  - To0l:
     - Tool_Pool/index.md
     - Coding:
         - Git: Tool_Pool/git.md
