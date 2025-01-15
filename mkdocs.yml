@@ -1,0 +1,148 @@
+site_name: Space . JaZzyzJ
+site_url: https://jazzyzj.github.io/
+repo_name: JaZzyzJ.Space
+repo_url: https://github.com/JazZyzJ/JazZyzJ.github.io
+use_directory_urls: false
+
+
+
+theme: 
+  name: material
+  language: zh
+  favicon: assets/pics/logo.png
+  icon: 
+    logo: material/book-open-variant
+  features:
+    - content.code.annotate
+    - content.code.line_numbers
+    - content.code.copy
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    # - navigation.prune
+    - navigation.expand
+  
+  custom_dir: overrides
+
+  palette:
+    - custom_dir: css/stylesheets/extra.css
+    - scheme: 
+      primary: white
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: slate
+      primary: black
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  font:
+    text: "PT Serif"
+    code: "JetBrains Mono, Consolas"
+
+
+    
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 4
+  - meta
+  - def_list
+  - md_in_html 
+  - sane_lists
+  - admonition
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.betterem
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - attr_list
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - neoteroi.cards
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji: # 在使用statistics时需要用到这个完成图标的显示
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg  
+
+# extra_javascript:
+#   
+#   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+
+extra_css:
+  - css/stylesheets/extra.css
+  - css/cards.css 
+
+plugins:
+  - search
+  - statistics:
+      page_check_metadata: comment
+    # - pages_placeholder: \{\{\s*pages\s*\}\}
+    # - words_placeholder: \{\{\s*words\s*\}\}
+    # - codes_placeholder: \{\{\s*codes\s*\}\}
+  - git-revision-date-localized:
+      enable_creation_date: true
+      exclude:
+        - index.md
+        - friends.md
+
+
+nav:
+  - Home: 
+    - index.md
+    - friends.md
+  - N0tes:
+      - Computer Science:
+        - notes/cs/index.md
+        - DS & Algorithms:
+          - notes/cs/algorithm/index.md
+          - FDS: notes/cs/algorithm/fds/fds.md
+          - ADS: notes/cs/algorithm/ads/ADS.md
+          - Amortized Analysis: notes/cs/algorithm/ads/amortize.md
+          - Backtracking: notes/cs/algorithm/backtracking.md
+          - Divide & Conquer: notes/cs/algorithm/DandC.md
+          - Dynamic Programming: notes/cs/algorithm/dp.md
+          - Greedy Algorithms: notes/cs/algorithm/gdy.md
+          - NP Completeness: notes/cs/algorithm/NP.md
+          - Approximation: notes/cs/algorithm/Approximation.md
+          - Local Search: notes/cs/algorithm/localsearch.md
+          - Randomized: notes/cs/algorithm/random.md
+          - Parallel: notes/cs/algorithm/para.md
+          - External Sort: notes/cs/algorithm/external.md
+        - System:
+          - CO: 
+            - notes/cs/Sys/CO/index.md
+            - Arithmetic: notes/cs/Sys/CO/arithmetic.md
+            - Instruction: notes/cs/Sys/CO/instruction.md
+            - Processor: notes/cs/Sys/CO/processor.md
+            - Memory: notes/cs/Sys/CO/memory.md
+        - PL: 
+          - Verilog: notes/lingo/verilog.md
+          - Python(CS61a): notes/lingo/cs61a.md
+      # - Artifical Intelligence:
+  - To0l Box:
+    - Tool_Pool/index.md
+    - Coding:
+        - Git: Tool_Pool/git.md
+        - GNU Make: Tool_Pool/GNU_Make.md
+  - L0g: log/index.md
+    
+    # - Widgets:
+      
