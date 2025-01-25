@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://jazzyzj.github.io/notes/cs/Sys/CO/arithmetic.html">
+        <link rel="canonical" href="https://jazzyzj.github.io/notes/ai/dgm/vae.html">
       
       
         <link rel="prev" href="index.html">
       
       
-        <link rel="next" href="instruction.html">
+        <link rel="next" href="../../../Tool_Pool/index.html">
       
       
-      <link rel="icon" href="../../../../assets/pics/logo.png">
+      <link rel="icon" href="../../../assets/pics/logo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>Arithmetic - Space . JaZzyzJ</title>
+        <title>Variational Autoencoder - Space . JaZzyzJ</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../../css/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../css/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../../css/cards.css">
+      <link rel="stylesheet" href="../../../css/cards.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#arithmetic" class="md-skip">
+        <a href="#variational-autoencodervae" class="md-skip">
           跳转至
         </a>
       
@@ -92,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../../.." title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+    <a href="../../.." title="Space . JaZzyzJ" class="md-header__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Arithmetic
+              Variational Autoencoder
             
           </span>
         </div>
@@ -227,7 +227,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../index.html" class="md-tabs__link">
+        <a href="../../../index.html" class="md-tabs__link">
           
   
     
@@ -249,7 +249,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../index.html" class="md-tabs__link">
+        <a href="../../index.html" class="md-tabs__link">
           
   
     
@@ -269,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../Tool_Pool/index.html" class="md-tabs__link">
+        <a href="../../../Tool_Pool/index.html" class="md-tabs__link">
           
   
     
@@ -287,7 +287,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../log/index.html" class="md-tabs__link">
+      <a href="../../../log/index.html" class="md-tabs__link">
         
   
     
@@ -321,7 +321,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
+    <a href="../../.." title="Space . JaZzyzJ" class="md-nav__button md-logo" aria-label="Space . JaZzyzJ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
@@ -375,7 +375,7 @@
         
   
   
-    <a href="../../../../index.html" class="md-nav__link">
+    <a href="../../../index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -433,7 +433,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../index.html" class="md-nav__link ">
+            <a href="../../index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -463,84 +463,10 @@
                 
   
   
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Computer Science
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_2">
-            <span class="md-nav__icon md-icon"></span>
-            Computer Science
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
   
   
     
     
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
       
         
       
@@ -564,11 +490,14 @@
         
   
   
-    <a href="../../algorithm/index.html" class="md-nav__link">
+    
+  
+  
+    <a href="../../cs/algorithm/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    DS & Algorithms
+    Computer Science
   </span>
   
 
@@ -576,6 +505,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -596,6 +527,10 @@
     
       
         
+          
+        
+      
+        
       
     
     
@@ -609,26 +544,36 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
-    System
+    Artifical Intelligence
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
-            System
+            Artifical Intelligence
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -647,12 +592,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
     
     
       
@@ -665,7 +604,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" checked>
         
           
           
@@ -674,23 +613,23 @@
               
   
   <span class="md-ellipsis">
-    CO
+    Deep Generative Model
   </span>
   
 
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_2_2_1" id="__nav_2_2_2_1_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_2_2_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_2_2_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3_2">
             <span class="md-nav__icon md-icon"></span>
-            CO
+            Deep Generative Model
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -712,178 +651,16 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Arithmetic
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="arithmetic.html" class="md-nav__link md-nav__link--active">
+      <a href="vae.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Arithmetic
+    Variational Autoencoder
   </span>
   
 
       </a>
       
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#numbers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Numbers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-sub" class="md-nav__link">
-    <span class="md-ellipsis">
-      Add &amp; Sub
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multiplication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Multiplication
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#division" class="md-nav__link">
-    <span class="md-ellipsis">
-      Division
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#floating-point" class="md-nav__link">
-    <span class="md-ellipsis">
-      Floating Point
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Floating Point">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#floating-point-arithmetic" class="md-nav__link">
-    <span class="md-ellipsis">
-      Floating Point Arithmetic
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accurate-arithmetic" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accurate Arithmetic
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="instruction.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Instruction
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="processor.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Processor
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="memory.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Memory
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -899,114 +676,6 @@
             
           </ul>
         </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../../lingo/verilog.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    PL
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../../ai/index.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Artifical Intelligence
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
       
     </li>
   
@@ -1051,7 +720,7 @@
         
   
   
-    <a href="../../../../Tool_Pool/index.html" class="md-nav__link">
+    <a href="../../../Tool_Pool/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1077,7 +746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../log/index.html" class="md-nav__link">
+      <a href="../../../log/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1110,83 +779,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#numbers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Numbers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-sub" class="md-nav__link">
-    <span class="md-ellipsis">
-      Add &amp; Sub
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multiplication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Multiplication
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#division" class="md-nav__link">
-    <span class="md-ellipsis">
-      Division
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#floating-point" class="md-nav__link">
-    <span class="md-ellipsis">
-      Floating Point
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Floating Point">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#floating-point-arithmetic" class="md-nav__link">
-    <span class="md-ellipsis">
-      Floating Point Arithmetic
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accurate-arithmetic" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accurate Arithmetic
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1203,153 +795,7 @@
   
 
 
-<h1 id="arithmetic">Arithmetic<a class="headerlink" href="#arithmetic" title="Permanent link">&para;</a></h1>
-<h2 id="numbers">Numbers<a class="headerlink" href="#numbers" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Two's Complement</li>
-</ul>
-<p>正数最高位为0，负数最高位为1。</p>
-<p>正数正常表示，负数取反加1。</p>
-<h2 id="add-sub">Add &amp; Sub<a class="headerlink" href="#add-sub" title="Permanent link">&para;</a></h2>
-<h2 id="multiplication">Multiplication<a class="headerlink" href="#multiplication" title="Permanent link">&para;</a></h2>
-<p>乘法器的实现就是加法器，但是需要进行移位和多次加法。</p>
-<p><strong>Version 1</strong></p>
-<p>实现一个64位的乘法器，需要128位的加法器：</p>
-<p><img alt="co-1" src="/../../../../assets/pics/co/co-1.png" /></p>
-<p>还是比较好理解的，就是模仿手写乘法的过程：非常的复杂缓慢，运用128位加法器，但是真正在相加的只有64位。</p>
-<p>在乘数(Multiplier)的当前位为1时，将被乘数(Multiplicand)加到乘积(Product)上，然后乘数右移，被乘数左移。（这里乘数右移是因为我们每次只看乘数的最低位是否为1，在看完了之后需要看下一位，所以需要右移）</p>
-<p>在乘数(Multiplier)的当前位为0时，乘数右移，被乘数左移。</p>
-<p>进行64次循环后结束。</p>
-<p><strong>Version 2</strong></p>
-<p><img alt="co-2" src="/../../../../assets/pics/co/co-2.png" /></p>
-<p>改变思路，移动乘积，这样避免了使用较大的加法器。</p>
-<p>这里需要一个128位的寄存器作为乘积寄存器，分为高64位和低64位，刚开始第一个乘积放在最高位。</p>
-<p>在每次循环中，如果乘数最低位为1，将被乘数加到乘积寄存器的的高64位，然后乘积寄存器右移，乘数右移；</p>
-<p>如果乘数最低位为0，乘积寄存器右移，乘数右移。</p>
-<p>经过64次循环后，乘积寄存器的低64位就是我们想要的结果了。</p>
-<p><strong>Version 3</strong></p>
-<p><img alt="co-3" src="/../../../../assets/pics/co/co-3.png" /></p>
-<p>在先前的版本中，乘积寄存器最终会有一半的空间是浪费掉的，这一半的长度正好与乘数的长度相同，因此我们可以用128位乘积寄存器初始的右半部分来存储乘数，这样就不需要乘数寄存器了。</p>
-<details class="example">
-<summary>Example</summary>
-<p><img alt="co-3-1" src="/../../../../assets/pics/co/co-3-1.png" /></p>
-<p>这个例子就是Version 3的实现过程，需要注意的是我们运用这个算法可以适配不同的数据格式和长度，比如这个书写过程中就是用6-bit的八进制数进行运算，同时下方还给出了同样数据如果是8-bit的十六进制数进行运算的结果。</p>
-</details>
-<hr />
-<p>对有符号数乘法，需要存储符号位，然后进行无符号数乘法，最后根据符号位确定结果的符号。</p>
-<p>但是注意</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><strong>乘法不能用补码计算</strong></p>
-</div>
-<hr />
-<ul>
-<li>Improved Multiplier</li>
-</ul>
-<p><strong>Booth's Algorithm</strong></p>
-<p>我不想写了，放了xyx学长的笔记：
-<a href="https://xuan-insr.github.io/computer_organization/3_arithmetic/#booths-algorithm">🔗</a></p>
-<h2 id="division">Division<a class="headerlink" href="#division" title="Permanent link">&para;</a></h2>
-<p><strong>Version 1</strong>
-除法最初的版本也是模仿手写除法：</p>
-<p><img alt="co-4" src="/../../../../assets/pics/co/co-4.png" /></p>
-<p>进行除法时，主要是通过判断余数的正负来进行的</p>
-<p>除数初始时存放在除数寄存器的高位半边，余数寄存器初始时是存放被除数并放在低位半边的，</p>
-<p>从余数寄存器中减去除数，如果结果为正，左移商寄存器，将最新的右位设为1，如果结果为负，将除数寄存器加回到余数寄存器，左移商寄存器，将最新的右位设为0。</p>
-<p>这之后将除数寄存器右移一位，重复65次循环后结束。</p>
-<p><strong>Version 2</strong></p>
-<p><img alt="co-5" src="/../../../../assets/pics/co/co-5.png" /></p>
-<p>除数不动，被除数放在128位余数的低位半边</p>
-<p>循环开始时，先将余数部分左移一位，然后减去除数，如果结果为正，左移余数寄存器，将最新的右位设为1，如果结果为负，将除数寄存器加回到余数寄存器，左移余数寄存器，将最新的右位设为0。</p>
-<p>这样最后余数寄存器低半位就是商，高半位就是余数。</p>
-<details class="example">
-<summary>7/2</summary>
-<p><img alt="co-6" src="/../../../../assets/pics/co/co-6.png" /></p>
-</details>
-<ul>
-<li>Signed Division</li>
-</ul>
-<p>Reminder 需要与被除数同号</p>
-<h2 id="floating-point">Floating Point<a class="headerlink" href="#floating-point" title="Permanent link">&para;</a></h2>
-<p>32位处理器的数表示范围：</p>
-<p><span class="arithmatex">\(-2^{31} 到 2^{31}-1\)</span></p>
-<p>浮点数的表示：</p>
-<ul>
-<li>Sign</li>
-<li>Significand 增加精确度</li>
-<li>Exponent 增加范围</li>
-</ul>
-<p>二进制数的标准表示方法：</p>
-<p><span class="arithmatex">\(1.xxx * 2^{yyy}\)</span></p>
-<p>对单精度浮点数，y有8位，x有23位</p>
-<p>对双精度浮点数，y有11位，x有52位</p>
-<p><img alt="co-7" src="/../../../../assets/pics/co/co-7.png" /></p>
-<p>第一位的1是一定的，因此不需要计入存储，Exponent是带有Bias的</p>
-<p>单精度浮点数Bias为127，双精度浮点数Bias为1023</p>
-<p>因此最后总的表示方法是：</p>
-<div class="arithmatex">\[
-(-1)^{\text{Sign}} * (1 + \text{Significand(Fraction)}) * 2^{\text{Exponent - Bias}}
-\]</div>
-<details class="example">
-<summary>0.75 和 -0.4375</summary>
-<p><img alt="co-8" src="/../../../../assets/pics/co/co-8.png" /></p>
-<p><img alt="co-9" src="/../../../../assets/pics/co/co-9.png" /></p>
-</details>
-<ul>
-<li>Single Precision Range</li>
-</ul>
-<p>指数中 00000000 和 11111111 是特殊值</p>
-<p>当Exponent为11111111，Fraction为00000000时，表示无穷大</p>
-<p>当Exponent为11111111，Fraction不为00000000时，表示NaN(Not a Number)</p>
-<p>因此单精度浮点数的范围是：</p>
-<p>Smallest Number: <span class="arithmatex">\(1.0 * 2^{1-127} \approx 1.2 * 10^{-38}\)</span></p>
-<p>Largest Number: <span class="arithmatex">\(1.111... * 2^{254-127} \approx 2 * 2^{127} \approx 3.4 * 10^{38}\)</span></p>
-<p>每一位都是1的时候（1.111...），表示无限接近于2</p>
-<h3 id="floating-point-arithmetic">Floating Point Arithmetic<a class="headerlink" href="#floating-point-arithmetic" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Addition and Subtraction</li>
-</ul>
-<ol>
-<li>Alignment</li>
-</ol>
-<p>将两个数进行对齐，通常是将较小的数往大的靠近，因为如果将大的向小的对齐，损失的位数是更高的位数，损失的精度更多</p>
-<ol start="2">
-<li>
-<p>Addition</p>
-</li>
-<li>
-<p>Normalization</p>
-</li>
-<li>
-<p>Rounding</p>
-</li>
-</ol>
-<details class="example">
-<summary>0.5 + -0.4375</summary>
-<p><img alt="co-10" src="/../../../../assets/pics/co/co-10.png" /></p>
-</details>
-<ul>
-<li>Multiplication</li>
-</ul>
-<p>相对简单，只需要将指数相加，尾数相乘即可。</p>
-<p>除法也是类似的</p>
-<h3 id="accurate-arithmetic">Accurate Arithmetic<a class="headerlink" href="#accurate-arithmetic" title="Permanent link">&para;</a></h3>
-<p><img alt="co-10-round" src="/../../../../assets/pics/co/co-10-round.png" /></p>
-<p>为了提高舍入的精度，IEEE 754 标准规定为浮点数额外添加 2 位，从左到右分别称为<strong>Guard</strong>和<strong>Round</strong>，这两位数字保留了浮点数计算的中间过程，从而尽可能地避免精度上的损失。</p>
-<ul>
-<li>Sticky Bit：Sticky 位用于记录移出的尾数中的非零信息，是指只要在Round右边出现过1，那么sticky位就为1</li>
-</ul>
-<div class="admonition summary">
-<p class="admonition-title">浮点数的舍入</p>
-</div>
-<ol>
-<li>如果Guard位为0，那么直接舍去Round和Sticky位</li>
-<li>如果Guard位为1，Round位为1或者Sticky位为1：结果向上舍入，如果都为0，结果向下舍入（保持不变）</li>
-</ol>
-<details class="example">
-<summary>Example</summary>
-<p><img alt="co-10-e" src="/../../../../assets/pics/co/co-10-e.png" /></p>
-</details>
+<h1 id="variational-autoencodervae">Variational Autoencoder(VAE)<a class="headerlink" href="#variational-autoencodervae" title="Permanent link">&para;</a></h1>
 
 
 
@@ -1372,7 +818,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年1月15日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年1月25日</span>
   </span>
 
     
@@ -1382,7 +828,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年11月13日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年1月25日</span>
   </span>
 
     
@@ -1475,7 +921,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: CO">
+          <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: Deep Generative Models">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1485,20 +931,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                CO
+                Deep Generative Models
               </div>
             </div>
           </a>
         
         
           
-          <a href="instruction.html" class="md-footer__link md-footer__link--next" aria-label="下一页: Instruction">
+          <a href="../../../Tool_Pool/index.html" class="md-footer__link md-footer__link--next" aria-label="下一页: Tool Pool">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Instruction
+                Tool Pool
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1532,14 +978,14 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "navigation.expand"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="../../../../js/katex.js"></script>
+        <script src="../../../js/katex.js"></script>
       
-        <script src="../../../../js/mathjax.js"></script>
+        <script src="../../../js/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
