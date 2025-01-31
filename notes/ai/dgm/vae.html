@@ -697,6 +697,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#optimize" class="md-nav__link">
     <span class="md-ellipsis">
       Optimize
@@ -843,6 +852,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#optimize" class="md-nav__link">
     <span class="md-ellipsis">
       Optimize
@@ -884,7 +902,7 @@
 <p>通过编码器将输入数据映射到潜在空间，再通过解码器从潜在变量重构输入数据实现生成</p>
 </li>
 </ul>
-<h2 id="optimize">Optimize<a class="headerlink" href="#optimize" title="Permanent link">&para;</a></h2>
+<h2 id="build">Build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h2>
 <p>在概率模型中，我们希望计算数据的边际似然（marginal likelihood），即在给定观测数据<span class="arithmatex">\(x\)</span>的情况下，计算其在潜在变量<span class="arithmatex">\(z\)</span>上的边际分布。</p>
 <div class="arithmatex">\[
 p_{\theta}(x) = \int p(x, z) dz = \int p_{\theta}(x|z) p(z) dz
@@ -907,9 +925,9 @@ p(z|x) = \frac{p(x|z)p(z)}{p(x)}
 <p>我个人的理解是，我们的优化对象是固定的，即<span class="arithmatex">\(p(x)\)</span>，但在计算过程中，通常很难得到，所以这些工作都是在找一些近似方法来求解，至于我们能不能可视化的理解/从意义上理解这个分布我觉得可能不重要？</p>
 <p>下面我推导完ELBO定义过程之后，可能会有更深的理解。</p>
 </details>
-<p>我们定义目标：maximize function <span class="arithmatex">\(\mathcal{L}\)</span></p>
+<p>我们定义目标 最大化<span class="arithmatex">\(\mathcal{L}\)</span> function:</p>
 <div class="arithmatex">\[
-\mathcal{L}_{\theta,\phi(x)} = -\mathbb{E}_{z \sim q_{\phi}(z|x)}[\log p_{\theta}(x|z)] + \mathcal{D}_{KL}(q_{\phi}(z|x) || p_(z))
+\mathcal{L}_{\theta,\phi(x)} = \mathbb{E}_{z \sim q_{\phi}(z|x)}[\log p_{\theta}(x|z)] - \mathcal{D}_{KL}(q_{\phi}(z|x) || p_(z))
 \]</div>
 <details class="quote" open="open">
 <summary>ELBO 的定义过程</summary>
@@ -926,7 +944,33 @@ p(z|x) = \frac{p(x|z)p(z)}{p(x)}
 <p>我们将这两块tractable的部分放在一起称为<strong>Evidence Lower Bound(ELBO)</strong></p>
 <p>最后我们在进行一步处理：</p>
 <p>用参数化的<span class="arithmatex">\(q_{\theta}(z|x)\)</span>代替<span class="arithmatex">\(q(z)\)</span>，并将<span class="arithmatex">\(p_{\theta}(z)\)</span>简单化处理为<span class="arithmatex">\(p(z)\)</span></p>
+<p>其实好像还有一种非常简单的不等式处理方式，利用函数的convex性质和Jensen不等式，我们重写<span class="arithmatex">\(p_{\theta}(x)\)</span>的log likelihood，然后再对得到的结果log展开即可</p>
+<div class="arithmatex">\[
+\log p_{\theta}(x) = \log \sum_{z} p_{\theta}(x,z) = \log \sum_{z} q(z) \frac{p_{\theta}(x,z)}{q(z)} \geq \sum_{z} q(z) \log \frac{p_{\theta}(x,z)}{q(z)} = ELBO
+\]</div>
+<p>这里的不等式当且仅当<span class="arithmatex">\(p_{\theta}(x,z) = q(z)\)</span>时成立，这是因为选择不同的后验分布其逼近程度不同，从这里我们也可以看出，<span class="arithmatex">\(q(z)\)</span>只要选择的好，那么<span class="arithmatex">\(ELBO\)</span>的值就越逼近<span class="arithmatex">\(\log p_{\theta}(x)\)</span>，也就是说 <mark><span class="arithmatex">\(ELBO\)</span>是对数似然<span class="arithmatex">\(\log p_{\theta}(x)\)</span>的下界</mark>，哈哈！这不就是Evidence Lower Bound的含义吗！</p>
 </details>
+<ul>
+<li>
+<p>Reconstruction Loss</p>
+<p>第一项<span class="arithmatex">\(\mathbb{E}_{z \sim q_{\phi}(z|x)}[\log p_{\theta}(x|z)]\)</span>是重构对数似然项，用于衡量模型重构输入数据的能力，也就是模型能够生成与输入数据相似的数据的能力。</p>
+</li>
+<li>
+<p>Regularization Loss</p>
+<p>第二项<span class="arithmatex">\(\mathcal{D}_{KL}(q_{\phi}(z|x) || p_{\theta}(z))\)</span>是正则化损失，用于约束潜在变量<span class="arithmatex">\(z\)</span>的分布，表示变分分布<span class="arithmatex">\(q(z|x)\)</span>与先验分布<span class="arithmatex">\(p(z)\)</span>的差异，防止变分分布过度偏离先验分布。</p>
+</li>
+</ul>
+<h2 id="optimize">Optimize<a class="headerlink" href="#optimize" title="Permanent link">&para;</a></h2>
+<p>在前文中我们定义好了优化目标，现在我们看一些具体的优化问题：</p>
+<ul>
+<li><span class="arithmatex">\(\phi,\theta\)</span> 的优化</li>
+</ul>
+<p>在<a href="https://jazzyzj.github.io/notes/ai/dgm/index.html#latent-variable-models">Latent Variable Model</a>中，我们提到了<span class="arithmatex">\(\theta\)</span>是一个learnable的参数（在神经网络中学习），他被用作generator中，我的理解就是这里的<span class="arithmatex">\(\theta\)</span>用作组合各个
+潜变量然后输出一个预测分布<span class="arithmatex">\(p_{\theta}(x)\)</span></p>
+<p>然后就是对变量<span class="arithmatex">\(\phi\)</span>的理解：因为<span class="arithmatex">\(p_{\theta}(z|x)\)</span>是intractable的，我们采用变分推断<span class="arithmatex">\(q_{\phi}(z)\)</span>来逼近。而由于后验分布<span class="arithmatex">\(p_{\theta}(z|x^{i}\)</span>对每个样本分布<span class="arithmatex">\(x^i\)</span>是不一样的（例如飞机和大象的高阶特征不同），应该对每一个样本有一个variational parameter，得到优化目标就是：</p>
+<div class="arithmatex">\[
+\max_{\theta, \phi^{1}, \phi^{2}, ...} \sum_{x' \in D} \mathcal{L}(x^i, \theta, \phi^i)
+\]</div>
 
 
 
