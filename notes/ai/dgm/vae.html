@@ -688,9 +688,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#elbo" class="md-nav__link">
+  <a href="#key" class="md-nav__link">
     <span class="md-ellipsis">
-      ELBO
+      Key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimize" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimize
     </span>
   </a>
   
@@ -825,9 +834,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#elbo" class="md-nav__link">
+  <a href="#key" class="md-nav__link">
     <span class="md-ellipsis">
-      ELBO
+      Key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimize" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimize
     </span>
   </a>
   
@@ -852,7 +870,21 @@
 
 
 <h1 id="variational-autoencodervae">Variational Autoencoder(VAE)<a class="headerlink" href="#variational-autoencodervae" title="Permanent link">&para;</a></h1>
-<h2 id="elbo">ELBO<a class="headerlink" href="#elbo" title="Permanent link">&para;</a></h2>
+<h2 id="key">Key<a class="headerlink" href="#key" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>我在学习这部分时被大量的概率公式所困，以至于忘记了模型的初衷，所以在这里我直接放一下最终模型的概念图以及核心思想</p>
+</blockquote>
+<div style="text-align: center;">
+    <img src="/../../../../assets/pics/ai/vea/vea2.png" style="width: 80%;">
+    </div>
+
+<ul>
+<li>
+<p><strong>核心</strong>：</p>
+<p>通过编码器将输入数据映射到潜在空间，再通过解码器从潜在变量重构输入数据实现生成</p>
+</li>
+</ul>
+<h2 id="optimize">Optimize<a class="headerlink" href="#optimize" title="Permanent link">&para;</a></h2>
 <p>在概率模型中，我们希望计算数据的边际似然（marginal likelihood），即在给定观测数据<span class="arithmatex">\(x\)</span>的情况下，计算其在潜在变量<span class="arithmatex">\(z\)</span>上的边际分布。</p>
 <div class="arithmatex">\[
 p_{\theta}(x) = \int p(x, z) dz = \int p_{\theta}(x|z) p(z) dz
@@ -862,7 +894,39 @@ p_{\theta}(x) = \int p(x, z) dz = \int p_{\theta}(x|z) p(z) dz
 <li>这个积分往往是非常复杂甚至于不可解的</li>
 <li><span class="arithmatex">\(p(z)\)</span>是潜变量的分布，通常是不可观测（或者说很难得到正确的分布）</li>
 </ul>
-<p>这时我们引入一个controllable的分布<span class="arithmatex">\(q(x)\)</span>，</p>
+<p>这时我们引入一个controllable的分布<span class="arithmatex">\(q(x)\)</span></p>
+<details class="question" open="open">
+<summary>变分分布</summary>
+<p>变分分布（variational distribution）是用于近似真实分布的一种分布。</p>
+<p>在概率模型中，我们通常关心的一个问题是计算后验分布，即给定观测数据<span class="arithmatex">\(x\)</span>后，潜在变量<span class="arithmatex">\(z\)</span>的分布<span class="arithmatex">\(p(z|x)\)</span>。根据贝叶斯定理：</p>
+<div class="arithmatex">\[
+p(z|x) = \frac{p(x|z)p(z)}{p(x)}
+\]</div>
+<p>这里对他计算十分不便，因为<span class="arithmatex">\(p(x)\)</span>的积分非常复杂（尤其在<span class="arithmatex">\(p(x)\)</span>是高维数据时）。</p>
+<p>因此，我们引入一个变分分布<span class="arithmatex">\(q(z|x)\)</span>，来近似<span class="arithmatex">\(p(z|x)\)</span>，这个分布通常比较简单，且可以被控制。</p>
+<p>我个人的理解是，我们的优化对象是固定的，即<span class="arithmatex">\(p(x)\)</span>，但在计算过程中，通常很难得到，所以这些工作都是在找一些近似方法来求解，至于我们能不能可视化的理解/从意义上理解这个分布我觉得可能不重要？</p>
+<p>下面我推导完ELBO定义过程之后，可能会有更深的理解。</p>
+</details>
+<p>我们定义目标：maximize function <span class="arithmatex">\(\mathcal{L}\)</span></p>
+<div class="arithmatex">\[
+\mathcal{L}_{\theta,\phi(x)} = -\mathbb{E}_{z \sim q_{\phi}(z|x)}[\log p_{\theta}(x|z)] + \mathcal{D}_{KL}(q_{\phi}(z|x) || p_(z))
+\]</div>
+<details class="quote" open="open">
+<summary>ELBO 的定义过程</summary>
+<p>首先对<span class="arithmatex">\(p(x)\)</span>取对数，重写它在潜分布<span class="arithmatex">\(z\)</span>上的对数似然</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\log p_{\theta}(x) &amp;= \int_{z} q(z) \log p_{\theta}(x) dz \space \space \space \text{for any distribution q}\\ &amp;= \int_{z} q(z) \log \frac{p_{\theta}(x|z)p_{\theta}(z)}{p_{\theta}(z|x)} dz \\ &amp;= \int_{z} q(z) \log( \frac{p_{\theta}(x|z)p_{\theta}(z)}{p_{\theta}(z|x)} \frac{q(z)}{q(z)} ) dz \\ &amp;= \int_{z} q(z)(\log p_{\theta}(x|z) + \log \frac{p_{\theta}(z)}{q(z)} + \log \frac{q(z)}{p_{\theta}(z|x)}) dz \\ &amp;= \mathbb{E}_{z \sim q(z)}[\log p_{\theta}(x|z)]  - \mathcal{D}_{KL}(q(z) || p_{\theta}(z)) + \mathcal{D}_{KL}(q(z)||p_{\theta}(z|x))
+\end{aligned}
+\]</div>
+<p>我们知道关于<span class="arithmatex">\(p(x)\)</span>和基于x先验的z的项都是不易解决的（intractable）</p>
+<p><div style="text-align: center;">
+<img src="/../../../../assets/pics/ai/vea/vea1.png" style="width: 60%;">
+</div></p>
+<p>我们将这两块tractable的部分放在一起称为<strong>Evidence Lower Bound(ELBO)</strong></p>
+<p>最后我们在进行一步处理：</p>
+<p>用参数化的<span class="arithmatex">\(q_{\theta}(z|x)\)</span>代替<span class="arithmatex">\(q(z)\)</span>，并将<span class="arithmatex">\(p_{\theta}(z)\)</span>简单化处理为<span class="arithmatex">\(p(z)\)</span></p>
+</details>
 
 
 
