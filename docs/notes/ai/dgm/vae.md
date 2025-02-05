@@ -52,6 +52,14 @@ $$
 
     因此，我们引入一个变分分布$q(z|x)$，来近似$p(z|x)$，这个分布通常比较简单，且可以被控制。
 
+    ???+ note "变分推断"
+
+        pick a variational parameter $\phi$ so that $q_{\phi}(z)$ is close to $p_{\theta}(z|x)$
+
+        <div style="text-align: center;">
+        <img src="/../../../../assets/pics/ai/vea/vea3.png" style="width: 60%;">
+        </div>
+
     我个人的理解是，我们的优化对象是固定的，即$p(x)$，但在计算过程中，通常很难得到，所以这些工作都是在找一些近似方法来求解，至于我们能不能可视化的理解/从意义上理解这个分布我觉得可能不重要？
 
     下面我推导完ELBO定义过程之后，可能会有更深的理解。
@@ -62,6 +70,14 @@ $$
 \mathcal{L}_{\theta,\phi(x)} = \mathbb{E}_{z \sim q_{\phi}(z|x)}[\log p_{\theta}(x|z)] - \mathcal{D}_{KL}(q_{\phi}(z|x) || p_(z))
 $$
 
+这个公式是在VAE中广泛采用的定义，同时也有一个形式更简单的（不打开$p(x, z)$）形式：
+
+$$
+\begin{aligned}
+\mathcal{L}_{\theta,\phi}(x) &= \sum_{z} q_{\phi}(z) \log p_{\theta}(z, x) + H(q_{\phi}(z)) \\ 
+&= \mathbb{E}_{q_{\phi}(z)}[\log p_{\theta}(z, x) - \log q_{\phi}(z)]
+\end{aligned}
+$$
 
 ???+ quote "ELBO 的定义过程"
 
@@ -92,7 +108,16 @@ $$
     \log p_{\theta}(x) = \log \sum_{z} p_{\theta}(x,z) = \log \sum_{z} q(z) \frac{p_{\theta}(x,z)}{q(z)} \geq \sum_{z} q(z) \log \frac{p_{\theta}(x,z)}{q(z)} = ELBO
     $$
 
-    这里的不等式当且仅当$p_{\theta}(x,z) = q(z)$时成立，这是因为选择不同的后验分布其逼近程度不同，从这里我们也可以看出，$q(z)$只要选择的好，那么$ELBO$的值就越逼近$\log p_{\theta}(x)$，也就是说 ==$ELBO$是对数似然$\log p_{\theta}(x)$的下界==，哈哈！这不就是Evidence Lower Bound的含义吗！
+    这里的不等式当且仅当$p_{\theta}(z|x) = q(z)$时成立，这是因为选择不同的后验分布其逼近程度不同，从这里我们也可以看出，$q(z)$只要选择的好，那么$ELBO$的值就越逼近$\log p_{\theta}(x)$，也就是说 ==$ELBO$是对数似然$\log p_{\theta}(x)$的下界==，哈哈！这不就是Evidence Lower Bound的含义吗！
+
+    <div style="text-align: center;">
+    <img src="/../../../../assets/pics/ai/vea/vea4.png" style="width: 60%;">
+    </div>
+    
+    <div style="text-align: center;">
+    取得等号即意味着KL散度为0
+    </div>
+
 
 - Reconstruction Loss
 
@@ -112,11 +137,70 @@ $$
 在[Latent Variable Model](https://jazzyzj.github.io/notes/ai/dgm/index.html#latent-variable-models)中，我们提到了$\theta$是一个learnable的参数（在神经网络中学习），他被用作generator中，我的理解就是这里的$\theta$用作组合各个
 潜变量然后输出一个预测分布$p_{\theta}(x)$
 
-然后就是对变量$\phi$的理解：因为$p_{\theta}(z|x)$是intractable的，我们采用变分推断$q_{\phi}(z)$来逼近。而由于后验分布$p_{\theta}(z|x^{i}$对每个样本分布$x^i$是不一样的（例如飞机和大象的高阶特征不同），应该对每一个样本有一个variational parameter，得到优化目标就是：
+然后就是对变量$\phi$的理解：因为$p_{\theta}(z|x)$是intractable的，我们采用变分推断$q_{\phi}(z)$来逼近。而由于后验分布$p_{\theta}(z|x^{i})$对每个样本分布$x^i$是不一样的（例如飞机和大象的高阶特征不同），应该对每一个样本有一个variational parameter，得到优化目标就是：
 
 $$
-\max_{\theta, \phi^{1}, \phi^{2}, ...} \sum_{x' \in D} \mathcal{L}(x^i, \theta, \phi^i)
+\max_{\theta, \phi^{1}, \phi^{2}, ...} \sum_{x^i \in D} \mathcal{L}(x^i, \theta, \phi^i) = \max_{\theta, \phi^{1}, \phi^{2}, ...} \mathbb{E}_{q_{\phi^i}(z)}[\log p_{\theta}(z, x) - \log q_{\phi^i}(z)]
 $$
+
+
+
+现在我们用 Stochastic Variational Inference(SVI) 来进行优化：
+
+>就是使用随机梯度下降的变分推断
+
+
+
+
+
+我们先前使用的$\phi^i$是**单样本映射**，但是由于参数过多很难训练，我们取一个**amortized inference**，也就是对全体样本都适用的一个$\phi$。
+
+!!! note "Amortization"
+
+    通过学习一个单变量函数$f_{\lambda}$，将输入的每个样本$x^i$映射到一组好的变分参数
+
+    区别就是单样本映射需要对每个样本单独计算参数，而amortized inference通过训练神经网络将输入直接映射到共享参数
+
+总的算法流程如下：
+
+!!! quote "Algo"
+
+    - Initialize $\theta$ and $\phi$
+    - Randomly sample a data $x^i$ from dataset $\mathcal{D}$
+    - Compute gradient $\nabla_{\theta} \mathcal{L}$ and $\nabla_{\phi} \mathcal{L}$
+    - Update $\theta$ and $\phi$ in the direction of the gradient
+    - Repeat until convergence
+
+
+现在来看具体的梯度计算：我们使用Monte Carlo来近似
+
+可以看到$\theta$的梯度计算是直接的：
+
+$$
+\nabla_{\theta} \mathbb{E}_{q_{\phi}(z)}[\log p_{\theta}(z, x) - \log q_{\phi}(z)] \approx \frac{1}{K} \sum_{k=1}^{K} \nabla_{\theta} \log p_{\theta}(z_k, x)
+$$
+
+但是$\phi$的梯度计算需要使用reparameterization trick：
+
+!!! question "Reason"
+
+    我们知道所求期望是依赖于$\phi$的，对$z$的采样操作是不连续的，无法使用backpropagation，如果把采样操作转移到不需要backpro的部分，我们就可以只需要对参数求导
+
+具体的方法如下：
+
+假设$z$属于正态分布，将其改写：
+
+$$
+z = \mu + \delta \epsilon = g(\epsilon, \phi) \text{ g is determinstic}
+$$
+
+其中$\epsilon \sim \mathcal{N}(0, I)$是一个标准正态分布的噪声项，$\mu$和$\delta$是学习的参数
+
+
+
+
+
+
 
 
 
