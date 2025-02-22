@@ -197,6 +197,20 @@ $$
 其中$\epsilon \sim \mathcal{N}(0, I)$是一个标准正态分布的噪声项，$\mu$和$\delta$是学习的参数
 
 
+## Expectation Maximization
+
+>这部分是关于VAE模型与EM之间的关系
+
+
+
+
+
+
+## Vector Quantized(VQ-VAE)
+
+
+
+
 
 
 
