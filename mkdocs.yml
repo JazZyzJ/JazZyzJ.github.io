@@ -138,6 +138,8 @@ nav:
             - Instruction: notes/cs/Sys/CO/instruction.md
             - Processor: notes/cs/Sys/CO/processor.md
             - Memory: notes/cs/Sys/CO/memory.md
+          - Database System:
+            - notes/cs/Sys/dbs/dbsmemo.md
         - PL: 
           - Verilog: notes/lingo/verilog.md
           - Python(CS61a): notes/lingo/cs61a.md
@@ -146,7 +148,9 @@ nav:
         - Deep Generative Model: 
             - notes/ai/dgm/index.md
             - VAE: notes/ai/dgm/vae.md
-            
+      - X:
+        - Drug Design:
+          - x/aidd/aidd.md
           
   - To0ls:
     - Tool_Pool/index.md
