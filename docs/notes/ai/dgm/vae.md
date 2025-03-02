@@ -10,7 +10,7 @@ statistics: true
 > 我在学习这部分时被大量的概率公式所困，以至于忘记了模型的初衷，所以在这里我直接放一下最终模型的概念图以及核心思想
 
 <div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/vea/vea2.png" style="width: 80%;">
+    <img src="/../../../../assets/pics/ai/dgm/vea/vea2.png" style="width: 80%;">
     </div>
 
 - **核心**：
@@ -57,7 +57,7 @@ $$
         pick a variational parameter $\phi$ so that $q_{\phi}(z)$ is close to $p_{\theta}(z|x)$
 
         <div style="text-align: center;">
-        <img src="/../../../../assets/pics/ai/vea/vea3.png" style="width: 60%;">
+        <img src="/../../../../assets/pics/ai/dgm/vea/vea3.png" style="width: 60%;">
         </div>
 
     我个人的理解是，我们的优化对象是固定的，即$p(x)$，但在计算过程中，通常很难得到，所以这些工作都是在找一些近似方法来求解，至于我们能不能可视化的理解/从意义上理解这个分布我觉得可能不重要？
@@ -92,7 +92,7 @@ $$
     我们知道关于$p(x)$和基于x先验的z的项都是不易解决的（intractable）
 
     <div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/vea/vea1.png" style="width: 60%;">
+    <img src="/../../../../assets/pics/ai/dgm/vea/vea1.png" style="width: 60%;">
     </div>
 
     我们将这两块tractable的部分放在一起称为**Evidence Lower Bound(ELBO)**
@@ -111,7 +111,7 @@ $$
     这里的不等式当且仅当$p_{\theta}(z|x) = q(z)$时成立，这是因为选择不同的后验分布其逼近程度不同，从这里我们也可以看出，$q(z)$只要选择的好，那么$ELBO$的值就越逼近$\log p_{\theta}(x)$，也就是说 ==$ELBO$是对数似然$\log p_{\theta}(x)$的下界==，哈哈！这不就是Evidence Lower Bound的含义吗！
 
     <div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/vea/vea4.png" style="width: 60%;">
+    <img src="/../../../../assets/pics/ai/dgm/vea/vea4.png" style="width: 60%;">
     </div>
     
     <div style="text-align: center;">

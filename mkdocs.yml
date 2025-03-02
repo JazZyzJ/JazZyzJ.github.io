@@ -115,7 +115,7 @@ nav:
   - N0tes:
       - notes/index.md
       - Computer Science:
-        # - notes/cs/index.md
+        - notes/cs/index.md
         - DS & Algorithms:
           - notes/cs/algorithm/index.md
           - FDS: notes/cs/algorithm/fds/fds.md
@@ -141,13 +141,15 @@ nav:
           - Database System:
             - notes/cs/Sys/dbs/dbsmemo.md
         - PL: 
-          - Verilog: notes/lingo/verilog.md
           - Python(CS61a): notes/lingo/cs61a.md
+          - Verilog: notes/lingo/verilog.md
+          - C++: notes/lingo/cpp.md
       - Artifical Intelligence:
         - notes/ai/index.md
         - Deep Generative Model: 
             - notes/ai/dgm/index.md
             - VAE: notes/ai/dgm/vae.md
+            - Autoregressive Model: notes/ai/dgm/ar.md
       - X:
         - Drug Design:
           - x/aidd/aidd.md

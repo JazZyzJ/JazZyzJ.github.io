@@ -1,6 +1,5 @@
 ---
 comments: true
-statistics: true
 ---
 
 
