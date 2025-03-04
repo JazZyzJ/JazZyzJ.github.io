@@ -138,8 +138,148 @@ $$
 </div>
 
 
+如果我们直接bp这个过程：
+
+<div style="text-align: center;">
+    <img src="/../../../../assets/pics/ai/dgm/ar/ar8.png" style="width: 60%;">
+</div>
+
+这条路径会走遍所有先前所有的outputs，所有的sampling operation和所有的networks
+
+因此是infeasible❌ to train a AR following its inference graph
+
+
+## Training
+
+我们采用teacher-forcing的方式进行训练，就是不考虑先前的输出结果，直接使用ground truth data
+
+<div style="text-align: center;">
+    <img src="/../../../../assets/pics/ai/dgm/ar/ar9.png" style="width: 60%;">
+</div>
+
+
+- Pros：
+
+    - bp路径短得多
+    - ground truth inputs can ease training
+
+- Cons：
+
+    - inconsistent：在训练与推理时不一致，因为在推理时没有ground truth来校正错误
+    - distribution shift：不能看见自己的错误
 
 
 
+## Network Architecture
+>Autoregression is **not** architecture-specific❗️
 
+先前我们讨论的东西都不涉及具体的架构，现在我们讨论一下具体的架构
+
+
+### Shared Computation
+
+之前我们说可以使用shared arch、weight，现在我们对神经网络层进行share
+
+如果对每个$j \geq i$，output $x_i$ not depend on $x_j$(就是输出只依赖之前而不依赖之后)
+
+<div style="text-align: center;">
+    <img src="/../../../../assets/pics/ai/dgm/ar/ar10.png" style="width: 60%;">
+</div>
+
+
+### RNN
+>Recurrent Neural Network
+
+构建一个RNN的步骤可以这样表示：
+
+=== "One RNN Unit"
+
+    <div style="text-align: center;">
+        <img src="/../../../../assets/pics/ai/dgm/ar/ar11.png" style="width: 20%;">
+    </div>
+
+=== "Unfold in "time""
+
+    <div style="text-align: center;">
+        <img src="/../../../../assets/pics/ai/dgm/ar/ar12.png" style="width: 40%;">
+    </div>
+
+=== "Go deep"
+
+    <div style="text-align: center;">
+        <img src="/../../../../assets/pics/ai/dgm/ar/ar13.png" style="width: 40%;">
+    </div>
+
+RNN可以理解为：keep a summary and recursively update it
+
+在这里hidden layer $h_i$就是那个summary
+
+我们进行更新的过程就是：
+
+$$
+h_{t+1} = \sigma(W_{hh}h_t + W_{xh}x_{t+1})
+$$
+
+然后进行预测：
+
+$$
+o_{t+1} = W_{hy}h_{t+1}
+$$
+
+但是要注意我们的summary是需要进行初始化的$h_0 = b_0$
+
+最终我们对三个矩阵进行训练，这三个矩阵的参数关于n是常数的
+
+???+ example 
     
+    Character RNN(Andrej Karpathy)
+
+    <div style="text-align: center;">
+        <img src="/../../../../assets/pics/ai/dgm/ar/ar14.png" style="width: 60%;">
+    </div>
+
+    <div style="text-align: center;"    >
+        <img src="/../../../../assets/pics/ai/dgm/ar/ar15.png" style="width: 60%;">
+    </div>
+
+- Pros:
+
+    - 对任意长度都适用
+    - 通用性：对任意computable function都存在一个finite RNN
+
+
+- Cons:
+
+    - 需要排序
+    - Sequencial likelihood evaluation 训练时很慢（因为无法并行计算）
+    - 生成时是序列生成
+    - 对长序列会有梯度消失/爆炸问题
+
+
+
+
+
+### CNN
+>Convolutional Neural Network
+
+<div style="text-align: center;">
+    <img src="/../../../../assets/pics/ai/dgm/ar/ar16.png" style="width: 60%;">
+</div>
+
+卷积神经网络依赖的是每个“像素”的局部性，也就是他们与周边空间的相互依赖关系，我的理解是卷积操作就是对原始数据进行down sampling的过程，让数据中蕴含的依赖关系更加明显，这其中采用的各类操作如卷积、池化、激活函数等都是为了这个目的。
+
+
+在AR中，我们这样构建
+<div style="text-align: center;">
+    <img src="/../../../../assets/pics/ai/dgm/ar/ar17.png" style="width: 30%;">
+</div>
+
+### Attention
+
+
+
+
+
+
+
+

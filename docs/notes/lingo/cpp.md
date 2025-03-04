@@ -10,6 +10,8 @@ comment: true
     
     这是我在学习oop时的memo，我不会系统的整理整个课程的笔记，但是会写下一些备忘和例子方便复习时使用
 
+    完整的笔记我参考的是[NoughQ同学的笔记](https://note.noughtq.top/lang/cpp)
+
 ## Lec1
 
 ```cpp
@@ -115,8 +117,146 @@ ostream& operator<<(ostream& out, const Student& s) {
 ```
 
 
+## Lec3
+>STL
+
+### Container
+
+- Sequencial:
+    - array(static)
+    - vector(dynamic)动态数组
+    - deque
+    - forward_list(single linked)
+    - list(doubly-linked)双向链表
+
+- Associative
+    - set(keys)
+    - map(keys and values)
+    - multimap(允许重复key)
+    - multiset(允许重复key)
+
+- Unordered associative
+    - unordered_set,map,multiset,multimap
 
 
+- Adapters
+    - stack
+    - queue
+    - priority_queue
+
+---
+
+- insert函数：
+
+```cpp
+vector<int> evens;
+...
+evens.insert(evens.begin()+4, 5, 10);
+```
+
+就是在begin+4的位置插入5个10
+
+- iterator方式遍历
+
+```cpp
+for (vector<int>::iterator it = evens.begin(); it < evens.end(); ++it) 
+    cout << *it << ' ';
+```
+
+也可以在这里使用auto：
+
+```cpp
+for (auto it = evens.begin(); it... )
+...
+```
+
+因为在这里编译器可以根据后面的赋值判断出it的类型，但如果直接随便写一个```auto it;```是没有意义的
+
+也可以这样遍历：
+
+```cpp
+for (int x : evens)
+    cout << x << ' ';
+```
+
+这是一个语法糖，编译器将你写的东西转换成了iterator
+
+如果需要对其中的内容进行修改：
+
+```cpp
+for (int& x : evens)
+    x *= 2;
+```
+
+将x声明为引用即可
+
+!!! warning "注意"
+
+    在进行遍历时，只有vector可以用 < 符号来进行终止判断，因为vector是连续内存，其他容器通常用```it != container.end()```来判断（链表比较大小没有意义）
+
+
+- Map
+
+```cpp
+#include <map>
+#include <string>
+
+map<string, float> price;
+price["snapple"] = 0.75;
+price["coke"] = 0.50;
+string item;
+double total=0;
+while (cin >> item)
+    total += price[item];
+```
+
+如果我们在进行输入的时候写进total的字符不是已知的snapple、coke，那么他其实会帮你插入这个字符，并将他的value设置为默认值0.0
+
+```cpp
+int main() {
+    map<string, int> word_map;
+    for (const auto& w: {"we", "are", "not", "humans", "we", "are", "robots"})
+        ++word_map[w];
+    for (const auto& [word, count]: word_map)
+        cout << count << " occurrences of word '" << word << "'\n";
+}
+```
+
+这里运用了map的[]运算符和输出时的结构化绑定
+
+
+- Algorithms
+
+算法作用的对象都是迭代器，我们传入迭代器后算法进行操作，同一种算法可以作用于不同的容器，因为算法是不依赖于容器的，这样形成了算法与容器的解耦，提高了代码的复用性。
+
+- reverse
+
+```cpp
+vector<int> v = {1, 2, 3, 4};
+reverse(v.begin(), v.end());
+```
+
+可以看到reverse直接作用在vector本身，是直接对vector进行修改的
+
+```cpp
+vector<int> u;
+copy(v.begin(), v.end(), u.begin());
+```
+
+这样程序会报错segmentation fault，因为u没有初始化大小，默认是空的，因此也不会有begin这个位置，也就是说我们需要u中有数据
+
+如果想要能够做到插入可以换一个迭代器：
+
+```cpp
+vector<int> u(v.size());
+copy(v.begin(), v.end(), back_inserter(u));
+```
+
+还能够用algo来实现输出流：
+
+```cpp
+copy(v.begin(), v.end(), ostream_iterator<int>(cout," "));
+```
 
 
 
