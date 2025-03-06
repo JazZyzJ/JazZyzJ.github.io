@@ -255,8 +255,39 @@ copy(v.begin(), v.end(), back_inserter(u));
 还能够用algo来实现输出流：
 
 ```cpp
-copy(v.begin(), v.end(), ostream_iterator<int>(cout," "));
+copy(v.begin(), v.end(), ostream_iterator<int>(cout," ,"));
 ```
+
+但是这样我们输出的最后会多一个逗号，可以用一个头文件来解决：
+
+```cpp
+#include "infix_iterator.h"
+```
+这个头文件是在除了第一个元素以后的遍历中都保留操作
+
+
+然后我们就直接使用：
+
+```cpp
+copy(v.begin(), v.end(), infix_ostream_iterator<int>(cout, ", "));
+```
+
+- erase
+
+```cpp
+list<int> L;
+list<int>::iterator li;
+li = L.begin();
+L.erase(li);
+++li;// WRONG
+```
+
+迭代器在erase后会失效，因此不能++li，需要重新赋值
+
+```cpp
+li = L.erase(li);//RIGHT
+```
+
 
 
 
