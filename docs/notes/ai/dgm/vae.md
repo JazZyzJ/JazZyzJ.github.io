@@ -5,17 +5,17 @@ comment: true
 
 # Variational Autoencoder(VAE)
 
-## Key
+!!! tip "Key"
 
-> 我在学习这部分时被大量的概率公式所困，以至于忘记了模型的初衷，所以在这里我直接放一下最终模型的概念图以及核心思想
+    > 我在学习这部分时被大量的概率公式所困，以至于忘记了模型的初衷，所以在这里我直接放一下概念图以及核心思想
 
-<div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/vea/vea2.png" style="width: 80%;">
-    </div>
+    <div style="text-align: center;">
+        <img src="/../../../../assets/pics/ai/dgm/vea/vea2.png" style="width: 80%;">
+        </div>
 
-- **核心**：
-  
-    通过编码器将输入数据映射到潜在空间，再通过解码器从潜在变量重构输入数据实现生成
+    - **核心**：
+    
+        通过编码器将输入数据映射到潜在空间，再通过解码器从潜在变量重构输入数据实现生成
 
     
     
