@@ -81,3 +81,52 @@ mutiset 是允许重复元素的
     多重集，允许重复元素（去除重复元素代价很大）这样就支持SQL中操作
     
     
+## Intro to SQL
+
+- interval:period of time 
+    - 用两个时间做差
+
+- create table
+来个例子：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs7.png" style="width: 60%;">
+    </div>
+create table只是在定义一个schema，需要在后续的如insert操作中创建instance
+
+- Integrity Constrains
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs8.png" style="width: 60%;">
+    </div>
+
+    - foreign key
+
+    对于foreign key，要求在主键中存在，或者为null，但是如果一个操作导致foreign key指向的对象被删除，会有以下可选项：
+
+    - on delete cascade: 级联删除，将有关的全部删除（系没了学生也删掉）
+    - on delete set null: 设置为null（系没了学生还在但不知道系名）
+    - on delete restrict: 拒绝删除（系里有学生，系就不能删）
+    - on delete set default: 设置为默认值（系没了，学生还在，设置到默认的系中）
+
+    同样对于update，也就是被引用的对象的更新，也有on update+四个一样的选项，只是这里的级联是更新所有引用者的值
+
+
+- alter table
+
+支持动态更改表的定义
+
+
+- group by 
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs9.png" style="width: 60%;">
+    </div>
+
+- natural join
+
+简化操作
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs10.png" style="width: 60%;">
+    </div>

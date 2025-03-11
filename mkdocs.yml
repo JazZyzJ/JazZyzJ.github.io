@@ -132,6 +132,7 @@ nav:
           - Parallel: notes/cs/algorithm/para.md
           - External Sort: notes/cs/algorithm/external.md
         - System:
+          - notes/cs/Sys/index.md
           - CO: 
             - notes/cs/Sys/CO/index.md
             - Arithmetic: notes/cs/Sys/CO/arithmetic.md
@@ -144,6 +145,10 @@ nav:
           - Python(CS61a): notes/lingo/cs61a.md
           - Verilog: notes/lingo/verilog.md
           - C++: notes/lingo/cpp.md
+      - Math:
+        - notes/math/index.md
+        - Random Process:
+          - notes/math/randomprocess/index.md
       - Artifical Intelligence:
         - notes/ai/index.md
         - Deep Generative Model: 
