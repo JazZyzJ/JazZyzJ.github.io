@@ -2,138 +2,174 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://jazzyzj.github.io/index.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/friends.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/Tool_Pool/index.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/Tool_Pool/GNU_Make.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/Tool_Pool/git.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/log/index.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://jazzyzj.github.io/log/hou/2.22.html</loc>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/index.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/ai/index.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/ai/dgm/index.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://jazzyzj.github.io/notes/ai/dgm/ar.html</loc>
+         <lastmod>2025-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://jazzyzj.github.io/notes/ai/dgm/flow.html</loc>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/ai/dgm/vae.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/index.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/HPC/index.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://jazzyzj.github.io/notes/cs/Sys/index.html</loc>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/Sys/CO/index.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/Sys/CO/arithmetic.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/Sys/CO/instruction.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/Sys/CO/memory.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/Sys/CO/processor.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://jazzyzj.github.io/notes/cs/Sys/dbs/dbsmemo.html</loc>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/index.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/Approximation.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/DandC.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/NP.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/Search_ProblemSolving.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/backtracking.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/dp.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/external.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/gdy.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/localsearch.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/para.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/random.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/ads/ADS.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/ads/amortize.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/cs/algorithm/fds/fds.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://jazzyzj.github.io/notes/lingo/cpp.html</loc>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/lingo/cs61a.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
     </url>
     <url>
          <loc>https://jazzyzj.github.io/notes/lingo/verilog.html</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://jazzyzj.github.io/notes/math/index.html</loc>
+         <lastmod>2025-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://jazzyzj.github.io/notes/math/randomprocess/index.html</loc>
+         <lastmod>2025-03-12</lastmod>
+    </url>
+    <url>
+         <loc>https://jazzyzj.github.io/notes/x/aidd/aidd.html</loc>
+         <lastmod>2025-03-12</lastmod>
     </url>
 </urlset>
