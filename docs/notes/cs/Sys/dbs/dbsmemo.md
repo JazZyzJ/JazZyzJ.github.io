@@ -130,3 +130,29 @@ create table只是在定义一个schema，需要在后续的如insert操作中�
 <div align="center" >
     <img src="/../../../../assets/pics/dbs/dbs10.png" style="width: 60%;">
     </div>
+
+
+- 通配符
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs11.png" style="width: 60%;">
+    </div>
+
+中文字符占位是两个字节，有可能出现前后两个字中间的部分被截断匹配的情况，因此中文建议完全匹配或者用 _ _ 来表示一个汉字
+
+
+- limit
+
+用于控制返回的行数
+
+``` sql
+select * from student limit 5;
+==
+select * from student 0, 5; /* offset, row_count*/
+```
+
+- not exist的一个例子
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs12.png" style="width: 60%;">
+    </div>
