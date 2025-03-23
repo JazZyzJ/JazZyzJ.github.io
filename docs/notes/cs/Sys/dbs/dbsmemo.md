@@ -156,3 +156,98 @@ select * from student 0, 5; /* offset, row_count*/
 <div align="center" >
     <img src="/../../../../assets/pics/dbs/dbs12.png" style="width: 60%;">
     </div>
+
+
+
+
+
+
+
+## Intermediate SQL
+
+- 连接表达式
+
+连接条件之前的表达式中这样写：
+
+```sql
+select *
+from a, b
+where a.id = b.id
+```
+
+现在可以采用```join using```来写：
+
+```sql
+select *
+from a join b using (id)
+```
+以及：```join on```
+
+```sql
+from a join b on a.id = b.id
+```
+
+虽然看上去on的作用可以被using和where代替，但是在使用outer join时，on可以起到作用
+    
+- 使用outer join的一个例子：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs13.png" style="width: 80%;">
+    </div>
+
+通过outer join解决：保留左边关系中的没有课程的学生的ID，其余信息null
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs14.png" style="width: 80%;">
+    </div>
+
+如果使用的是where：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs15.png" style="width: 80%;">
+    </div>
+
+也就是说outer join只是对结果关系进行的补充，而不是对参与连接的关系进行补充，因此在使用where（作用对象就是参与连接的关系）时，上述例子会出现根本找不到Snow这个学生的ID，where就会过滤掉Snow的信息
+
+
+连接类型可以和连接条件组合使用：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs16.png" style="width: 80%;">
+    </div>
+
+
+- 事务 trasaction
+
+
+- 完整性约束
+
+
+
+- 用户定义类型
+
+```sql
+create type dollars as numeric(12, 2) final; /*final 表示是最小的类型，不能被继承*/
+
+create table sales (
+    id integer,
+    amount dollars
+);
+```
+
+- Domain 类型定义
+
+domains与type相比可以添加约束，比如：
+
+```sql
+create domain dollars as numeric(12, 2) check (value >= 0);
+```
+
+- Large Objects Types
+
+图像、视频等大体积文件被存储为大对象类型
+
+
+- Authorization
+
+角色是权限的集合

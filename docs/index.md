@@ -42,10 +42,14 @@ I will use this site as a blog to record my learning experience and share my tho
 - title: Advanced Data Structures and Algorithms
   content: Complete notes for Advanced Data Structures and Algorithms in 2024 Fall
   url: https://jazzyzj.github.io/notes/cs/algorithm/ads/ADS.html
+  
+   
 
 - title: Deep Generative Models
   content: Learning notes for Deep Generative Models 
   url: https://jazzyzj.github.io/notes/ai/dgm/index.html
+
+  
 
 ::/cards::
 
@@ -59,6 +63,5 @@ I will use this site as a blog to record my learning experience and share my tho
     :material-circle-edit-outline: 总字数: {{ words }}
         
     :fontawesome-solid-code: 代码块行数: {{ codes }}
-
 
 

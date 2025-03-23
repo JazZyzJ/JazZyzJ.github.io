@@ -14,8 +14,8 @@ comment: true
     进行这部分学习的初衷是在侯老师的实验室，我在秦睿师兄的指导下开展关于蛋白质分子生成工作的评测，由于不想局限于使用现有模型而是能更深入的理解模型的工作原理，因此开始进行这部分的学习。
 
     - [x] [VAE](./vae.md)
-    - [ ] [Autoregressive Models](./ar.md)
-    - [ ] [Normalizing Flows](./nf.md)
+    - [x] [Autoregressive Models](./ar.md)
+    - [x] [Normalizing Flows](./nf.md)
     
     - [ ] [Ganerative Adversarial Networks](./gan.md)
     - [ ] [Diffusion Models](./dm.md)
