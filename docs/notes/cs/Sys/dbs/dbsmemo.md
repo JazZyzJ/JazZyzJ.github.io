@@ -251,3 +251,6 @@ create domain dollars as numeric(12, 2) check (value >= 0);
 - Authorization
 
 角色是权限的集合
+
+## Superior SQL
+
