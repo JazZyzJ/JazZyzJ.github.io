@@ -16,7 +16,7 @@ comment: true
     - [x] [VAE](./vae.md)
     - [x] [Autoregressive Models](./ar.md)
     - [x] [Normalizing Flows](./nf.md)
-    
+    - []  [Energy-based Models](./energy.md)
     - [ ] [Ganerative Adversarial Networks](./gan.md)
     - [ ] [Diffusion Models](./dm.md)
 

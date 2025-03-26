@@ -153,6 +153,7 @@ nav:
             - VAE: notes/ai/dgm/vae.md
             - Autoregressive Model: notes/ai/dgm/ar.md
             - Normalizing Flow: notes/ai/dgm/flow.md
+            - Energy-based Models: notes/ai/dgm/energy.md
       - Math:
         - notes/math/index.md
         - Random Process:
