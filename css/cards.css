@@ -113,3 +113,36 @@
   }
   
   /*# sourceMappingURL=cards.css.map */
+
+
+
+  /* 我想添加一个卡片中的标签项，用标签标识内容分类，采用胶囊形状，在卡片最下方： */
+  .nt-card .nt-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    justify-content: flex-start;
+  }
+  
+  .nt-card .nt-card-tags .tag {
+    background-color: var(--md-accent-fg-color);
+    color: var(--md-accent-bg-color);
+    padding: 0.2rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    display: inline-block;
+    font-weight: 500;
+    text-transform: lowercase;
+  }
+
+  /* 为不同类型的标签设置不同颜色 */
+  .nt-card .nt-card-tags .tag.code {
+    background-color: #0077cc;
+    color: white;
+  }
+
+  .nt-card .nt-card-tags .tag.ai {
+    background-color: #19c37d;
+    color: white;
+  }
