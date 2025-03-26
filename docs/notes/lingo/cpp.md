@@ -290,5 +290,112 @@ li = L.erase(li);//RIGHT
 
 
 
+## Lec4
 
+>内存模型 Memory Model
+
+
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp1.png" style="width: 80%;">
+    </div>
+
+- Global 变量是可以跨文件访问的：使用```extern```关键字
+
+- Static 的全局变量不是外部可见的，只能在一个编译单元（.cpp）中使用
+
+
+```string s;``` 和 ```string *ps;```的区别：
+
+- 前者是全局变量，后者是全局指针
+- 前者在data段，后者在bss段
+- 前者在main执行前初始化，后者在main中初始化
+    因为string本身是一个class，会有一个默认的构造函数进行初始化，而ps没有初始化每次跑结果都不一样
+- 前者在程序结束时自动释放，后者需要手动释放
+
+```cpp
+string s1, s2;
+s1 = s2 // 将s2的值赋给s1
+
+string *ps1, *ps2;
+ps1 = ps2 // 将地址赋给ps1
+```
+
+### Referennce
+
+```cpp
+char c;
+char *p = &c;
+char &r = c;
+```
+
+对上面的三句话进行解释：
+
+- 第一句进行一个声明，表示c是一个char类型的变量，占据1 byte，位置在某个地址address
+- 第二句话表示p是一个指针，里面有8个bytes，表示一个地址，这个地址指向的是c的地址address
+- 但三句话表示r是一个引用，可以完全把c和r看作是等价的，只是一个别名，位置还是在address
+
+但是区别在于指针可以重新赋值，而引用不能
+
+同时引用是必须要初始化的不能为空：
+
+```cpp
+int f(
+    char &r; // wrong
+)
+```
+
+但是可以作为函数参数进行传递：
+
+```cpp
+int f(char &r) {
+    ...
+}
+```
+
+这样是可以的
+
+还有一种是class：
+
+```cpp
+class A {
+    private:
+        T &a;
+    public:
+        A(T &t) : a(t) {}
+};
+```
+
+引用的意义在于：
+
+- 可以作为函数参数传递
+- 可以作为函数返回值
+   
+引用的限制：
+
+- 引用不能嵌套
+- 没有引用类型的指针，但是有指针的引用（可以是*&，不能是 &*）
+- 数组中不能放yinyong
+
+### Dynamic Memory Allocation
+
+类似于malloc free DMA使用new delete
+
+但对于非原生数据类型，比如class，使用new进行定义的时候不仅会malloc一块内存，还会使用构造函数进行初始化，这样就确保了定义时不仅是一块内存，而是初始化后的内存，同样delete也会执行析构函数，而不仅仅是释放内存
+
+
+---
+
+const 可以理解为一个宏，但是具备了类型检查
+
+注意const和指针的结合：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp2.png" style="width: 80%;">
+    </div>
+
+
+下面前两个是一样的
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp3.png" style="width: 80%;">
+    </div>
 
