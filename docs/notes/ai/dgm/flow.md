@@ -270,6 +270,8 @@ $$
 
 ## Autoregressive Flow
 
+### MAF
+
 首先我们先来从AutoRegressive Model开始：
 
 给定一个自回归模型的密度函数定义：
@@ -286,9 +288,44 @@ $$
 x_1 = \exp(\alpha_1)z_1 + \mu_1 \text{ and compute } \mu_2 \alpha_2
 $$
 
-以此类推我们
+以此类推我们可以得到完整的正向推理过程
+
+- Flow interpre：这个过程中的流可以理解为由标准高斯分布$\mathbf{z}$ 到 $\mathbf{x}$ 的变换，其中的可逆变换是由参数化的$\mu_{i},\alpha_{i}$决定的
 
 
+<div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="/../../../../assets/pics/ai/dgm/flow/f3.png"  style="width: 45%;">
+    <img src="/../../../../assets/pics/ai/dgm/flow/f4.png" style="width: 45%;">
+</div>
+
+- forward过程中，每个x是按照顺序进行生成的
+- 因为我们在forward过程中已经求算出各个x，因此在backward过程中，可以并行化计算（使用MADE等）参数表
+
+### IAF
+
+可以看到MAF的训练过程是可以并行化的，但是推理过程是顺序的，Inverse Autoregressive Flow 通过颠倒顺序，将推理过程进行并行化：
+
+<div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="/../../../../assets/pics/ai/dgm/flow/f6.png"  style="width: 45%;">
+    <img src="/../../../../assets/pics/ai/dgm/flow/f5.png" style="width: 45%;">
+</div>
+
+- 想要快速训练：MAF
+- 想要即时生成：IAF
+
+有没有结合了两者优点的模型？
+
+### Parallel Wavenet
+
+如果我们能用MAF训练一个teacher model，再使用一个IAF作为student model，这样我们只需要保证学生老师之间的相似性（KL Div），避免了MAF采样的困难和IAF训练的问题，这就是Parallel Wavenet的思路
+
+
+!!! quote "code"
+
+    - Training
+        - Step 1: train MAF(teacher) via MLE
+        - Step 2: train IAF(student) to minimize KL div with teacher
+    - Test-time: Using student singly
 
 
 

@@ -146,10 +146,6 @@ nav:
           - Python(CS61a): notes/lingo/cs61a.md
           - Verilog: notes/lingo/verilog.md
           - C++: notes/lingo/cpp.md
-      - Math:
-        - notes/math/index.md
-        - Random Process:
-          - notes/math/randomprocess/index.md
       - Artifical Intelligence:
         - notes/ai/index.md
         - Deep Generative Model: 
@@ -157,6 +153,10 @@ nav:
             - VAE: notes/ai/dgm/vae.md
             - Autoregressive Model: notes/ai/dgm/ar.md
             - Normalizing Flow: notes/ai/dgm/flow.md
+      - Math:
+        - notes/math/index.md
+        - Random Process:
+          - notes/math/randomprocess/index.md
       - X:
         - Drug Design:
           - x/aidd/aidd.md
