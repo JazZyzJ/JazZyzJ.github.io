@@ -313,6 +313,11 @@ $$
 - 想要快速训练：MAF
 - 想要即时生成：IAF
 
+<div style="text-align: center;">
+    <img src="/../../../../assets/pics/ai/dgm/flow/f7.png" style="width: 100%;">
+    </div>
+
+
 有没有结合了两者优点的模型？
 
 ### Parallel Wavenet
@@ -327,6 +332,11 @@ $$
         - Step 2: train IAF(student) to minimize KL div with teacher
     - Test-time: Using student singly
 
+
+## Flow Matching
+
+
+[left unfinished]
 
 
 

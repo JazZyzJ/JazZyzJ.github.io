@@ -9,14 +9,14 @@ comment: true
 # Deep Generative Models
 
 !!! abstract
-    生成式模型被广泛应用于图像生成、文本生成、语音生成等领域，我在25年初（寒假）开始进行这部分的学习，主要参考的是[Stanford CS236](https://deepgenerativemodels.github.io/syllabus.html) 课程和[MIT 6.S987](https://mit-6s978.github.io/schedule.html) 课程的讲义还有[我哥的自学笔记](https://zhuanlan.zhihu.com/p/631001372)(生成模型的概述，包含了截止23年的几乎所有深度生成模型👍)还有Lilian Weng的[博客](https://lilianweng.github.io/posts/)
+    生成式模型被广泛应用于视频图像生成、文本生成、语音生成等领域，我在25年初（寒假）开始进行这部分的学习，主要参考的是[Stanford CS236](https://deepgenerativemodels.github.io/syllabus.html) 课程和[MIT 6.S987](https://mit-6s978.github.io/schedule.html) 课程的讲义，还有[我哥的笔记](https://zhuanlan.zhihu.com/p/631001372)，[Lilian Weng的博客](https://lilianweng.github.io/posts/)、[Yang Song的博客](https://yang-song.net/blog)
 
     进行这部分学习的初衷是在侯老师的实验室，我在秦睿师兄的指导下开展关于蛋白质分子生成工作的评测，由于不想局限于使用现有模型而是能更深入的理解模型的工作原理，因此开始进行这部分的学习。
-
+    
     - [x] [VAE](./vae.md)
     - [x] [Autoregressive Models](./ar.md)
     - [x] [Normalizing Flows](./nf.md)
-    - []  [Energy-based Models](./energy.md)
+    - [ ] [Energy-based Models](./energy.md)
     - [ ] [Ganerative Adversarial Networks](./gan.md)
     - [ ] [Diffusion Models](./dm.md)
 
