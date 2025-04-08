@@ -254,3 +254,94 @@ create domain dollars as numeric(12, 2) check (value >= 0);
 
 ## Advanced SQL
 
+- Procedure and Functions
+
+
+
+## Design and ER Model
+
+- Attribute
+
+复合属性：对应的组件属性会紧放在复合属性的下方，并且开头有缩进
+
+多值属性：被花括号包裹
+
+派生属性：末尾有圆括号
+
+
+- Cardinality
+
+
+用横线上的lh来表示全连接、单射
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs17.png" style="width: 80%;">
+    </div>
+
+
+
+- 关系集的主键
+
+我们需要确保得到的关系是唯一的，因此需要通过选取一个或多个属性来确保唯一性，这个属性或属性集被称为关系集的主键
+
+所以在多对一多对多等问题中，只需要思考怎么让关系集唯一即可
+
+- 三元关系中，不能使用超过一个箭头
+
+原因就是在唯一性这里：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs18.png" style="width: 80%;">
+    </div>
+
+可以看到有两种结果
+
+解决这个问题有两种方法：一种是将关系集转变成实体集，另一种是使用函数依赖
+
+- Weak Entity Set
+
+我们在建立section和course之间的关系sec_course时，发现如果sec_course中保留了course_id，那么其实section中也有，这样就十分多余，如果不保留这个关系，那么section和course之间的关系就无法建立
+
+我们将section中的course_id去掉，然后建立section和sec_course之间的关系，现在面临的问题是section不具有唯一性了，这时我们定义section为弱实体集，他的唯一性由两点因素决定：
+
+- identifying entity set：在标识性实体集中选择主键
+
++
+
+- discriminator：一些附加的用作区分的属性
+
+
+然后连接强弱实体集的关系就被称为identifying relationship
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs19.png" style="width: 80%;">
+    </div>
+
+- Redundant Attributes
+
+对于组成属性，直接写最小子项，中间项不保留：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs20.png" style="width: 80%;">
+    </div>
+
+对于多值属性，有一个特殊情况：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs21.png" style="width: 80%;">
+    </div>
+
+直接转换的话，得到的是两个关系集，一个是time_slot，一个是time_slot_detail，可以选择不要前者，但是这样就无法定义section的外键
+
+- Design Mistakes
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs22.png" style="width: 80%;">
+    </div>
+
+assignment不能是一个数值，应该是多值的，有右边两种方式改正
+
+## Extended ER Feature
+
+
+
