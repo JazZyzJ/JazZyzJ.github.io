@@ -87,7 +87,7 @@ extra_javascript:
   - js/katex.js
   - js/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-
+  - js/toc.js
 
 
 
@@ -107,7 +107,7 @@ plugins:
       exclude:
         # - index.md
         - friends.md
-
+  - changelog
 
 nav:
   - Home: 

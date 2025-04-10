@@ -17,5 +17,3 @@ statistics: true
 <!-- - [Search Problem Solving](../algorithm/Search_ProblemSolving.md) -->
 <!-- - [Advanced Data Structures (ADS)](../algorithm/ads/ADS.md) --> 
 
-
-

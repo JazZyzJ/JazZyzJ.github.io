@@ -2,6 +2,7 @@
 comments: false
 statistics: true
 home: true
+changelog: true
 ---
 
 
@@ -53,7 +54,9 @@ I will use this site as a blog to record my learning experience and share my tho
 
 ::/cards::
 
+<br>
 
+{{ homepage }}
 
 
 !!! quote inline "Statistics"   
@@ -64,4 +67,12 @@ I will use this site as a blog to record my learning experience and share my tho
         
     :fontawesome-solid-code: 代码块行数: {{ codes }}
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
