@@ -1,0 +1,25 @@
+- " homepage ":
+  - "2025 Spring":
+    - "newpage": 
+        text: Deep Generative Model
+        href: /notes/ai/dgm/
+    - "function": Add the changelog 
+  - "2024 Fall":
+    - "newpage": 
+        text: Advanced Data Structure and Algorithm
+        href: /notes/cs/algorithm/ads
+    - "pageupdate": Finish the ADS notes
+
+- "placeholder":
+  - "time2":
+    - "type":
+        text: text
+        href: /link/to/page/
+    - "type":
+        text: text
+        href: /link/to/page/
+  - "time3":
+    - "type": text
+  
+
+ 
