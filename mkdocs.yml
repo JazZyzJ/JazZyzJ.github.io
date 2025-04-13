@@ -94,7 +94,7 @@ extra_javascript:
 extra_css:
   - css/stylesheets/extra.css
   - css/cards.css 
-
+  - css/changelog_extra.css
 plugins:
   - search
   - statistics:
@@ -167,6 +167,7 @@ nav:
     - Coding:
         - Git: Tool_Pool/git.md
         - GNU Make: Tool_Pool/GNU_Make.md
+        - Python Tips: Tool_Pool/pytip.md
   - L0g: log/index.md
     
       

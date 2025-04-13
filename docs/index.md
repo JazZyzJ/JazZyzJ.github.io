@@ -43,7 +43,7 @@ I will use this site as a blog to record my learning experience and share my tho
 - title: Advanced Data Structures and Algorithms
   content: Complete notes for Advanced Data Structures and Algorithms in 2024 Fall
   url: https://jazzyzj.github.io/notes/cs/algorithm/ads/ADS.html
-  
+  tag: code
    
 
 - title: Deep Generative Models

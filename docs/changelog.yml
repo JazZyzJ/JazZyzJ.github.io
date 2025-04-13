@@ -1,14 +1,22 @@
 - " homepage ":
   - "2025 Spring":
-    - "newpage": 
+    - "Add": 
         text: Deep Generative Model
         href: /notes/ai/dgm/
-    - "function": Add the changelog 
+    - "Function": Add the changelog
+    - "Add": 
+        text: Python tips 
+        href: Tool_Pool/pytip.html
+    
   - "2024 Fall":
-    - "newpage": 
+    - "Add": 
         text: Advanced Data Structure and Algorithm
-        href: /notes/cs/algorithm/ads
-    - "pageupdate": Finish the ADS notes
+        href: /notes/cs/algorithm/index.html
+    - "Function": 
+        text: Add Friends link
+        href: friends.html
+    - "Update": Finish the ADS notes
+
 
 - "placeholder":
   - "time2":
