@@ -4,6 +4,18 @@ comment: true
 
 # Database System
 
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"
+            integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js">
+    </script>
+</head>
+
+
 !!! abstract "摘要"
     
     这是我在学习数据库系统时的memo，我不会系统的整理整个课程的笔记，但是会写下一些备忘和例子方便复习时使用
@@ -341,7 +353,287 @@ create domain dollars as numeric(12, 2) check (value >= 0);
 
 assignment不能是一个数值，应该是多值的，有右边两种方式改正
 
+
 ## Extended ER Feature
 
 
+
+
+
+## Relational Database Design
+
+这章的内容有点多，我进行一个梳理：
+
+- Features of Good Relational Design
+- Atomic Domains and First Normal Form
+- Decomposition Using Functional Dependencies
+- Functional Dependency Theory
+- Algorithms for Functional Dependencies
+- Decomposition Using Multivalued Dependencies 
+- More Normal Forms
+- Database-Design Process
+- Modeling Temporal Data
+
+
+总体的思路是：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs24.png" style="width: 80%;">
+    </div>
+
+
+### Features of Good Relational Design
+
+- lossless decomposition
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs23.png" style="width: 80%;">
+    </div>
+
+### Atomic Domains and First Normal Form
+
+原子化的域是指不能再进行分解的，FNF就是指每个属性都是不可分解的，一个例子就是CS1102，表示计算机系11年的02号课程，可以被分解为三个属性，另外一个需要注意的例子是，the set of all sets of xx(int, string)，表示所有int和string的集合，这就是non-atomic的了
+
+### Decomposition Using Functional Dependencies
+
+Define functional dependency:
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs25.png" style="width: 80%;">
+    </div>
+
+由箭头左侧能够完全决定右侧即可
+
+- superkey和candidate key的定义如下：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs26.png" style="width: 80%;">
+    </div>
+
+这里需要注意的是K需要是某个属性的闭包，也就是K+能不能推出所有属性
+
+也就是说candidate key是superkey中去掉一个属性后不再是superkey的子集的集合，可以称为minimal superkey
+
+当然如果K+可以，那么K也就可以，并且K是最小的话，K就是candidate key
+
+
+- trivial 的定义和性质：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs27.png" style="width: 80%;">
+    </div>
+
+左边囊括右边，一定是trivial
+
+- Closure 
+
+- 依赖闭包：这里的闭包和离散数学中的类似，就是计算函数依赖的扩展，在这里计算时要用到几个律：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs28.png" style="width: 80%;">
+    </div>
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs29.png" style="width: 80%;">
+    </div>
+
+- 关系闭包：这里是计算在一组函数依赖下，一个属性能推导出的所有属性
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs30.png" style="width: 80%;">
+    </div>
+
+??? example 
+
+    <div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs31.png" style="width: 80%;">
+    </div>
+
+!!! tip
+
+    几个好用的性质：
+
+    <div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs32.png" style="width: 80%;">
+    </div>
+    
+    第一个讲过了，第二个就是验证用trivial性质来反向推到依赖，比较方便
+
+    第三个就是可以有条理的计算出依赖闭包
+
+    <div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs33.png" style="width: 80%;">
+    </div>
+    
+    先写出所有关系的组合，计算每个组合的闭包，再将他们展开
+
+### Functional Dependency Theory
+
+- Canonical Cover
+
+计算一个依赖集的minimal：
+
+首先确定什么依赖是多余的：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs34.png" style="width: 80%;">
+    </div>
+
+验证一个属性是否在依赖中多余的方法：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs35.png" style="width: 100%;">
+    </div>
+
+计算一个依赖的最小覆盖：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs36.png" style="width: 80%;">
+    </div>
+
+??? example
+
+    <div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs37.png" style="width: 80%;">
+    </div>
+
+    当然这道题可以通过更直观的方式观测出结果，不使用transitive，那么只剩下了两个依赖
+
+??? example "Exercise"
+
+    <div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs38.png" style="width: 80%;">
+    </div>
+
+### Algorithms for Functional Dependencies
+
+进行范式的介绍并使用范式进行分解，这里与教材的方式不太相同，教材是开篇就介绍范式，这里孙老师先在前半部分把工具介绍清楚，这里就能在介绍范式后直接将范式分解
+
+- BCNF
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs39.png" style="width: 80%;">
+    </div>
+
+如果有不符合BCNF的，进行分解
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs40.png" style="width: 80%;">
+    </div>
+
+Algorithm：
+
+这个算法对关系进行分解：
+
+找到一个不符合BCNF的依赖（左边不是superkey的），然后进行如下分解
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs41.png" style="width: 100%;">
+    </div>
+
+??? example 
+
+    <div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs42.png" style="width: 80%;">
+    </div>
+
+- Dependency Preservation
+
+就是看一个依赖集在被分解后的并集是否与原依赖集相等
+
+??? example
+
+    <div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs43.png" style="width: 80%;">
+    </div>
+
+如果 $F$ 内的每个成员能够在分解中的某个关系上被检查，那么说明这个分解保留了依赖。但这种方法并不总是有效，因为即使分解是依赖保留的，但是可能会出现仅看其中的一个关系无法检测依赖的情况。所以这个方法只是一个充分条件
+
+对于 $F$ 中的每个依赖 $\alpha \rightarrow \beta$，执行以下过程：
+
+<pre class="pseudocode" lineNumber="true">
+    \begin{algorithm}
+    \caption{Alternative test for dependency preservation}
+    \begin{algorithmic}
+        \STATE $result = \alpha$
+        \REPEAT
+            \FORALL{$R_i$ in the decomposition}
+                \STATE $t = (result \cap R_i)^+ \cap R_i$
+                \STATE $result = result \cap t$
+            \ENDFOR
+        \UNTIL{($result$ does not change)}
+    \end{algorithmic}
+    \end{algorithm}
+    </pre>
+
+
+??? example "Exercise"
+
+    <div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs44.png" style="width: 80%;">
+    </div>
+
+
+BCNF不能保证得到的一定是依赖保留的分解，因此引入其他范式
+
+- 3NF
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs45.png" style="width: 80%;">
+    </div>
+
+如果左边不是key，那么右边必须是key的一部分
+
+分解算法：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs46.png" style="width: 100%;">
+    </div>
+
+先得到最小覆盖，将覆盖里的每个依赖都进行分解，如果分解出来的关系中没有一条包含key，那么将key单独组成一个关系
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    pseudocode.renderClass("pseudocode");
+</script>
 

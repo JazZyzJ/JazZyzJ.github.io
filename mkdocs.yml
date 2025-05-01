@@ -13,6 +13,7 @@ theme:
   icon: 
     logo: material/book-open-variant
   features:
+    - content.code.copy
     - content.code.annotate
     - content.code.line_numbers
     - content.code.copy
@@ -24,6 +25,7 @@ theme:
     - navigation.footer
     - navigation.prune
     - navigation.expand
+    - header.autohide
   
   custom_dir: overrides
 
@@ -88,6 +90,9 @@ extra_javascript:
   - js/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
   - js/toc.js
+  - js/anchor.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js
 
 
 
@@ -95,6 +100,10 @@ extra_css:
   - css/stylesheets/extra.css
   - css/cards.css 
   - css/changelog_extra.css
+  - https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css
+  - https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css
+
+
 plugins:
   - search
   - statistics:
@@ -134,14 +143,14 @@ nav:
           - External Sort: notes/cs/algorithm/external.md
         - System: 
           - notes/cs/Sys/index.md
-          - CO: 
+          - Computer Organization: 
             - notes/cs/Sys/CO/index.md
             - Arithmetic: notes/cs/Sys/CO/arithmetic.md
             - Instruction: notes/cs/Sys/CO/instruction.md
             - Processor: notes/cs/Sys/CO/processor.md
             - Memory: notes/cs/Sys/CO/memory.md
           - Database System:
-            - notes/cs/Sys/dbs/dbsmemo.md
+            - Memo: notes/cs/Sys/dbs/dbsmemo.md
         - PL: 
           - Python(CS61a): notes/lingo/cs61a.md
           - Verilog: notes/lingo/verilog.md

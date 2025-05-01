@@ -5,6 +5,17 @@ comment: true
 
 # Variational Autoencoder(VAE)
 
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"
+            integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js">
+    </script>
+</head>
+
+
 !!! tip "Key"
 
     > 我在学习这部分时被大量的概率公式所困，以至于忘记了模型的初衷，所以在这里我直接放一下概念图以及核心思想
@@ -163,13 +174,20 @@ $$
 
 总的算法流程如下：
 
-!!! quote "Algo"
-
-    - Initialize $\theta$ and $\phi$
-    - Randomly sample a data $x^i$ from dataset $\mathcal{D}$
-    - Compute gradient $\nabla_{\theta} \mathcal{L}$ and $\nabla_{\phi} \mathcal{L}$
-    - Update $\theta$ and $\phi$ in the direction of the gradient
-    - Repeat until convergence
+<pre class="pseudocode">
+    \begin{algorithm}
+    \caption{VAE Training Algorithm}
+    \begin{algorithmic}
+    \REQUIRE dataset $\mathcal{D}$
+    \STATE Initialize $\theta$ and $\phi$
+    \WHILE{not converged}
+    \STATE Randomly sample a data $x^i$ from dataset $\mathcal{D}$
+    \STATE Compute gradient $\nabla_{\theta} \mathcal{L}$ and $\nabla_{\phi} \mathcal{L}$
+    \STATE Update $\theta$ and $\phi$ in the direction of the gradient
+    \ENDWHILE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
 
 
 现在来看具体的梯度计算：我们使用Monte Carlo来近似
@@ -214,7 +232,9 @@ $$
 
 
 
-
+<script>
+    pseudocode.renderClass("pseudocode");
+</script>
 
 
 

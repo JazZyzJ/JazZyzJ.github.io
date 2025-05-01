@@ -5,6 +5,15 @@ comment: true
 
 # Energy-based Models
 
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"
+            integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js">
+    </script>
+</head>
 
 ## Intro
 
@@ -112,18 +121,41 @@ $$
 
 因为我们没有办法计算$Z$，所以还是采取比较的思想：
 
-!!! tip "Markov Chain Monte Carlo (MCMC) 方法"
 
-    $$
-    \begin{aligned}
-    &\textbf{1. Initialize } x^0 \text{ randomly, } t = 0 \\
-    &\textbf{2. Let } x' = x^t + \text{noise} \\
-    &\quad \begin{cases}
-    \text{If } f_\theta(x') > f_\theta(x^t), & \text{let } x^{t+1} = x' \\
-    \text{Else} & \text{let } x^{t+1} = x' \text{ with probability } \exp(f_\theta(x') - f_\theta(x^t))
-    \end{cases} \\
-    &\textbf{3. Go to step 2}
-    \end{aligned}
-    $$
+
+<pre class="pseudocode">
+    \begin{algorithm}
+    \caption{Markov Chain Monte Carlo(MCMC) for EBM}
+    \begin{algorithmic}
+    \REQUIRE initial parameters
+    \STATE Initialize $x^0$ randomly, set $t = 0$
+    \REPEAT
+    \STATE $x' \gets x^t + \text{noise}$ \COMMENT{Perturb current solution}
+    \IF{$f_\theta(x') > f_\theta(x^t)$}
+        \STATE $x^{t+1} \gets x'$ \COMMENT{Always accept better solutions}
+    \ELSE
+        \STATE $\text{Accept } x^{t+1} = x' \text{ with probability } \exp(f_\theta(x') - f_\theta(x^t))$
+        \ENDIF
+        \STATE $t \gets t + 1$ \COMMENT{Update iteration counter}
+    \UNTIL{convergence} \COMMENT{Infinite loop in original specification}
+    
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
+
 
 这有点像模拟退火，为了避免停留在一个local，我们参考了一一个概率选择那个较差的sample
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    pseudocode.renderClass("pseudocode");
+</script>
