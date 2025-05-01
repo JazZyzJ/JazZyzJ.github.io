@@ -22,7 +22,7 @@
     
     
       
-        <title>Database System - Space . JaZzyzJ</title>
+        <title>Memo - Space . JaZzyzJ</title>
       
     
     
@@ -53,6 +53,12 @@
       <link rel="stylesheet" href="../../../../css/stylesheets/extra.css">
     
       <link rel="stylesheet" href="../../../../css/cards.css">
+    
+      <link rel="stylesheet" href="../../../../css/changelog_extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css">
     
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -114,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Database System
+              Memo
             
           </span>
         </div>
@@ -707,7 +713,7 @@
       
   
   <span class="md-ellipsis">
-    CO
+    Computer Organization
   </span>
   
 
@@ -789,7 +795,7 @@
           
   
   <span class="md-ellipsis">
-    Database System
+    Memo
   </span>
   
 
@@ -800,7 +806,7 @@
         
   
   <span class="md-ellipsis">
-    Database System
+    Memo
   </span>
   
 
@@ -872,6 +878,66 @@
       Extended ER Feature
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-database-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational Database Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relational Database Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features-of-good-relational-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features of Good Relational Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atomic-domains-and-first-normal-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atomic Domains and First Normal Form
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decomposition-using-functional-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decomposition Using Functional Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functional-dependency-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functional Dependency Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithms-for-functional-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithms for Functional Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1270,6 +1336,66 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#relational-database-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational Database Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relational Database Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features-of-good-relational-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features of Good Relational Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atomic-domains-and-first-normal-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atomic Domains and First Normal Form
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decomposition-using-functional-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decomposition Using Functional Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functional-dependency-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functional Dependency Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithms-for-functional-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithms for Functional Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1290,8 +1416,17 @@
 
 <h1 id="database-system">Database System<a class="headerlink" href="#database-system" title="Permanent link">&para;</a></h1>
 <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 1455 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> 14 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"/></svg></span> 22 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 5 分钟</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 2426 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> 14 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"/></svg></span> 46 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 8 分钟</p>
 </div>
+<p><head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"
+            integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js">
+    </script>
+</head></p>
 <div class="admonition abstract">
 <p class="admonition-title">摘要</p>
 <p>这是我在学习数据库系统时的memo，我不会系统的整理整个课程的笔记，但是会写下一些备忘和例子方便复习时使用</p>
@@ -1585,6 +1720,212 @@
 
 <p>assignment不能是一个数值，应该是多值的，有右边两种方式改正</p>
 <h2 id="extended-er-feature">Extended ER Feature<a class="headerlink" href="#extended-er-feature" title="Permanent link">&para;</a></h2>
+<h2 id="relational-database-design">Relational Database Design<a class="headerlink" href="#relational-database-design" title="Permanent link">&para;</a></h2>
+<p>这章的内容有点多，我进行一个梳理：</p>
+<ul>
+<li>Features of Good Relational Design</li>
+<li>Atomic Domains and First Normal Form</li>
+<li>Decomposition Using Functional Dependencies</li>
+<li>Functional Dependency Theory</li>
+<li>Algorithms for Functional Dependencies</li>
+<li>Decomposition Using Multivalued Dependencies </li>
+<li>More Normal Forms</li>
+<li>Database-Design Process</li>
+<li>Modeling Temporal Data</li>
+</ul>
+<p>总体的思路是：</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs24.png" style="width: 80%;">
+    </div>
+
+<h3 id="features-of-good-relational-design">Features of Good Relational Design<a class="headerlink" href="#features-of-good-relational-design" title="Permanent link">&para;</a></h3>
+<ul>
+<li>lossless decomposition</li>
+</ul>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs23.png" style="width: 80%;">
+    </div>
+
+<h3 id="atomic-domains-and-first-normal-form">Atomic Domains and First Normal Form<a class="headerlink" href="#atomic-domains-and-first-normal-form" title="Permanent link">&para;</a></h3>
+<p>原子化的域是指不能再进行分解的，FNF就是指每个属性都是不可分解的，一个例子就是CS1102，表示计算机系11年的02号课程，可以被分解为三个属性，另外一个需要注意的例子是，the set of all sets of xx(int, string)，表示所有int和string的集合，这就是non-atomic的了</p>
+<h3 id="decomposition-using-functional-dependencies">Decomposition Using Functional Dependencies<a class="headerlink" href="#decomposition-using-functional-dependencies" title="Permanent link">&para;</a></h3>
+<p>Define functional dependency:</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs25.png" style="width: 80%;">
+    </div>
+
+<p>由箭头左侧能够完全决定右侧即可</p>
+<ul>
+<li>superkey和candidate key的定义如下：</li>
+</ul>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs26.png" style="width: 80%;">
+    </div>
+
+<p>这里需要注意的是K需要是某个属性的闭包，也就是K+能不能推出所有属性</p>
+<p>也就是说candidate key是superkey中去掉一个属性后不再是superkey的子集的集合，可以称为minimal superkey</p>
+<p>当然如果K+可以，那么K也就可以，并且K是最小的话，K就是candidate key</p>
+<ul>
+<li>trivial 的定义和性质：</li>
+</ul>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs27.png" style="width: 80%;">
+    </div>
+
+<p>左边囊括右边，一定是trivial</p>
+<ul>
+<li>
+<p>Closure </p>
+</li>
+<li>
+<p>依赖闭包：这里的闭包和离散数学中的类似，就是计算函数依赖的扩展，在这里计算时要用到几个律：</p>
+</li>
+</ul>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs28.png" style="width: 80%;">
+    </div>
+
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs29.png" style="width: 80%;">
+    </div>
+
+<ul>
+<li>关系闭包：这里是计算在一组函数依赖下，一个属性能推导出的所有属性</li>
+</ul>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs30.png" style="width: 80%;">
+    </div>
+
+<details class="example">
+<summary>Example</summary>
+<p><div align="center" >
+<img src="/../../../../assets/pics/dbs/dbs31.png" style="width: 80%;">
+</div></p>
+</details>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>几个好用的性质：</p>
+<p><div align="center" >
+<img src="/../../../../assets/pics/dbs/dbs32.png" style="width: 80%;">
+</div></p>
+<p>第一个讲过了，第二个就是验证用trivial性质来反向推到依赖，比较方便</p>
+<p>第三个就是可以有条理的计算出依赖闭包</p>
+<p><div align="center" >
+<img src="/../../../../assets/pics/dbs/dbs33.png" style="width: 80%;">
+</div></p>
+<p>先写出所有关系的组合，计算每个组合的闭包，再将他们展开</p>
+</div>
+<h3 id="functional-dependency-theory">Functional Dependency Theory<a class="headerlink" href="#functional-dependency-theory" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Canonical Cover</li>
+</ul>
+<p>计算一个依赖集的minimal：</p>
+<p>首先确定什么依赖是多余的：</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs34.png" style="width: 80%;">
+    </div>
+
+<p>验证一个属性是否在依赖中多余的方法：</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs35.png" style="width: 100%;">
+    </div>
+
+<p>计算一个依赖的最小覆盖：</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs36.png" style="width: 80%;">
+    </div>
+
+<details class="example">
+<summary>Example</summary>
+<p><div align="center" >
+<img src="/../../../../assets/pics/dbs/dbs37.png" style="width: 80%;">
+</div></p>
+<p>当然这道题可以通过更直观的方式观测出结果，不使用transitive，那么只剩下了两个依赖</p>
+</details>
+<details class="example">
+<summary>Exercise</summary>
+<p><div align="center" >
+<img src="/../../../../assets/pics/dbs/dbs38.png" style="width: 80%;">
+</div></p>
+</details>
+<h3 id="algorithms-for-functional-dependencies">Algorithms for Functional Dependencies<a class="headerlink" href="#algorithms-for-functional-dependencies" title="Permanent link">&para;</a></h3>
+<p>进行范式的介绍并使用范式进行分解，这里与教材的方式不太相同，教材是开篇就介绍范式，这里孙老师先在前半部分把工具介绍清楚，这里就能在介绍范式后直接将范式分解</p>
+<ul>
+<li>BCNF</li>
+</ul>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs39.png" style="width: 80%;">
+    </div>
+
+<p>如果有不符合BCNF的，进行分解</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs40.png" style="width: 80%;">
+    </div>
+
+<p>Algorithm：</p>
+<p>这个算法对关系进行分解：</p>
+<p>找到一个不符合BCNF的依赖（左边不是superkey的），然后进行如下分解</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs41.png" style="width: 100%;">
+    </div>
+
+<details class="example">
+<summary>Example</summary>
+<p><div align="center" >
+<img src="/../../../../assets/pics/dbs/dbs42.png" style="width: 80%;">
+</div></p>
+</details>
+<ul>
+<li>Dependency Preservation</li>
+</ul>
+<p>就是看一个依赖集在被分解后的并集是否与原依赖集相等</p>
+<details class="example">
+<summary>Example</summary>
+<p><div align="center" >
+<img src="/../../../../assets/pics/dbs/dbs43.png" style="width: 80%;">
+</div></p>
+</details>
+<p>如果 <span class="arithmatex">\(F\)</span> 内的每个成员能够在分解中的某个关系上被检查，那么说明这个分解保留了依赖。但这种方法并不总是有效，因为即使分解是依赖保留的，但是可能会出现仅看其中的一个关系无法检测依赖的情况。所以这个方法只是一个充分条件</p>
+<p>对于 <span class="arithmatex">\(F\)</span> 中的每个依赖 <span class="arithmatex">\(\alpha \rightarrow \beta\)</span>，执行以下过程：</p>
+<pre class="pseudocode" lineNumber="true">
+    \begin{algorithm}
+    \caption{Alternative test for dependency preservation}
+    \begin{algorithmic}
+        \STATE $result = \alpha$
+        \REPEAT
+            \FORALL{$R_i$ in the decomposition}
+                \STATE $t = (result \cap R_i)^+ \cap R_i$
+                \STATE $result = result \cap t$
+            \ENDFOR
+        \UNTIL{($result$ does not change)}
+    \end{algorithmic}
+    \end{algorithm}
+    </pre>
+
+<details class="example">
+<summary>Exercise</summary>
+<p><div align="center" >
+<img src="/../../../../assets/pics/dbs/dbs44.png" style="width: 80%;">
+</div></p>
+</details>
+<p>BCNF不能保证得到的一定是依赖保留的分解，因此引入其他范式</p>
+<ul>
+<li>3NF</li>
+</ul>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs45.png" style="width: 80%;">
+    </div>
+
+<p>如果左边不是key，那么右边必须是key的一部分</p>
+<p>分解算法：</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs46.png" style="width: 100%;">
+    </div>
+
+<p>先得到最小覆盖，将覆盖里的每个依赖都进行分解，如果分解出来的关系中没有一条包含key，那么将key单独组成一个关系</p>
+<script>
+    pseudocode.renderClass("pseudocode");
+</script>
 
 
 
@@ -1607,7 +1948,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年4月8日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年5月1日</span>
   </span>
 
     
@@ -1767,7 +2108,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "navigation.expand"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.line_numbers", "content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "navigation.expand", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
@@ -1779,6 +2120,12 @@
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
         <script src="../../../../js/toc.js"></script>
+      
+        <script src="../../../../js/anchor.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js"></script>
       
     
   </body>

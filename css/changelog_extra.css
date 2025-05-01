@@ -1,0 +1,20 @@
+.changelog-type-Add {
+    background-color: #7ae4a8b0;
+}
+.changelog-type-Add::before {
+    content: "Add";
+}
+
+.changelog-type-Update {
+    background-color: #5167f9b0;
+}
+.changelog-type-Update::before {
+    content: "Update";
+}
+
+.changelog-type-Function {
+    background-color: #f095c7b0;
+}
+.changelog-type-Function::before {
+    content: "Function";
+}
