@@ -17,7 +17,7 @@ comment: true
     - [x] [Autoregressive Models](./ar.md)
     - [x] [Normalizing Flows](./nf.md)
     - [ ] [Ganerative Adversarial Networks](./gan.md)
-    - [ ] [Energy-based Models](./energy.md)
+    - [x] [Energy+Score-based Models](./energy.md)
     - [ ] [Diffusion Models](./dm.md)
 
 

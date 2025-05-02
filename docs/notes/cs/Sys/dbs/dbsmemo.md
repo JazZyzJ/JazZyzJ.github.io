@@ -593,7 +593,11 @@ BCNF不能保证得到的一定是依赖保留的分解，因此引入其他范�
 先得到最小覆盖，将覆盖里的每个依赖都进行分解，如果分解出来的关系中没有一条包含key，那么将key单独组成一个关系
 
 
+### Decomposition Using Multivalued Dependencies 
 
+<div align="center" >
+    <img src="/../../../../assets/pics/dbs/dbs47.png" style="width: 80%;">
+    </div>
 
 
 
