@@ -399,3 +399,34 @@ const 可以理解为一个宏，但是具备了类型检查
     <img src="/../../../../assets/pics/cpp/cpp3.png" style="width: 80%;">
     </div>
 
+
+
+
+- 字符指针是不可以进行修改的
+
+```cpp
+char *p = "hello";
+p[0] = 'A'; //wrong error
+```
+
+- 读取地址的运算：
+
+```cpp
+char *p = "hello";
+cout << (void*)p << endl;
+```
+
+读到地址后发现，原因是这个char *的地址保留在代码段，不能修改，如果想要修改，需要使用const char *p = "hello";
+
+
+## Lec5
+
+> Class
+
+实现一个类，c也可以，但是cpp提供的是将数据和操作数据的方法放在一起，这样更符合面向对象的思想
+
+- 为了保护数据，需要在类声明中使用private
+- class默认是private，struct默认是public
+
+
+

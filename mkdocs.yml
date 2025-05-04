@@ -163,6 +163,7 @@ nav:
             - Autoregressive Model: notes/ai/dgm/ar.md
             - Normalizing Flow: notes/ai/dgm/flow.md
             - Energy-based Models: notes/ai/dgm/energy.md
+            - Score-based Models: notes/ai/dgm/score.md
       - Math:
         - notes/math/index.md
         - Random Process:
