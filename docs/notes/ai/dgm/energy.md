@@ -192,7 +192,7 @@ $$
 虽然我们得到了一些比较好的sample方式，但是在训练时如果还是使用内部循环的这种方式，依然是无法接受的，下面提出一些新的训练方法
 
 
-### Score-based Models
+### Score Matching 
 
 回顾一下energy-based：
 
