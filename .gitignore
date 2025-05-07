@@ -1,5 +1,7 @@
 .vscode
 .DS_Store
 site
+.cursorignore
+.cursorrules
 # docs/css
 # overrides

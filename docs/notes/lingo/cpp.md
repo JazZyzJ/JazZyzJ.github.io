@@ -428,5 +428,18 @@ cout << (void*)p << endl;
 - 为了保护数据，需要在类声明中使用private
 - class默认是private，struct默认是public
 
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp4.png" style="width: 80%;">
+    </div>
+
+注意头文件内不能存放全局变量，因为头文件会被包含到多个cpp文件中，如果头文件中包含全局变量，那么每个cpp文件中都会有一个相同的变量，这样就会导致冲突
+
+类似的，也不能存放函数原型和类/结构体声明
+
+include时，用尖括号表示标准库头文件，用双引号表示自定义头文件
+
+## Lec6
+
+Constructor and Destructor
 
 

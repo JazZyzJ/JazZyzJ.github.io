@@ -20,6 +20,7 @@ comment: true
     - [x] [Energy-based Models](./energy.md)
     - [ ] [Score-based Models](./score.md)
     - [ ] [Diffusion Models](./dm.md)
+    - [ ] [Flow Matching](./fm.md)
 
 
 ## Intro

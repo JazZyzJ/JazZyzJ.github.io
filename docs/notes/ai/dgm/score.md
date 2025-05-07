@@ -147,27 +147,82 @@ $$
 
     就是说，给出加噪后的图像，清晰图像的预期值符合上面的公式
 
+## Sliced Score Matching
+
+
+对于高维数据进行score matching时，计算雅各比矩阵的trace非常困难，所以需要进行近似，在这里我们想到一种方式将高维数据降维，通过随机投影（projection）
+
+
+<div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/sc9.png" style="width: 80%;">
+    </div>
+
+我们假设将两个分数（真实和预测）投影到随机向量$v$上后如果他们相等，那么就认为两个分数相等
+
+$$
+\begin{aligned}
+&\frac{1}{2} E_{\mathbf{v} \sim p_{\mathbf{v}}} E_{\mathbf{x} \sim p_{\text {data }}}\left[\left(\mathbf{v}^{\top} \nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})-\mathbf{v}^{\top} \mathbf{s}_\theta(\mathbf{x})\right)^2\right]\\
+&\text { Integration by parts :}\\
+&E_{\mathbf{v} \sim p_{\mathbf{v}}} E_{\mathbf{x} \sim p_{\text {data }}}\left[\mathbf{v}^{\top} \nabla_{\mathbf{x}} \mathbf{s}_\theta(\mathbf{x}) \mathbf{v}+\frac{1}{2}\left(\mathbf{v}^{\top} \mathbf{s}_\theta(\mathbf{x})\right)^2\right]
+\end{aligned}
+$$
+
+这里的$\mathbf{v^T}$与$\mathbf{s_\theta}$的乘积（点乘）是一个标量，所以最终我们得到的结果是一维的，通常我们随机选取$v$，可以从$p_v$（Gaussian、Rademacher中采样）中采样
 
 
 
+现在来解释一下为什么计算这里的$\mathbf{v^T \nabla_{x} s_\theta \mathbf{v}}$是scalable的
 
+!!! tip 
+    <div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/slice.gif" style="width: 80%;">
+    </div>
 
-    
-
-
-
-
-
-
-
-
-
-
-
+    - 第一步前向传播计算$\mathbf{s_\theta}$
+    - 第二步通过投影将$\mathbf{s_\theta}$降维到一维
+    - 通过一次反向传播来计算这个标量对于所有输入的梯度
+    - 再取一个点积将这个梯度降到一维
 
 
 
+## Inference
 
+我们知道可以按照分数的梯度方向进行采样，但是那样数据分布会完全收敛到一个单点，所以需要引入噪声
+
+采用Langevin dynamics MCMC进行推理：
+
+$$
+\tilde{\mathbf{x}}_{t+1} \leftarrow \tilde{\mathbf{x}}_t+\frac{\epsilon}{2} \mathrm{~S}_\theta\left(\tilde{\mathbf{x}}_t\right)+\sqrt{\epsilon} \mathbf{z}_t
+$$
+
+但是这种naive的方式效果非常差，原因有以下几点：
+
+- Manifold hypothesis: 数据分布在低维流形上，当数据逐渐收敛时，我们的分数会失去定义
+
+    <div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/sc10.png" style="width: 80%;">
+    </div>
+
+    可以看到即使PCA降维后，样本仍没有太多变化
+
+- 数据密度在不同区域不同，会在低数据密度区域迷失方向
+
+<div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/sc11.png" style="width: 80%;">
+    </div>
+
+这一点比较好理解，我的理解就是在低密度数据区域，数据的分布很稀疏，梯度方向不稳定，很难收敛到高数据密度区域，造成采样失败
+
+
+- 混合密度分布的比例系数会消失
+
+<div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/sc12.png" style="width: 80%;">
+    </div>
+
+<div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/sc13.png" style="width: 80%;">
+    </div>
 
 
 
