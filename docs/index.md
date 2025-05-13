@@ -31,10 +31,6 @@ I will use this site as a blog to record my learning experience and share my tho
 <p style="font-size: 24px; font-weight: bold;">Welcome to have a look and discuss with me!☺️</p>
 
 
-<!-- !!! tip "Recommend Readings"  -->
-
-<!-- - [Advanced Data Structures(24 Fall)](https://jazzyzj.github.io/notes/cs/algorithm/ads/ADS.html)
-- [Deep Generative Models](https://jazzyzj.github.io/notes/ai/dgm/index.html) -->
 
 ### Recommend Readings
 
@@ -42,7 +38,7 @@ I will use this site as a blog to record my learning experience and share my tho
 
 - title: Advanced Data Structures and Algorithms
   content: Complete notes for Advanced Data Structures and Algorithms in 2024 Fall
-  url: https://jazzyzj.github.io/notes/cs/algorithm/ads/ADS.html
+  url: https://jazzyzj.github.io/notes/cs/algorithm/index.html
   
    
 

@@ -26,7 +26,7 @@ comment: true
     - [x] [Local Search](../algorithm/localsearch.md)
     - [x] [Randomized Algorithms](../algorithm/random.md)   
     - [x] [Parallel Algorithms](../algorithm/para.md)
-    - [x] [External Algorithms](../algorithm/external.md) 
+    - [x] [External Sorting](../algorithm/external.md) 
 ---
 
 

@@ -443,3 +443,67 @@ include时，用尖括号表示标准库头文件，用双引号表示自定义�
 Constructor and Destructor
 
 
+- 构造函数可以有多份，编译器会根据参数表来决定使用哪个构造函数
+
+在自己没有写构造函数时，编译器会自动生成一个默认的构造函数：
+
+```cpp
+class A {
+    ...
+};
+
+->编译器生成后：
+
+```cpp
+class A {
+    ...
+    A() {
+        ...
+    }
+};
+```
+
+但是一旦自己写了构造函数，编译器就不会生成默认的构造函数
+
+```
+- 析构函数只能有一份，在对象生命周期结束时调用
+    - 通常析构函数不需要添加参数，如果遇到资源的调用，则需要在析构函数中显式释放
+
+- inline 函数
+
+函数在调用时，会进行压栈，如果函数体过大，则会导致栈溢出，这时候可以使用inline函数，将函数体直接插入到调用处，这样就不会进行压栈操作（用空间换时间）
+
+对函数主体较小，调用代价较大时，使用inline
+
+对函数主体较大，调用代价较小时，不使用inline
+
+与marco不同，marco是纯粹的文本替换，而inline函数涉及到编译
+
+## Lec7
+
+Composition and Inheritance
+
+组合：
+
+```cpp
+SvingsAccount::SvingsAccount(const string& name, const string& address, int cents)
+    : m_saver(name, address), m_balance(cents)
+    {}
+```
+
+这时我们想做一个print函数来打印信息，一个初学者的思路就是找到m_saver和m_balance，然后直接打印，但是这样就违背了面向对象的思想，我们应该直接使用m_saver的print函数和m_balance的print函数
+
+```cpp
+void SavingsAccount::print() const {
+    m_saver.print();
+}
+```
+因为具体print怎么做，是m_saver的职责
+
+
+Inheritance：
+
+与组合的区别就是：组合是has-a的关系，继承是is-a的关系
+
+在派生类中，可以调用基类的成员函数，但是不能动基类的private成员，如果我们有一个private data，想写一个setdata对其进行更改，那么使用public会导致非派生类（别人）也可以更改，这时候需要使用protected，这样派生类可以访问，但是非派生类不能访问
+

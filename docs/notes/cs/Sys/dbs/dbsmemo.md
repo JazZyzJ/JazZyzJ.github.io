@@ -644,6 +644,155 @@ BCNF不能保证得到的一定是依赖保留的分解，因此引入其他范�
 
 
 
+## Query Processing
+
+计量查询代价：
+
+$t_T$是transfer一个block的代价，$t_S$是seek一次的代价，所以Cost for b block transfers plus S seeks：
+
+$$
+t_T \times b + t_S \times S
+$$
+
+### Sorting 
+
+这里是外部排序被发明的地方
+
+在这里我们使用N way merge sort，考虑的一是ADS中讨论的轮数，二是需要多少次block transfer&seek
+
+M是buffer数量，N是内存中的归并段数量
+
+- N < M时
+
+归并段少于可用内存块，这时只需要一次pass
+
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs50.png" style="width: 90%;">
+    </div>
+
+- N > M时
+
+这时pass的次数就不是1了，虽然每一轮的代价仍然是一样的
+
+有M块buffer可以用来归并，其中有一块是用来IO的，所以剩下M-1块，相当于是在做M-1 way merge
+
+这时我们进行 transfer cost分析：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs51.png" style="width: 80%;">
+    </div>
+
+- 形成的归并段数量
+- pass needed
+- 生成归并段和merge时每一轮的block transfer
+
+如果最后需要写出一次，那么最后的公式中应该是$+2b_r$（这里给出的是不写出的情况）
+
+对seek cost的分析：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs52.png" style="width: 60%;">
+    </div>
+
+对于这个结果我们还可以进行一个优化，就是在归并时$b_b$个block进行merge
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs53.png" style="width: 90%;">
+    </div>
+
+但是相应的每次可以merge的block数量就变少了，log的底数变小了
+
+seek cost的计算：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs54.png" style="width: 70%;">
+    </div>
+
+### Join
+
+- Nested Loop Join
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs55.png" style="width: 80%;">
+    </div>
+
+总共需要$b_r + b_s*n_r$的block transfer和$n_r+b_r$的seek
+
+- Block Nested Loop Join
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs56.png" style="width: 80%;">
+    </div>
+
+相当于是第一种方法的优化，将已经取出来的块在内存中进行比较，而不是直接比较所有元组
+
+这时候的时间复杂度：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs57.png" style="width: 80%;">
+    </div>
+
+如果我们有M块buffer呢？
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs58.png" style="width: 80%;">
+    </div>
+
+最后的白色块用作IO，用M-2块buffer存放outer block
+
+
+
+
+- Index Nested Loop Join
+
+现在inner relation是有索引的，就不再需要进行遍历来查找了，只要遍历outer relation，然后使用索引查找inner relation 
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs59.png" style="width: 80%;">
+    </div>
+
+- Merge Join
+
+采用多块进
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs60.png" style="width: 80%;">
+    </div>
+
+如果buffer的大小是M，我们要完全利用buffer：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs61.png" style="width: 80%;">
+    </div>
+
+- Hash Join
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs62.png" style="width: 80%;">
+    </div>
+
+为了确保我们可以把build relation完全放进内存，$n \geq$这个数就是说至少要分成这么多个hash块
+
+这样现在比较相同hash值的元组即可
+
+如果一次partition后的块数太多，就需要进行recursive hashing
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs63.png" style="width: 80%;">
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

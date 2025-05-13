@@ -122,6 +122,7 @@ nav:
   - Home: 
     - index.md
     - friends.md
+    # - Changel0g: log/index.md
   - N0tes:
       - notes/index.md
       - Computer Science:
@@ -178,6 +179,6 @@ nav:
         - Git: Tool_Pool/git.md
         - GNU Make: Tool_Pool/GNU_Make.md
         - Python Tips: Tool_Pool/pytip.md
-  - L0g: log/index.md
+  # - L0g: log/index.md
     
       
