@@ -807,6 +807,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Inference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gaussian-perturbation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gaussian Perturbation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-noise-perturbation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-noise Perturbation
+    </span>
+  </a>
+  
 </li>
       
     </ul>
@@ -1054,6 +1078,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Inference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gaussian-perturbation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gaussian Perturbation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-noise-perturbation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-noise Perturbation
+    </span>
+  </a>
+  
 </li>
       
     </ul>
@@ -1076,7 +1124,7 @@
 
 <h1 id="score-based-models">Score-based Models<a class="headerlink" href="#score-based-models" title="Permanent link">&para;</a></h1>
 <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 1523 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"/></svg></span> 16 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 5 分钟</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 2490 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"/></svg></span> 23 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 8 分钟</p>
 </div>
 <p><head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"
@@ -1221,6 +1269,17 @@ E_{\mathbf{x} \sim p(\mathbf{x} \mid \tilde{\mathbf{x}})}[\mathbf{x}] &amp; =\ti
 <li>再取一个点积将这个梯度降到一维</li>
 </ul>
 </div>
+<ul>
+<li><strong>Pros</strong>: <ul>
+<li>同样是more scalable</li>
+<li>是对clean data的score估计</li>
+</ul>
+</li>
+<li><strong>Cons</strong>: <ul>
+<li>slower than denoising sm</li>
+</ul>
+</li>
+</ul>
 <h2 id="inference">Inference<a class="headerlink" href="#inference" title="Permanent link">&para;</a></h2>
 <p>我们知道可以按照分数的梯度方向进行采样，但是那样数据分布会完全收敛到一个单点，所以需要引入噪声</p>
 <p>采用Langevin dynamics MCMC进行推理：</p>
@@ -1256,6 +1315,107 @@ E_{\mathbf{x} \sim p(\mathbf{x} \mid \tilde{\mathbf{x}})}[\mathbf{x}] &amp; =\ti
     <img src="/../../../../assets/pics/ai/dgm/sc/sc13.png" style="width: 80%;">
     </div>
 
+<h3 id="gaussian-perturbation">Gaussian Perturbation<a class="headerlink" href="#gaussian-perturbation" title="Permanent link">&para;</a></h3>
+<p>通过Gaussian Perturbation，我们可以有效的解决上述问题：</p>
+<div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/sc14.png" style="width: 80%;">
+    </div>
+
+<p>可以看到在加入Gaussian Perturbation后，低密度区域的数据密度得到提升，能够更好的计算score，进而提升了其在低密度区域的准确性。</p>
+<details class="question" open="open">
+<summary>Difference between denoising and Gaussian Perturbation</summary>
+<p>我在听stefano讲课的时候感觉同学们也没有完全get到他这里提到的perturbation和denoising SM的区别，我的理解是：</p>
+<p>在这里的perturb和DSM其实是等价的，本质都是通过向数据加入噪声的一个处理，但是在DSM中，我们强调的是通过引入噪声来化简计算，而perturbation强调的是通过引入噪声来提升数据密度，进而提升score的准确性，这里提出的perturb是可以使用在任何score matching的算法中的，同时也为他在下文中引出的multi-noise perturbation做铺垫</p>
+</details>
+<p>所以现在的问题来到了怎么添加noise，选择<span class="arithmatex">\(\sigma\)</span>，因为：</p>
+<ul>
+<li>如果<span class="arithmatex">\(\sigma\)</span>太小，那么数据分布的改变不会太大，那么score的估计也不会改变太多</li>
+<li>如果<span class="arithmatex">\(\sigma\)</span>太大，那么数据分布的改变会太大，我们得到estimation与true data的差异会很大</li>
+</ul>
+<p><strong>trade off：</strong></p>
+<div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/sc15.png" style="width: 80%;">
+    </div>
+
+<h2 id="multi-noise-perturbation">Multi-noise Perturbation<a class="headerlink" href="#multi-noise-perturbation" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Understanding</p>
+<p>我们引入一种新的方法，尝试使用多个噪声进行加噪然后学习分数，原因用下面这张图来说明：</p>
+<p><div align="center" > 
+<img src="/../../../../assets/pics/ai/dgm/sc/sc16.png" style="width: 90%;">
+</div></p>
+<p>假设我们的数据落在这个黑色粗线附近，但是我们的采样可能会在这个平面中远离粗线的地方，这时较低的数据密度导致我们不能很好的估计梯度方向，使用不同的<span class="arithmatex">\(\sigma\)</span>进行加噪，让我们的采样能够读到更好的梯度方向。</p>
+<p>这就是score based model和diffusion model背后的思想，我们不仅要学习数据分布，不仅要学习数据分布加上单一噪声的分布，我们要学习数据被不同噪声量扰动后的分数</p>
+</div>
+<!-- - **Annealed Langevin Dynamics**：
+
+    - Sample using $\sigma_1, \sigma_2, \cdots, \sigma_L$ sequentially with Langevin dynamics and calculate the score
+    - 在每一步后，Anneal down the noise level -->
+
+<!-- <div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/anneal.gif" style="width: 80%;">
+    </div> -->
+
+<p>具体的实现如下：</p>
+<ul>
+<li>
+<p>Training:</p>
+<ul>
+<li>simultaneously使用正交的高斯噪声<span class="arithmatex">\(\sigma_i\)</span>, <span class="arithmatex">\(\mathcal{N}(0, \sigma_i^2 I), i = 1, 2, \cdots, L\)</span>进行加噪（加噪的方式是和DSM一样的）</li>
+<li>每次加噪后，计算score<span class="arithmatex">\(\nabla_{x} \log p_{\sigma_i}(x)\)</span>，这一步是通过训练<strong>Noise Conditional Score Based Model <span class="arithmatex">\(\mathbf{s}_\theta(\mathbf{x}, i)\)</span></strong>来实现的</li>
+</ul>
+</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Noise Conditional Score Based Model</p>
+<p><div align="center" > 
+<img src="/../../../../assets/pics/ai/dgm/sc/sc17.png" style="width: 40%;">
+</div></p>
+<p>如果我们直接计算L个神经网络，将会十分expensive，所以我们这里使用一个神经网络，通过调整不同的<span class="arithmatex">\(\sigma_i\)</span>来计算不同的score</p>
+</div>
+<p>这样就可以得到L个score，但是目标需要经过加权：</p>
+<div class="arithmatex">\[
+\sum_{i=1}^{L} \lambda(i) \mathbb{E}_{p_{\sigma_i}(x)} [|| \left( \nabla_{x} \log p_{\sigma_i}(x) - \nabla_{x} \log p_{data}(x) \right) ||_{2}^2]
+\]</div>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; =\frac{1}{L} \sum_{i=1}^L \lambda\left(\sigma_i\right) E_{\mathbf{x} \sim p_{\mathrm{data}}, \mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})}\left[\left\|\nabla_{\tilde{\mathbf{x}}} \log q_{\sigma_i}(\tilde{\mathbf{x}} \mid \mathbf{x})-\mathbf{s}_\theta\left(\tilde{\mathbf{x}}, \sigma_i\right)\right\|_2^2\right]+\text { const. } \\
+&amp; =\frac{1}{L} \sum_{i=1}^L \lambda\left(\sigma_i\right) E_{\mathbf{x} \sim p_{\mathrm{data}}, \mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})}\left[\left\|\mathbf{s}_\theta\left(\mathbf{x}+\sigma_i \mathbf{z}, \sigma_i\right)+\frac{\mathbf{z}}{\sigma_i}\right\|_2^2\right]+\text { const. }
+\end{aligned}
+\]</div>
+<p>这里的加权函数<span class="arithmatex">\(\lambda(i)\)</span>通常等于<span class="arithmatex">\(\sigma_i^2\)</span></p>
+<div align="center" > 
+<img src="/../../../../assets/pics/ai/dgm/sc/sc18.png" style="width: 60%;">
+</div>
+
+<ul>
+<li>
+<p>Sampling:</p>
+<ul>
+<li>使用Annealed Langevin dynamics for <span class="arithmatex">\(i = L, L-1, \cdots, 1\)</span>进行采样</li>
+</ul>
+</li>
+</ul>
+<div align="center" > 
+<img src="/../../../../assets/pics/ai/dgm/sc/ald.gif" style="width: 80%;">
+</div>
+
+<p>这个过程中使用退火朗之万，并且将每次的sample作为下一次的初始值</p>
+<ul>
+<li>Noise Choice</li>
+</ul>
+<p>最后还涉及到一些噪声的选择问题，我们知道噪声是一个递进的/递减的，所以这里涉及到这个噪声的变化过程：</p>
+<p>key point是：</p>
+<ul>
+<li>相邻的噪声之间需要overlap to facilitate transitioning across noise scales</li>
+<li>采用geometry progression with sufficient length：</li>
+</ul>
+<div class="arithmatex">\[
+\sigma_1 &lt; \sigma_2 &lt; \cdots &lt; \sigma_L
+\]</div>
+<div class="arithmatex">\[
+\frac{\sigma_i}{\sigma_{i+1}} = \text{constant}
+\]</div>
 <script>
     pseudocode.renderClass("pseudocode");
 </script>
