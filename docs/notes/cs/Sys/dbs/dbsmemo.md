@@ -782,31 +782,289 @@ seek cost的计算：
     <img src="/../../../../assets/pics/dbs/dbs63.png" style="width: 80%;">
     </div>
 
+## Query Optimization
+
+
+### Cost Estimation
+
+定义如下参数：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs64.png" style="width: 80%;">
+    </div>
+
+- Selection Size 
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs65.png" style="width: 80%;">
+    </div>
+
+- Join Size
+
+如果两个关系的交是空的，那么自然连接就是笛卡尔积
+
+主要讨论的是非空情况：
+
+1. 交是R的键：那么自然连接后的个数不超过S
+2. 交是由S指向R的外键：那么自然连接后的个数就是S的tuple数量
+3. 交不是两者的键
+   
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs66.png" style="width: 80%;">
+    </div>
+
+- Distinct Value
+
+### Cost-Based Optimization
+
+使用左深树来表示查询树：
+
+在进行分割的时候：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs67.png" style="width: 80%;">
+    </div>
+
+
+
+### Optimizing Nested Subqueries
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs68.png" style="width: 80%;">
+    </div>
+
+### Materialized Views
+
+
+
+
+
+## Transaction
+
+Model:
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs69.png" style="width: 80%;">
+    </div>
+
+Outline:
+
+<div style="text-align: center;" >
+        <img src="/../../../../assets/pics/dbs/dbs78.png" style="width: 80%;">
+        </div>
+
+
+
+
+
+-Anomalies in Concurrent Execution
+
+一共有四种情况：
+
+- Lost Update
+- Dirty Read
+- Unrepeatable Read
+- Phantom Read
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs70.png" style="width: 80%;">
+    </div>
+
+- Serializability
+
+主要考察可串行化，注意这里的可串行化的定语，是基于冲突的conflict，还是基于视图的view
+
+基于冲突的可串行化需要满足的条件是如果通过交换一系列不冲突的（no write）两个操作，可以将一个schedule比那成一个串行的schedule，那么这个schedule就是冲突可串行化的
+
+也可以通过别的方式检测：precedence graph
+
+如果一个图是无环的（不能从某个点出发，经过一系列边，回到这个点），那么这个图是冲突可串行化的
+
+如果一个节点（事务）是独立的节点，那么他可以被插入到任何事务前后（与其他事务相关性）
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs71.png" style="width: 80%;">
+    </div>
+
+基于视图的等价：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs72.png" style="width: 80%;">
+    </div>
+
+视图可串行化讲究的是对同一个数据的操作有一致性
+
+!!! example "Example"
+
+    <div style="text-align: center;" >
+        <img src="/../../../../assets/pics/dbs/dbs73.png" style="width: 80%;">
+        </div>
+
+    这里的三个颜色就分别满足了三个条件，对初始值，对中间值的顺序，对最终写
+
+
+基于视图的可串行化：
+
+如果一个schedule是关于一个serial schedule基于视图等价的，那么这个schedule就是基于视图可串行化的
+
+- 基于冲突的可串行一定基于视图可串行，但是基于视图的可串行不一定基于冲突可串行
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs74.png" style="width: 80%;">
+    </div>
+
+还有些其他的serializability：先前两种都不能进行等价
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs75.png" style="width: 80%;">
+    </div>
+
+
+- Recoverable Schedules
+
+可恢复调度保证commit的严格一致性
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs76.png" style="width: 80%;">
+    </div>
+
+但是面对abort时，如果一个数据被一系列的动作修改，那么就需要rollback，往往这个rollback是cascade的，需要rollback一系列的修改，为了避免这种rollback，我们需要做一个cascadeless schedule
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs77.png" style="width: 80%;">
+    </div>
+
+就是在一个事务写了某个数据后，下一项事务需要在这项事务commit后，才能读取到这个数据
+
+
+## Concurrency Control
+
+- Lock-Based Protocol
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs80.png" style="width: 80%;">
+    </div>
 
 
 
 
 
 
+- Two-Phase Locking
+
+明确的两个阶段，一阶段是lock，二阶段是unlock，不能交叉
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs79.png" style="width: 80%;">
+    </div>
+
+可以证明事务是冲突可串行化的，只要按照lock points的顺序进行操作
+
+严格两阶段锁：确保X锁在事务提交前才释放
+
+- Lock Table
+
+table可以理解为一个hash table，每个接口对应一个数据，数据后接一个事务，表示当前的数据被哪个事务锁住了，如果有一个数据连着两个事务，说明这个锁是shared的
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs81.png" style="width: 80%;">
+    </div>
+
+还需要有一个辅助的数据结构来记录每个事务所具有的锁，以及锁的类型
+
+- Deadlock Handling
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs82.png" style="width: 80%;">
+    </div>
+
+循环等待
+
+解决：
+
+- 一次性获得所有的锁/偏序数据
+- 抢夺和不抢夺：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs83.png" style="width: 80%;">
+    </div>
+
+就是两种方式，一种老的等新的（不抢夺），一种新的等老的（抢夺）
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs84.png" style="width: 30%;">
+    </div>
+
+- Deadlock Detection
+
+不采用deadlock prevention，而是执行deadlock detection，因为我们有所有的等待信息（lock table）
+
+采用wait-for graph来检测死锁：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs85.png" style="width: 80%;">
+    </div>
+
+监测到死锁后，需要进行recovery，选择一个或者多个事务进行rollback
+
+有可能出现总是将相同事务作为“受害者”的情况，这样的话该事务就永远没法完成任务，因而存在饥饿问题。所以我们必须确保事务被选为“受害者”的次数不超过指定次数。最常见的解决方案是在成本因子中包含回滚次数。
 
 
 
+- Tree-Based Protocol
+
+将数据之间的关系处理成偏序（图），再取消S锁，只允许X锁，这样得到了一个树结构：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs86.png" style="width: 80%;">
+    </div>
+
+这样的好处是：
+
+- unlock阶段可以比two-phase更早，waiting更少
+- 没有死锁
+
+坏处：
+
+- 不保证可恢复，需要增加commit dependency
+- 事务可能lock比需要的lock更多（因为树形结构，为了访问两个子节点，必须先访问最近的公共祖先）
 
 
 
+- Granularity
 
+我们需要一种机制，能够让系统定义多个层级的粒度(granularity)：也就是说让数据项的大小可变；并定义一种数据粒度层级，其中小粒度会被包含在大粒度里面。这样的层级可以用一棵树表示
 
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs87.png" style="width: 80%;">
+    </div>
 
+- 每个节点可以被单独加锁，当一个节点被加锁后，他的所有子节点被隐式加锁
+- 如果事务要对一个节点加锁，需要遍历所有的祖先节点，如果发现路径上有不兼容的锁，则需要等待
 
+- Intention Locks
 
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs88.png" style="width: 90%;">
+    </div>
 
+如果解释一下用法的话，intention就是表示一个意向，如果我要对子节点进行S，那么我需要对父节点进行IS，表示意向，同样的，如果我要对子节点进行X，那么我需要对父节点进行IX，表示意向
 
+SIX可以理解为S+IX，表示需要读所有节点，但可能需要在过程中进行写
 
+- 最细粒度的数据只需要S、X锁
+- 粗粒度的数据需要IS、IX锁，同时也可以被S、X锁
+- 对粗粒度加S、X锁时，下方就不用加锁了，因为已经隐式加锁了，同样的下方有S、X锁时，上方的父节点需要连续的有IX锁
+- 加锁过程从上到下，释放锁过程从下到上
 
+!!! example 
 
-
-
-
+    <div style="text-align: center;" >
+        <img src="/../../../../assets/pics/dbs/dbs89.gif" style="width: 80%;">
+        </div>
+    
+    
+    
 
 
 

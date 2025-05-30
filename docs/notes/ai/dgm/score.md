@@ -147,6 +147,9 @@ $$
 
     就是说，给出加噪后的图像，清晰图像的预期值符合上面的公式
 
+
+
+
 ## Sliced Score Matching
 
 
@@ -182,6 +185,12 @@ $$
     - 第二步通过投影将$\mathbf{s_\theta}$降维到一维
     - 通过一次反向传播来计算这个标量对于所有输入的梯度
     - 再取一个点积将这个梯度降到一维
+
+ - **Pros**: 
+    - 同样是more scalable
+    - 是对clean data的score估计
+- **Cons**: 
+    - slower than denoising sm
 
 
 
@@ -223,6 +232,129 @@ $$
 <div align="center" > 
     <img src="/../../../../assets/pics/ai/dgm/sc/sc13.png" style="width: 80%;">
     </div>
+
+
+### Gaussian Perturbation
+
+通过Gaussian Perturbation，我们可以有效的解决上述问题：
+
+<div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/sc14.png" style="width: 80%;">
+    </div>
+
+可以看到在加入Gaussian Perturbation后，低密度区域的数据密度得到提升，能够更好的计算score，进而提升了其在低密度区域的准确性。
+
+???+ question "Difference between denoising and Gaussian Perturbation"
+
+    我在听stefano讲课的时候感觉同学们也没有完全get到他这里提到的perturbation和denoising SM的区别，我的理解是：
+    
+    在这里的perturb和DSM其实是等价的，本质都是通过向数据加入噪声的一个处理，但是在DSM中，我们强调的是通过引入噪声来化简计算，而perturbation强调的是通过引入噪声来提升数据密度，进而提升score的准确性，这里提出的perturb是可以使用在任何score matching的算法中的，同时也为他在下文中引出的multi-noise perturbation做铺垫
+
+所以现在的问题来到了怎么添加noise，选择$\sigma$，因为：
+
+- 如果$\sigma$太小，那么数据分布的改变不会太大，那么score的估计也不会改变太多
+- 如果$\sigma$太大，那么数据分布的改变会太大，我们得到estimation与true data的差异会很大
+
+**trade off：**
+
+<div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/sc15.png" style="width: 80%;">
+    </div>
+
+
+## Multi-noise Perturbation
+
+!!! tip "Understanding"
+
+    我们引入一种新的方法，尝试使用多个噪声进行加噪然后学习分数，原因用下面这张图来说明：
+
+    <div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/sc16.png" style="width: 90%;">
+    </div>
+
+    假设我们的数据落在这个黑色粗线附近，但是我们的采样可能会在这个平面中远离粗线的地方，这时较低的数据密度导致我们不能很好的估计梯度方向，使用不同的$\sigma$进行加噪，让我们的采样能够读到更好的梯度方向。
+
+    这就是score based model和diffusion model背后的思想，我们不仅要学习数据分布，不仅要学习数据分布加上单一噪声的分布，我们要学习数据被不同噪声量扰动后的分数
+
+
+<!-- - **Annealed Langevin Dynamics**：
+
+    - Sample using $\sigma_1, \sigma_2, \cdots, \sigma_L$ sequentially with Langevin dynamics and calculate the score
+    - 在每一步后，Anneal down the noise level -->
+
+
+<!-- <div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/anneal.gif" style="width: 80%;">
+    </div> -->
+
+
+具体的实现如下：
+
+- Training:
+  
+    - simultaneously使用正交的高斯噪声$\sigma_i$, $\mathcal{N}(0, \sigma_i^2 I), i = 1, 2, \cdots, L$进行加噪（加噪的方式是和DSM一样的）
+    - 每次加噪后，计算score$\nabla_{x} \log p_{\sigma_i}(x)$，这一步是通过训练**Noise Conditional Score Based Model $\mathbf{s}_\theta(\mathbf{x}, i)$**来实现的
+
+!!! example "Noise Conditional Score Based Model"
+    <div align="center" > 
+    <img src="/../../../../assets/pics/ai/dgm/sc/sc17.png" style="width: 40%;">
+    </div>
+    
+    如果我们直接计算L个神经网络，将会十分expensive，所以我们这里使用一个神经网络，通过调整不同的$\sigma_i$来计算不同的score
+
+这样就可以得到L个score，但是目标需要经过加权：
+
+$$
+\sum_{i=1}^{L} \lambda(i) \mathbb{E}_{p_{\sigma_i}(x)} [|| \left( \nabla_{x} \log p_{\sigma_i}(x) - \nabla_{x} \log p_{data}(x) \right) ||_{2}^2]
+$$
+
+$$
+\begin{aligned}
+& =\frac{1}{L} \sum_{i=1}^L \lambda\left(\sigma_i\right) E_{\mathbf{x} \sim p_{\mathrm{data}}, \mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})}\left[\left\|\nabla_{\tilde{\mathbf{x}}} \log q_{\sigma_i}(\tilde{\mathbf{x}} \mid \mathbf{x})-\mathbf{s}_\theta\left(\tilde{\mathbf{x}}, \sigma_i\right)\right\|_2^2\right]+\text { const. } \\
+& =\frac{1}{L} \sum_{i=1}^L \lambda\left(\sigma_i\right) E_{\mathbf{x} \sim p_{\mathrm{data}}, \mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})}\left[\left\|\mathbf{s}_\theta\left(\mathbf{x}+\sigma_i \mathbf{z}, \sigma_i\right)+\frac{\mathbf{z}}{\sigma_i}\right\|_2^2\right]+\text { const. }
+\end{aligned}
+$$
+
+
+这里的加权函数$\lambda(i)$通常等于$\sigma_i^2$
+
+<div align="center" > 
+<img src="/../../../../assets/pics/ai/dgm/sc/sc18.png" style="width: 60%;">
+</div>
+
+
+- Sampling:
+    
+    - 使用Annealed Langevin dynamics for $i = L, L-1, \cdots, 1$进行采样
+
+<div align="center" > 
+<img src="/../../../../assets/pics/ai/dgm/sc/ald.gif" style="width: 80%;">
+</div>
+
+这个过程中使用退火朗之万，并且将每次的sample作为下一次的初始值
+
+- Noise Choice
+
+最后还涉及到一些噪声的选择问题，我们知道噪声是一个递进的/递减的，所以这里涉及到这个噪声的变化过程：
+
+key point是：
+
+- 相邻的噪声之间需要overlap to facilitate transitioning across noise scales
+- 采用geometry progression with sufficient length：
+
+$$
+\sigma_1 < \sigma_2 < \cdots < \sigma_L
+$$
+
+$$
+\frac{\sigma_i}{\sigma_{i+1}} = \text{constant}
+$$
+
+
+
+
+
+
 
 
 

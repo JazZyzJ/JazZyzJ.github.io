@@ -465,7 +465,7 @@ class A {
 
 但是一旦自己写了构造函数，编译器就不会生成默认的构造函数
 
-```
+
 - 析构函数只能有一份，在对象生命周期结束时调用
     - 通常析构函数不需要添加参数，如果遇到资源的调用，则需要在析构函数中显式释放
 
@@ -506,4 +506,428 @@ Inheritance：
 与组合的区别就是：组合是has-a的关系，继承是is-a的关系
 
 在派生类中，可以调用基类的成员函数，但是不能动基类的private成员，如果我们有一个private data，想写一个setdata对其进行更改，那么使用public会导致非派生类（别人）也可以更改，这时候需要使用protected，这样派生类可以访问，但是非派生类不能访问
+
+- 顺序是：基类在派生类前面，字段在主体前
+
+- name hiding: 派生类中不能使用基类中被隐藏的变量名，例如我在基类中有一个print函数，在派生类中同样加了print函数，那么派生类中的print函数会隐藏基类中的print函数，默认使用派生类中的print函数，这时候需要使用作用域运算符::来访问基类中的print函数
+
+
+## Lec7
+
+
+- 在类的外部访问private：
+
+通过friend关键字来访问
+
+- 继承关键字：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp5.png" style="width: 80%;">
+    </div>
+
+
+> Polymorphism 多态
+
+- virtual function 虚函数
+
+在定义基类时，如果想要在派生类中重写基类中的函数，那么需要在基类中使用virtual关键字，这样在派生类中使用时，会根据对象的实际类型来调用相应的函数，而不是根据指针或引用的类型来调用
+
+在派生类中写的时候可以通过添加override关键字来显式声明，这样如果基类中没有这个函数，编译器会报错
+
+
+通过使用虚函数完成多态，在调用函数时，根据内部的对象类型决定其中对象调用的函数类型
+
+```cpp
+move_and_draw(&a, &b);
+```
+这时会根据a和b的实际类型来决定调用draw函数的哪个版本
+
+- 析构函数也可以改写成虚函数，只要类中有任何一个虚函数，就应该提供一个虚析构函数。即使类不打算被继承，这样做也无大碍，并且还更安全。
+
+
+- 如果我们对一个对象赋值为另一个对象（例如将派生类赋值给基类），那么数值部分会直接赋值（但是会根据基类的大小进行截断），但是虚函数表只会赋值基类中的虚函数表，不会赋值派生类中的虚函数表
+
+
+
+## Lec9
+
+Copy Constructor
+
+
+对象创建的时候，会调用构造函数，对象销毁的时候会调用析构函数，但是在对一个对象进行拷贝的时候，会调用拷贝构造函数
+
+```cpp
+A a1;
+A a2 = a1;
+
+void f(A a) {
+    ...
+}
+
+f(a1);
+```
+
+也就是说在这里，a2会调用拷贝构造函数来进行初始化，f(a1)也会调用拷贝构造函数，如果我们对创建的对象个数进行统计，我们会发现有三个对象被创建，有三次析构函数被使用
+
+- 拷贝构造函数默认是存在的，如果自己没有写，编译器会自动生成一个
+- 拷贝构造函数被调用后是会调用析构函数的
+- 编译器自己生成的拷贝构造函数在拷贝的时候如果内层有嵌套的结构体或者类，会嵌套的进行拷贝构造
+- 编译器自己生成的拷贝构造函数是浅拷贝，如果类中包含**指针**，那么拷贝的是指针的地址，而不是指针指向的内容，这样会导致两个指针指向同一个内容，当一个指针被析构时，另一个指针也会被析构，这样就会导致重复析构，因此需要自己写拷贝构造函数
+
+
+- 返回值优化：
+
+```cpp
+A f() {
+    A a;
+    return a;
+}
+
+A b = f();
+```
+
+在返回值优化中，编译器会直接将a的值返回给b，而不是先创建一个临时对象，再拷贝给b，这样就避免了拷贝构造函数的调用
+
+但是在内存扩容时（例如vector），编译器不会进行返回值优化，每次扩容都是重新新建一个更大的内存，然后将原来的内容拷贝过去，这样就会导致拷贝构造函数的调用
+
+- 如果想要避免元素新建再拷贝，可以使用emplace_back，而不是push_back，emplace_back可以接收到内部元素所需要的参数直接在内存中构造，而不是新建再拷贝
+
+
+
+### Static
+
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp6.png" style="width: 80%;">
+    </div>
+
+表格分为两列：
+* **where to use (在哪里使用)**：列出了`static`关键字可以应用的不同程序元素。
+* **what does it mean (它意味着什么)**：解释了`static`关键字在相应上下文中具体的行为或含义。
+
+下面是对表格内容的详细解释：
+
+1.  **free functions (自由函数)**
+    * **What it means:** Internal linkage (内部链接)
+    * **Explanation:** 当`static`关键字用于自由函数（即不属于任何类的函数）时，它表示该函数具有内部链接。这意味着该函数只能在其定义所在的编译单元（通常是`.cpp`文件）内部访问。其他编译单元无法链接到并调用这个`static`自由函数。这有助于避免命名冲突，并实现更好的模块化。
+
+2.  **global variables (全局变量)**
+    * **What it means:** Internal linkage (内部链接)
+    * **Explanation:** 类似于`static`自由函数，当`static`关键字用于全局变量时，也表示该变量具有内部链接。这意味着该全局变量只能在其定义所在的编译单元内部访问，而不能被其他编译单元访问。这同样有助于避免命名冲突，并确保变量的局部性。
+
+3.  **local variables (局部变量)**
+    * **What it means:** Persistent storage (持久存储)
+    * **Explanation:** 当`static`关键字用于函数内部的局部变量时，它的含义与前两者完全不同。这被称为“静态局部变量”。
+        * **生命周期:** 静态局部变量的生命周期与整个程序的生命周期相同，而不是随着函数的结束而销毁。它只在第一次执行到其声明语句时初始化一次。
+        * **作用域:** 尽管生命周期是全局的，但它的作用域仍然是局部的，即它只能在其定义的函数内部访问。
+        * **用途:** 常用于需要保持函数调用之间状态的情况，例如一个计数器，每次函数被调用时递增，但其值在函数返回后仍然保留。
+
+4.  **member variables (成员变量)**
+    * **What it means:** Shared by all instances (所有实例共享)
+    * **Explanation:** 当`static`关键字用于类的成员变量时，它表示该成员变量是“静态成员变量”或“类变量”。
+        * **不属于任何实例:** 静态成员变量不属于类的任何特定对象（实例），而是属于类本身。
+        * **共享:** 类的所有对象共享同一个静态成员变量的副本。对一个对象的静态成员变量的修改会影响到所有其他对象。
+        * **初始化:** 静态成员变量通常需要在类定义之外进行初始化。
+        * **用途:** 常用于存储类的所有对象共享的数据，例如一个计数器，记录创建了多少个类的对象。
+    在对static成员变量进行初始化时，需要使用类名来访问，而不是对象名
+
+```cpp
+class A {
+    static int data;
+};
+
+int A::data = 10;
+```
+
+同时这块data的数据并不存放在对象中，而是一个单独的全局变量
+
+5.  **member functions (成员函数)**
+    * **What it means:** Access static members only (只能访问静态成员)
+    * **Explanation:** 当`static`关键字用于类的成员函数时，它表示该成员函数是“静态成员函数”。
+        * **不属于任何实例:** 静态成员函数不与类的任何特定对象关联，可以直接通过类名调用，无需创建对象。
+        * **无`this`指针:** 静态成员函数没有`this`指针，因此它不能直接访问非静态（实例）成员变量或非静态成员函数，因为这些成员需要一个特定的对象来访问。
+        * **访问范围:** 它们只能访问静态成员变量和静态成员函数。
+        * **用途:** 常用于执行与类相关的操作，但不依赖于任何特定对象的状态，例如工厂方法或辅助函数。
+
+总而言之，`static`关键字在C++中是一个多功能的关键字，其确切的含义取决于它所应用的上下文（自由函数、全局变量、局部变量、成员变量或成员函数）。理解这些不同上下文中的含义对于编写健壮和高效的C++代码至关重要。
+
+由于每个对象都会有一个隐式参数传进自己，而静态成员函数在调用时可以：
+
+```cpp
+class A {
+    static void f() {
+        ...
+    }
+};
+
+A::f();
+```
+
+这显然是与对象无关的，所以静态成员函数没有this指针
+
+并且，在静态成员函数内部无法访问非静态成员变量，因为非静态成员变量需要一个特定的对象来访问：
+
+```cpp
+class A {
+    int data;
+    static void f() {
+        cout << data << endl; //error
+    }
+};
+```
+
+## Lec10
+
+> Operator Overloading
+
+可以进行重载的运算符：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp7.png" style="width: 60%;">
+    </div>
+
+- 重载运算符的限制：
+    - 不能重载的运算符：
+        - ::
+        - .
+        - ?:
+        - sizeof
+        - typeid
+        - const_cast
+        - dynamic_cast
+        - reinterpret_cast
+        - static_cast
+
+
+- 不能定义全新的运算符
+- 参数个数一致
+- 优先级不变
+
+!!! example
+    
+    ```cpp
+    class Integer {
+        public:
+            Integer(int n = 0) : i(n) {}
+            Integer operator+(const Integer& other) const {
+                return Integer(i + other.i);
+            }
+        private:
+            int i;
+    };
+
+    Integer a(1), b(2);
+    Integer c = a + b; // c = a.operator+(b)
+    ```
+
+- 第一个参数是隐式this指针，不能写```c = 3 + a```
+
+    当然也可以转换成双目运算符
+
+
+主要的类型（根据返回值和参数个数）：
+
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp8.png" style="width: 80%;">
+    </div>
+
+- 单目运算符：
+
+前缀运算符：```Integer operator++()```
+
+后缀运算符：```Integer operator++(int)```
+
+
+
+实现：
+
+```cpp
+//prefix:
+Integer& Integer::operator++() {
+    this->i += 1;
+    return *this;
+}
+
+//postfix:
+Integer Integer::operator++(int) {
+    Integer old(*this);
+    ++(*this); // 重用前缀表达式
+    return old;
+}
+
+```
+
+## Lec11
+
+operator 也会有自动生成，如果内层的class定义了一个operator，外层的class使用内层类进行operator的时候，会自动生成一个operator重写
+
+- = 可以连用
+
+```cpp
+A = B = C;
+// 等价于 A = (B = C)
+```
+
+- self assignment
+
+在进行赋值的时候，如果对象的地址相同，那么会进行self assignment，因为为了避免内存泄露我们会把原地址先进行删除，然后再进行赋值，如果发生了self assignment，原地址就会直接不存在，这时候内部逻辑比较原值和新值的时候就会出错，所以要先检查一下是否是self assignment
+
+- functor
+
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp9.png" style="width: 80%;">
+    </div>
+
+对（）进行重载，看起来是在调用函数，但是实际上是在调用operator()，调用对象
+
+
+- lambda function
+
+可以直接将函数对象作为参数传递，例如：
+
+```cpp
+#include <functional>
+
+void f(function<int(int, int)> func) {
+    ...
+}
+int c = 10;
+f([c](int a, int b) {
+    return a + b + c;
+});
+```
+
+这个等价于：
+
+```cpp
+class Lambda {
+    private:
+    int c;
+    public:
+    Lambda(int c) : c(c) {}
+    int operator()(int a, int b) {
+        return a + b + c;
+    }
+}
+```
+
+
+这里的中括号是lambda表达式的捕获列表，捕获列表中的变量会在lambda表达式中被捕获，就像上述函数调用一样，在使用的时候，lambda函数作为一个main函数中的对象，捕获列表中的元素会作为类中的成员变量，在lambda表达式中使用
+
+
+
+## Lec12
+
+
+User defined type to be transfomed: Conversion
+
+- Single argument constructor
+
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp10.png" style="width: 80%;">
+    </div>
+
+如果在类定义中加入了explicit关键字，那么这个构造函数就只能被显式调用，不能被隐式调用
+
+
+- Conversion operator
+
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp11.png" style="width: 80%;">
+    </div>
+
+- 这里的double是关键字（要么是内置类型，要么是用户定义类型），表示转换的目标类型
+
+
+我们可以自己选用转换的方式：
+
+但是这里注意如果有相同的类型转换，会出现ambiguous的情况
+
+
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp12.png" style="width: 80%;">
+    </div>
+
+- stream operator
+
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp13.png" style="width: 80%;">
+    </div>
+
+
+
+
+- 这里对ostream进行重载，所有的其他stream都会自动重载，因为ostream是所有stream的基类
+
+
+
+## Lec13
+
+> Template
+
+- function overloading
+
+同名函数根据参数表进行使用，编译器根据参数表进行匹配时，也会对某些类型做隐式转换：
+
+比如char和int，float和double，但是如果可以转成多个类型的变量如long，就会产生歧义，编译器会报错
+
+- default argument
+
+cpp的参数表的默认值有给定的顺序，从右到左，不能跳着给。默认值在函数声明中给定，在函数定义中不能重复给定
+
+模版在做实例化的时候不能做隐式类型转换，但是可以显式转换
+
+
+
+
+
+```cpp
+template <class T>
+void print(T a, T b) {
+    cout << a << " " << b << endl;
+}
+
+print<int>(1, 2.1);
+```
+
+这样会有一个warning，因为2.1被隐式转换成了int（2），虽然会丢掉一些东西，但是不会报错
+
+当然，也可以```print<double>(1.1, 1)```，这样就不会丢东西了
+
+如果有普通函数版本，也有模版版本，那么会优先使用普通函数版本，如果没有严格匹配的普通版，才会调用模版。实在不行，会进行隐式转换
+
+- class template
+
+模版类可以有多个参数，同时也不一定是自定义的类型，可以是固定类型：
+
+```cpp
+template<class T, int N>
+class Array {
+    private:
+        T m_arr[N];
+    public:
+        int size() const {return N;}
+        T& operator[](int i) {return m_arr[i];}
+}
+
+int main() {
+    Array<int, 10> a;
+    a[0] = 1;
+    Array<int, 4> b;
+    Array<int, 4> c;
+
+    a = b; // 这里会报错，因为Array<int, 10>和Array<int, 4>是不同的类型
+    b = c; // 这里不会报错，因为是相同类型
+}
+```
+
+- member template
+
+<div align="center" >
+    <img src="/../../../../assets/pics/cpp/cpp14.png" style="width: 80%;">
+    </div>
+
+再写一个typename U，用来使用别的参数
+
+
+
 
