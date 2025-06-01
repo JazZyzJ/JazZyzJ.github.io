@@ -350,6 +350,148 @@ $$
 \frac{\sigma_i}{\sigma_{i+1}} = \text{constant}
 $$
 
+## Score-based models with SDEs
+
+> 通过将noide level提升到 **infinity**, we obtain not only **higher quality** samples, but also, among others, **exact log-likelihood** computation, and **controllable generation** for inverse problem solving.
+
+
+我们将上一步中的noise在时间维度取极限，得到一个连续的noise level，也就是一个随机微分方程（SDE）
+
+<div align="center" > 
+<img src="/../../../../assets/pics/ai/dgm/sc/sc19.png" style="width: 80%;">
+</div>
+
+这样得到的就是一个完全的噪声：
+
+<div align="center" > 
+<img src="/../../../../assets/pics/ai/dgm/sc/sde.gif" style="width: 80%;">
+</div>
+
+现在我们用SDE来表示这个过程：
+
+$$
+\mathrm{d} \mathbf{x} = \mathbf{f(\mathbf{x}, t)} \mathrm{d} t + \mathbf{g(t)} \mathrm{d} \mathbf{w}
+$$
+
+!!! quote "Notation"
+
+    - $f(x, t)$: drift coefficient，漂移系数决定数据的确定性演化方向
+    - $g(t)$: diffusion coefficient，扩散系数决定数据的随机性演化方向，控制噪声的强度
+    - $\mathbf{dw}$: Wiener process，标准布朗运动（维纳过程），表示无穷小的高斯白噪声
+
+!!! example "Choice of SDEs"
+
+    === "Variance Exploding SDE"
+
+        噪声方差随时间增大，最终覆盖整个空间，快速爆炸噪声
+
+        $$
+        dx = \sqrt{\frac{d\sigma^2(t)}{dt}}dw, \text{  } \sigma(t) \rightarrow \infty, t\rightarrow T
+        $$
+
+    === "Variance Preserving SDE"
+
+        总体方差保持稳定，常用于diffusion model
+
+        $$
+        \mathrm{d} \mathbf{x} = -\frac{1}{2} \beta(t) x \mathrm{d} t + \sqrt{\beta(t)} \mathrm{d} \mathbf{w}
+        $$
+
+
+这个随机微分方程的解是一个连续的随机变量集合${x(t)}_{t \in [0, T]}$，表示在时间$[0, T]$内，数据$x$的演化过程（trace stochastic trajectory as t increases），这时我们的数据分布$p_t(x)$就是表示在时间$t$时，数据$x(t)$的marginal distribution density function，所以在$t \rightarrow T$时，$p_t(x)$就是噪声扰动后的数据分布$\pi(x)$
+
+现在我们来考虑怎么进行sample，首先回顾我们的finite version，我们通过Annealed Langevin dynamics进行采样，即sequentially 在不同的噪声阶段进行朗之万动力学采样，现在我们将加噪过程变成了一个随机微分方程，那么自然的我们想求解这个SDE的reverse：
+
+理论上每个SDE都有一个reverse SDE：
+
+$$
+\mathrm{d} \mathbf{x}=\left[\mathbf{f}(\mathbf{x}, t)-g^2(t) \nabla_{\mathbf{x}} \log p_t(\mathbf{x})\right] \mathrm{d} t+g(t) \mathrm{d} \mathbf{w}
+$$
+
+不难发现，这里的$\nabla_x log p_t(x)$就是我们的score!
+
+
+    
+
+现在来看看训练思路：
+
+根据上面的式子，不难观察出我们只需要知道：
+
+- terminal distribution $p_T(x)$：就是我们的加噪数据分布，tractable
+- score function $\nabla_x \log p_t(x)$：我们需要训练一个**Time-Dependent Score-Based Model**$s_\theta(x, t)$，such that $\nabla_x \log p_t(x) \approx s_\theta(x, t)$，这和我们对finite的训练是相似的: $\nabla_x \log p_{\sigma_i}(x) \approx s_\theta(x, i)$
+
+
+这时我们的training obj就是：
+
+$$
+\mathbb{E}_{t \in \mathcal{U}(0, T)} \mathbb{E}_{p_t(\mathbf{x})}\left[\lambda(t)\left\|\nabla_{\mathbf{x}} \log p_t(\mathbf{x})-\mathbf{s}_\theta(\mathbf{x}, t)\right\|_2^2\right]
+$$
+
+这里，$mathcal{U}$表示0，T之间的均匀分布，$\lambda$还是那个正项权重函数，通常选择$\lambda(t) \propto \frac{1}{\mathbb{E}[\|\nabla_{\mathbf{x}(t)} \log p(\mathbf{x}(t) \mid \mathbf{x}(0))\|^2_2]}$来对不同时间的score进行平衡。
+
+这时对score function进行训练，用sliced或者denoising sm优化后，将结果插入SDE：
+
+$$d\mathbf{x} = [\mathbf{f}(\mathbf{x}, t) - g^2(t)\mathbf{s}_{\theta}(\mathbf{x}, t)]dt + g(t)d\mathbf{w}$$
+
+从$x(T) \sim \pi$开始，我们开始进行reverse SDE解，得到$x(0)$，当score well-trained时，这时的$x(0)$就是一个approximate sample from distribution $p_0$
+
+!!! tip "likelihood weighting function"
+
+    在这里我们可以引入likelihood，通过选择一个weighting function $\lambda(t) = g^2(t)$使得
+    
+    $$\text{KL}(p_0(\mathbf{x}) \| p_{\theta}(\mathbf{x})) \leq \frac{T}{2}\mathbb{E}_{t \in \mathcal{U}(0,T)}\mathbb{E}_{p_t(\mathbf{x})}[\lambda(t)\|\nabla_{\mathbf{x}} \log p_t(\mathbf{x}) - \mathbf{s}_{\theta}(\mathbf{x}, t)\|^2_2] + KL(p_T || \pi)$$
+
+    由于这个式子中带有的KL散度，并且最小化KL散度和最大化模型训练中的似然是等价的，我们给这个加权函数才起名为似然加权函数，并且Yang Song的博客中提到这个追求似然的训练结果会比当时最好的AR模型更好
+
+
+### Predictor-Corrector
+
+首先看怎么解SDE：
+
+- Euler-Maruyama method: 采用离散化SDE，用finite step来逐渐逼近SDE的解，这个过程很像朗之万动力学，都是在逐渐逼近目标分布的同时加入扰动
+
+$$\Delta\mathbf{x} \leftarrow [\mathbf{f}(\mathbf{x}, t) - g^2(t)\mathbf{s}_{\theta}(\mathbf{x}, t)]\Delta t + g(t)\sqrt{|\Delta t|}\mathbf{z}_t, \text{  } \mathbf{z}_t \sim \mathcal{N}(0, \mathbf{I})$$
+
+$$\mathbf{x} \leftarrow \mathbf{x} + \Delta\mathbf{x}$$
+
+$$t \leftarrow t + \Delta t$$
+
+- Predictor：
+    
+    使用任何一种numerical method that predicts $x(t + \Delta t) \sim p_{t+\Delta t}(x)$ from existing sample $x(t)\sim p_t(x)$
+
+- Corrector：
+    
+    任何独立依赖score function的MCMC procedure，例如朗之万或者是汉密尔顿MC
+
+使用中就是先用predictor预测，再用corrector纠正
+    
+
+## Controllable generation 
+
+关于加入限定条件的生成任务，也就是通过贝叶斯公式对概率进行条件约束，在这里score function是很合适做这个任务的，因为对贝叶斯公式：
+
+假设我们知道正向生成结果$p(y|x)$
+
+$$
+p(\mathbf{x} \mid \mathbf{y}) = \frac{p(\mathbf{x}, \mathbf{y})}{p(\mathbf{y})} = \frac{p(\mathbf{y} \mid \mathbf{x})p(\mathbf{x})}{\int p(\mathbf{y} \mid \mathbf{x})p(\mathbf{x})d\mathbf{x}}
+$$
+
+通过取梯度可以极大的化简这个式子：
+
+$$
+\nabla_x \log p(\mathbf{x} \mid \mathbf{y}) = \nabla_x \log p(\mathbf{y} \mid \mathbf{x}) + \nabla_x \log p(\mathbf{x})
+$$
+
+因为后两项分别是已知的和score function，所以先验概率很好得到了
+
+---
+
+> 以上内容在25 Summer 期末周前完成，coding部分如果有时间的话我也想好好看看的，但是临近期末，先不看了，后面有时间的话可以补上，但我还是倾向于将flow matching方向的理解先完成
+
+
+
+
 
 
 
