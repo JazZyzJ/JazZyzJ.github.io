@@ -373,8 +373,8 @@ class A {
 引用的限制：
 
 - 引用不能嵌套
-- 没有引用类型的指针，但是有指针的引用（可以是*&，不能是 &*）
-- 数组中不能放yinyong
+- 没有引用类型的指针，但是有指针的引用（可以是* &，不能是 & *）
+- 数组中不能放引用
 
 ### Dynamic Memory Allocation
 
@@ -512,7 +512,7 @@ Inheritance：
 - name hiding: 派生类中不能使用基类中被隐藏的变量名，例如我在基类中有一个print函数，在派生类中同样加了print函数，那么派生类中的print函数会隐藏基类中的print函数，默认使用派生类中的print函数，这时候需要使用作用域运算符::来访问基类中的print函数
 
 
-## Lec7
+## Lec8
 
 
 - 在类的外部访问private：
@@ -927,6 +927,152 @@ int main() {
     </div>
 
 再写一个typename U，用来使用别的参数
+
+
+
+## Lec14
+
+> iterator
+
+可以理解为一种智能指针
+
+提供一种顺序的数据访问方式，不会暴露底层的数据结构，这样我们在设计算法时，只需要借助这种接口，而不关心底层的数据结构
+
+!!! example
+
+    ```cpp
+    template<class InputIterator, class T>
+    InputIterator find(InputIterator first, InputIterator last, const T& value) {
+        while (first != last && *first != value) ++first;
+        return first;
+    }
+    ```
+
+    使用的时候，只要保证提供的迭代器是有其中的操作的：
+
+    ```cpp
+    vector<int> vecTemp;
+    if (find(vecTemp.begin(), vecTemp.end(), 3) == vecTemp.end()) {
+        cout << 3 not found in vecTemp << endl;
+    }
+    ```
+
+- 注意不同的底层数据结构在使用同一种算法（例如遍历）时，可能会有不同的表现，比如二叉搜索树无论给定的数据是什么顺序，都是采用中序遍历，而对于链表则是按照创建顺序
+
+
+
+
+
+- Template Specialization
+
+模版的特化：对于一个正常的模版（主模版），我们有一个类的定义使用模版中的参数
+
+```cpp
+template<class T1, class T2, int N>
+class A{...}
+```
+
+当我们指定T1和T2为某个类型，N为某个值时，我们可以重新定义这个类，这样就形成了特化
+
+```cpp
+template<class T1, class T2, int N>
+class A<T1, T2, 10> { //全部参数都给定的全特化
+    ...//新的实现
+}
+class A<int, T2, 10> { //部分参数给定的部分特化
+    ...//新的实现
+}
+```
+
+
+- iterator category
+
+    - input
+    - output
+    - forward
+    - bidirectional
+    - random access
+
+从能力上说，input+output -> forward -> bidirectional -> random access
+
+每一层都有上一层不具备的能力，最强的就是random access
+
+## Lec15
+
+> Exception
+
+...是cpp中异常的通配符
+
+
+- throw
+  
+throw语句将异常向上抛出，直到被catch语句捕获，可以写不带东西的throw语句，表示抛出异常，只能在catch语句中使用
+
+
+- Exception in cons & des
+
+在进行构造函数的过程中如果发生了异常，此时析构函数不会被调用，因为对象还没有被完全构造出来，所以需要手动调用析构函数，或者将新建资源放在init函数中，但这样违背了构造函数初始化对象的初衷
+
+
+## Lec16
+
+> Smart Pointer
+
+三种智能指针，都是用来管理裸指针的
+
+- unique_ptr
+
+```cpp
+class A {
+    ...
+}
+
+unique_ptr<A> p1(new A()); //这里就是用一个裸指针(new A())对p1进行初始化
+```
+
+也可以用make_unique来创建智能指针
+
+```cpp
+auto p1 = make_unique<A>();
+```
+unique的意思就是管理权唯一，所以不能拷贝构造和赋值，但是可以移动构造
+
+```cpp
+auto p2 = move(p1);
+//move就是右值引用，也就是：
+p2 = (unique_ptr<A> &&)p1;
+```
+
+- shared_ptr
+
+shared的意思就是多个人管理同一个裸指针，只有所有管理权都释放了，裸指针才会被释放，可以用.use_count来查看有多少个管理权
+
+- weak_ptr
+
+weak_ptr是用来解决shared_ptr的循环引用问题，因为shared_ptr的计数器是基于引用计数的，所以当两个shared_ptr互相引用时，会导致计数器无法释放，从而导致内存泄漏
+
+
+- Name Cast
+
+
+constant_cast: 常量类型转换，用于添加或者移除const或者volatile
+
+
+reinterpret_cast: 重新解释类型，如果一个类型占用四个字节，转换成double后就变成了8个字节，但是不会进行任何的转换，只是重新解释，也就是占用八字节，但数据还是在前四个字节中
+
+static_cast: 静态类型转换，可以进行一些简单的类型转换，例如int到double，但是不能进行一些复杂的类型转换，例如int到char*
+
+dynamic_cast: 动态类型转换，可以进行一些复杂的类型转换，例如int到char*，但是不能进行一些简单的类型转换，例如int到double
+
+```cpp
+int a = 7;
+double* p;
+
+p = (double*)&a; //ok but a is not a double
+p = static_cast<double*>(&a); //error
+p = reinterpret_cast<double*>(&a); //ok
+```
+
 
 
 

@@ -153,7 +153,7 @@ Single Rotation
 !!! lemma
     一个有N个内部节点的红黑树的树高至多为$2\log_2(N+1)$
 
-???+ quote "Black Height"    
+???+ proof "Black Height"    
     证明：设空树的树高为0
 
     归纳假设：
@@ -441,7 +441,7 @@ CPU时间复杂度为$O(B\log_B N)$，磁盘的I/O次数为$O(\log_B N)$
 
 同时满足左式堆的性质：
 
-!!! note "定义"
+!!! definition "定义"
     任意一个节点x到一个 ==没有两个孩子的节点== 的距离称为节点的**null path length**，记作$npl(x)$
     
     显然，对于一个有左孩子和右孩子的节点，$npl(x)=1+\min(npl(lc),npl(rc))$，对于叶子节点，$npl(x)=0$，在这里我们定义$npl(null)=-1$

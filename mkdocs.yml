@@ -123,9 +123,9 @@ nav:
     - index.md
     - friends.md
     # - Changel0g: log/index.md
-  - N0tes:
-      - notes/index.md
-      - Computer Science:
+  # - N0tes:
+      # - notes/index.md
+  - CS:
         - notes/cs/index.md
         - DS & Algorithms:
           - notes/cs/algorithm/index.md
@@ -156,7 +156,7 @@ nav:
           - Python(CS61a): notes/lingo/cs61a.md
           - Verilog: notes/lingo/verilog.md
           - C++: notes/lingo/cpp.md
-      - Artifical Intelligence:
+  - ML:
         - notes/ai/index.md
         - Deep Generative Model: 
             - notes/ai/dgm/index.md
@@ -165,11 +165,11 @@ nav:
             - Normalizing Flow: notes/ai/dgm/flow.md
             - Energy-based Models: notes/ai/dgm/energy.md
             - Score-based Models: notes/ai/dgm/score.md
-      - Math:
-        - notes/math/index.md
-        - Random Process:
-          - notes/math/randomprocess/index.md
-      - X:
+    # - Math:
+    #     - notes/math/index.md
+    #     - Random Process:
+    #       - notes/math/randomprocess/index.md
+  - X:
         - Drug Design:
           - x/aidd/aidd.md
           

@@ -19,7 +19,7 @@ comment: true
 
 	但是更好的方式是存下最近两次的计算结果，这样只需要$O(n)$的时间复杂度
 
-	??? quote "Fibonacci"
+	??? code "Fibonacci"
 
 		```c
 		int fibonacci(int n) {
@@ -126,7 +126,7 @@ comment: true
 	这个方程的意思就是，我们遍历所有可能的括号位置，然后计算每种划分方式的计算时间开销：括号左边矩阵链开销 + 括号右边矩阵链开销 + 合并两个矩阵链的开销
 	</span>
 
-	??? quote "顺序实现code"
+	??? code "顺序实现code"
 
 		```c
 		int MatrixChainOrder(int p[], int n) {
@@ -161,7 +161,7 @@ comment: true
 		}
 
 		```
-	??? quote "记忆化搜索code"
+	??? code "记忆化搜索code"
 
 		```c
 

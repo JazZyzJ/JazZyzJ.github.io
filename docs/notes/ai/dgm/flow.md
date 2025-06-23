@@ -71,7 +71,7 @@ $$
 
 现在我们来正式的定义一个Flow Model：
 
-!!! note "Flow Model"
+!!! definition "Flow Model"
 
     - In a **normalizing flow model**, the mapping between $Z$ and $X$, given by $f_{\theta}$: $\mathbb{R}^n \rightarrow \mathbb{R}^n$ is **deterministic** and **invertible** such that:
 
@@ -105,36 +105,39 @@ $$
 
 接下来看一下最后的$p_X(x)$怎么推导：
 
-对Flow过程的第$i$个函数，有：
 
-$$
-\begin{align}
-z_{i-1} &\sim p_{i-1}(z_{i-1}) \\
-z_i &= f_{i}(z_{i-1}),\text{ thus }z_{i-1} = f_{i}^{-1}(z_i) \\ \\
-\text{then using change of variables formula:} \\
-p_i(z_i) &= p_{i-1}(f_{i}^{-1}(z_i)) \left| det \frac{\partial f_{i}^{-1}(z_i)}{\partial z_i} \right| \\
-&= p_{i-1}(z_{i-1}) {\left| det \frac{\partial f_{i}(z_{i-1})}{\partial z_{i-1}} \right|}^{-1} \\
-\end{align}
-$$
+!!! proof "推导"
 
-对等号两边取对数：
+    对Flow过程的第$i$个函数，有：
 
-$$
-\log p_i(z_i) = \log p_{i-1}(z_{i-1}) - \log \left| det \frac{\partial f_{i}(z_{i-1})}{\partial z_{i-1}} \right|
-$$
+    $$
+    \begin{align}
+    z_{i-1} &\sim p_{i-1}(z_{i-1}) \\
+    z_i &= f_{i}(z_{i-1}),\text{ thus }z_{i-1} = f_{i}^{-1}(z_i) \\ \\
+    \text{then using change of variables formula:} \\
+    p_i(z_i) &= p_{i-1}(f_{i}^{-1}(z_i)) \left| det \frac{\partial f_{i}^{-1}(z_i)}{\partial z_i} \right| \\
+    &= p_{i-1}(z_{i-1}) {\left| det \frac{\partial f_{i}(z_{i-1})}{\partial z_{i-1}} \right|}^{-1} \\
+    \end{align}
+    $$
 
-最后对整个过程累加：
+    对等号两边取对数：
 
-$$
-\begin{aligned}
-\log p(\mathbf{x})=\log f_K\left(\mathbf{z}_K\right) & =\log f_{K-1}\left(\mathbf{z}_{K-1}\right)-\log \left|\operatorname{det} \frac{d f_K}{d \mathbf{z}_{K-1}}\right| \\
-& =\log f_{K-2}\left(\mathbf{z}_{K-2}\right)-\log \left|\operatorname{det} \frac{d f_{K-1}}{d \mathbf{z}_{K-2}}\right|-\log \left|\operatorname{det} \frac{d f_K}{d \mathbf{z}_{K-1}}\right| \\
-& =\ldots \\
-& =\log f_0\left(\mathbf{z}_0\right)-\sum_{i=1}^K \log \left|\operatorname{det} \frac{d f_i}{d \mathbf{z}_{i-1}}\right|
-\end{aligned}
-$$
+    $$
+    \log p_i(z_i) = \log p_{i-1}(z_{i-1}) - \log \left| det \frac{\partial f_{i}(z_{i-1})}{\partial z_{i-1}} \right|
+    $$
 
-这样一个path就是一个flow，如果我们将$f$替换为连续的分布$\pi_i$，那么我们得到的就是一个normalized flow
+    最后对整个过程累加：
+
+    $$
+    \begin{aligned}
+    \log p(\mathbf{x})=\log f_K\left(\mathbf{z}_K\right) & =\log f_{K-1}\left(\mathbf{z}_{K-1}\right)-\log \left|\operatorname{det} \frac{d f_K}{d \mathbf{z}_{K-1}}\right| \\
+    & =\log f_{K-2}\left(\mathbf{z}_{K-2}\right)-\log \left|\operatorname{det} \frac{d f_{K-1}}{d \mathbf{z}_{K-2}}\right|-\log \left|\operatorname{det} \frac{d f_K}{d \mathbf{z}_{K-1}}\right| \\
+    & =\ldots \\
+    & =\log f_0\left(\mathbf{z}_0\right)-\sum_{i=1}^K \log \left|\operatorname{det} \frac{d f_i}{d \mathbf{z}_{i-1}}\right|
+    \end{aligned}
+    $$
+
+    这样一个path就是一个flow，如果我们将$f$替换为连续的分布$\pi_i$，那么我们得到的就是一个normalized flow
 
 需要注意的是：
 
@@ -233,7 +236,7 @@ $$
 $$
 
 
-??? quote "code"
+??? code "code"
 
     ```python
     import torch
@@ -325,7 +328,7 @@ $$
 如果我们能用MAF训练一个teacher model，再使用一个IAF作为student model，这样我们只需要保证学生老师之间的相似性（KL Div），避免了MAF采样的困难和IAF训练的问题，这就是Parallel Wavenet的思路
 
 
-!!! quote "code"
+!!! code "code"
 
     - Training
         - Step 1: train MAF(teacher) via MLE
@@ -336,8 +339,8 @@ $$
 ## Flow Matching
 
 
-[left unfinished]
-
+    
+    
 
 
 

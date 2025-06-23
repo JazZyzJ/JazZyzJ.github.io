@@ -91,7 +91,7 @@ $$
     <img src="/../../../../assets/pics/ai/dgm/sc/sc4.png" style="width: 80%;">
     </div>
 
-??? quote "Prove"
+??? proof "Prove"
     
     === "unfold"
 
@@ -373,7 +373,7 @@ $$
 \mathrm{d} \mathbf{x} = \mathbf{f(\mathbf{x}, t)} \mathrm{d} t + \mathbf{g(t)} \mathrm{d} \mathbf{w}
 $$
 
-!!! quote "Notation"
+!!! proof "Notation"
 
     - $f(x, t)$: drift coefficient，漂移系数决定数据的确定性演化方向
     - $g(t)$: diffusion coefficient，扩散系数决定数据的随机性演化方向，控制噪声的强度

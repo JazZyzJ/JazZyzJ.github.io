@@ -18,10 +18,11 @@ comment: true
     - [x] [Normalizing Flows](./nf.md)
     - [ ] [Ganerative Adversarial Networks](./gan.md)
     - [x] [Energy-based Models](./energy.md)
-    - [ ] [Score-based Models](./score.md)
+    - [x] [Score-based Models](./score.md)
     - [ ] [Diffusion Models](./dm.md)
     - [ ] [Flow Matching](./fm.md)
 
+    同时还有一节课专门讲了[Evaluating Generative Models](#evaluating-generative-models)
 
 ## Intro
 
@@ -61,7 +62,7 @@ $$
 
 因为我们需要知道数据sample的分布，但是只有生成式概率$p(x|y)$，而$p(x)$是不知道的。
 
-!!! note "总结"
+!!! summary "总结"
 
     生成式模型就是要去寻找数据的潜在分布$p(x)$，来生成与真实数据分布相似的样本
 
@@ -129,7 +130,7 @@ $$
 
 随后最小化基于数据的损失函数$L(p_x , g(\pi))$，得到模型$g$
 
-!!! note "总结"
+!!! summary "总结"
 
     一个DGM可能包括：
 
@@ -192,9 +193,20 @@ $$
 
 在得到生成分布后，我们需要评估这个分布的优劣，这里对几个常用的评估方法进行介绍。
 
-### KL divergence
+###  $f$-divergence
 
-KL 散度（Kullback-Leibler divergence），用于衡量两个分布之间的差异，对于给定的两个分布$p$和$q$，KL散度定义为：
+给定两个概率分布$P$和$Q$，$f$-divergence定义为：
+
+$$
+D_{f}(P||Q) = \int {q(x)} f\left(\frac{p(x)}{q(x)}\right) dx
+$$
+
+
+- KL
+
+
+
+KL 散度（Kullback-Leibler divergence）: 对于给定的两个分布$p$和$q$，KL散度定义为：
 
 离散的：
 
@@ -207,6 +219,9 @@ $$
 $$
 D_{KL}(p||q) = \int p(x) \log \frac{p(x)}{q(x)} dx
 $$
+
+
+可以看到KL散度是$f$-divergence的一种特殊情况，当$f(x) = x \log x$时，$f$-divergence就是KL散度。
 
 - 非负性：$D_{KL}(p||q) \geq 0$
 
@@ -250,9 +265,15 @@ $$
 p_{\theta}(x^{1}, x^{2}, ..., x^{N}) = \prod_{i=1}^{N} p_{\theta}(x^{i})
 $$
 
+---
+
+
+- Fisher
 
 
 
+## Evaluating Generative Models
 
 
+!!! proof 
 

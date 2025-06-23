@@ -63,7 +63,7 @@ $$
 
     因此，我们引入一个变分分布$q(z|x)$，来近似$p(z|x)$，这个分布通常比较简单，且可以被控制。
 
-    ???+ note "变分推断"
+    ???+ definition "变分推断"
 
         pick a variational parameter $\phi$ so that $q_{\phi}(z)$ is close to $p_{\theta}(z|x)$
 
@@ -90,7 +90,7 @@ $$
 \end{aligned}
 $$
 
-???+ quote "ELBO 的定义过程"
+???+ proof "ELBO 的定义过程"
 
     首先对$p(x)$取对数，重写它在潜分布$z$上的对数似然
 
@@ -166,7 +166,7 @@ $$
 
 我们先前使用的$\phi^i$是**单样本映射**，但是由于参数过多很难训练，我们取一个**amortized inference**，也就是对全体样本都适用的一个$\phi$。
 
-!!! note "Amortization"
+!!! definition "Amortization"
 
     通过学习一个单变量函数$f_{\lambda}$，将输入的每个样本$x^i$映射到一组好的变分参数
 

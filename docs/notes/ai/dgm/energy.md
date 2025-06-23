@@ -109,7 +109,7 @@ $$
 \max_\theta \nabla_\theta (f_\theta(x_{train}) - f_\theta(x_{sample}))
 $$
 
-??? quote "Prove"
+??? proof "Prove"
 
     <div align="center" >
     <img src="/../../../../assets/pics/ai/dgm/energy/e3.png" style="width: 90%;">
@@ -227,7 +227,7 @@ $$
 
 好消息是我们可以用分部积分把$p_{data}$给消掉：
 
-???+ quote "Prove in 1 dimension"
+???+ proof "Prove in 1 dimension"
     
     <div align="center" >
     <img src="/../../../../assets/pics/ai/dgm/energy/e5.png" style="width: 90%;">

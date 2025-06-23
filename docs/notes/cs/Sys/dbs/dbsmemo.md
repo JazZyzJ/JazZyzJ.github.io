@@ -112,7 +112,7 @@ create table只是在定义一个schema，需要在后续的如insert操作中�
     <img src="/../../../../assets/pics/dbs/dbs8.png" style="width: 60%;">
     </div>
 
-    - foreign key
+- foreign key
 
     对于foreign key，要求在主键中存在，或者为null，但是如果一个操作导致foreign key指向的对象被删除，会有以下可选项：
 
@@ -354,7 +354,7 @@ create domain dollars as numeric(12, 2) check (value >= 0);
 assignment不能是一个数值，应该是多值的，有右边两种方式改正
 
 
-## Extended ER Feature
+### Extended ER Feature
 
 
 
@@ -857,14 +857,14 @@ Outline:
 
 
 
--Anomalies in Concurrent Execution
+- Anomalies in Concurrent Execution
 
-一共有四种情况：
+    一共有四种情况：
 
-- Lost Update
-- Dirty Read
-- Unrepeatable Read
-- Phantom Read
+    - Lost Update
+    - Dirty Read
+    - Unrepeatable Read
+    - Phantom Read
 
 <div style="text-align: center;" >
     <img src="/../../../../assets/pics/dbs/dbs70.png" style="width: 80%;">
@@ -874,7 +874,7 @@ Outline:
 
 主要考察可串行化，注意这里的可串行化的定语，是基于冲突的conflict，还是基于视图的view
 
-基于冲突的可串行化需要满足的条件是如果通过交换一系列不冲突的（no write）两个操作，可以将一个schedule比那成一个串行的schedule，那么这个schedule就是冲突可串行化的
+基于冲突的可串行化需要满足的条件是如果通过交换一系列不冲突的（no write）两个操作，可以将一个schedule变成一个串行的schedule，那么这个schedule就是冲突可串行化的
 
 也可以通过别的方式检测：precedence graph
 
@@ -1069,10 +1069,182 @@ SIX可以理解为S+IX，表示需要读所有节点，但可能需要在过程�
 
 
 
+## Recovery
+
+
+
+
+
+
+
+
+
+
+- Idempotent: 幂等性，恢复操作可以重复执行，不会产生副作用
+
+
+### Log-Based Recovery
+
+
+
+就是先对已经提交的事务进行Redo，再对活跃的事务进行Undo，将数据库恢复到crush的现场 
+
+!!! example "Example"
+
+    <div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs90.png" style="width: 80%;">
+    </div>
     
+    在这个例子中，第12行执行完了正常的程序，之后T2发生了rollback，回滚了他做的write操作，这段会被记录到补偿日志。
+    
+    然后发生了crush，需要执行整个log一直到最下方，进行重演
+    
+    这时的可以发现T4是没有abort或者commit的，所以要进行undo，所以有了红线下方的两个操作，他们是在recovery的过程中才出现的
+
+
+- 先写日志再写数据，这被称为Write-Ahead Logging原则
+
+- commit 的标志不是完成所有数据的磁盘写，只要是日志中完成了记录commit，并将日志写入磁盘，就可以认为commit完成了，数据的部分即使crush了，也可以redo
+
+- 对于concurrent的transaction，我们保证一个事务对一个数据项的操作是加有排他锁的，这样就不会造成混乱
+
+
+### Checkpoint
+
+!!! example "Example"
+
+    <div style="text-align: center;" >
+        <img src="/../../../../assets/pics/dbs/dbs91.png" style="width: 80%;">
+        </div>
+
+    在进行ckpt的时候需要停止所有的活动，然后将已经写好的log送入磁盘，将数据写入磁盘，记录还没有commit或者abort的事务，存入一个Undo list。
+
+    在例子中ckpt的下方，先发生了一起T2的rollback，我们执行掉他以后发生了crush，先进行redo，只需要从ckpt开始，然后进行undo，现在list中只有T4，所以只有T4需要undo。
+
+- 数据库的buffer构成：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs92.png" style="width: 80%;">
+    </div>
+
+Fuzzy Checkpoint
+
+为了避免ckpt的时候大量的IO导致的阻塞，将ckpt从一个点变成一个过程，流程是：
+
+- 用一个last-ckpt来指向最后一个已经完全完成的ckpt
+- 短暂停一下，写一个checkpoint
+- 首先标记buffer中的M个脏页，然后逐渐将他们写入磁盘，当写完M个脏页后，将last-ckpt更新为当前的ckpt
+
+
+### Early Lock Release and Logical Undo
+
+Logical Undo 就是记录一个operation log条目，表示一个事务对一个数据项的操作，与原始的physical undo直接将数据改为old值不同，记录下操作后我们的undo就变成了对当前数据的逆操作，即使当前数据变化了，也没关系。
+
+!!! example "Example"
+
+    <div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs93.png" style="width: 80%;">
+    </div>
+    
+    这里我们就可以发现，如果crush发生在operation记录中，说明operation记录不完全，我们就只能进行physical undo，如果是已经记录完全的，我们就可以利用undo info U 进行logical undo，并在结束时写operation-abort
+
+同时注意如果是logical rollback，大体上与recovery是相似的，就是通过有没有完成operation-end来看：
+
+- 如果已经完成operation-end，那么我们就可以进行logical undo，然后加入operation-abort
+- 如果还没有完成operation-end，我们只能舍弃掉下一个operation之前的所有语句
+
+
+!!! example "Example"
+
+    <div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs94.png" style="width: 80%;">
+    </div>
+
+
+### ARIES
+
+- LSN:
+
+    每个log entry都有一个LSN，表示这个log entry在log中的位置，由于有很多log file共同组成log，所以每个log entry就是文件号+偏移量
+
+- Dirty Page Table:
+
+    记录了buffer中被修改过的页，对应的PageLSN、RecLSN
+
+    - PageLSN：
+
+      每个Page都有一个PageLSN，用于记录更新过这个Page的最后一个LSN，这样当redo的时候，任何小于这个LSN的日志记录都可以被忽略（这个对于幂等性十分重要，因为非物理的redo再次执行会导致数据不一致）
+
+    - RecLSN：
+        
+        这个LSN之前的所有LSN已经被作用到磁盘中，这条LSN记录的是让这个Page成为dirty的第一个LSN，这也是恢复的起点
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs95.png" style="width: 80%;">
+    </div>
+
+- Analysis Phase
+
+分析阶段，目的是搞清楚再崩溃瞬间数据库的状态
+
+1. 从stable log中最近的ckpt开始顺序读到日志文件末尾
+2. 收集信息，建立两张表：
+    - 事务表：记录crush时的活跃事务
+        - 当扫描到一条begin transaction时，将事务加入事务表，当扫描到commit或者abort时，将事务从事务表中移除，结束时得到的就是失败者事务
+    - 脏页表Dirty Page Table：记录所有可能在崩溃时比disk中更新的数据
+        - 当扫描到一个针对不在DPT的页的写操作时，将该页加入DPT，同时这条日志的LSN就是RecLSN
+
+这一阶段得到的就是一个失败者事务表、脏页表、以及一个RedoLSN（min from all RecLSN，如果没有dirty page，那么就是ckpt的LSN）
+
+- Redo Phase
+
+重复历史，将数据库恢复到crush的瞬间状态，确保所有已写入日志的修改（无论来自已提交的事务还是未完成的事务）都真实地反映在数据页上。
+
+1. 从RedoLSN开始，顺序读取日志文件到末尾
+2. 重做：对于扫描的每个日志，如果：
+    - 判断一：这个页不在脏页表中，或者，这个这个日志的LSN < 他在脏页表中的RecLSN，就跳过它不用重做
+    - 判断二：否则，将页从disk中取出，如果这个页在disk中的PageLSN < 这个日志的LSN，那么就重做该日志
+
+3. 重做后，更新PageLSN
+
+这一阶段会恢复到与crush前完全一致的状态，即使是失败者也会被重做
+
+- Undo Phase
+
+目标是清理现场，回滚失败者的修改，保证原子性
+
+1. 在失败者事务中，从最后一条开始，反向扫描。对于每一个事务，通过PrevLSN找到关于这个事物的所有日志
+2. 按顺序将这些日志的操作逆向执行
+3. 每执行一次逆向，生成一个补偿日志记录CLR，记录下逆向操作
+4. 当一条失败者事务的所有操作都被逆向执行完成，为他写一个end日志
+
+这个阶段中CLR是为了防止在undo的过程中再次crush，这样恢复时不用重做已经补偿过的操作，保证幂等性
+
+这个阶段结束后，数据库恢复到所有已提交事务都生效，所有未提交事务都回滚
+
+- 一个undo phase的优化：
+
+上课时老师讲的undo phase与这里的不太相同，是一个更优化方案，rather than undo 每个事务的所有操作，我们选择找到待undo 的LSN集合，选取其中LSN最大的日志进行undo，然后根据这个日志的PrevLSN（或UndoNextLSN）找到下一个待undo的LSN，重复这个过程，直到全部undo完成
+
+
+关于这里选择PrevLSN还是UndoNextLSN：
+
+<div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs96.png" style="width: 80%;">
+    </div>
 
 
 
+
+!!! example "Example"
+
+    <div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs97.png" style="width: 80%;">
+    </div>
+    
+    <div style="text-align: center;" >
+    <img src="/../../../../assets/pics/dbs/dbs98.png" style="width: 80%;">
+    </div>
 
 
 

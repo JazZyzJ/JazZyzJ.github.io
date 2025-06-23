@@ -88,7 +88,7 @@ $$
 
 - estimating relationship between variables
 
-!!! note 
+!!! definition 
 
     - 自回归是指在推理过程中的行为(inference-time)
 

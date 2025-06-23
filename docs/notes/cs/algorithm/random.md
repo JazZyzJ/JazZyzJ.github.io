@@ -20,10 +20,10 @@
 
 - 但是显然可以发现，如果candidate评估是递增的，那么这个算法会录用所有candidate，显然不是最优的。
 
-!!! note "Randomly Permute"
+!!! definition "Randomly Permute"
     对candidate进行随机排列后再采用确定算法，这样在期望下可以保证hire不超过$\ln{n}$次
 
-    ??? quote "Prove"
+    ??? proof "Prove"
         设定一个事件$A_i$，表示第$i$个candidate是前$i$个candi中最好的，那么显然$P(A_i) = \frac{1}{i}$
 
         对每个候选者$X_i$，如果满足事件$A_i$，那么就录用，$X_i=1$，否则$X_i=0$
@@ -85,7 +85,7 @@ $$
 
 其中$n$是变量个数，$k$是子句clause个数
 
-!!! note "Monte Carlo"
+!!! definition "Monte Carlo"
     对于一个变量$x_i$，我们令其为真的概率或者为假的概率都为0.5，那么每一个clause为真的概率为$\frac{7}{8}$
 
     可以计算出在期望下，随机赋值使得3SAT问题为真的概率为$\frac{7}{8}k$
@@ -98,7 +98,7 @@ $$
 
     这种算法称为Monte Carlo算法
 
-!!! note "Las Vegas"
+!!! definition "Las Vegas"
     我们现在想知道一个概率，就是每跑一次算法，满足条件的子句个数大于等于$\frac{7}{8}k$的概率是多少
 
     大体的思路是:

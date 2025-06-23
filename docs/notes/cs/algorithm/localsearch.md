@@ -2,7 +2,7 @@
 
 局部搜索也是一种近似问题的延伸，我们可以给局部搜索进行一个全局性的定义：
 
-!!! note "定义"
+!!! definition "定义"
 
     局部搜索算法是一种基于邻域的搜索算法，它通过在当前解的邻域内进行搜索，来找到更优的解。
 
@@ -101,7 +101,7 @@ $$
 
 在给出两个定义：
 
-!!! note "Definition"
+!!! definition "Definition"
 
     - 一个顶点$u$是满意的satisfied，当且仅当：
     $$
@@ -124,7 +124,7 @@ $$
 
 可以证明这个算法一定会在有限步内完成：
 
-!!! quote "势能函数证明"
+!!! proof "势能函数证明"
 
     定义势能函数$\Phi(S)$为所有好边的权重绝对值的和
 
@@ -147,7 +147,7 @@ $$ \text{local search to maximize objective } 1 $$
 
 > NP-Hard
 
-!!! note "定义"
+!!! definition "定义"
     给定有正整数权重的无向图$G=(V,E)$，a cut (A, B)就是$V$的一个划分，将$V$划分为两个不相交的子集$A$和$B$，
 
 	cut的权重定义为：
@@ -170,7 +170,7 @@ $$ \text{local search to maximize objective } 1 $$
 
 给出证明：
 
-!!! quote "证明"
+!!! proof "证明"
 
     在完成state-flipping后，我们可以得到一组$(A,B)$是stable的
 
