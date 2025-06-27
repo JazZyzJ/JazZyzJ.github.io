@@ -15,7 +15,7 @@ changelog: true
 
 
 <span style="font-size: 24px; font-weight: bold;">
-This is the homepage of **JazZyzJ's** personal learning space.
+This is **JazZyzJ's** personal learning space.
 </span>
 
 ## About me

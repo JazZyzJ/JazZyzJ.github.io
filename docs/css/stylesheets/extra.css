@@ -466,10 +466,11 @@
   color: #000;
 }
 
-/* 正文部分页面宽度扩大（移动端可能会有问题） */
-.md-grid {
-  max-width: 1800px; 
-}
+/* 正文部分页面宽度扩大（移动端可能会有问题） */ 
+
+ .md-grid {
+  max-width: 1900px; 
+} 
 
 
 /* 增大了导航栏和两侧目录的字体大小 */
@@ -538,7 +539,7 @@
 
 /* 改变 admonition 内的字体大小 */
 .md-typeset .admonition, .md-typeset details {
-  font-size: .60rem;
+  font-size: .65rem;
 }
 
 /* 图像圆角、阴影 */

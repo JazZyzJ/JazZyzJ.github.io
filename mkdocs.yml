@@ -119,7 +119,7 @@ plugins:
   - changelog
 
 nav:
-  - Home: 
+  - H0me: 
     - index.md
     - friends.md
     # - Changel0g: log/index.md
@@ -156,7 +156,7 @@ nav:
           - Python(CS61a): notes/lingo/cs61a.md
           - Verilog: notes/lingo/verilog.md
           - C++: notes/lingo/cpp.md
-  - ML:
+  - AI:
         - notes/ai/index.md
         - Deep Generative Model: 
             - notes/ai/dgm/index.md
@@ -165,13 +165,16 @@ nav:
             - Normalizing Flow: notes/ai/dgm/flow.md
             - Energy-based Models: notes/ai/dgm/energy.md
             - Score-based Models: notes/ai/dgm/score.md
+            - Diffusion Models: notes/ai/dgm/diffusion.md
+            - Flow Matching: notes/ai/dgm/fm.md
     # - Math:
     #     - notes/math/index.md
     #     - Random Process:
     #       - notes/math/randomprocess/index.md
   - X:
-        - Drug Design:
-          - x/aidd/aidd.md
+    - notes/x/index.md
+    # - Drug Design:
+    #   - notes/x/aidd/aidd.md
           
   - To0ls:
     - Tool_Pool/index.md
