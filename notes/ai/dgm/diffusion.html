@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://jazzyzj.github.io/notes/ai/dgm/ar.html">
+        <link rel="canonical" href="https://jazzyzj.github.io/notes/ai/dgm/diffusion.html">
       
       
-        <link rel="prev" href="vae.html">
+        <link rel="prev" href="score.html">
       
       
-        <link rel="next" href="flow.html">
+        <link rel="next" href="fm.html">
       
       
       <link rel="icon" href="../../../assets/pics/logo.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Autoregressive Model - Space . JaZzyzJ</title>
+        <title>Diffusion Models - Space . JaZzyzJ</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#autoregressive-model" class="md-skip">
+        <a href="#diffusion-models" class="md-skip">
           跳转至
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Autoregressive Model
+              Diffusion Models
             
           </span>
         </div>
@@ -639,30 +639,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Autoregressive Model
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="ar.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="ar.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -671,122 +651,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#conditional-distribution-modeling" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conditional Distribution Modeling
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#autoregression" class="md-nav__link">
-    <span class="md-ellipsis">
-      Autoregression
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inductive-bias" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inductive Bias
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inference-of-ar" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inference of AR
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#training" class="md-nav__link">
-    <span class="md-ellipsis">
-      Training
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#network-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      Network Architecture
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Network Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#shared-computation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Shared Computation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rnn" class="md-nav__link">
-    <span class="md-ellipsis">
-      RNN
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cnn" class="md-nav__link">
-    <span class="md-ellipsis">
-      CNN
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#attention" class="md-nav__link">
-    <span class="md-ellipsis">
-      Attention
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -859,10 +723,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="diffusion.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="diffusion.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -871,6 +744,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1030,110 +904,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#conditional-distribution-modeling" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conditional Distribution Modeling
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#autoregression" class="md-nav__link">
-    <span class="md-ellipsis">
-      Autoregression
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inductive-bias" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inductive Bias
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inference-of-ar" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inference of AR
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#training" class="md-nav__link">
-    <span class="md-ellipsis">
-      Training
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#network-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      Network Architecture
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Network Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#shared-computation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Shared Computation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rnn" class="md-nav__link">
-    <span class="md-ellipsis">
-      RNN
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cnn" class="md-nav__link">
-    <span class="md-ellipsis">
-      CNN
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#attention" class="md-nav__link">
-    <span class="md-ellipsis">
-      Attention
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1150,248 +920,11 @@
   
 
 
-<h1 id="autoregressive-model">Autoregressive Model<a class="headerlink" href="#autoregressive-model" title="Permanent link">&para;</a></h1>
-<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 1245 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"/></svg></span> 17 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 4 分钟</p>
-</div>
+<h1 id="diffusion-models">Diffusion Models<a class="headerlink" href="#diffusion-models" title="Permanent link">&para;</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
-<p>自回归模型是使用非常广泛的一种生成模型，在先前的粗略学习中我大概知道了部分架构如CNN、RNN、Attention等，但是没有细致的了解过，这一部分会参考MIT那份教材多一些</p>
+<p>这一节的内容我先看了CS236的部分，Stefano对Diffusion的讲解主要建立在<a href="https://jazzyzj.github.io/notes/ai/dgm/score.html">Score-based Models</a>的基础上，这也是一种理解扩散模型的视角，然后我看了MIT的<a href="https://diffusion.csail.mit.edu">6.S184</a>对于这部分的讲解。</p>
 </div>
-<h2 id="conditional-distribution-modeling">Conditional Distribution Modeling<a class="headerlink" href="#conditional-distribution-modeling" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>条件分布建模并不只适用于autoregressive model</p>
-</blockquote>
-<p>在先前的学习中我们使用多个独立随机变量分布来建模，但是在实际生活中其实很多分布是相互依赖的</p>
-<p>在先前的学习中（VAE），我们是利用独立的潜变量进行建模，但是这需要strict assumption for high-dimensional data（eg., 32x32x3 pixels）但是这很难：</p>
-<div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar1.png" style="width: 80%;">
-</div>
-
-<p>所以我们引入另一种方式：采用条件分布建模</p>
-<p>Chain Rule在这里被应用：</p>
-<p>任何一个联合分布都能被写成条件分布的乘积：</p>
-<div class="arithmatex">\[
-p(A, B, C) = p(A)p(B|A)p(C|A, B)
-\]</div>
-<p>并且是</p>
-<ul>
-<li>任意排列的：</li>
-</ul>
-<div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar2.png" style="width: 80%;">
-</div>
-
-<ul>
-<li>任意分解的：</li>
-</ul>
-<div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar3.png" style="width: 80%;">
-</div>
-
-<div class="admonition example">
-<p class="admonition-title">Case Study</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Case 1</label><label for="__tabbed_1_2">Case 2</label><label for="__tabbed_1_3">Case 3</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar4.png" style="width: 100%;">
-</div></p>
-<p>这适用于每个output依赖之前所有的output，如language model或者pixel prediction</p>
-</div>
-<div class="tabbed-block">
-<p><div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar5.png" style="width: 100%;">
-</div></p>
-</div>
-<div class="tabbed-block">
-<p><div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar6.png" style="width: 100%;">
-</div></p>
-<p>模型将noisy images(<span class="arithmatex">\(x_T\)</span>)转变为clean images(<span class="arithmatex">\(x_0\)</span>)的过程是diffusion process</p>
-</div>
-</div>
-</div>
-</div>
-<p>在对联合分布进行建模时：我们使用神经网络对条件分布进行建模</p>
-<div class="arithmatex">\[
-p(A, B, C) = p_{\theta}(A)p_{\phi}(B|A)p_{\psi}(C|A, B)
-\]</div>
-<ul>
-<li>理论上来说每个p拥有自己的weight，如果使用weight sharing则意味着inductive bias</li>
-</ul>
-<h2 id="autoregression">Autoregression<a class="headerlink" href="#autoregression" title="Permanent link">&para;</a></h2>
-<p><strong>Auto</strong>：self</p>
-<ul>
-<li>using its own outputs for next prediction</li>
-</ul>
-<p><strong>Regression</strong>：</p>
-<ul>
-<li>estimating relationship between variables</li>
-</ul>
-<div class="admonition definition">
-<p class="admonition-title">Definition</p>
-<ul>
-<li>
-<p>自回归是指在推理过程中的行为(inference-time)</p>
-</li>
-<li>
-<p>但是训练时(training-time)不一定是自回归的(eg., teacher-forcing就采用真实目标输出作为输入以加速训练，没有表现自回归特性)</p>
-</li>
-</ul>
-</div>
-<p>In General：</p>
-<div class="arithmatex">\[
-\begin{align}
-p(x_1, x_2, \cdots, x_n) &amp;= p(x_1)p(x_2|x_1)p(x_3|x_1, x_2) \cdots p(x_n|x_1, x_2, \cdots, x_{n-1}) \\
-&amp;= \prod_{i=1}^{n} p(x_i|x_1, x_2, \cdots, x_{i-1})
-\end{align}
-\]</div>
-<ul>
-<li>
-<p><span class="arithmatex">\(x\)</span> can be any representation:</p>
-<p>并不要求是序列的或者时间相关的(sequencial/temporal)</p>
-<p>例如任意维数的向量</p>
-</li>
-<li>
-<p><span class="arithmatex">\(x\)</span> can be any order or partition</p>
-<p>order：<span class="arithmatex">\(x_n\)</span> 到 <span class="arithmatex">\(x_1\)</span> 也是一种合法的生成顺序</p>
-<p>partition：每个x都可以是标量、向量、张量</p>
-</li>
-<li>
-<p><span class="arithmatex">\(p(\dot|\dot)\)</span> can take any form</p>
-<p>可以是各种形式的数据结构，离散连续都是支持的</p>
-</li>
-</ul>
-<h2 id="inductive-bias">Inductive Bias<a class="headerlink" href="#inductive-bias" title="Permanent link">&para;</a></h2>
-<p>在使用Chain Rule时，我们的公式是不涉及近似的，是一个完全准确的表达形式，但是这会导致模型参数爆炸💥，所以我们需要考虑到一些归纳偏置</p>
-<p>通常来说每个p都是不同的映射，但我们引入shared architecture(RNN, CNN, Transformer)和shared weight <span class="arithmatex">\(\theta\)</span>后就出现了approximation</p>
-<h2 id="inference-of-ar">Inference of AR<a class="headerlink" href="#inference-of-ar" title="Permanent link">&para;</a></h2>
-<p>在原始Chain Rule中，我们可以得到这样的推理过程：</p>
-<div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar7.png" style="width: 100%;">
-</div>
-
-<p>如果我们直接bp这个过程：</p>
-<div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar8.png" style="width: 60%;">
-</div>
-
-<p>这条路径会走遍所有先前所有的outputs，所有的sampling operation和所有的networks</p>
-<p>因此是infeasible❌ to train a AR following its inference graph</p>
-<h2 id="training">Training<a class="headerlink" href="#training" title="Permanent link">&para;</a></h2>
-<p>我们采用teacher-forcing的方式进行训练，就是不考虑先前的输出结果，直接使用ground truth data</p>
-<div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar9.png" style="width: 60%;">
-</div>
-
-<ul>
-<li>
-<p>Pros：</p>
-<ul>
-<li>bp路径短得多</li>
-<li>ground truth inputs can ease training</li>
-</ul>
-</li>
-<li>
-<p>Cons：</p>
-<ul>
-<li>inconsistent：在训练与推理时不一致，因为在推理时没有ground truth来校正错误</li>
-<li>distribution shift：不能看见自己的错误</li>
-</ul>
-</li>
-</ul>
-<h2 id="network-architecture">Network Architecture<a class="headerlink" href="#network-architecture" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Autoregression is <strong>not</strong> architecture-specific❗️</p>
-</blockquote>
-<p>先前我们讨论的东西都不涉及具体的架构，现在我们讨论一下具体的架构</p>
-<h3 id="shared-computation">Shared Computation<a class="headerlink" href="#shared-computation" title="Permanent link">&para;</a></h3>
-<p>之前我们说可以使用shared arch、weight，现在我们对神经网络层进行share</p>
-<p>如果对每个<span class="arithmatex">\(j \geq i\)</span>，output <span class="arithmatex">\(x_i\)</span> not depend on <span class="arithmatex">\(x_j\)</span>(就是输出只依赖之前而不依赖之后)</p>
-<div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar10.png" style="width: 60%;">
-</div>
-
-<h3 id="rnn">RNN<a class="headerlink" href="#rnn" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>Recurrent Neural Network</p>
-</blockquote>
-<p>构建一个RNN的步骤可以这样表示：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">One RNN Unit</label><label for="__tabbed_2_2">Unfold in "time"</label><label for="__tabbed_2_3">Go deep</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar11.png" style="width: 20%;">
-</div></p>
-</div>
-<div class="tabbed-block">
-<p><div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar12.png" style="width: 40%;">
-</div></p>
-</div>
-<div class="tabbed-block">
-<p><div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar13.png" style="width: 40%;">
-</div></p>
-</div>
-</div>
-</div>
-<p>RNN可以理解为：keep a summary and recursively update it</p>
-<p>在这里hidden layer <span class="arithmatex">\(h_i\)</span>就是那个summary</p>
-<p>我们进行更新的过程就是：</p>
-<div class="arithmatex">\[
-h_{t+1} = \sigma(W_{hh}h_t + W_{xh}x_{t+1})
-\]</div>
-<p>然后进行预测：</p>
-<div class="arithmatex">\[
-o_{t+1} = W_{hy}h_{t+1}
-\]</div>
-<p>但是要注意我们的summary是需要进行初始化的<span class="arithmatex">\(h_0 = b_0\)</span></p>
-<p>最终我们对三个矩阵进行训练，这三个矩阵的参数关于n是常数的</p>
-<details class="example" open="open">
-<summary>Example</summary>
-<p>Character RNN(Andrej Karpathy)</p>
-<p><div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar14.png" style="width: 60%;">
-</div></p>
-<p><div style="text-align: center;"    >
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar15.png" style="width: 60%;">
-</div></p>
-</details>
-<ul>
-<li>
-<p>Pros:</p>
-<ul>
-<li>对任意长度都适用</li>
-<li>通用性：对任意computable function都存在一个finite RNN</li>
-</ul>
-</li>
-<li>
-<p>Cons:</p>
-<ul>
-<li>需要排序</li>
-<li>Sequencial likelihood evaluation 训练时很慢（因为无法并行计算）</li>
-<li>生成时是序列生成</li>
-<li>对长序列会有梯度消失/爆炸问题</li>
-</ul>
-</li>
-</ul>
-<h3 id="cnn">CNN<a class="headerlink" href="#cnn" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>Convolutional Neural Network</p>
-</blockquote>
-<div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar16.png" style="width: 60%;">
-</div>
-
-<p>卷积神经网络依赖的是每个“像素”的局部性，也就是他们与周边空间的相互依赖关系，我的理解是卷积操作就是对原始数据进行down sampling的过程，让数据中蕴含的依赖关系更加明显，这其中采用的各类操作如卷积、池化、激活函数等都是为了这个目的。</p>
-<p>在AR中，我们这样构建</p>
-<div style="text-align: center;">
-    <img src="/../../../../assets/pics/ai/dgm/ar/ar17.png" style="width: 30%;">
-</div>
-
-<h3 id="attention">Attention<a class="headerlink" href="#attention" title="Permanent link">&para;</a></h3>
 
 
 
@@ -1414,7 +947,7 @@ o_{t+1} = W_{hy}h_{t+1}
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年6月23日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年6月27日</span>
   </span>
 
     
@@ -1424,7 +957,7 @@ o_{t+1} = W_{hy}h_{t+1}
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年3月2日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年6月27日</span>
   </span>
 
     
@@ -1517,7 +1050,7 @@ o_{t+1} = W_{hy}h_{t+1}
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="vae.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: VAE">
+          <a href="score.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: Score-based Models">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1527,20 +1060,20 @@ o_{t+1} = W_{hy}h_{t+1}
                 上一页
               </span>
               <div class="md-ellipsis">
-                VAE
+                Score-based Models
               </div>
             </div>
           </a>
         
         
           
-          <a href="flow.html" class="md-footer__link md-footer__link--next" aria-label="下一页: Normalizing Flow">
+          <a href="fm.html" class="md-footer__link md-footer__link--next" aria-label="下一页: Flow Matching">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Normalizing Flow
+                Flow Matching
               </div>
             </div>
             <div class="md-footer__button md-icon">
