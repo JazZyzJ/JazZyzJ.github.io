@@ -804,6 +804,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relation-to-score-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relation to Score Matching
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1000,6 +1018,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relation-to-score-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relation to Score Matching
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1073,11 +1109,93 @@ q(x_{t-1}|x_0) = \mathcal{N}(x_{t-1}; \sqrt{\bar{\alpha}_{t-1}}x_0, (1-\bar{\alp
 <div class="arithmatex">\[
 \begin{aligned}
 \tilde\beta_t &amp;= \frac{(1-\bar{\alpha}_{t-1})(1-\alpha_t)}{1-\bar{\alpha}_t} \\
-\tilde\mu_t &amp;= \frac{\sqrt{\alpha_t}\left(1-\bar{\alpha}_{t-1}\right)}{1-\bar{\alpha}_t} \mathbf{x}_t+\frac{\sqrt{\bar{\alpha}_{t-1}} \beta_t}{1-\bar{\alpha}_t} \mathbf{x}_0
+\tilde\mu_t &amp;= \frac{\sqrt{\alpha_t}\left(1-\bar{\alpha}_{t-1}\right)}{1-\bar{\alpha}_t} \mathbf{x}_t+\frac{\sqrt{\bar{\alpha}_{t-1}} \beta_t}{1-\bar{\alpha}_t} \mathbf{x}_0 ; \text{    这时可以代入} \mathbf{x}_0 = \frac{1}{\sqrt{\bar{\alpha}_{t}}} (\mathbf{x}_t - \sqrt{1-\bar{\alpha}_t}\epsilon_t) \\
+&amp;= \frac{1}{\sqrt{\alpha_t}} \left(\mathbf{x}_t + \frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}} \epsilon_t\right)
 \end{aligned}
 \]</div>
+<p>成功证明：<span class="arithmatex">\(q(x_{t-1}|x_t, x_0) \sim \mathcal{N}(x_{t-1}; \tilde\mu_t, \tilde\beta_t\mathbf{I})\)</span></p>
+<p>并且也可以显然看出，他们都是关于给定参数的可计算函数</p>
 </details>
+<p>所以这启发我们，我们只需要学习一个神经网络来近似<span class="arithmatex">\(\tilde\mu_t\)</span>和<span class="arithmatex">\(\tilde\beta_t\)</span>，就可以得到一个变分近似<span class="arithmatex">\(p_\theta(x_{t-1}|x_t)\)</span>（在实际情况(比如DDPM)中，我们只需要学习<span class="arithmatex">\(\tilde\mu_t\)</span>）：</p>
+<div class="arithmatex">\[
+p_\theta(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \sigma_t^2\mathbf{I})
+\]</div>
+<p>进而得到最终的joint distribution，也就是我们的结果：</p>
+<div class="arithmatex">\[
+p_\theta(x_{0:T}) = p(x_T) \prod_{t=1}^T p_\theta(x_{t-1}|x_t)
+\]</div>
+<p>课上Stefano说经过证明，如果我们做的是朗之万采样，这里的<span class="arithmatex">\(\mu_\theta\)</span>甚至就是sm中的score（<del>wtf</del>?）原因之后会说到。</p>
 </div>
+<h2 id="training">Training<a class="headerlink" href="#training" title="Permanent link">&para;</a></h2>
+<p>到目前为止，我们已经得到了两个模块，encoder &amp; decoder</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/ai/dgm/diff/dif2.png" style="width: 90%;">
+    </div>
+
+<p>现在我们需要讨论一下training的问题</p>
+<p>如果只对Diffusion过程的一步进行观察，我们发现这一过程很像是VAE对隐变量解码的过程：</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/ai/dgm/diff/dif3.png" style="width: 90%;">
+    </div>
+
+<p>所以我们使用与ELBO类似的变分下界来进行训练</p>
+<p>最原始的VAE loss是：</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/ai/dgm/diff/dif4.png" style="width: 90%;">
+    </div>
+
+<p>然后我们看增加latent层数后：</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/ai/dgm/diff/dif5.png" style="width: 90%;">
+    </div>
+
+<p>按照这个思路，我们可以得到层数为T的Diffusion Models的loss：</p>
+<div class="admonition definition">
+<p class="admonition-title">Loss of Diffusion Models</p>
+<div class="arithmatex">\[
+\mathbb{E}_{q(\mathbf{x}_{0})}\left[-\log p_{\theta}(\mathbf{x}_{0})\right]\leq\mathbb{E}_{q(\mathbf{x}_{0})q(\mathbf{x}_{1:T}|\mathbf{x}_{0})}\left[-\log\frac{p_{\theta}(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T}|\mathbf{x}_{0})}\right]=:L
+\]</div>
+<details class="proof">
+<summary>推导</summary>
+<p><div align="center" >
+    <img src="/../../../../assets/pics/ai/dgm/diff/dif6.png" style="width: 90%;">
+    </div></p>
+</details>
+<p>但是现在得到的这个loss是很难计算的，所以需要进行computable转换：</p>
+<p><div align="center" >
+    <img src="/../../../../assets/pics/ai/dgm/diff/dif7.png" style="width: 90%;">
+    </div></p>
+<p>现在我们得到的这三种L中<span class="arithmatex">\(L_0\)</span>是常量，而<span class="arithmatex">\(L_T\)</span>中的<span class="arithmatex">\(x_T\)</span>是已知的，我们忽略掉最后一项，将第一项设置为高斯分布</p>
+<p>现在需要处理<span class="arithmatex">\(L_t\)</span>，对其进行参数化：</p>
+<ul>
+<li>对<span class="arithmatex">\(\mu_\theta\)</span>进行参数化，因为在每一步我们是知道<span class="arithmatex">\(x_t\)</span>的，所以就是对噪声<span class="arithmatex">\(\epsilon_t\)</span>进行参数化，这时的Loss被参数化为minimize <span class="arithmatex">\(\mu_\theta\)</span> 和 <span class="arithmatex">\(\tilde \mu_t\)</span>，并最终化简为：</li>
+</ul>
+<div class="arithmatex">\[
+L_t =\mathbb{E}_{\mathbf{x}_0,\mathbf{\epsilon}}{\left[\frac{(1-\alpha_t)^2}{2\alpha_t(1-\bar{\alpha}_t)\|\mathbf{\Sigma}_\theta\|_2^2}\|\mathbf{\epsilon}_t-\mathbf{\epsilon}_\theta(\sqrt{\bar{\alpha}_t}\mathbf{x}_0+\sqrt{1-\bar{\alpha}_t}\mathbf{\epsilon}_t,t)\|^2\right]}
+\]</div>
+<details class="proof">
+<summary>推导</summary>
+<p>这里lilian的博客中直接给出了带入近似的<span class="arithmatex">\(\mu_\theta\)</span>的结果，我来稍微推导一下，主要是利用了KL在计算两个高斯分布时的性质，即：</p>
+<div class="arithmatex">\[
+D_{KL}(P_{1}\mid\mid P_{2})=\frac{1}{2}\left[\log\frac{\det(\mathbf{\Sigma}_{2})}{\det(\mathbf{\Sigma}_{1})}-d+\mathrm{tr}(\mathbf{\Sigma}_{2}^{-1}\mathbf{\Sigma}_{1})+(\mathbf{\mu}_{2}-\mathbf{\mu}_{1})^{T}\mathbf{\Sigma}_{2}^{-1}(\mathbf{\mu}_{2}-\mathbf{\mu}_{1})\right]
+\]</div>
+<p>其中d是维度，因为在DDPM中方差被固定不学习了，模型与真实分布方差相等后，上式就被简化：</p>
+<div class="arithmatex">\[
+\begin{gathered}D_{KL}(q\mid\mid p_\theta)=\frac{1}{2}\left[0-d+d+(\mathbf{\mu}_\theta-\tilde{\mathbf{\mu}}_t)^T(\tilde{\beta}_t\mathbf{I})^{-1}(\mathbf{\mu}_\theta-\tilde{\mathbf{\mu}}_t)\right]\\=\frac{1}{2\tilde{\beta}_t}(\mathbf{\mu}_\theta-\tilde{\mathbf{\mu}}_t)^T(\mathbf{\mu}_\theta-\tilde{\mathbf{\mu}}_t)\\=\frac{1}{2\tilde{\beta}_t}\|\mathbf{\mu}_\theta(\mathbf{x}_t,t)-\tilde{\mathbf{\mu}}_t(\mathbf{x}_t,\mathbf{x}_0)\|^2\end{gathered}
+\]</div>
+<p>这时我们再带入<span class="arithmatex">\(\mu_\theta\)</span>和<span class="arithmatex">\(\tilde\mu_t\)</span>即可</p>
+</details>
+<p>在实际的操作中，DDPM发现训练目标可以进行化简，放弃噪声距离前的那个权重，所以最终我们的loss被简化为：</p>
+<div class="arithmatex">\[
+L_{\text{simple}} = \mathbb{E}_{t\sim[1,T],\mathbf{x}_0,\mathbf{\epsilon}_t}\left\lfloor\|\mathbf{\epsilon}_t-\mathbf{\epsilon}_\theta(\sqrt{\bar{\alpha}_t}\mathbf{x}_0+\sqrt{1-\bar{\alpha}_t}\mathbf{\epsilon}_t,t)\|^2\right\rfloor
+\]</div>
+</div>
+<p>至此，我们就推导出了Diffusion Models原文算法中的各项内容：</p>
+<div align="center" >
+    <img src="/../../../../assets/pics/ai/dgm/diff/dif8.png" style="width: 100%;">
+    </div>
+
+<h2 id="relation-to-score-matching">Relation to Score Matching<a class="headerlink" href="#relation-to-score-matching" title="Permanent link">&para;</a></h2>
 
 
 
