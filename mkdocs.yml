@@ -1,4 +1,4 @@
-site_name: Space . JaZzyzJ
+site_name: Space.JaZzyzJ
 site_url: https://jazzyzj.github.io/
 repo_name: JaZzyzJ.Space
 repo_url: https://github.com/JazZyzJ/JazZyzJ.github.io
@@ -102,6 +102,10 @@ extra_css:
   - css/changelog_extra.css
   - https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css
   - https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css
+  - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
+  - https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
+  - https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap
+
 
 
 plugins:
@@ -173,8 +177,8 @@ nav:
     #       - notes/math/randomprocess/index.md
   - X:
     - notes/x/index.md
-    # - Drug Design:
-    #   - notes/x/aidd/aidd.md
+    - Drug Design:
+      - notes/x/aidd/aidd.md
           
   - To0ls:
     - Tool_Pool/index.md
