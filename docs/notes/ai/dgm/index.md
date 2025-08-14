@@ -23,7 +23,7 @@ comment: true
     在Diffusion和FlowMatching的学习中，我结合了MIT的[6.S184](https://diffusion.csail.mit.edu)课程，这门课提供了视频讲解+详细笔记+代码作业（赞👍，更重要的是他从Application角度进行了部分授课，包括热门的AIGC以及我将来想尝试的Protein Design！（这两部分我可能会多一些代码的学习尝试🤪
 
     - [x] [Diffusion Models](./diffusion.md)
-    - [ ] [Flow Matching](./fm.md)
+    - [x] [Flow Matching](./fm.md)
 
     同时Stanford CS236还有一节课专门讲了[Evaluating Generative Models](#evaluating-generative-models)，这是我认为在GenAI发展如此迅速的时代一件最有意义的一件事（之一）:
     

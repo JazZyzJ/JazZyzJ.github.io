@@ -427,7 +427,7 @@ $$
 \mathbb{E}_{t \in \mathcal{U}(0, T)} \mathbb{E}_{p_t(\mathbf{x})}\left[\lambda(t)\left\|\nabla_{\mathbf{x}} \log p_t(\mathbf{x})-\mathbf{s}_\theta(\mathbf{x}, t)\right\|_2^2\right]
 $$
 
-这里，$mathcal{U}$表示0，T之间的均匀分布，$\lambda$还是那个正项权重函数，通常选择$\lambda(t) \propto \frac{1}{\mathbb{E}[\|\nabla_{\mathbf{x}(t)} \log p(\mathbf{x}(t) \mid \mathbf{x}(0))\|^2_2]}$来对不同时间的score进行平衡。
+这里，$\mathcal{U}$表示0，T之间的均匀分布，$\lambda$还是那个正项权重函数，通常选择$\lambda(t) \propto \frac{1}{\mathbb{E}[\|\nabla_{\mathbf{x}(t)} \log p(\mathbf{x}(t) \mid \mathbf{x}(0))\|^2_2]}$来对不同时间的score进行平衡。
 
 这时对score function进行训练，用sliced或者denoising sm优化后，将结果插入SDE：
 
