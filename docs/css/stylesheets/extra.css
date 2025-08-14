@@ -420,7 +420,7 @@
           mask-image: var(--md-admonition-icon--proof);
 }
 
-/* theorem（新增）：定义 */
+/* definition（新增）：定义 */
 .md-typeset .admonition.definition,
 .md-typeset details.definition {
   border-color: rgb(105, 140, 254);
@@ -434,6 +434,23 @@
   background-color: rgb(105, 112, 254);
   -webkit-mask-image: var(--md-admonition-icon--definition);
           mask-image: var(--md-admonition-icon--definition);
+}
+
+
+/* theorem（新增）：定义 */
+.md-typeset .admonition.theorem,
+.md-typeset details.theorem {
+  border-color: rgb(27, 213, 204);
+}
+.md-typeset .theorem > .admonition-title,
+.md-typeset .theorem > summary {
+  background-color: rgba(39, 168, 142, 0.1);
+}
+.md-typeset .theorem > .admonition-title::before,
+.md-typeset .theorem > summary::before {
+  background-color: rgb(27, 213, 204);
+  -webkit-mask-image: var(--md-admonition-icon--theorem);
+          mask-image: var(--md-admonition-icon--theorem);
 }
 
 
