@@ -1175,7 +1175,7 @@ q(x_t|x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t}x_0, (1-\bar{\alpha}_t)\mathb
 <div class="admonition question">
 <p class="admonition-title">为什么这样近似？</p>
 <p>虽然<span class="arithmatex">\(q(x_{t-1}|x_t)\)</span>是未知的，但通过数学推导我们可以证明，在给定了先验<span class="arithmatex">\(x_0\)</span>的情况下，<span class="arithmatex">\(q(x_{t-1}|x_t, x_0)\)</span>会变成一个可计算的高斯分布，他的方差和均值都可以用给定的<span class="arithmatex">\(\beta_t\)</span>来得到</p>
-<details class="proof">
+<details class="proof" open="open">
 <summary>证明</summary>
 <p><del>卧槽好多公式</del></p>
 <p>我们的目标是证明<span class="arithmatex">\(q(x_{t-1}|x_t, x_0)\)</span>是一个高斯分布，并且他的方差和均值都可以用给定的<span class="arithmatex">\(\beta_t\)</span>来得到</p>
