@@ -1,7 +1,14 @@
 - " homepage ":
+  - "2025 Summer":
+    - "Update":
+        text: Finish Deep Generative Models
+        href: /notes/ai/dgm/
+    - "Add":
+        text: Molecular Design
+        href: /notes/x/aidd/aidd.md
   - "2025 Spring":
     - "Add": 
-        text: Deep Generative Model
+        text: Deep Generative Models
         href: /notes/ai/dgm/
     - "Function": Add the changelog
     - "Add": 

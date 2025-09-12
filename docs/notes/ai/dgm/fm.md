@@ -455,6 +455,20 @@ $$\mathcal{L}_{\mathrm{CFM}}(\theta)=\mathbb{E}_{t\sim\mathrm{Unif},z\sim p_\mat
 
 
 
+## Conditional Flow Matching
+
+
+
+
+
+
+
+
+
+> 其实这部分的diffusion讲的也很好，但是最近在写论文没时间看了，抽空补上哈（）
+
+
+
 
 
 

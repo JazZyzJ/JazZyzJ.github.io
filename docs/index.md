@@ -18,12 +18,13 @@ changelog: true
 This is **JazZyzJ's** personal learning space.
 </span>
 
-## About me
+## About [me](https://jazzyzj.me)
 I am an undergraduate student at Zhejiang University, CKC Honors College, majoring in Computer Science and Technology in Turing Class.
 
 ## Contact me
 - Email:chenzijie040528@gmail.com
 - Github: [JazZyzJ](https://github.com/JazZyzJ/)
+
   
 <!-- ### Purpose of this space
 I will use this site as a blog to record my learning experience and share my thoughts not only in computer science but also in a wide range of fields.   -->
@@ -46,7 +47,10 @@ I will use this site as a blog to record my learning experience and share my tho
   content: Learning notes for Deep Generative Models 
   url: https://jazzyzj.github.io/notes/ai/dgm/index.html
 
-  
+
+- title: Equivariant Molecular Design
+  content: learning notes for EGNN and EDM for molecular design
+  url: https://jazzyzj.github.io/notes/x/aidd/eq.html
 
 ::/cards::
 
@@ -71,4 +75,8 @@ I will use this site as a blog to record my learning experience and share my tho
 <br>
 <br>
 <br>
+
+
+
+
 

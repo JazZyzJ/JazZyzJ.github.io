@@ -177,8 +177,10 @@ nav:
     #       - notes/math/randomprocess/index.md
   - X:
     - notes/x/index.md
-    - Drug Design:
-      - notes/x/aidd/aidd.md
+    - Molecular Design:
+      - Drug Property: notes/x/aidd/aidd.md
+    - Equivariant: notes/x/aidd/eq.md
+
           
   - To0ls:
     - Tool_Pool/index.md
