@@ -156,6 +156,10 @@ nav:
             - Memory: notes/cs/Sys/CO/memory.md
           - Database System:
             - Memo: notes/cs/Sys/dbs/dbsmemo.md
+        - Computer Network:
+            - notes/cs/network/index.md
+            - Basic: notes/cs/network/1.md
+            
         - PL: 
           - Python(CS61a): notes/lingo/cs61a.md
           - Verilog: notes/lingo/verilog.md
