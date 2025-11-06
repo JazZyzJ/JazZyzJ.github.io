@@ -24,6 +24,7 @@ comment: true
 
     - [x] [Diffusion Models](./diffusion.md)
     - [x] [Flow Matching](./fm.md)
+    - [x] [Discrete Diffusion Models](./ddm.md)
 
     同时Stanford CS236还有一节课专门讲了[Evaluating Generative Models](#evaluating-generative-models)，这是我认为在GenAI发展如此迅速的时代一件最有意义的一件事（之一）:
     

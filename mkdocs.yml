@@ -175,6 +175,7 @@ nav:
             - Score-based Models: notes/ai/dgm/score.md
             - Diffusion Models: notes/ai/dgm/diffusion.md
             - Flow Matching: notes/ai/dgm/fm.md
+            - Discrete Diffusion Models: notes/ai/dgm/ddm.md
     # - Math:
     #     - notes/math/index.md
     #     - Random Process:
