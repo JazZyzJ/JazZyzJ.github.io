@@ -238,3 +238,10 @@ where $\sigma_t^{\Delta t}=(\overline{\sigma}(t)-\overline{\sigma}(t-\Delta t))$
 
 
 
+## Relations with others
+
+<div align="center">
+    <img src="/../../../../assets/pics/ai/dgm/ddm/ddm8.png" style="width: 100%;">
+    From D3PM
+</div>
+
