@@ -9,26 +9,23 @@ comment: true
 # Deep Generative Models
 
 !!! abstract
-    生成式模型被广泛应用于视频图像生成、文本生成、语音生成等领域，我在25年初（寒假）开始进行这部分的学习，主要参考的是[Stanford CS236](https://deepgenerativemodels.github.io/syllabus.html) 课程和[MIT 6.S987](https://mit-6s978.github.io/schedule.html) 课程的讲义，还有[我哥的笔记](https://zhuanlan.zhihu.com/p/631001372)，[Lilian Weng的博客](https://lilianweng.github.io/posts/)、[Yang Song的博客](https://yang-song.net/blog)
+    生成式模型被广泛应用于视频图像生成、文本生成、语音生成等领域，我在25年初（寒假）开始进行这部分的学习，主要参考的是[Stanford CS236](https://deepgenerativemodels.github.io/syllabus.html) 课程和[MIT 6.S987](https://mit-6s978.github.io/schedule.html)、[Lilian Weng的博客](https://lilianweng.github.io/posts/)、[Yang Song的博客](https://yang-song.net/blog)
 
-    进行这部分学习的初衷是在[侯老师的实验室](http://cadd.zju.edu.cn/)，我在[秦睿](https://sorui-qin.github.io/)师兄的指导下开展关于分子生成工作的评测，由于不想局限于使用现有模型而是能更深入的理解模型的工作原理，因此开始进行这部分的学习。
     
     - [x] [VAE](./vae.md)
     - [x] [Autoregressive Models](./ar.md)
-    - [x] [Normalizing Flows](./nf.md)
+    - [x] [Normalizing Flows](./flow.md)
     - [ ] [Ganerative Adversarial Networks](./gan.md)
     - [x] [Energy-based Models](./energy.md)
     - [x] [Score-based Models](./score.md)
 
-    在Diffusion和FlowMatching的学习中，我结合了MIT的[6.S184](https://diffusion.csail.mit.edu)课程，这门课提供了视频讲解+详细笔记+代码作业（赞👍，更重要的是他从Application角度进行了部分授课，包括热门的AIGC以及我将来想尝试的Protein Design！（这两部分我可能会多一些代码的学习尝试🤪
+    在Diffusion和FlowMatching的学习中，我结合了MIT的[6.S184](https://diffusion.csail.mit.edu)课程，这门课提供了视频讲解+详细笔记+代码作业（赞👍，更重要的是他从Application角度进行了部分授课，包括热门的AIGC以及我将来想尝试的Protein Design！
 
     - [x] [Diffusion Models](./diffusion.md)
     - [x] [Flow Matching](./fm.md)
     - [x] [Discrete Diffusion Models](./ddm.md)
 
-    同时Stanford CS236还有一节课专门讲了[Evaluating Generative Models](#evaluating-generative-models)，这是我认为在GenAI发展如此迅速的时代一件最有意义的一件事（之一）:
-    
-    **how to evaluate your model?**
+    同时Stanford CS236还有一节课专门讲了[Evaluating Generative Models](#evaluating-generative-models)
 
 ## Intro
 

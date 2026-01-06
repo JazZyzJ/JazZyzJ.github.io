@@ -336,8 +336,6 @@ $$
     - Test-time: Using student singly
 
 
-## Flow Matching
-
 
     
     
